@@ -2,6 +2,10 @@
 
 ## Unreleased
 
+## 2.5.1 - 2026-03-07
+
+* Make the plugin compatible QGIS 4 again
+
 ## 2.5.0 - 2026-01-15
 
 * Raise to QGIS 3.34 minimum, the previous LTR
