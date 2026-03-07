@@ -1,13 +1,13 @@
 [general]
 name=QuickOSM
 qgisMinimumVersion=3.34
+qgisMaximumVersion=4.99
 description=Download OSM data thanks to the Overpass API. You can also open local OSM or PBF files. A special parser, on top of OGR, is used to let you see all OSM keys available.
 about=Execute customs Overpass queries in QGIS to get OSM data.
 author=Etienne Trimaille
 email=gustrimaille@yahoo.fr
 hasProcessingProvider=yes
 server=False
-supportsQt6=True
 
 # End of mandatory metadata
 
