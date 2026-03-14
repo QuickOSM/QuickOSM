@@ -24,8 +24,8 @@ from QuickOSM.core.exceptions import QuickOsmException
 from QuickOSM.core.utilities.utilities_qgis import open_log_panel
 from QuickOSM.definitions.gui import Panels
 from QuickOSM.definitions.osm import QueryLanguage
-from QuickOSM.qgis_plugin_tools.tools.i18n import tr
-from QuickOSM.qgis_plugin_tools.tools.resources import load_ui, resources_path
+from QuickOSM.tools.i18n import tr
+from QuickOSM.tools.resources import load_ui, resources_path
 from QuickOSM.ui.configuration_panel import ConfigurationPanel
 from QuickOSM.ui.map_preset_panel import MapPresetPanel
 from QuickOSM.ui.osm_file_panel import OsmFilePanel

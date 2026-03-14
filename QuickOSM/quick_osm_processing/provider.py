@@ -3,7 +3,7 @@
 from qgis.core import QgsProcessingProvider
 from qgis.PyQt.QtGui import QIcon
 
-from QuickOSM.qgis_plugin_tools.tools.resources import resources_path
+from QuickOSM.tools.resources import resources_path
 from QuickOSM.quick_osm_processing.advanced.build_query import (
     BuildQueryAroundAreaAlgorithm,
     BuildQueryExtentAlgorithm,

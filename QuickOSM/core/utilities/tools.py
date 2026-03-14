@@ -13,7 +13,7 @@ from qgis.core import QgsApplication, QgsSettings
 from qgis.PyQt.QtCore import QDir
 
 
-from QuickOSM.qgis_plugin_tools.tools.i18n import tr
+from QuickOSM.tools.i18n import tr
 
 
 def custom_config_file() -> str:

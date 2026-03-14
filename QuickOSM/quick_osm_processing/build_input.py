@@ -14,7 +14,7 @@ from qgis.core import (
 from QuickOSM.core.utilities.tools import get_setting
 from QuickOSM.definitions.osm import QueryType
 from QuickOSM.definitions.overpass import OVERPASS_SERVERS
-from QuickOSM.qgis_plugin_tools.tools.i18n import tr
+from QuickOSM.tools.i18n import tr
 
 
 class BuildBased(QgisAlgorithm):

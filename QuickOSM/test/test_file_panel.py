@@ -5,7 +5,7 @@ import unittest
 from qgis.core import QgsProject
 
 from QuickOSM.definitions.osm import MultiType
-from QuickOSM.qgis_plugin_tools.tools.resources import plugin_test_data_path
+from QuickOSM.tools.resources import plugin_test_data_path
 from QuickOSM.ui.dialog import Dialog
 from QuickOSM.ui.osm_file_panel import OsmFilePanel
 

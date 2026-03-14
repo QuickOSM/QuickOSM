@@ -28,10 +28,6 @@ flake8
 make tests
 ```
 
-* QuickOSM uses a [Git submodule](https://git-scm.com/book/en/v2/Git-Tools-Submodules).
-  * For a new clone, including the submodule, do `git clone --recursive https://github.com/QuickOSM/QuickOSM.git`.
-  * For an existing clone, do `git submodule init` and `git submodule update`.
-  * These command will populate the `qgis_plugin_tools`.
 * For panels, you can find a quick diagram in the `doc` folder.
 * For tests, it's using the `unittest` framework.
   * They are launched on GitHub using Travis, you can check the [Travis status](https://travis-ci.org/3liz/QuickOSM) on each commits and pull requests.

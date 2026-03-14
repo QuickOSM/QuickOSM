@@ -11,7 +11,7 @@ from QuickOSM.core.exceptions import (
     OverpassTimeoutException,
 )
 from QuickOSM.definitions.overpass import OVERPASS_SERVERS
-from QuickOSM.qgis_plugin_tools.tools.resources import plugin_test_data_path
+from QuickOSM.tools.resources import plugin_test_data_path
 
 
 

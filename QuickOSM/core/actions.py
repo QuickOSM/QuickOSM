@@ -14,8 +14,8 @@ from QuickOSM.core import process
 from QuickOSM.core.josm_remote import open_object
 from QuickOSM.core.utilities.utilities_qgis import open_webpage
 from QuickOSM.definitions.action import Visibility
-from QuickOSM.qgis_plugin_tools.tools.i18n import tr
-from QuickOSM.qgis_plugin_tools.tools.resources import resources_path
+from QuickOSM.tools.i18n import tr
+from QuickOSM.tools.resources import resources_path
 
 
 

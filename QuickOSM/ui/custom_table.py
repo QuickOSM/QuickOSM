@@ -23,8 +23,8 @@ from QuickOSM.core.utilities.completer_free import (
 )
 from QuickOSM.definitions.gui import Panels
 from QuickOSM.definitions.osm import MultiType
-from QuickOSM.qgis_plugin_tools.tools.i18n import tr
-from QuickOSM.qgis_plugin_tools.tools.resources import resources_path
+from QuickOSM.tools.i18n import tr
+from QuickOSM.tools.resources import resources_path
 
 
 LOGGER = logging.getLogger('QuickOSM')

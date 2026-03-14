@@ -20,7 +20,7 @@ from QuickOSM.definitions.osm import (
     LayerType,
     MultiType,
 )
-from QuickOSM.qgis_plugin_tools.tools.i18n import tr
+from QuickOSM.tools.i18n import tr
 
 
 LOGGER = logging.getLogger('QuickOSM')

@@ -19,8 +19,8 @@ from qgis.PyQt.QtGui import QIcon
 from QuickOSM.core.api.connexion_oapi import ConnexionOAPI
 from QuickOSM.core.parser.osm_parser import OsmParser
 from QuickOSM.definitions.format import Format
-from QuickOSM.qgis_plugin_tools.tools.i18n import tr
-from QuickOSM.qgis_plugin_tools.tools.resources import resources_path
+from QuickOSM.tools.i18n import tr
+from QuickOSM.tools.resources import resources_path
 from QuickOSM.quick_osm_processing.advanced.build_query import (
     BuildQueryAroundAreaAlgorithm,
     BuildQueryExtentAlgorithm,

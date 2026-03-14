@@ -11,7 +11,7 @@ from qgis.core import (
 )
 from qgis.testing import unittest
 
-from QuickOSM.qgis_plugin_tools.tools.resources import plugin_test_data_path
+from QuickOSM.tools.resources import plugin_test_data_path
 from QuickOSM.quick_osm_processing.provider import Provider
 from QuickOSM.test.definitions import TOWN_COORDS, TOWN_NAME
 from QuickOSM.test.mocked_web_server import (

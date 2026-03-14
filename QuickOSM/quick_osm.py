@@ -6,7 +6,7 @@ import shutil
 
 from os.path import join
 
-from qgis.core import Qgis, QgsApplication, QgsZipUtils
+from qgis.core import QgsApplication, QgsZipUtils
 from qgis.PyQt.QtCore import QCoreApplication, QTranslator, QUrl
 from qgis.PyQt.QtGui import QDesktopServices, QIcon
 from qgis.PyQt.QtWidgets import (
@@ -25,14 +25,14 @@ from QuickOSM.core.utilities.tools import (
 )
 from QuickOSM.core.utilities.utilities_qgis import open_webpage
 from QuickOSM.definitions.urls import DOC_PLUGIN_URL
-from QuickOSM.qgis_plugin_tools.tools.custom_logging import setup_logger
-from QuickOSM.qgis_plugin_tools.tools.i18n import setup_translation, tr
-from QuickOSM.qgis_plugin_tools.tools.resources import (
+from QuickOSM.tools.custom_logging import setup_logger
+from QuickOSM.tools.i18n import setup_translation, tr
+from QuickOSM.tools.resources import (
     plugin_name,
     plugin_path,
     resources_path,
 )
-from QuickOSM.qgis_plugin_tools.tools.version import version
+from QuickOSM.tools.version import version
 from QuickOSM.quick_osm_processing.provider import Provider
 
 

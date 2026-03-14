@@ -15,7 +15,7 @@ from QuickOSM.core.exceptions import (
 from QuickOSM.definitions.osm import OsmType
 
 
-from QuickOSM.qgis_plugin_tools.tools.resources import plugin_test_data_path
+from QuickOSM.tools.resources import plugin_test_data_path
 
 LOGGER = logging.getLogger('QuickOSM')
 

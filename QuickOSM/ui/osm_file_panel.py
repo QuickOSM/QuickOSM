@@ -15,8 +15,8 @@ from QuickOSM.core.parser.osm_parser import OsmParser
 from QuickOSM.core.process import open_file
 from QuickOSM.definitions.gui import Panels
 from QuickOSM.definitions.osm import MultiType
-from QuickOSM.qgis_plugin_tools.tools.i18n import tr
-from QuickOSM.qgis_plugin_tools.tools.resources import resources_path
+from QuickOSM.tools.i18n import tr
+from QuickOSM.tools.resources import resources_path
 from QuickOSM.ui.base_processing_panel import BaseProcessingPanel
 from QuickOSM.ui.custom_table import TableKeyValue
 

@@ -2,7 +2,7 @@
 
 from enum import Enum, unique
 
-from QuickOSM.qgis_plugin_tools.tools.i18n import tr
+from QuickOSM.tools.i18n import tr
 
 
 

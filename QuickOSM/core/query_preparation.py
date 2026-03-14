@@ -14,8 +14,8 @@ from QuickOSM.core.utilities.tools import get_setting
 from QuickOSM.definitions.nominatim import NOMINATIM_SERVERS
 from QuickOSM.definitions.osm import QueryLanguage
 from QuickOSM.definitions.overpass import OVERPASS_SERVERS
-from QuickOSM.qgis_plugin_tools.tools.i18n import tr
-from QuickOSM.qgis_plugin_tools.tools.resources import plugin_name
+from QuickOSM.tools.i18n import tr
+from QuickOSM.tools.resources import plugin_name
 
 
 LOGGER = logging.getLogger(plugin_name())

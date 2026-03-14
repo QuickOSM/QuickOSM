@@ -20,8 +20,8 @@ from QuickOSM.core.utilities.tools import query_preset
 from QuickOSM.definitions.format import Format
 from QuickOSM.definitions.gui import Panels
 from QuickOSM.definitions.osm import LayerType
-from QuickOSM.qgis_plugin_tools.tools.i18n import tr
-from QuickOSM.qgis_plugin_tools.tools.resources import load_ui, resources_path
+from QuickOSM.tools.i18n import tr
+from QuickOSM.tools.resources import load_ui, resources_path
 from QuickOSM.ui.custom_table import TableKeyValue
 
 

@@ -39,8 +39,8 @@ from QuickOSM.definitions.osm import (
     QueryLanguage,
     QueryType,
 )
-from QuickOSM.qgis_plugin_tools.tools.i18n import tr
-from QuickOSM.qgis_plugin_tools.tools.resources import resources_path
+from QuickOSM.tools.i18n import tr
+from QuickOSM.tools.resources import resources_path
 from QuickOSM.ui.base_overpass_panel import BaseOverpassPanel
 from QuickOSM.ui.custom_table import TableKeyValue
 

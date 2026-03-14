@@ -7,8 +7,8 @@ import os
 import re
 import xml.dom.minidom as xml
 
-from QuickOSM.qgis_plugin_tools.tools.i18n import setup_translation
-from QuickOSM.qgis_plugin_tools.tools.resources import resources_path
+from QuickOSM.tools.i18n import setup_translation
+from QuickOSM.tools.resources import resources_path
 
 
 PRESET_PATH = resources_path('JOSM_preset', 'josm_preset.xml')

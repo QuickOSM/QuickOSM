@@ -5,7 +5,7 @@ import unittest
 from qgis.core import QgsWkbTypes
 
 from QuickOSM.core.parser.osm_parser import OsmParser
-from QuickOSM.qgis_plugin_tools.tools.resources import plugin_test_data_path
+from QuickOSM.tools.resources import plugin_test_data_path
 
 
 

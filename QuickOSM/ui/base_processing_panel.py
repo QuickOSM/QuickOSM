@@ -14,7 +14,7 @@ from QuickOSM.core.exceptions import (
 from QuickOSM.definitions.format import Format
 from QuickOSM.definitions.gui import Panels
 from QuickOSM.definitions.osm import LayerType
-from QuickOSM.qgis_plugin_tools.tools.i18n import tr
+from QuickOSM.tools.i18n import tr
 from QuickOSM.ui.base_panel import BasePanel
 
 

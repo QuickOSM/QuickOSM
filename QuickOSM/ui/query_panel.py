@@ -26,8 +26,8 @@ from QuickOSM.core.utilities.utilities_qgis import (
 from QuickOSM.definitions.gui import Panels
 from QuickOSM.definitions.osm import WHITE_LIST, LayerType, QueryLanguage
 from QuickOSM.definitions.overpass import OVERPASS_SERVERS
-from QuickOSM.qgis_plugin_tools.tools.i18n import tr
-from QuickOSM.qgis_plugin_tools.tools.resources import resources_path
+from QuickOSM.tools.i18n import tr
+from QuickOSM.tools.resources import resources_path
 from QuickOSM.ui.base_overpass_panel import BaseOverpassPanel
 from QuickOSM.ui.xml_highlighter import QueryHighlighter
 
