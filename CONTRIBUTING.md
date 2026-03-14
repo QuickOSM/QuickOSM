@@ -30,7 +30,7 @@ make tests
 
 * For panels, you can find a quick diagram in the `doc` folder.
 * For tests, it's using the `unittest` framework.
-  * They are launched on GitHub using Travis, you can check the [Travis status](https://travis-ci.org/3liz/QuickOSM) on each commits and pull requests.
+  * They are launched on GitHub Actions, you can check the [CI status](https://github.com/QuickOSM/QuickOSM/actions/workflows/ci.yml) on each commits and pull requests.
   * You can launch them locally:
      * `make docker_test` using Docker with the current LTR following the [QGIS release schedule](https://www.qgis.org/en/site/getinvolved/development/roadmap.html#release-schedule).
         * `qgis_plugin_tools/docker_test.sh QuickOSM release-3_4` for QGIS 3.4
