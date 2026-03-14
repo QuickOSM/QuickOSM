@@ -6,13 +6,13 @@ on:
       - "*"
     branches:
       - main
-    paths:
-      - 'QuickOSM/**'
+#    paths:
+#      - 'QuickOSM/**'
   pull_request:
     branches:
       - main
-    paths:
-      - 'QuickOSM/**'
+#    paths:
+#      - 'QuickOSM/**'
 
 jobs:
 
@@ -85,6 +85,12 @@ jobs:
         run: ./start.sh
       - name: Running tests
         run: ./exec.sh
+
+  pyqt6-check:
+    name: PyQt6
+    uses: opengisch/qgis-plugin-ci/.github/workflows/pyqt6_test.yml@master
+    with:
+      plugin_path: QuickOSM
 
   package-commit:
     needs: [test-qgis, flake8]
