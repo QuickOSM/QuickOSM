@@ -174,7 +174,7 @@ jobs:
         run: qgis-plugin-ci changelog ${{ env.RELEASE_VERSION }} >> release.md
 
       - name: Create release on GitHub
-        uses: ncipollo/release-action@v1.20.0
+        uses: ncipollo/release-action@v1.21.0
         with:
           bodyFile: release.md
           token: ${{ secrets.QGIS_PLUGIN_TOKEN }}
