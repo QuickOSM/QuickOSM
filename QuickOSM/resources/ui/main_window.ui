@@ -57,16 +57,16 @@
      </property>
      <property name="styleSheet">
       <string notr="true">QListWidget{
-	background-color: grey;
-	outline: 0;
+     background-color: grey;
+     outline: 0;
 }
 QListWidget::item {
-	color: white;
-	padding: 3px;
+     color: white;
+     padding: 3px;
 }
 QListWidget::item::selected {
-	color: black;
-	background-color:palette(Window);
+     color: black;
+     background-color:palette(Window);
     padding-right: 0px;
 }</string>
      </property>
@@ -1920,6 +1920,59 @@ QListWidget::item::selected {
                   </item>
                  </layout>
                 </item>
+                <item>
+                 <widget class="QGroupBox" name="groupBox_custom_overpass">
+                  <property name="title">
+                   <string>Custom Overpass Server hinzufügen</string>
+                  </property>
+                  <layout class="QVBoxLayout" name="verticalLayout_custom_overpass">
+                   <item>
+                    <layout class="QHBoxLayout" name="horizontalLayout_add_overpass">
+                     <item>
+                      <widget class="QLineEdit" name="line_edit_overpass_url">
+                       <property name="placeholderText">
+                        <string>https://mein-server.example.com/api/</string>
+                       </property>
+                      </widget>
+                     </item>
+                     <item>
+                      <widget class="QPushButton" name="btn_add_overpass">
+                       <property name="text">
+                        <string>Hinzufügen</string>
+                       </property>
+                       <property name="toolTip">
+                        <string>Server zur Liste hinzufügen</string>
+                       </property>
+                      </widget>
+                     </item>
+                     <item>
+                      <widget class="QPushButton" name="btn_remove_overpass">
+                       <property name="text">
+                        <string>Entfernen</string>
+                       </property>
+                       <property name="toolTip">
+                        <string>Ausgewählten Custom-Server entfernen</string>
+                       </property>
+                      </widget>
+                     </item>
+                    </layout>
+                   </item>
+                   <item>
+                    <widget class="QListWidget" name="list_custom_overpass">
+                     <property name="minimumSize">
+                      <size>
+                       <width>0</width>
+                       <height>60</height>
+                      </size>
+                     </property>
+                     <property name="toolTip">
+                      <string>Eigene Overpass-Server (aus custom_config.json)</string>
+                     </property>
+                    </widget>
+                   </item>
+                  </layout>
+                 </widget>
+                </item>
                </layout>
               </widget>
              </item>
@@ -1959,6 +2012,59 @@ QListWidget::item::selected {
                    </widget>
                   </item>
                  </layout>
+                </item>
+                <item>
+                 <widget class="QGroupBox" name="groupBox_custom_nominatim">
+                  <property name="title">
+                   <string>Custom Nominatim Server hinzufügen</string>
+                  </property>
+                  <layout class="QVBoxLayout" name="verticalLayout_custom_nominatim">
+                   <item>
+                    <layout class="QHBoxLayout" name="horizontalLayout_add_nominatim">
+                     <item>
+                      <widget class="QLineEdit" name="line_edit_nominatim_url">
+                       <property name="placeholderText">
+                        <string>https://mein-nominatim.example.com/search?</string>
+                       </property>
+                      </widget>
+                     </item>
+                     <item>
+                      <widget class="QPushButton" name="btn_add_nominatim">
+                       <property name="text">
+                        <string>Hinzufügen</string>
+                       </property>
+                       <property name="toolTip">
+                        <string>Server zur Liste hinzufügen</string>
+                       </property>
+                      </widget>
+                     </item>
+                     <item>
+                      <widget class="QPushButton" name="btn_remove_nominatim">
+                       <property name="text">
+                        <string>Entfernen</string>
+                       </property>
+                       <property name="toolTip">
+                        <string>Ausgewählten Custom-Server entfernen</string>
+                       </property>
+                      </widget>
+                     </item>
+                    </layout>
+                   </item>
+                   <item>
+                    <widget class="QListWidget" name="list_custom_nominatim">
+                     <property name="minimumSize">
+                      <size>
+                       <width>0</width>
+                       <height>60</height>
+                      </size>
+                     </property>
+                     <property name="toolTip">
+                      <string>Eigene Nominatim-Server (aus custom_config.json)</string>
+                     </property>
+                    </widget>
+                   </item>
+                  </layout>
+                 </widget>
                 </item>
                 <item>
                  <spacer name="verticalSpacer">
