@@ -15,7 +15,6 @@ from QuickOSM.definitions.osm import (
 )
 from QuickOSM.tools.i18n import tr
 
-
 SPACE_INDENT = '    '
 
 # Simple keys/values

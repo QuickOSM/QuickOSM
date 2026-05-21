@@ -4,7 +4,6 @@ from enum import Enum, unique
 
 from QuickOSM.tools.i18n import tr
 
-
 # Wait for python 3.6 minimum version
 # class AutoEnum(Enum):
 #     # noinspection PyMethodParameters

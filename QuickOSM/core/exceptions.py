@@ -1,4 +1,5 @@
 """Exceptions definitions."""
+from typing import Optional
 
 from qgis.core import Qgis
 
@@ -9,7 +10,7 @@ from QuickOSM.tools.i18n import tr
 class QuickOsmException(Exception):
     """These exceptions are created by QuickOSM during a process."""
 
-    def __init__(self, message: str = None, more_details: str = None):
+    def __init__(self, message: Optional[str] = None, more_details: Optional[str] = None):
         """Constructor.
 
         :param message: The base message to display in the message bar.
@@ -25,10 +26,7 @@ class QuickOsmException(Exception):
         self.more_details = more_details
         self.level = Qgis.MessageLevel.Critical
         self.duration = 7
-        if more_details:
-            super().__init__(message, more_details)
-        else:
-            super().__init__(message)
+        super().__init__(message, more_details)
 
 
 # Overpass or network
@@ -37,7 +35,7 @@ class QuickOsmException(Exception):
 class OverpassBadRequestException(QuickOsmException):
     """Bad request exception."""
 
-    def __init__(self, error: str = None):
+    def __init__(self, error: Optional[str] = None):
         message = tr('Bad request OverpassAPI.')
         if error:
             message += ' '
@@ -48,7 +46,7 @@ class OverpassBadRequestException(QuickOsmException):
 class OverpassTimeoutException(QuickOsmException):
     """Time out exception"""
 
-    def __init__(self, message: str = None):
+    def __init__(self, message: Optional[str] = None):
         if not message:
             message = tr('OverpassAPI timeout, try again later or a smaller query.')
         super().__init__(message)
@@ -57,7 +55,7 @@ class OverpassTimeoutException(QuickOsmException):
 class OverpassManyRequestException(QuickOsmException):
     """Too many request exception."""
 
-    def __init__(self, message: str = None):
+    def __init__(self, message: Optional[str] = None):
         if not message:
             message = tr(
                 'OverpassAPI has received too many requests, try again later or a smaller query.'
@@ -89,7 +87,7 @@ class OverpassRuntimeError(QuickOsmException):
 class NetWorkErrorException(QuickOsmException):
     """Network error exception."""
 
-    def __init__(self, service: str, details: str = None):
+    def __init__(self, service: str, details: Optional[str] = None):
         if details:
             service = service + ' : ' + details
         super().__init__(service)
@@ -101,7 +99,7 @@ class NetWorkErrorException(QuickOsmException):
 class QueryFactoryException(QuickOsmException):
     """Query can't be build exception."""
 
-    def __init__(self, message: str = None, suffix: str = None):
+    def __init__(self, message: Optional[str] = None, suffix: Optional[str] = None):
         if not message:
             message = tr('Error while building the query')
         if suffix:
@@ -163,7 +161,7 @@ class NominatimAreaException(QuickOsmException):
 class FileDoesntExistException(QuickOsmException):
     """File doesn't exist exception."""
 
-    def __init__(self, message: str = None, suffix: str = None):
+    def __init__(self, message: Optional[str] = None, suffix: Optional[str] = None):
         if not message:
             message = tr('The file does not exist.')
         if suffix:
@@ -174,7 +172,7 @@ class FileDoesntExistException(QuickOsmException):
 class DirectoryOutPutException(QuickOsmException):
     """Directory doesn't exist exception."""
 
-    def __init__(self, message: str = None):
+    def __init__(self, message: Optional[str] = None):
         if not message:
             message = tr('The output directory does not exist.')
         super().__init__(message)
@@ -183,7 +181,7 @@ class DirectoryOutPutException(QuickOsmException):
 class FileOutPutException(QuickOsmException):
     """File already exist exception."""
 
-    def __init__(self, message: str = None, suffix: str = None):
+    def __init__(self, message: Optional[str] = None, suffix: Optional[str] = None):
         if not message:
             message = tr('The output file already exist, set a prefix.')
         if suffix:
@@ -205,7 +203,7 @@ class MissingLayerUI(QuickOsmException):
 class MissingParameterException(QuickOsmException):
     """Missing parameter exception."""
 
-    def __init__(self, message: str = None, suffix: str = None):
+    def __init__(self, message: Optional[str] = None, suffix: Optional[str] = None):
         if not message:
             message = tr('A parameter is missing :')
         if suffix:
@@ -235,7 +233,7 @@ class NoSelectedFeatures(QuickOsmException):
 class OsmObjectsException(QuickOsmException):
     """No OSM objects selected exception."""
 
-    def __init__(self, message: str = None):
+    def __init__(self, message: Optional[str] = None):
         if not message:
             message = tr('No osm objects selected. Please select one.')
         super().__init__(message)
@@ -244,7 +242,7 @@ class OsmObjectsException(QuickOsmException):
 class OutPutGeomTypesException(QuickOsmException):
     """No outputs geometries selected exception."""
 
-    def __init__(self, message: str = None):
+    def __init__(self, message: Optional[str] = None):
         if not message:
             message = tr('No outputs selected. Please select one.')
         super().__init__(message)

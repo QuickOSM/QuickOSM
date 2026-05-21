@@ -11,7 +11,6 @@ from qgis.core import (
 )
 from qgis.testing import unittest
 
-from QuickOSM.tools.resources import plugin_test_data_path
 from QuickOSM.quick_osm_processing.provider import Provider
 from QuickOSM.test.definitions import TOWN_COORDS, TOWN_NAME
 from QuickOSM.test.mocked_web_server import (
@@ -19,6 +18,7 @@ from QuickOSM.test.mocked_web_server import (
     install_http_handler,
     launch,
 )
+from QuickOSM.tools.resources import plugin_test_data_path
 
 
 class TestProcessing(unittest.TestCase):

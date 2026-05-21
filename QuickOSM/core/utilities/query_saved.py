@@ -22,7 +22,6 @@ from QuickOSM.definitions.osm import (
 )
 from QuickOSM.tools.i18n import tr
 
-
 LOGGER = logging.getLogger('QuickOSM')
 
 

@@ -31,7 +31,6 @@ from QuickOSM.tools.resources import resources_path
 from QuickOSM.ui.base_overpass_panel import BaseOverpassPanel
 from QuickOSM.ui.xml_highlighter import QueryHighlighter
 
-
 LOGGER = logging.getLogger('QuickOSM')
 
 

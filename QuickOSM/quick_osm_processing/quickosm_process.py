@@ -19,8 +19,6 @@ from qgis.PyQt.QtGui import QIcon
 from QuickOSM.core.api.connexion_oapi import ConnexionOAPI
 from QuickOSM.core.parser.osm_parser import OsmParser
 from QuickOSM.definitions.format import Format
-from QuickOSM.tools.i18n import tr
-from QuickOSM.tools.resources import resources_path
 from QuickOSM.quick_osm_processing.advanced.build_query import (
     BuildQueryAroundAreaAlgorithm,
     BuildQueryExtentAlgorithm,
@@ -31,6 +29,8 @@ from QuickOSM.quick_osm_processing.advanced.decorate_output import (
     SetColoringPostProcessor,
 )
 from QuickOSM.quick_osm_processing.build_input import BuildRaw
+from QuickOSM.tools.i18n import tr
+from QuickOSM.tools.resources import resources_path
 
 
 class DownloadOSMData(QgisAlgorithm):

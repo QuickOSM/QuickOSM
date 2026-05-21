@@ -2,9 +2,9 @@
 
 from os.path import join
 
-from qgis.PyQt.QtCore import QLocale, QFileInfo
-from qgis.PyQt.QtWidgets import QApplication
 from qgis.core import QgsSettings
+from qgis.PyQt.QtCore import QFileInfo, QLocale
+from qgis.PyQt.QtWidgets import QApplication
 
 from QuickOSM.tools.resources import resources_path
 

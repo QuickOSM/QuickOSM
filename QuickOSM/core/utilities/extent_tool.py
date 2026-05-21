@@ -13,7 +13,6 @@ from qgis.gui import QgsMapTool, QgsRubberBand
 from qgis.PyQt.QtCore import pyqtSignal
 from qgis.PyQt.QtGui import QColor
 
-
 LOGGER = logging.getLogger('QuickOSM')
 
 

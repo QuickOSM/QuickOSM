@@ -18,7 +18,6 @@ from QuickOSM.core.exceptions import (
     OverpassTimeoutException,
 )
 
-
 LOGGER = logging.getLogger('QuickOSM')
 
 

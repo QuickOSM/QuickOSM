@@ -2,7 +2,7 @@
 
 import logging
 
-from qgis.core import QgsMessageLog, Qgis
+from qgis.core import Qgis, QgsMessageLog
 
 from QuickOSM.tools.i18n import tr
 from QuickOSM.tools.resources import plugin_name

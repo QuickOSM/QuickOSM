@@ -21,7 +21,6 @@ from QuickOSM.definitions.format import Format
 from QuickOSM.definitions.osm import WHITE_LIST, Osm_Layers
 from QuickOSM.tools.i18n import tr
 
-
 LOGGER = logging.getLogger('QuickOSM')
 
 

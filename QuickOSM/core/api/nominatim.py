@@ -13,8 +13,6 @@ from QuickOSM.core.exceptions import (
     NominatimBadRequest,
 )
 from QuickOSM.definitions.osm import OsmType
-
-
 from QuickOSM.tools.resources import plugin_test_data_path
 
 LOGGER = logging.getLogger('QuickOSM')

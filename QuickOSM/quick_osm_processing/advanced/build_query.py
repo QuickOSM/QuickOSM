@@ -9,13 +9,13 @@ from qgis.core import QgsProcessingAlgorithm, QgsProcessingOutputString
 from QuickOSM.core.query_factory import QueryFactory
 from QuickOSM.core.query_preparation import QueryPreparation
 from QuickOSM.definitions.osm import QueryLanguage
-from QuickOSM.tools.i18n import tr
 from QuickOSM.quick_osm_processing.build_input import (
     BuildBasedAroundAreaQuery,
     BuildBasedExtentQuery,
     BuildBasedInAreaQuery,
     BuildBasedNotSpatialQuery,
 )
+from QuickOSM.tools.i18n import tr
 
 
 class BuildQueryBasedAlgorithm(QgisAlgorithm):

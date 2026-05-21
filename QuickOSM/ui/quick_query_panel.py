@@ -44,7 +44,6 @@ from QuickOSM.tools.resources import resources_path
 from QuickOSM.ui.base_overpass_panel import BaseOverpassPanel
 from QuickOSM.ui.custom_table import TableKeyValue
 
-
 LOGGER = logging.getLogger('QuickOSM')
 
 

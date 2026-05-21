@@ -6,7 +6,6 @@ import os
 from qgis.core import Qgis, QgsFileDownloader
 from qgis.PyQt.QtCore import QByteArray, QEventLoop, QUrl, QUrlQuery
 
-
 LOGGER = logging.getLogger('QuickOSM')
 
 

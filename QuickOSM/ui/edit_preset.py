@@ -24,7 +24,6 @@ from QuickOSM.tools.i18n import tr
 from QuickOSM.tools.resources import load_ui, resources_path
 from QuickOSM.ui.custom_table import TableKeyValue
 
-
 FORM_CLASS = load_ui('edit_preset.ui')
 LOGGER = logging.getLogger('QuickOSM')
 

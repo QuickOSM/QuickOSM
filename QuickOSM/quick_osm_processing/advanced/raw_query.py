@@ -6,8 +6,8 @@ from typing import Dict
 from qgis.core import QgsProcessingAlgorithm, QgsProcessingOutputString
 
 from QuickOSM.core.query_preparation import QueryPreparation
-from QuickOSM.tools.i18n import tr
 from QuickOSM.quick_osm_processing.build_input import BuildRaw
+from QuickOSM.tools.i18n import tr
 
 
 class RawQueryAlgorithm(BuildRaw):

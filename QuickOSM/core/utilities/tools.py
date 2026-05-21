@@ -12,7 +12,6 @@ import qgis.utils
 from qgis.core import QgsApplication, QgsSettings
 from qgis.PyQt.QtCore import QDir
 
-
 from QuickOSM.tools.i18n import tr
 
 

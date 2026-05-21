@@ -10,7 +10,6 @@ import xml.dom.minidom as xml
 from QuickOSM.tools.i18n import setup_translation
 from QuickOSM.tools.resources import resources_path
 
-
 PRESET_PATH = resources_path('JOSM_preset', 'josm_preset.xml')
 LOGGER = logging.getLogger('QuickOSM')
 

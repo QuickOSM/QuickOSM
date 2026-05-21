@@ -3,7 +3,6 @@
 from qgis.core import QgsProcessingProvider
 from qgis.PyQt.QtGui import QIcon
 
-from QuickOSM.tools.resources import resources_path
 from QuickOSM.quick_osm_processing.advanced.build_query import (
     BuildQueryAroundAreaAlgorithm,
     BuildQueryExtentAlgorithm,
@@ -25,6 +24,7 @@ from QuickOSM.quick_osm_processing.quickosm_process import (
     DownloadOSMDataNotSpatialQuery,
     DownloadOSMDataRawQuery,
 )
+from QuickOSM.tools.resources import resources_path
 
 
 class Provider(QgsProcessingProvider):

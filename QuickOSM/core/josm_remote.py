@@ -8,7 +8,6 @@ from qgis.core import (
 from qgis.PyQt.QtCore import QUrl
 from qgis.PyQt.QtNetwork import QNetworkReply, QNetworkRequest
 
-
 URL = "http://localhost:8111"
 
 

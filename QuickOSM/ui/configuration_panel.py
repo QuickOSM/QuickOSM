@@ -17,7 +17,6 @@ from QuickOSM.definitions.nominatim import NOMINATIM_SERVERS
 from QuickOSM.definitions.overpass import OVERPASS_SERVERS
 from QuickOSM.ui.base_panel import BasePanel
 
-
 LOGGER = logging.getLogger('QuickOSM')
 
 

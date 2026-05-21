@@ -26,7 +26,6 @@ from QuickOSM.definitions.osm import MultiType
 from QuickOSM.tools.i18n import tr
 from QuickOSM.tools.resources import resources_path
 
-
 LOGGER = logging.getLogger('QuickOSM')
 
 

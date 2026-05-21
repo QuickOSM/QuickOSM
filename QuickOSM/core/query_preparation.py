@@ -17,7 +17,6 @@ from QuickOSM.definitions.overpass import OVERPASS_SERVERS
 from QuickOSM.tools.i18n import tr
 from QuickOSM.tools.resources import plugin_name
 
-
 LOGGER = logging.getLogger(plugin_name())
 
 

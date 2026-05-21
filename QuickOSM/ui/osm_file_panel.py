@@ -20,7 +20,6 @@ from QuickOSM.tools.resources import resources_path
 from QuickOSM.ui.base_processing_panel import BaseProcessingPanel
 from QuickOSM.ui.custom_table import TableKeyValue
 
-
 LOGGER = logging.getLogger('QuickOSM')
 
 

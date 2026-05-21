@@ -25,16 +25,11 @@ from QuickOSM.core.utilities.tools import (
 )
 from QuickOSM.core.utilities.utilities_qgis import open_webpage
 from QuickOSM.definitions.urls import DOC_PLUGIN_URL
+from QuickOSM.quick_osm_processing.provider import Provider
 from QuickOSM.tools.custom_logging import setup_logger
 from QuickOSM.tools.i18n import setup_translation, tr
-from QuickOSM.tools.resources import (
-    plugin_name,
-    plugin_path,
-    resources_path,
-)
+from QuickOSM.tools.resources import plugin_name, plugin_path, resources_path
 from QuickOSM.tools.version import version
-from QuickOSM.quick_osm_processing.provider import Provider
-
 
 LOGGER = logging.getLogger('QuickOSM')
 

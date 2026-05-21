@@ -17,7 +17,6 @@ from QuickOSM.definitions.action import Visibility
 from QuickOSM.tools.i18n import tr
 from QuickOSM.tools.resources import resources_path
 
-
 ACTIONS_PATH = 'from QuickOSM.core.actions import Actions\n'
 ACTIONS_VISIBILITY = [
     Visibility.Canvas.value,

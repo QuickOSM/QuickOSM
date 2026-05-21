@@ -37,7 +37,6 @@ from QuickOSM.definitions.osm import (
 from QuickOSM.definitions.overpass import OVERPASS_SERVERS
 from QuickOSM.tools.i18n import tr
 
-
 LOGGER = logging.getLogger('QuickOSM')
 
 

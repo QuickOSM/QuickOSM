@@ -4,7 +4,7 @@ import configparser
 import shutil
 import tempfile
 
-from os.path import abspath, join, pardir, dirname
+from os.path import abspath, dirname, join, pardir
 
 from qgis.PyQt import uic
 
