@@ -1,4 +1,5 @@
 """Tests for the overpass panel file."""
+from typing import Tuple
 
 from qgis.core import (
     QgsFeature,
@@ -60,10 +61,11 @@ class TestQuickOSMWidget(unittest.TestCase):
         self.assertListEqual(expected, new_list)
 
     @staticmethod
-    def selected_features_set_up() -> (Dialog, QgsVectorLayer):
+    def selected_features_set_up() -> Tuple[Dialog, QgsVectorLayer]:
         """Set the tests about the selected features."""
         dialog = Dialog()
-        QgsProject.instance().clear()
+        project: QgsProject = QgsProject.instance()
+        project.clear()
 
         # Creating a new layer
         layer = QgsVectorLayer('Point?crs=epsg:4326&field=id:integer&index=yes', 'layer', 'memory')
@@ -78,7 +80,7 @@ class TestQuickOSMWidget(unittest.TestCase):
             feature3.setGeometry(QgsGeometry.fromPointXY(QgsPointXY(25, 40)))
             feature3.setAttributes([3])
             layer.addFeatures([feature1, feature2, feature3])
-        QgsProject.instance().addMapLayer(layer)
+        project.addMapLayer(layer)
 
         index = dialog.combo_query_type_qq.findData('layer')
         dialog.combo_query_type_qq.setCurrentIndex(index)

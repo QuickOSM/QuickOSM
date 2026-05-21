@@ -3,6 +3,8 @@
 import logging
 import os
 
+from typing import Optional
+
 from qgis.core import Qgis, QgsFileDownloader
 from qgis.PyQt.QtCore import QByteArray, QEventLoop, QUrl, QUrlQuery
 
@@ -12,7 +14,7 @@ LOGGER = logging.getLogger('QuickOSM')
 class Downloader:
     """Manage downloader."""
 
-    def __init__(self, url: str = None):
+    def __init__(self, url: Optional[str] = None ):
         """Constructor."""
         if url is None:
             url = 'https://nominatim.openstreetmap.org/search?'

@@ -1,5 +1,5 @@
 """Panel core base class."""
-from typing import List
+from typing import List, Optional
 
 from qgis.PyQt.QtWidgets import QDialog
 
@@ -14,7 +14,7 @@ class BasePanel:
     """
 
     def __init__(self, dialog: QDialog):
-        self._panel = None
+        self._panel: Optional[str] = None
         self._dialog = dialog
 
     @property
