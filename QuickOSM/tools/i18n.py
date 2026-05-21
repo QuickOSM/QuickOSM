@@ -1,6 +1,6 @@
 """I18n tools."""
 
-from os.path import join
+from pathlib import Path
 
 from qgis.core import QgsSettings
 from qgis.PyQt.QtCore import QFileInfo, QLocale
@@ -24,14 +24,14 @@ def setup_translation(file_pattern="{}.qm", folder=None):
     locale = QgsSettings().value("locale/userLocale", QLocale().name())
 
     if folder:
-        ts_file = QFileInfo(join(folder, file_pattern.format(locale)))
+        ts_file = QFileInfo(str(Path(folder).joinpath(file_pattern.format(locale))))
     else:
         ts_file = QFileInfo(resources_path("i18n", file_pattern.format(locale)))
     if ts_file.exists():
         return locale, ts_file.absoluteFilePath()
 
     if folder:
-        ts_file = QFileInfo(join(folder, file_pattern.format(locale[0:2])))
+        ts_file = QFileInfo(str(Path(folder).joinpath(file_pattern.format(locale[0:2]))))
     else:
         ts_file = QFileInfo(resources_path("i18n", file_pattern.format(locale[0:2])))
     if ts_file.exists():
