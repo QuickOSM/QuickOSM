@@ -14,7 +14,6 @@ from QuickOSM.definitions.overpass import OVERPASS_SERVERS
 from QuickOSM.tools.resources import plugin_test_data_path
 
 
-
 class TestOverpass(unittest.TestCase):
     """Tests for Overpass API requests."""
 

@@ -6,7 +6,6 @@ from qgis.PyQt.QtWidgets import QDialog
 from QuickOSM.definitions.gui import Panels
 
 
-
 class BasePanel:
 
     """Base panel for QuickOSM dialog.

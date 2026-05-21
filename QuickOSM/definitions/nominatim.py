@@ -18,7 +18,6 @@ core by updating this list below.
 """
 
 
-
 # The order is important. The first server will be the default.
 NOMINATIM_SERVERS = [
     'https://nominatim.qgis.org/search?',

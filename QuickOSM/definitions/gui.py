@@ -3,7 +3,6 @@
 from enum import Enum, unique
 
 
-
 @unique
 class Panels(Enum):
     """Name of panels in the GUI."""

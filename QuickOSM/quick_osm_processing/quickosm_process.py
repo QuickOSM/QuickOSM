@@ -33,7 +33,6 @@ from QuickOSM.quick_osm_processing.advanced.decorate_output import (
 from QuickOSM.quick_osm_processing.build_input import BuildRaw
 
 
-
 class DownloadOSMData(QgisAlgorithm):
     """Set up the parameters needed for the download algorithms."""
 

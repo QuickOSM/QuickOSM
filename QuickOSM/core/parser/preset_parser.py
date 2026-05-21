@@ -20,7 +20,7 @@ class PresetsParser:
 
     def __init__(self):
 
-        self.file = xml.parse(PRESET_PATH)
+        self.file = xml.parse(PRESET_PATH)  # nosec
         locale, translate_path = setup_translation(
             file_pattern="preset_{}.po")
         if translate_path:

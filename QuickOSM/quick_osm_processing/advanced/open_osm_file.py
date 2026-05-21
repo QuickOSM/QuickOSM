@@ -17,7 +17,6 @@ from qgis.core import (
 from QuickOSM.tools.i18n import tr
 
 
-
 class OpenOsmFile(QgisAlgorithm):
     """Simple Processing algorithm to open an OSM file with sub layers."""
 

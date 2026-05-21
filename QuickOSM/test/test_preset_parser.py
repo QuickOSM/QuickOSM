@@ -7,7 +7,6 @@ import xml.dom.minidom as xml
 from QuickOSM.core.parser.preset_parser import PresetsParser
 
 
-
 class TestPresetParser(unittest.TestCase):
     """Tests for the parser of the presets."""
 

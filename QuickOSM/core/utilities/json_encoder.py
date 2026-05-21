@@ -8,7 +8,6 @@ from QuickOSM.definitions.format import Format
 from QuickOSM.definitions.osm import LayerType, MultiType
 
 
-
 class EnumEncoder(json.JSONEncoder):
     """Override the json encoder to serialize enum."""
     def default(self, obj):

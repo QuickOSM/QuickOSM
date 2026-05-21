@@ -8,7 +8,6 @@ from QuickOSM.definitions.overpass import OVERPASS_SERVERS
 from QuickOSM.ui.dialog import Dialog
 
 
-
 class TestUiMainWindow(unittest.TestCase):
     """Test for the configuration panel."""
 

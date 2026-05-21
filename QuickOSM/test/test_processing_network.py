@@ -21,7 +21,6 @@ from QuickOSM.test.mocked_web_server import (
 )
 
 
-
 class TestProcessing(unittest.TestCase):
     """Tests for processing algorithms using network."""
 

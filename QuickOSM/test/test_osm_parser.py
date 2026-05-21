@@ -8,7 +8,6 @@ from QuickOSM.core.parser.osm_parser import OsmParser
 from QuickOSM.tools.resources import plugin_test_data_path
 
 
-
 class TestOsmParser(unittest.TestCase):
     """Tests for the parser of the osm data."""
 

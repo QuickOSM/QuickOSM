@@ -18,7 +18,6 @@ from QuickOSM.core import actions
 from QuickOSM.tools.i18n import tr
 
 
-
 class DecorateLayerAlgorithm(QgisAlgorithm):
     """Decorate the layer as a QuickOSM output."""
 

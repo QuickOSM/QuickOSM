@@ -1,1 +1,3 @@
 QuickOSM/test export-ignore
+QuickOSM/resources/JOSM_preset/update.sh export-ignore
+QuickOSM/resources/JOSM_preset/README.md export-ignore

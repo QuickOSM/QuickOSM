@@ -27,7 +27,6 @@ from QuickOSM.quick_osm_processing.quickosm_process import (
 )
 
 
-
 class Provider(QgsProcessingProvider):
     """Processing QuickOSM provider."""
 

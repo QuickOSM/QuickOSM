@@ -4,7 +4,6 @@ import collections
 from enum import Enum, unique
 
 
-
 format_output = collections.namedtuple('format', ['label', 'driver_name', 'extension'])
 
 

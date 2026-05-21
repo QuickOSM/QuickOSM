@@ -5,7 +5,6 @@ from qgis.PyQt.QtGui import QDesktopServices
 from qgis.utils import iface
 
 
-
 from QuickOSM.definitions.urls import (
     DOC_OVERPASS_URL,
     DOC_PLUGIN_URL,

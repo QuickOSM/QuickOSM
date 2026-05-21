@@ -6,7 +6,6 @@ from QuickOSM.definitions.gui import Panels
 from QuickOSM.ui.dialog import Dialog
 
 
-
 class TestUiMainWindow(unittest.TestCase):
     """Tests for the main window."""
 

@@ -19,7 +19,6 @@ from QuickOSM.tools.i18n import tr
 from QuickOSM.ui.base_processing_panel import BaseProcessingPanel
 
 
-
 class BaseOverpassPanel(BaseProcessingPanel):
 
     """Panel OSM Processing base class.

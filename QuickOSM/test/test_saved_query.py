@@ -15,7 +15,6 @@ from QuickOSM.ui.dialog import Dialog
 from QuickOSM.ui.edit_preset import EditPreset
 
 
-
 class TestBookmarkQuery(unittest.TestCase):
     """Tests for the preset and the history of queries."""
 

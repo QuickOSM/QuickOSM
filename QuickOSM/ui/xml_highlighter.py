@@ -4,7 +4,6 @@ from qgis.PyQt.QtCore import QRegularExpression, Qt
 from qgis.PyQt.QtGui import QColor, QFont, QSyntaxHighlighter, QTextCharFormat
 
 
-
 class QueryHighlighter(QSyntaxHighlighter):
     """Query Highlighter class."""
 

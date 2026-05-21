@@ -8,7 +8,6 @@ from QuickOSM.core.api.nominatim import Nominatim
 from QuickOSM.core.query_preparation import QueryPreparation
 
 
-
 class FakeNominatim(Nominatim):
     """NOTE, because of the fake nominatim instance,
     latitude, longitude and relation ID are wrong and

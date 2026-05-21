@@ -4,7 +4,6 @@ from processing.algs.qgis.QgisAlgorithm import QgisAlgorithm
 from qgis.core import QgsProcessingOutputFile, QgsProcessingParameterString
 
 
-
 class DownloadOverpassUrl(QgisAlgorithm):
     """Processing algorithm to download an Overpass query."""
 

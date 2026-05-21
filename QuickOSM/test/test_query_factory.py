@@ -12,7 +12,6 @@ from QuickOSM.definitions.osm import (
 )
 
 
-
 class TestQueryFactory(unittest.TestCase):
     """Tests for Query factory."""
 

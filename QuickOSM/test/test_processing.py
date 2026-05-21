@@ -9,7 +9,6 @@ from QuickOSM.quick_osm_processing.provider import Provider
 from QuickOSM.test.definitions import TOWN_COORDS, TOWN_NAME
 
 
-
 class TestProcessing(unittest.TestCase):
     """Tests for processing algorithms."""
 

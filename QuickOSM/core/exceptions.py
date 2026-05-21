@@ -6,7 +6,6 @@ from QuickOSM.definitions.osm import OsmType
 from QuickOSM.tools.i18n import tr
 
 
-
 class QuickOsmException(Exception):
     """These exceptions are created by QuickOSM during a process."""
 

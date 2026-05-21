@@ -10,7 +10,6 @@ from QuickOSM.core.exceptions import (
 from QuickOSM.definitions.nominatim import NOMINATIM_SERVERS
 
 
-
 class TestNominatim(unittest.TestCase):
     """Tests for Nominatim API requests."""
 

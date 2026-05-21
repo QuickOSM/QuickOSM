@@ -10,7 +10,6 @@ from QuickOSM.ui.dialog import Dialog
 from QuickOSM.ui.osm_file_panel import OsmFilePanel
 
 
-
 class TestFileLoader(unittest.TestCase):
     """Test the osm file loader panel."""
 

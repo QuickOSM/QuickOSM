@@ -3,7 +3,6 @@
 from enum import Enum, unique
 
 
-
 @unique
 class Visibility(Enum):
     """Visibility of actions."""

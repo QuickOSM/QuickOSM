@@ -16,7 +16,6 @@ from QuickOSM.definitions.osm import (
 from QuickOSM.tools.i18n import tr
 
 
-
 SPACE_INDENT = '    '
 
 # Simple keys/values
@@ -254,9 +253,9 @@ class QueryFactory:
         return True
 
     @staticmethod
-    def get_pretty_xml(query):
+    def get_pretty_xml(query: str) -> str:
         """Helper to get a good indentation of the query."""
-        xml = parseString(query)
+        xml = parseString(query)  # nosec
         return xml.toprettyxml()
 
     @staticmethod

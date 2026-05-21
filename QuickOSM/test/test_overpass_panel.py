@@ -16,7 +16,6 @@ from QuickOSM.definitions.osm import QueryType
 from QuickOSM.ui.dialog import Dialog
 
 
-
 class TestQuickOSMWidget(unittest.TestCase):
     """Tests for the overpass panel file."""
 
