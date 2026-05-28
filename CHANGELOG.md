@@ -2,6 +2,12 @@
 
 ## Unreleased
 
+## 2.5.2 - 2026-05-28
+
+* Add a check about infinite WGS84 bounds
+* Improve checks about Qt6 compatibility
+* New scan about security on plugins.qgis.org
+
 ## 2.5.1 - 2026-03-07
 
 * Make the plugin compatible QGIS 4 again
