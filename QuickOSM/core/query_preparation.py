@@ -1,6 +1,7 @@
 """Query preparation step."""
 
 import logging
+import math
 import re
 
 from typing import List, Union
@@ -143,18 +144,20 @@ class QueryPreparation:
         x_min = self._extent.xMinimum()
         x_max = self._extent.xMaximum()
 
-        # make sure we don't query for invalid bounds #222
+        # Make sure we don't query for invalid bounds
+        # See https://github.com/QuickOSM/QuickOSM/issues/222
+        # Also GitHub infinity values : https://github.com/QuickOSM/QuickOSM/issues/567
         area_is_too_big = False
-        if y_min < -90:
+        if y_min < -90 or math.isinf(y_min):
             y_min = -90
             area_is_too_big = True
-        if y_max > 90:
+        if y_max > 90 or math.isinf(y_max):
             y_max = 90
             area_is_too_big = True
-        if x_min < -180:
+        if x_min < -180 or math.isinf(x_min):
             x_min = -180
             area_is_too_big = True
-        if x_max > 180:
+        if x_max > 180 or math.isinf(x_max):
             x_max = 180
             area_is_too_big = True
 
@@ -163,16 +166,15 @@ class QueryPreparation:
                 'The area was overlapping the WGS84 limits ±90 / ±180 degrees. The query has '
                 'been restricted.'))
 
+        y_min = self._format_decimals_wgs84(y_min)
+        y_max = self._format_decimals_wgs84(y_max)
+        x_min = self._format_decimals_wgs84(x_min)
+        x_max = self._format_decimals_wgs84(x_max)
+
         if self.is_oql_query():
-            new_string = (
-                f'{self._format_decimals_wgs84(y_min)},{self._format_decimals_wgs84(x_min)},'
-                f'{self._format_decimals_wgs84(y_max)},{self._format_decimals_wgs84(x_max)}'
-            )
+            new_string = f'{y_min},{x_min},{y_max},{x_max}'
         else:
-            new_string = (
-                f'e="{self._format_decimals_wgs84(x_max)}" n="{self._format_decimals_wgs84(y_max)}" '
-                f's="{self._format_decimals_wgs84(y_min)}" w="{self._format_decimals_wgs84(x_min)}"'
-            )
+            new_string = f'e="{x_max}" n="{y_max}" s="{y_min}" w="{x_min}"'
         self._query_prepared = (
             re.sub(template, new_string, self._query_prepared))
 
@@ -182,7 +184,14 @@ class QueryPreparation:
         # https://en.wikipedia.org/wiki/Decimal_degrees
         # We keep 5 decimals : individual trees, houses
         multiplier = 10 ** 5
-        number = str(int(coordinate * multiplier) / multiplier)
+        try:
+            value = int(coordinate * multiplier)
+        except OverflowError:
+            # GitHub https://github.com/QuickOSM/QuickOSM/issues/567
+            # cannot convert float infinity to integer
+            LOGGER.error("Infinite coordinate was given ? Check the other log")
+            raise
+        number = str(value / multiplier)
         number = number.rstrip("0")
         number = number.rstrip(".")
         return number
