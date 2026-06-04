@@ -201,7 +201,7 @@ class ConfigurationPanel(BasePanel):
                 self.dialog, 'QuickOSM',
                 'Bitte eine URL eingeben.')
             return
-        if not url.startswith('http'):
+        if not QUrl(url).isValid():
             QMessageBox.warning(
                 self.dialog, 'QuickOSM',
                 'Die URL muss mit "http" beginnen.')
