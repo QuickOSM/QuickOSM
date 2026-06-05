@@ -234,7 +234,7 @@ class ConfigurationPanel(BasePanel):
         if not selected:
             QMessageBox.warning(
                 self.dialog, 'QuickOSM',
-                'Please select a server from the list.')
+                tr('Please select a server from the list.'))
             return
 
         url = selected.text()
