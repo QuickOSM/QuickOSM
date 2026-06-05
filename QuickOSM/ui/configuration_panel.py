@@ -204,7 +204,7 @@ class ConfigurationPanel(BasePanel):
         if not QUrl(url).isValid():
             QMessageBox.warning(
                 self.dialog, 'QuickOSM',
-                'The URL must begin with “http”.')
+                tr('The URL must begin with “http”.'))
             return
 
         all_items = [self.dialog.combo_default_nominatim.itemText(i)
