@@ -138,7 +138,7 @@ class ConfigurationPanel(BasePanel):
         if not url.startswith('http'):
             QMessageBox.warning(
                 self.dialog, 'QuickOSM',
-                'The URL must begin with “http”.')
+                tr('The URL must begin with “http”.'))
             return
 
         # Already present (built-in or custom)?
