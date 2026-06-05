@@ -2,6 +2,10 @@
 
 ## Unreleased
 
+## 2.5.3 - 2026-06-05
+
+* Add settings in the parameters GUI tab about adding new Overpass or Nominatim server, contribution from @Otzie2023
+
 ## 2.5.2 - 2026-05-28
 
 * Add a check about infinite WGS84 bounds
