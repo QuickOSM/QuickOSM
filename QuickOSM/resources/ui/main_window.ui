@@ -1929,19 +1929,12 @@ QListWidget::item::selected {
                    <item>
                     <layout class="QHBoxLayout" name="horizontalLayout_add_overpass">
                      <item>
-                      <widget class="QLineEdit" name="line_edit_overpass_url">
-                       <property name="placeholderText">
-                        <string>https://my-server.example.com/api/</string>
-                       </property>
-                      </widget>
+                      <widget class="QLineEdit" name="line_edit_overpass_url"/>
                      </item>
                      <item>
                       <widget class="QPushButton" name="btn_add_overpass">
                        <property name="text">
                         <string>Add</string>
-                       </property>
-                       <property name="toolTip">
-                        <string>Add server to list</string>
                        </property>
                       </widget>
                      </item>
@@ -1949,9 +1942,6 @@ QListWidget::item::selected {
                       <widget class="QPushButton" name="btn_remove_overpass">
                        <property name="text">
                         <string>Remove</string>
-                       </property>
-                       <property name="toolTip">
-                        <string>Remove selected custom server</string>
                        </property>
                       </widget>
                      </item>
@@ -2022,19 +2012,12 @@ QListWidget::item::selected {
                    <item>
                     <layout class="QHBoxLayout" name="horizontalLayout_add_nominatim">
                      <item>
-                      <widget class="QLineEdit" name="line_edit_nominatim_url">
-                       <property name="placeholderText">
-                        <string>https://my-nominatim.example.com/search?</string>
-                       </property>
-                      </widget>
+                      <widget class="QLineEdit" name="line_edit_nominatim_url"/>
                      </item>
                      <item>
                       <widget class="QPushButton" name="btn_add_nominatim">
                        <property name="text">
                         <string>Add</string>
-                       </property>
-                       <property name="toolTip">
-                        <string>Add server to list</string>
                        </property>
                       </widget>
                      </item>
@@ -2042,9 +2025,6 @@ QListWidget::item::selected {
                       <widget class="QPushButton" name="btn_remove_nominatim">
                        <property name="text">
                         <string>Remove</string>
-                       </property>
-                       <property name="toolTip">
-                        <string>Remove selected custom server</string>
                        </property>
                       </widget>
                      </item>
