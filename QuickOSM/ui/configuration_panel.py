@@ -133,7 +133,7 @@ class ConfigurationPanel(BasePanel):
         if not url:
             QMessageBox.warning(
                 self.dialog, 'QuickOSM',
-                'Please enter a URL.')
+                tr('Please enter a URL.'))
             return
         if not url.startswith('http'):
             QMessageBox.warning(
