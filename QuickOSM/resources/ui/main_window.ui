@@ -2016,7 +2016,7 @@ QListWidget::item::selected {
                 <item>
                  <widget class="QGroupBox" name="groupBox_custom_nominatim">
                   <property name="title">
-                   <string>Add a Custom Nominatim Server</string>
+                   <string>Add a custom Nominatim server</string>
                   </property>
                   <layout class="QVBoxLayout" name="verticalLayout_custom_nominatim">
                    <item>
