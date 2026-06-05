@@ -147,7 +147,7 @@ class ConfigurationPanel(BasePanel):
         if url in all_items:
             QMessageBox.information(
                 self.dialog, 'QuickOSM',
-                'This server is already in the list.')
+                tr('This server is already in the list.'))
             return
 
         # Add to combo and list widget
