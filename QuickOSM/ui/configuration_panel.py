@@ -3,7 +3,7 @@
 import json
 import logging
 
-from os.path import join
+from pathlib import Path
 
 from qgis.PyQt.QtGui import QIcon
 from qgis.PyQt.QtWidgets import QDialog, QMessageBox
@@ -28,7 +28,7 @@ def _load_custom_config() -> dict:
     config_path = custom_config_file()
     if config_path:
         try:
-            with open(config_path, encoding='utf8') as f:
+            with Path(config_path).open(encoding='utf8') as f:
                 return json.load(f)
         except (OSError, json.JSONDecodeError) as e:
             LOGGER.warning(f'Could not read custom_config.json: {e}')
@@ -37,9 +37,9 @@ def _load_custom_config() -> dict:
 
 def _save_custom_config(config: dict) -> None:
     """Write *config* back to custom_config.json (creates the file if needed)."""
-    config_path = join(quickosm_user_folder(), 'custom_config.json')
+    config_path = Path(quickosm_user_folder()) / 'custom_config.json'
     try:
-        with open(config_path, 'w', encoding='utf8') as f:
+        with config_path.open('w', encoding='utf8') as f:
             json.dump(config, f, indent=4)
     except OSError as e:
         LOGGER.error(f'Could not write custom_config.json: {e}')
@@ -252,4 +252,3 @@ class ConfigurationPanel(BasePanel):
         _save_custom_config(config)
 
         LOGGER.info(f'Custom nominatim server removed via GUI: {url}')
-
