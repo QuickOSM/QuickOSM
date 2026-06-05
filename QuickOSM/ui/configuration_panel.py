@@ -133,12 +133,12 @@ class ConfigurationPanel(BasePanel):
         if not url:
             QMessageBox.warning(
                 self.dialog, 'QuickOSM',
-                'Bitte eine URL eingeben.')
+                'Please enter a URL.')
             return
         if not url.startswith('http'):
             QMessageBox.warning(
                 self.dialog, 'QuickOSM',
-                'Die URL muss mit "http" beginnen.')
+                'The URL must begin with “http”.')
             return
 
         # Already present (built-in or custom)?
@@ -147,7 +147,7 @@ class ConfigurationPanel(BasePanel):
         if url in all_items:
             QMessageBox.information(
                 self.dialog, 'QuickOSM',
-                'Dieser Server ist bereits in der Liste vorhanden.')
+                'This server is already in the list.')
             return
 
         # Add to combo and list widget
@@ -171,7 +171,7 @@ class ConfigurationPanel(BasePanel):
         if not selected:
             QMessageBox.warning(
                 self.dialog, 'QuickOSM',
-                'Bitte einen Server in der Liste auswählen.')
+                'Please select a server from the list.')
             return
 
         url = selected.text()
@@ -199,12 +199,12 @@ class ConfigurationPanel(BasePanel):
         if not url:
             QMessageBox.warning(
                 self.dialog, 'QuickOSM',
-                'Bitte eine URL eingeben.')
+                'Please enter a URL.')
             return
         if not QUrl(url).isValid():
             QMessageBox.warning(
                 self.dialog, 'QuickOSM',
-                'Die URL muss mit "http" beginnen.')
+                'The URL must begin with “http”.')
             return
 
         all_items = [self.dialog.combo_default_nominatim.itemText(i)
@@ -212,7 +212,7 @@ class ConfigurationPanel(BasePanel):
         if url in all_items:
             QMessageBox.information(
                 self.dialog, 'QuickOSM',
-                'Dieser Server ist bereits in der Liste vorhanden.')
+                'This server is already in the list.')
             return
 
         self.dialog.combo_default_nominatim.addItem(url)
@@ -234,7 +234,7 @@ class ConfigurationPanel(BasePanel):
         if not selected:
             QMessageBox.warning(
                 self.dialog, 'QuickOSM',
-                'Bitte einen Server in der Liste auswählen.')
+                'Please select a server from the list.')
             return
 
         url = selected.text()
