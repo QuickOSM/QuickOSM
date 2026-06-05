@@ -1923,7 +1923,7 @@ QListWidget::item::selected {
                 <item>
                  <widget class="QGroupBox" name="groupBox_custom_overpass">
                   <property name="title">
-                   <string>Add a Custom Overpass Server</string>
+                   <string>Add a custom Overpass server</string>
                   </property>
                   <layout class="QVBoxLayout" name="verticalLayout_custom_overpass">
                    <item>
