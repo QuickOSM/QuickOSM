@@ -212,7 +212,7 @@ class ConfigurationPanel(BasePanel):
         if url in all_items:
             QMessageBox.information(
                 self.dialog, 'QuickOSM',
-                'This server is already in the list.')
+                tr('This server is already in the list.'))
             return
 
         self.dialog.combo_default_nominatim.addItem(url)
