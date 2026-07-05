@@ -28,7 +28,7 @@ jobs:
           architecture: x64
 
       - name: Checkout
-        uses: actions/checkout@v6
+        uses: actions/checkout@v7
 
       - uses: actions/cache@v5.0.4
         with:
@@ -55,7 +55,7 @@ jobs:
 #          architecture: x64
 #
 #      - name: Checkout
-#        uses: actions/checkout@v6
+#        uses: actions/checkout@v7
 #
 #      - uses: actions/cache@v5.0.4
 #        with:
@@ -78,7 +78,7 @@ jobs:
         working-directory: .docker
     steps:
       - name: Check out repository
-        uses: actions/checkout@v6
+        uses: actions/checkout@v7
         with:
           submodules: 'true'
       - name: Launching docker compose
@@ -99,7 +99,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
 
-      - uses: actions/checkout@v6
+      - uses: actions/checkout@v7
         with:
           # To fetch tags
           fetch-depth: 0
@@ -148,7 +148,7 @@ jobs:
       - name: Set env
         run: echo "RELEASE_VERSION=${GITHUB_REF#refs/*/}" >> $GITHUB_ENV
 
-      - uses: actions/checkout@v6
+      - uses: actions/checkout@v7
 
       - name: Set up Python
         uses: actions/setup-python@v6
