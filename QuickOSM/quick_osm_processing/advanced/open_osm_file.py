@@ -4,7 +4,11 @@ from os.path import exists
 from typing import Dict
 
 from osgeo import gdal
-from processing.algs.qgis.QgisAlgorithm import QgisAlgorithm
+try:
+    from processing.algs.qgis.QgisAlgorithm import QgisAlgorithm
+except ImportError:
+    # Since QGIS 4.4
+    from qgisprovider.qgis_algorithm import QgisAlgorithm
 from qgis.core import (
     QgsProcessing,
     QgsProcessingAlgorithm,
