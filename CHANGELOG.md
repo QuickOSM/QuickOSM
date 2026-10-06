@@ -2,7 +2,7 @@
 
 ## Unreleased
 
-## 2.5.4 - 2026-010-06
+## 2.5.4 - 2026-10-06
 
 * Fix loading in QGIS 4.4, contribution from @ptitjano
 

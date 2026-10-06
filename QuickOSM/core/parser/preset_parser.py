@@ -5,7 +5,7 @@ import json
 import logging
 import os
 import re
-import xml.dom.minidom as xml
+import xml.dom.minidom as xml  # nosec
 
 from QuickOSM.tools.i18n import setup_translation
 from QuickOSM.tools.resources import resources_path

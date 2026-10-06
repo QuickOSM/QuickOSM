@@ -304,7 +304,7 @@ class QuickQueryPanel(BaseOverpassPanel, TableKeyValue):
                     # TODO, the fix should be done when writing the JSON file as well
                     # Issue https://github.com/QuickOSM/QuickOSM/issues/493
                     # Issue https://github.com/QuickOSM/QuickOSM/issues/526
-                    continue
+                    LOGGER.critical("Error while reading JSON {}, please report it on GitHub".format(file_path))
 
             name = data['file_name']
 

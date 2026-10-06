@@ -4,7 +4,7 @@ import logging
 import re
 
 from typing import List
-from xml.dom.minidom import parseString
+from xml.dom.minidom import parseString  # nosec
 
 from QuickOSM.core.exceptions import QueryFactoryException
 from QuickOSM.definitions.osm import (
