@@ -2,6 +2,10 @@
 
 ## Unreleased
 
+## 2.5.4 - 2026-010-06
+
+* Fix loading in QGIS 4.4, contribution from @ptitjano
+
 ## 2.5.3 - 2026-06-05
 
 * Add settings in the parameters GUI tab about adding new Overpass or Nominatim server, contribution from @Otzie2023

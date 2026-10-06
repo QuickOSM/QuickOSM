@@ -12,12 +12,13 @@
 * QuickOSM is maintained only for a maintained QGIS version (LTR, stable release and dev).
 
 | QuickOSM    | QGIS Min | QGIS Max | Branch                                                                 |
-|-------------|----------|------|------------------------------------------------------------------------|
-| 1.0 → 1.4   | 2.0      | 2.18 | [master_qgis2](https://github.com/QuickOSM/QuickOSM/tree/master_qgis2) |
-| 1.5 → 1.7   | 3.0      | 3.2  |                                                                        |
-| 1.8 → 1.17  | 3.4      | 3.14 |                                                                        |
-| 2.0 → 2.1.1 | 3.16     | 3.22 |                                                                        |
-| 2.2.0 →     | 3.22     |      | [main](https://github.com/QuickOSM/QuickOSM/tree/main)                 |
+|-------------|----------|----------|------------------------------------------------------------------------|
+| 1.0 → 1.4   | 2.0      | 2.18     | [master_qgis2](https://github.com/QuickOSM/QuickOSM/tree/master_qgis2) |
+| 1.5 → 1.7   | 3.0      | 3.2      |                                                                        |
+| 1.8 → 1.17  | 3.4      | 3.14     |                                                                        |
+| 2.0 → 2.1.1 | 3.16     | 3.22     |                                                                        |
+| 2.2 → 2.5.3 | 3.22     | 4.2      |                                                                        |
+| 2.5.4 →     | 3.40     | 4.99     | [main](https://github.com/QuickOSM/QuickOSM/tree/main)                 |
 
 ## Documentation
 
