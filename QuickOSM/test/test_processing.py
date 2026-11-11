@@ -27,20 +27,19 @@ class TestProcessing(unittest.TestCase):
                 'KEY': 'amenity',
                 'SERVER': 'https://z.overpass-api.de/api/interpreter',
                 'TIMEOUT': 25,
-                'VALUE': 'bench'
-            }
+                'VALUE': 'bench',
+            },
         )
 
         result_expected = {
             'OUTPUT_URL': 'https://z.overpass-api.de/api/interpreter?data=[out:xml]'
-                          ' [timeout:25];%0A(%0A    node[%22amenity%22%3D%22bench%22];%0A'
-                          '    way[%22amenity%22%3D%22bench%22];%0A    '
-                          'relation[%22amenity%22%3D%22bench%22];%0A);%0A(._;%3E;);'
-                          '%0Aout body;&info=QgisQuickOSMPlugin',
-            'OUTPUT_OQL_QUERY':
-                '[out:xml] [timeout:25];\n(\n    node["amenity"="bench"];\n'
-                '    way["amenity"="bench"];\n    relation["amenity"="bench"];'
-                '\n);\n(._;>;);\nout body;'
+            ' [timeout:25];%0A(%0A    node[%22amenity%22%3D%22bench%22];%0A'
+            '    way[%22amenity%22%3D%22bench%22];%0A    '
+            'relation[%22amenity%22%3D%22bench%22];%0A);%0A(._;%3E;);'
+            '%0Aout body;&info=QgisQuickOSMPlugin',
+            'OUTPUT_OQL_QUERY': '[out:xml] [timeout:25];\n(\n    node["amenity"="bench"];\n'
+            '    way["amenity"="bench"];\n    relation["amenity"="bench"];'
+            '\n);\n(._;>;);\nout body;',
         }
 
         self.assertEqual(result_expected, result)
@@ -54,24 +53,22 @@ class TestProcessing(unittest.TestCase):
                 'KEY': 'amenity',
                 'SERVER': 'https://z.overpass-api.de/api/interpreter',
                 'TIMEOUT': 25,
-                'VALUE': 'bench'
-            }
+                'VALUE': 'bench',
+            },
         )
 
         result_expected = {
-            'OUTPUT_URL':
-                'https://z.overpass-api.de/api/interpreter?data=[out:xml]'
-                ' [timeout:25];%0A area(3600118810) -%3E .area_0;%0A(%0A    '
-                'node[%22amenity%22%3D%22bench%22](area.area_0);%0A    '
-                'way[%22amenity%22%3D%22bench%22](area.area_0);%0A    '
-                'relation[%22amenity%22%3D%22bench%22](area.area_0);%0A);'
-                '%0A(._;%3E;);%0Aout body;&info=QgisQuickOSMPlugin',
-            'OUTPUT_OQL_QUERY':
-                '[out:xml] [timeout:25];\n area(3600118810) -> .area_0;\n'
-                '(\n    node["amenity"="bench"](area.area_0);\n    '
-                'way["amenity"="bench"](area.area_0);\n    '
-                'relation["amenity"="bench"](area.area_0);\n);'
-                '\n(._;>;);\nout body;'
+            'OUTPUT_URL': 'https://z.overpass-api.de/api/interpreter?data=[out:xml]'
+            ' [timeout:25];%0A area(3600118810) -%3E .area_0;%0A(%0A    '
+            'node[%22amenity%22%3D%22bench%22](area.area_0);%0A    '
+            'way[%22amenity%22%3D%22bench%22](area.area_0);%0A    '
+            'relation[%22amenity%22%3D%22bench%22](area.area_0);%0A);'
+            '%0A(._;%3E;);%0Aout body;&info=QgisQuickOSMPlugin',
+            'OUTPUT_OQL_QUERY': '[out:xml] [timeout:25];\n area(3600118810) -> .area_0;\n'
+            '(\n    node["amenity"="bench"](area.area_0);\n    '
+            'way["amenity"="bench"](area.area_0);\n    '
+            'relation["amenity"="bench"](area.area_0);\n);'
+            '\n(._;>;);\nout body;',
         }
 
         self.assertEqual(result_expected, result)
@@ -86,24 +83,22 @@ class TestProcessing(unittest.TestCase):
                 'KEY': 'amenity',
                 'SERVER': 'https://lz4.overpass-api.de/api/interpreter',
                 'TIMEOUT': 25,
-                'VALUE': 'bench'
-            }
+                'VALUE': 'bench',
+            },
         )
 
         result_expected = {
-            'OUTPUT_URL':
-                f'https://lz4.overpass-api.de/api/interpreter?data=[out:xml]'
-                f' [timeout:25];%0A(%0A    node[%22amenity%22%3D%22bench%22]'
-                f'(around:1000, {TOWN_COORDS});%0A    way[%22amenity%22%3D%22bench%22]'
-                f'(around:1000, {TOWN_COORDS});%0A    relation[%22amenity%22%3D%22bench%22]'
-                f'(around:1000, {TOWN_COORDS});%0A);%0A(._;%3E;);%0Aout'
-                f' body;&info=QgisQuickOSMPlugin',
-            'OUTPUT_OQL_QUERY':
-                f'[out:xml] [timeout:25];\n(\n'
-                f'    node["amenity"="bench"](around:1000, {TOWN_COORDS});\n'
-                f'    way["amenity"="bench"](around:1000, {TOWN_COORDS});\n'
-                f'    relation["amenity"="bench"](around:1000, {TOWN_COORDS});'
-                f'\n);\n(._;>;);\nout body;'
+            'OUTPUT_URL': f'https://lz4.overpass-api.de/api/interpreter?data=[out:xml]'
+            f' [timeout:25];%0A(%0A    node[%22amenity%22%3D%22bench%22]'
+            f'(around:1000, {TOWN_COORDS});%0A    way[%22amenity%22%3D%22bench%22]'
+            f'(around:1000, {TOWN_COORDS});%0A    relation[%22amenity%22%3D%22bench%22]'
+            f'(around:1000, {TOWN_COORDS});%0A);%0A(._;%3E;);%0Aout'
+            f' body;&info=QgisQuickOSMPlugin',
+            'OUTPUT_OQL_QUERY': f'[out:xml] [timeout:25];\n(\n'
+            f'    node["amenity"="bench"](around:1000, {TOWN_COORDS});\n'
+            f'    way["amenity"="bench"](around:1000, {TOWN_COORDS});\n'
+            f'    relation["amenity"="bench"](around:1000, {TOWN_COORDS});'
+            f'\n);\n(._;>;);\nout body;',
         }
 
         self.assertEqual(result_expected, result)
@@ -117,25 +112,23 @@ class TestProcessing(unittest.TestCase):
                 'KEY': 'amenity',
                 'SERVER': 'https://lz4.overpass-api.de/api/interpreter',
                 'TIMEOUT': 25,
-                'VALUE': 'bench'
-            }
+                'VALUE': 'bench',
+            },
         )
 
         result_expected = {
-            'OUTPUT_URL':
-                'https://lz4.overpass-api.de/api/interpreter?data=[out:xml]'
-                ' [timeout:25];%0A(%0A    node[%22amenity%22%3D%22bench%22]'
-                '( 43.55794,3.80997,43.65461,3.96364);%0A    '
-                'way[%22amenity%22%3D%22bench%22]( 43.55794,3.80997,43.65461,3.96364);%0A'
-                '    relation[%22amenity%22%3D%22bench%22]'
-                '( 43.55794,3.80997,43.65461,3.96364);%0A);'
-                '%0A(._;%3E;);%0Aout body;&info=QgisQuickOSMPlugin',
-            'OUTPUT_OQL_QUERY':
-                '[out:xml] [timeout:25];\n(\n    node["amenity"="bench"]'
-                '( 43.55794,3.80997,43.65461,3.96364);\n    '
-                'way["amenity"="bench"]( 43.55794,3.80997,43.65461,3.96364);\n'
-                '    relation["amenity"="bench"]( 43.55794,3.80997,43.65461,3.96364);'
-                '\n);\n(._;>;);\nout body;'
+            'OUTPUT_URL': 'https://lz4.overpass-api.de/api/interpreter?data=[out:xml]'
+            ' [timeout:25];%0A(%0A    node[%22amenity%22%3D%22bench%22]'
+            '( 43.55794,3.80997,43.65461,3.96364);%0A    '
+            'way[%22amenity%22%3D%22bench%22]( 43.55794,3.80997,43.65461,3.96364);%0A'
+            '    relation[%22amenity%22%3D%22bench%22]'
+            '( 43.55794,3.80997,43.65461,3.96364);%0A);'
+            '%0A(._;%3E;);%0Aout body;&info=QgisQuickOSMPlugin',
+            'OUTPUT_OQL_QUERY': '[out:xml] [timeout:25];\n(\n    node["amenity"="bench"]'
+            '( 43.55794,3.80997,43.65461,3.96364);\n    '
+            'way["amenity"="bench"]( 43.55794,3.80997,43.65461,3.96364);\n'
+            '    relation["amenity"="bench"]( 43.55794,3.80997,43.65461,3.96364);'
+            '\n);\n(._;>;);\nout body;',
         }
 
         self.assertEqual(result_expected, result)
@@ -150,22 +143,20 @@ class TestProcessing(unittest.TestCase):
                 'SERVER': 'https://lz4.overpass-api.de/api/interpreter',
                 'TIMEOUT': 25,
                 'TYPE_MULTI_REQUEST': 'AND',
-                'VALUE': 'footway,sidewalk'
-            }
+                'VALUE': 'footway,sidewalk',
+            },
         )
         result_expected = {
-            'OUTPUT_OQL_QUERY':
-                '[out:xml] [timeout:25];\n(\n    node["highway"="footway"]["footway"="sidewalk"]'
-                '( 51.70687,8.71679,51.72602,8.79689);\n    way["highway"="footway"]["footway"="sidewalk"]'
-                '( 51.70687,8.71679,51.72602,8.79689);\n    relation["highway"="footway"]'
-                '["footway"="sidewalk"]( 51.70687,8.71679,51.72602,8.79689);\n);\n(._;>;);\nout body;',
-            'OUTPUT_URL':
-                'https://lz4.overpass-api.de/api/interpreter?data=[out:xml] [timeout:25];%0A(%0A'
-                '    node[%22highway%22%3D%22footway%22][%22footway%22%3D%22sidewalk%22]'
-                '( 51.70687,8.71679,51.72602,8.79689);%0A    way[%22highway%22%3D%22footway%22]'
-                '[%22footway%22%3D%22sidewalk%22]( 51.70687,8.71679,51.72602,8.79689);%0A    '
-                'relation[%22highway%22%3D%22footway%22][%22footway%22%3D%22sidewalk%22]'
-                '( 51.70687,8.71679,51.72602,8.79689);%0A);%0A(._;%3E;);%0Aout body;&info=QgisQuickOSMPlugin'
+            'OUTPUT_OQL_QUERY': '[out:xml] [timeout:25];\n(\n    node["highway"="footway"]["footway"="sidewalk"]'
+            '( 51.70687,8.71679,51.72602,8.79689);\n    way["highway"="footway"]["footway"="sidewalk"]'
+            '( 51.70687,8.71679,51.72602,8.79689);\n    relation["highway"="footway"]'
+            '["footway"="sidewalk"]( 51.70687,8.71679,51.72602,8.79689);\n);\n(._;>;);\nout body;',
+            'OUTPUT_URL': 'https://lz4.overpass-api.de/api/interpreter?data=[out:xml] [timeout:25];%0A(%0A'
+            '    node[%22highway%22%3D%22footway%22][%22footway%22%3D%22sidewalk%22]'
+            '( 51.70687,8.71679,51.72602,8.79689);%0A    way[%22highway%22%3D%22footway%22]'
+            '[%22footway%22%3D%22sidewalk%22]( 51.70687,8.71679,51.72602,8.79689);%0A    '
+            'relation[%22highway%22%3D%22footway%22][%22footway%22%3D%22sidewalk%22]'
+            '( 51.70687,8.71679,51.72602,8.79689);%0A);%0A(._;%3E;);%0Aout body;&info=QgisQuickOSMPlugin',
         }
         self.assertEqual(result_expected, result)
 
@@ -176,43 +167,34 @@ class TestProcessing(unittest.TestCase):
             {
                 'AREA': 'La Souterraine',
                 'EXTENT': '3.809971100,3.963647400,43.557942300,43.654612100 [EPSG:4326]',
-                'QUERY':
-                    '[out:xml] [timeout:25];\n {{geocodeArea:La Souterraine}}'
-                    ' -> .area_0;\n(\n    node[\"amenity\"=\"bench\"]'
-                    '(area.area_0);\n    way[\"amenity\"=\"bench\"]'
-                    '(area.area_0);\n    relation[\"amenity\"=\"bench\"]'
-                    '(area.area_0);\n);\n(._;>;);\nout body;',
-                'SERVER': 'server Overpass'
-            }
+                'QUERY': '[out:xml] [timeout:25];\n {{geocodeArea:La Souterraine}}'
+                ' -> .area_0;\n(\n    node["amenity"="bench"]'
+                '(area.area_0);\n    way["amenity"="bench"]'
+                '(area.area_0);\n    relation["amenity"="bench"]'
+                '(area.area_0);\n);\n(._;>;);\nout body;',
+                'SERVER': 'server Overpass',
+            },
         )
 
         result_expected = {
-            'OUTPUT_URL':
-                'server Overpass?data=[out:xml] [timeout:25];%0A '
-                'area(3600118810) -%3E .area_0;%0A(%0A    '
-                'node[%22amenity%22%3D%22bench%22](area.area_0);'
-                '%0A    way[%22amenity%22%3D%22bench%22](area.area_0);'
-                '%0A    relation[%22amenity%22%3D%22bench%22](area.area_0);'
-                '%0A);%0A(._;%3E;);%0Aout body;&info=QgisQuickOSMPlugin',
-            'OUTPUT_OQL_QUERY':
-                '[out:xml] [timeout:25];\n area(3600118810) -> .area_0;\n'
-                '(\n    node["amenity"="bench"](area.area_0);\n    '
-                'way["amenity"="bench"](area.area_0);\n    '
-                'relation["amenity"="bench"](area.area_0);\n);'
-                '\n(._;>;);\nout body;'
+            'OUTPUT_URL': 'server Overpass?data=[out:xml] [timeout:25];%0A '
+            'area(3600118810) -%3E .area_0;%0A(%0A    '
+            'node[%22amenity%22%3D%22bench%22](area.area_0);'
+            '%0A    way[%22amenity%22%3D%22bench%22](area.area_0);'
+            '%0A    relation[%22amenity%22%3D%22bench%22](area.area_0);'
+            '%0A);%0A(._;%3E;);%0Aout body;&info=QgisQuickOSMPlugin',
+            'OUTPUT_OQL_QUERY': '[out:xml] [timeout:25];\n area(3600118810) -> .area_0;\n'
+            '(\n    node["amenity"="bench"](area.area_0);\n    '
+            'way["amenity"="bench"](area.area_0);\n    '
+            'relation["amenity"="bench"](area.area_0);\n);'
+            '\n(._;>;);\nout body;',
         }
 
         self.assertEqual(result_expected, result)
 
     def test_open_osm_file(self):
         """Test for the opening of an osm file."""
-        result = processing.run(
-            'quickosm:openosmfile',
-            {
-                'FILE': '\\path\\to\\a\\file.osm',
-                'OSM_CONF': ''
-            }
-        )
+        result = processing.run('quickosm:openosmfile', {'FILE': '\\path\\to\\a\\file.osm', 'OSM_CONF': ''})
 
         self.assertIsInstance(result['OUTPUT_POINTS'], QgsVectorLayer)
         self.assertIn('|layername=points', result['OUTPUT_POINTS'].source())

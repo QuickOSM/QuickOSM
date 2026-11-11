@@ -1,4 +1,5 @@
 """Actions definitions."""
+
 from qgis.core import (
     Qgis,
     QgsAction,
@@ -18,11 +19,7 @@ from QuickOSM.tools.i18n import tr
 from QuickOSM.tools.resources import resources_path
 
 ACTIONS_PATH = 'from QuickOSM.core.actions import Actions\n'
-ACTIONS_VISIBILITY = [
-    Visibility.Canvas.value,
-    Visibility.Feature.value,
-    Visibility.Field.value
-]
+ACTIONS_VISIBILITY = [Visibility.Canvas.value, Visibility.Feature.value, Visibility.Field.value]
 
 
 def add_actions(layer: QgsVectorLayer, keys: list):
@@ -45,7 +42,7 @@ def add_actions(layer: QgsVectorLayer, keys: list):
         False,
         title,
         ACTIONS_VISIBILITY,
-        ''
+        '',
     )
     actions.addAction(osm_browser)
 
@@ -58,7 +55,7 @@ def add_actions(layer: QgsVectorLayer, keys: list):
         False,
         title,
         ACTIONS_VISIBILITY,
-        ''
+        '',
     )
     actions.addAction(josm)
 
@@ -71,13 +68,12 @@ def add_actions(layer: QgsVectorLayer, keys: list):
         False,
         title,
         ACTIONS_VISIBILITY,
-        ''
+        '',
     )
     actions.addAction(default_editor)
 
     for link in ['mapillary', 'url', 'website', 'wikipedia', 'wikidata', 'ref:UAI']:
         if link in keys:
-
             # Add an image to the action if available
             image = ''
             if link == 'wikipedia':
@@ -89,17 +85,16 @@ def add_actions(layer: QgsVectorLayer, keys: list):
             elif link == 'mapillary':
                 image = resources_path('icons', 'mapillary_logo.svg')
 
-            link = link.replace(":", "_")
+            link = link.replace(':', '_')
             generic = QgsAction(
                 QgsAction.ActionType.GenericPython,
                 link,
-                (ACTIONS_PATH
-                 + f'Actions.run("{link}","[% "{link}" %]")'),
+                (ACTIONS_PATH + f'Actions.run("{link}","[% "{link}" %]")'),
                 image,
                 False,
                 link,
                 ACTIONS_VISIBILITY,
-                ''
+                '',
             )
             actions.addAction(generic)
 
@@ -107,21 +102,18 @@ def add_actions(layer: QgsVectorLayer, keys: list):
         sketch_line = QgsAction(
             QgsAction.ActionType.GenericPython,
             tr('Sketchline'),
-            (
-                ACTIONS_PATH +
-                'Actions.run_sketch_line("[% "network" %]","[% "ref" %]")'
-            ),
+            (ACTIONS_PATH + 'Actions.run_sketch_line("[% "network" %]","[% "ref" %]")'),
             '',
             False,
             '',
             ACTIONS_VISIBILITY,
-            ''
+            '',
         )
         actions.addAction(sketch_line)
 
 
-def add_relaunch_action(layer: QgsVectorLayer, layer_name: str = ""):
-    """ Add the relaunch action """
+def add_relaunch_action(layer: QgsVectorLayer, layer_name: str = ''):
+    """Add the relaunch action"""
     actions = layer.actions()
 
     title = tr('Reload the query in a new file')
@@ -133,7 +125,7 @@ def add_relaunch_action(layer: QgsVectorLayer, layer_name: str = ""):
         False,
         title,
         [Visibility.Layer.value],
-        ''
+        '',
     )
     actions.addAction(reload)
 
@@ -160,11 +152,11 @@ class Actions:
 
         if value == '':
             iface.messageBar().pushMessage(
-                tr('Sorry, the field \'{fieldname}\' is empty for this entity.'
-                   .format(fieldname=field)),
-                level=Qgis.MessageLevel.Warning, duration=7)
+                tr("Sorry, the field '{fieldname}' is empty for this entity.".format(fieldname=field)),
+                level=Qgis.MessageLevel.Warning,
+                duration=7,
+            )
         else:
-
             if field in ['url', 'website', 'wikipedia', 'wikidata']:
                 url = None
 
@@ -172,14 +164,16 @@ class Actions:
                     url = value
 
                 if field == 'ref_UAI':
-                    url = "http://www.education.gouv.fr/pid24302/annuaire-" \
-                          "resultat-recherche.html?lycee_name=" + value
+                    url = (
+                        'http://www.education.gouv.fr/pid24302/annuaire-'
+                        'resultat-recherche.html?lycee_name=' + value
+                    )
 
                 if field == 'wikipedia':
-                    url = "http://en.wikipedia.org/wiki/" + value
+                    url = 'http://en.wikipedia.org/wiki/' + value
 
                 if field == 'wikidata':
-                    url = "http://www.wikidata.org/wiki/" + value
+                    url = 'http://www.wikidata.org/wiki/' + value
 
                 open_webpage(url)
 
@@ -193,9 +187,8 @@ class Actions:
             elif field == 'josm':
                 if not open_object(value):
                     iface.messageBar().pushMessage(
-                        tr('The JOSM remote seems to be disabled.'),
-                        level=Qgis.MessageLevel.Critical,
-                        duration=7)
+                        tr('The JOSM remote seems to be disabled.'), level=Qgis.MessageLevel.Critical, duration=7
+                    )
 
             # NOT USED
             elif field == 'rawedit':
@@ -218,16 +211,15 @@ class Actions:
         """
         if network == '' or ref == '':
             iface.messageBar().pushMessage(
-                tr('Sorry, this field is empty for this entity.'),
-                level=Qgis.MessageLevel.Warning,
-                duration=7)
+                tr('Sorry, this field is empty for this entity.'), level=Qgis.MessageLevel.Warning, duration=7
+            )
         else:
             url = f'http://www.overpass-api.de/api/sketch-line?network={network}&ref={ref}'
             open_webpage(url)
 
     @staticmethod
-    def run_reload(layer_name: str = "", layer: QgsVectorLayer = None, dialog: QDialog = None):
-        """ Reload the query """
+    def run_reload(layer_name: str = '', layer: QgsVectorLayer = None, dialog: QDialog = None):
+        """Reload the query"""
 
         if not layer:
             layer = QgsProject.instance().mapLayersByName(layer_name)[0]
@@ -241,7 +233,7 @@ class Actions:
             process.reload_query(query, layer_name, dialog)
 
     def pre_run_reload(self):
-        """ Prepare to reload the query."""
+        """Prepare to reload the query."""
 
         layer = self.dialog.iface.layerTreeView().currentLayer()
         self.run_reload(layer=layer, dialog=self.dialog)

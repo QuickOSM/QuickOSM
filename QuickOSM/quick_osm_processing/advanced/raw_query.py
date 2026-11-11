@@ -1,6 +1,5 @@
 """Generate a raw query."""
 
-
 from typing import Dict
 
 from qgis.core import QgsProcessingAlgorithm, QgsProcessingOutputString
@@ -66,7 +65,7 @@ class RawQueryAlgorithm(BuildRaw):
             self.query,
             extent=self.extent,  # It should be in 4326 already in this stage
             area=self.area,
-            overpass=self.server
+            overpass=self.server,
         )
         raw_query = query_preparation.prepare_query()
         url = query_preparation.prepare_url()

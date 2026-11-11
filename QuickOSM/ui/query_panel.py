@@ -35,7 +35,6 @@ LOGGER = logging.getLogger('QuickOSM')
 
 
 class QueryPanel(BaseOverpassPanel):
-
     """Final implementation for the panel."""
 
     def __init__(self, dialog: QDialog):
@@ -49,29 +48,25 @@ class QueryPanel(BaseOverpassPanel):
         super().setup_panel()
         self.dialog.combo_query_type_q.addItem(tr('Canvas Extent'), 'canvas')
         self.dialog.combo_query_type_q.addItem(tr('Layer Extent'), 'layer')
-        self.dialog.combo_query_type_q.setItemIcon(0, QIcon(":images/themes/default/mLayoutItemMap.svg"))
+        self.dialog.combo_query_type_q.setItemIcon(0, QIcon(':images/themes/default/mLayoutItemMap.svg'))
         self.dialog.combo_query_type_q.setItemIcon(
-            1, QIcon(":images/themes/default/algorithms/mAlgorithmRandomPointsWithinExtent.svg"))
-        self.dialog.combo_query_type_q.currentIndexChanged.connect(
-            self.query_type_updated)
+            1, QIcon(':images/themes/default/algorithms/mAlgorithmRandomPointsWithinExtent.svg')
+        )
+        self.dialog.combo_query_type_q.currentIndexChanged.connect(self.query_type_updated)
         self.dialog.combo_extent_layer_q.layerChanged.connect(self.query_type_updated)
 
-        self.dialog.button_run_query_q.setIcon(QIcon(QgsApplication.iconPath("mActionStart.svg")))
+        self.dialog.button_run_query_q.setIcon(QIcon(QgsApplication.iconPath('mActionStart.svg')))
 
         self.highlighter = QueryHighlighter(self.dialog.text_query.document())
-        self.dialog.text_query.cursorPositionChanged.connect(
-            self.highlighter.rehighlight)
-        self.dialog.text_query.cursorPositionChanged.connect(
-            self.allow_nominatim_or_extent)
+        self.dialog.text_query.cursorPositionChanged.connect(self.highlighter.rehighlight)
+        self.dialog.text_query.cursorPositionChanged.connect(self.allow_nominatim_or_extent)
 
-        self.dialog.button_overpass_turbo.setIcon(
-            QIcon(resources_path('icons', 'turbo.png')))
+        self.dialog.button_overpass_turbo.setIcon(QIcon(resources_path('icons', 'turbo.png')))
         self.dialog.button_overpass_turbo.clicked.connect(open_overpass_turbo)
 
         # Setup menu for documentation
         popup_menu = QMenu()
-        map_features_action = QAction(
-            'Map Features', self.dialog.button_documentation)
+        map_features_action = QAction('Map Features', self.dialog.button_documentation)
         # noinspection PyUnresolvedReferences
         map_features_action.triggered.connect(open_plugin_documentation)
         popup_menu.addAction(map_features_action)
@@ -81,7 +76,7 @@ class QueryPanel(BaseOverpassPanel):
         popup_menu.addAction(overpass_action)
         self.dialog.button_documentation.setMenu(popup_menu)
 
-        self.dialog.button_generate_query.setIcon(QIcon(":images/themes/default/processingAlgorithm.svg"))
+        self.dialog.button_generate_query.setIcon(QIcon(':images/themes/default/processingAlgorithm.svg'))
 
         self.dialog.button_generate_query.setMenu(QMenu())
 
@@ -93,7 +88,8 @@ class QueryPanel(BaseOverpassPanel):
         self.dialog.run_buttons[self.panel].clicked.connect(self.run)
         self.dialog.button_generate_query.clicked.connect(self.query_language_check)
         self.dialog.button_box_q.button(QDialogButtonBox.StandardButton.Reset).clicked.connect(
-            self.dialog.reset_form)
+            self.dialog.reset_form
+        )
 
         self.allow_nominatim_or_extent()
         self.query_type_updated()
@@ -106,25 +102,26 @@ class QueryPanel(BaseOverpassPanel):
 
         properties['expected_csv'] = WHITE_LIST
         if self.dialog.checkbox_points_q.isChecked():
-            properties['expected_csv'][LayerType.Points.value.lower()] = (
-                self.dialog.edit_csv_points.text())
+            properties['expected_csv'][LayerType.Points.value.lower()] = self.dialog.edit_csv_points.text()
         if self.dialog.checkbox_lines_q.isChecked():
-            properties['expected_csv'][LayerType.Lines.value.lower()] = (
-                self.dialog.edit_csv_lines.text())
+            properties['expected_csv'][LayerType.Lines.value.lower()] = self.dialog.edit_csv_lines.text()
         if self.dialog.checkbox_multilinestrings_q.isChecked():
             properties['expected_csv'][LayerType.Multilinestrings.value.lower()] = (
-                self.dialog.edit_csv_multilinestrings.text())
+                self.dialog.edit_csv_multilinestrings.text()
+            )
         if self.dialog.checkbox_multipolygons_q.isChecked():
             properties['expected_csv'][LayerType.Multipolygons.value.lower()] = (
-                self.dialog.edit_csv_multipolygons.text())
+                self.dialog.edit_csv_multipolygons.text()
+            )
 
         # TODO check this regex
         # noinspection RegExpRedundantEscape
-        if not properties['place'] and \
-                re.search(r'\{\{nominatim\}\}', properties['query']) or \
-                re.search(r'\{\{nominatimArea:\}\}', properties['query']) \
-                or \
-                re.search(r'\{\{geocodeArea:\}\}', properties['query']):
+        if (
+            not properties['place']
+            and re.search(r'\{\{nominatim\}\}', properties['query'])
+            or re.search(r'\{\{nominatimArea:\}\}', properties['query'])
+            or re.search(r'\{\{geocodeArea:\}\}', properties['query'])
+        ):
             raise MissingParameterException(suffix='nominatim field')
 
         return properties
@@ -150,7 +147,8 @@ class QueryPanel(BaseOverpassPanel):
             output_geometry_types=properties['outputs'],
             white_list_values=properties['expected_csv'],
             area=properties['place'],
-            bbox=properties['bbox'])
+            bbox=properties['bbox'],
+        )
         self.end_query(num_layers)
 
     def generate_query(self, oql_output: bool = True):
@@ -193,9 +191,11 @@ class QueryPanel(BaseOverpassPanel):
 
         # TODO check this regexp
         # noinspection RegExpRedundantEscape
-        if re.search(r'\{\{nominatim\}\}', query) or \
-                re.search(r'\{\{nominatimArea:(.*)\}\}', query) or \
-                re.search(r'\{\{geocodeArea:(.*)\}\}', query):
+        if (
+            re.search(r'\{\{nominatim\}\}', query)
+            or re.search(r'\{\{nominatimArea:(.*)\}\}', query)
+            or re.search(r'\{\{geocodeArea:(.*)\}\}', query)
+        ):
             self.dialog.line_place_q.setEnabled(True)
         else:
             self.dialog.line_place_q.setEnabled(False)
@@ -213,7 +213,8 @@ class QueryPanel(BaseOverpassPanel):
         self._core_query_type_updated(
             self.dialog.combo_query_type_q,
             self.dialog.combo_extent_layer_q,
-            checkbox=self.dialog.checkbox_selection_q)
+            checkbox=self.dialog.checkbox_selection_q,
+        )
 
     def query_language_check(self):
         """Check the wanted language."""

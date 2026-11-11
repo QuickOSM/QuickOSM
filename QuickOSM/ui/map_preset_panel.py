@@ -1,4 +1,5 @@
 """Panel OSM map preset class."""
+
 import datetime
 import json
 import logging
@@ -60,8 +61,7 @@ class MapPresetPanel(BaseOverpassPanel):
         self.dialog.combo_query_type_mp.addItem(tr('Layer Extent'), 'layer')
         self.dialog.combo_query_type_mp.addItem(tr('Not Spatial'), 'attributes')
 
-        self.dialog.combo_query_type_mp.currentIndexChanged.connect(
-            self.query_type_updated)
+        self.dialog.combo_query_type_mp.currentIndexChanged.connect(self.query_type_updated)
         self.dialog.combo_extent_layer_mp.layerChanged.connect(self.query_type_updated)
 
         self.setup_default_preset()
@@ -87,9 +87,7 @@ class MapPresetPanel(BaseOverpassPanel):
 
             item = QListWidgetItem(self.dialog.list_default_mp)
             item.setFlags(
-                Qt.ItemFlag.ItemIsSelectable
-                | Qt.ItemFlag.ItemIsUserCheckable
-                | Qt.ItemFlag.ItemIsEnabled
+                Qt.ItemFlag.ItemIsSelectable | Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled
             )
             self.dialog.list_default_mp.addItem(item)
 
@@ -130,7 +128,8 @@ class MapPresetPanel(BaseOverpassPanel):
             self.dialog.combo_query_type_mp,
             self.dialog.stacked_query_type_mp,
             self.dialog.spin_place_mp,
-            self.dialog.checkbox_selection_mp)
+            self.dialog.checkbox_selection_mp,
+        )
 
     def select_default(self):
         """Update the panel knowing a default preset is selected."""
@@ -148,20 +147,21 @@ class MapPresetPanel(BaseOverpassPanel):
         """Enable only when it is a basic preset."""
         if self.listAdvanced[row]:
             self.dialog.list_personal_preset_mp.setStyleSheet(
-                'QListWidget::item:selected {background: ' + self.advanced_selected + ';}')
+                'QListWidget::item:selected {background: ' + self.advanced_selected + ';}'
+            )
             self.dialog.combo_query_type_mp.setEnabled(False)
             self.dialog.stacked_query_type_mp.setEnabled(False)
         else:
             self.dialog.list_personal_preset_mp.setStyleSheet(
-                'QListWidget::item:selected {background: ' + self.basic_selected + ';}')
+                'QListWidget::item:selected {background: ' + self.basic_selected + ';}'
+            )
             self.dialog.combo_query_type_mp.setEnabled(True)
             self.dialog.stacked_query_type_mp.setEnabled(True)
 
     def update_personal_preset_view(self):
         """Update the presets displayed."""
         preset_folder = query_preset()
-        files = filter(
-            lambda folder: os.path.isdir(join(preset_folder, folder)), os.listdir(preset_folder))
+        files = filter(lambda folder: os.path.isdir(join(preset_folder, folder)), os.listdir(preset_folder))
 
         self.dialog.list_personal_preset_mp.clear()
 
@@ -173,9 +173,7 @@ class MapPresetPanel(BaseOverpassPanel):
 
             item = QListWidgetItem(self.dialog.list_personal_preset_mp)
             item.setFlags(
-                Qt.ItemFlag.ItemIsSelectable
-                | Qt.ItemFlag.ItemIsUserCheckable
-                | Qt.ItemFlag.ItemIsEnabled
+                Qt.ItemFlag.ItemIsSelectable | Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled
             )
             self.dialog.list_personal_preset_mp.addItem(item)
 
@@ -198,7 +196,7 @@ class MapPresetPanel(BaseOverpassPanel):
             hbox.addItem(vbox)
             button_edit = QPushButton()
             button_remove = QPushButton()
-            button_edit.setIcon(QIcon(QgsApplication.iconPath("mActionToggleEditing.svg")))
+            button_edit.setIcon(QIcon(QgsApplication.iconPath('mActionToggleEditing.svg')))
             button_remove.setIcon(QIcon(QgsApplication.iconPath('symbologyRemove.svg')))
             button_edit.setSizePolicy(QSizePolicy.Policy.Fixed, QSizePolicy.Policy.Fixed)
             button_remove.setSizePolicy(QSizePolicy.Policy.Fixed, QSizePolicy.Policy.Fixed)
@@ -211,13 +209,15 @@ class MapPresetPanel(BaseOverpassPanel):
                 preset.setStyleSheet(
                     '#FramePreset { margin: 3px;'
                     ' border: 3px solid ' + self.advanced_selected + ';'
-                    ' border-width: 1px 1px 1px 4px;}')
+                    ' border-width: 1px 1px 1px 4px;}'
+                )
             else:
                 self.listAdvanced.append(False)
                 preset.setStyleSheet(
                     '#FramePreset { margin: 3px;'
                     ' border: 3px solid ' + self.basic_selected + ';'
-                    ' border-width: 1px 1px 1px 4px;}')
+                    ' border-width: 1px 1px 1px 4px;}'
+                )
             preset.setLayout(hbox)
 
             # Actions on click
@@ -243,9 +243,11 @@ class MapPresetPanel(BaseOverpassPanel):
     def verification_remove_preset(self, item: QListWidgetItem, name: str):
         """Verification of the removal a preset."""
         validate_delete = QMessageBox(
-            QMessageBox.Icon.Warning, tr('Confirm preset deletion'),
-            tr(f'Are you sure you want to delete the preset \'{name}\'?'),
-            QMessageBox.StandardButton.Yes | QMessageBox.StandardButton.Cancel, self.dialog
+            QMessageBox.Icon.Warning,
+            tr('Confirm preset deletion'),
+            tr(f"Are you sure you want to delete the preset '{name}'?"),
+            QMessageBox.StandardButton.Yes | QMessageBox.StandardButton.Cancel,
+            self.dialog,
         )
         ok = validate_delete.exec()
 
@@ -264,7 +266,6 @@ class MapPresetPanel(BaseOverpassPanel):
         """Prepare the data before running the process."""
         selection = self.dialog.list_default_mp.selectedIndexes()
         try:
-
             if selection:
                 preset = self.dialog.list_default_mp.item(selection[0].row())
                 preset_widget = self.dialog.list_default_mp.itemWidget(preset)
@@ -318,14 +319,10 @@ class MapPresetPanel(BaseOverpassPanel):
             files_qml = self.filter_file_names(file_name, files_qml)
             if list(files_qml):
                 LOGGER.debug(f'files: {files_qml}')
-                file_name = join(
-                    data['folder'], data['file_name'] + '_' + data['query_name'][k] + '_{}.qml')
+                file_name = join(data['folder'], data['file_name'] + '_' + data['query_name'][k] + '_{}.qml')
                 config = {}
                 for osm_type in Osm_Layers:
-                    config[osm_type] = {
-                        'namelayer': name,
-                        'style': file_name.format(osm_type)
-                    }
+                    config[osm_type] = {'namelayer': name, 'style': file_name.format(osm_type)}
             else:
                 config = None
 
@@ -344,7 +341,7 @@ class MapPresetPanel(BaseOverpassPanel):
                     output_geometry_types=data['output_geom_type'][k],
                     output_format=data['output_format'][k],
                     output_dir=data['output_directory'][k],
-                    config_outputs=config
+                    config_outputs=config,
                 )
             else:
                 if 'query_type' in data:
@@ -368,6 +365,6 @@ class MapPresetPanel(BaseOverpassPanel):
                     layer_name=name,
                     white_list_values=data['white_list_column'][k],
                     output_geometry_types=data['output_geom_type'][k],
-                    config_outputs=config
+                    config_outputs=config,
                 )
             self.end_query(num_layers)

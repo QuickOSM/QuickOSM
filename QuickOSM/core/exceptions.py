@@ -1,4 +1,5 @@
 """Exceptions definitions."""
+
 from typing import Optional
 
 from qgis.core import Qgis
@@ -63,9 +64,7 @@ class OverpassManyRequestException(QuickOsmException):
 
     def __init__(self, message: Optional[str] = None):
         if not message:
-            message = tr(
-                'OverpassAPI has received too many requests, try again later or a smaller query.'
-            )
+            message = tr('OverpassAPI has received too many requests, try again later or a smaller query.')
         super().__init__(message)
 
 
@@ -73,10 +72,8 @@ class OverpassMemoryException(QuickOsmException):
     """Out of memory exception."""
 
     def __init__(self, amount_memory: int, unit: str):
-        message = tr(
-            'OverpassAPI is out of memory, try another query or a smaller area.')
-        details = tr(
-            'The server would need more or less {number} {unit} of RAM.').format(
+        message = tr('OverpassAPI is out of memory, try another query or a smaller area.')
+        details = tr('The server would need more or less {number} {unit} of RAM.').format(
             number=amount_memory, unit=unit
         )
         super().__init__(message, details)
@@ -109,7 +106,7 @@ class QueryFactoryException(QuickOsmException):
         if not message:
             message = tr('Error while building the query')
         if suffix:
-            message = message + " : " + suffix
+            message = message + ' : ' + suffix
         super().__init__(message)
 
 
@@ -117,8 +114,7 @@ class QueryNotSupported(QuickOsmException):
     """Query not supported exception."""
 
     def __init__(self, key: str):
-        message = tr(
-            'The query is not supported by the plugin because of : {key}').format(key=key)
+        message = tr('The query is not supported by the plugin because of : {key}').format(key=key)
         super().__init__(message)
 
 
@@ -134,8 +130,7 @@ class NominatimBadRequest(QuickOsmException):
         :param query: Name of the place.
         :type query: basestring
         """
-        message = tr(
-            'Nominatim hasn\'t found any data for an area called "{place_name}".')
+        message = tr('Nominatim hasn\'t found any data for an area called "{place_name}".')
         message = message.format(place_name=query)
 
         super().__init__(message)
@@ -150,14 +145,14 @@ class NominatimAreaException(QuickOsmException):
         :param query: Name of the place.
         :type query: basestring
         """
-        message = tr(
-            'No named area found for OSM {osm_type} called "{place_name}".')
+        message = tr('No named area found for OSM {osm_type} called "{place_name}".')
         message = message.format(osm_type=OsmType.Relation.name.lower(), place_name=query)
 
         # No polygon has been found, we propose the "around" query.
         more_details = tr(
             'No OSM polygon (relation) has been found, you should try the '
-            '"Around" query which will search for other OSM type.')
+            '"Around" query which will search for other OSM type.'
+        )
         super().__init__(message, more_details)
 
 
@@ -171,7 +166,7 @@ class FileDoesntExistException(QuickOsmException):
         if not message:
             message = tr('The file does not exist.')
         if suffix:
-            message = message + " " + suffix
+            message = message + ' ' + suffix
         super().__init__(message)
 
 
@@ -191,7 +186,7 @@ class FileOutPutException(QuickOsmException):
         if not message:
             message = tr('The output file already exist, set a prefix.')
         if suffix:
-            message = message + " " + suffix
+            message = message + ' ' + suffix
         super().__init__(message)
 
 
@@ -213,7 +208,7 @@ class MissingParameterException(QuickOsmException):
         if not message:
             message = tr('A parameter is missing :')
         if suffix:
-            message = message + " " + suffix
+            message = message + ' ' + suffix
         super().__init__(message)
 
 
@@ -221,8 +216,7 @@ class NoSelectedPreset(QuickOsmException):
     """No selected preset exception."""
 
     def __init__(self):
-        message = tr(
-            'None of the preset is selected. You can\'t run nothing.')
+        message = tr("None of the preset is selected. You can't run nothing.")
         super().__init__(message)
 
 
@@ -231,8 +225,8 @@ class NoSelectedFeatures(QuickOsmException):
 
     def __init__(self):
         message = tr(
-            'No selected features have been found in the layer.'
-            ' Please select some features or uncheck the option.')
+            'No selected features have been found in the layer. Please select some features or uncheck the option.'
+        )
         super().__init__(message)
 
 

@@ -1,4 +1,5 @@
 """Dialog that edit a preset"""
+
 import logging
 import os
 
@@ -70,19 +71,13 @@ class EditPreset(QDialog, FORM_CLASS, TableKeyValue):
         self.bbox_layout.addWidget(self.bbox)
         self.crs = QgsCoordinateReferenceSystem('EPSG:4326')
 
-        self.combo_output_format.addItem(
-            Format.GeoPackage.value.label, Format.GeoPackage)
-        self.combo_output_format.addItem(
-            Format.GeoJSON.value.label, Format.GeoJSON)
-        self.combo_output_format.addItem(
-            Format.Shapefile.value.label, Format.Shapefile)
-        self.combo_output_format.addItem(
-            Format.Kml.value.label, Format.Kml)
+        self.combo_output_format.addItem(Format.GeoPackage.value.label, Format.GeoPackage)
+        self.combo_output_format.addItem(Format.GeoJSON.value.label, Format.GeoJSON)
+        self.combo_output_format.addItem(Format.Shapefile.value.label, Format.Shapefile)
+        self.combo_output_format.addItem(Format.Kml.value.label, Format.Kml)
 
-        self.output_directory.lineEdit().setPlaceholderText(
-            tr('Save to temporary file'))
-        self.output_directory.setStorageMode(
-            QgsFileWidget.StorageMode.GetDirectory)
+        self.output_directory.lineEdit().setPlaceholderText(tr('Save to temporary file'))
+        self.output_directory.setStorageMode(QgsFileWidget.StorageMode.GetDirectory)
 
         self.data = data_preset.copy()
         if self.data:
@@ -105,8 +100,8 @@ class EditPreset(QDialog, FORM_CLASS, TableKeyValue):
 
         # Icons
         # Tab 0 is set in the radio button function
-        self.tab_widget.setTabIcon(1, QIcon(":images/themes/default/mIconModelOutput.svg"))
-        self.tab_widget.setTabIcon(2, QIcon(":images/themes/default/propertyicons/symbology.svg"))
+        self.tab_widget.setTabIcon(1, QIcon(':images/themes/default/mIconModelOutput.svg'))
+        self.tab_widget.setTabIcon(2, QIcon(':images/themes/default/propertyicons/symbology.svg'))
 
         # Buttonbox
         self.button_box.button(QDialogButtonBox.StandardButton.Cancel).clicked.connect(self.close)
@@ -140,20 +135,20 @@ class EditPreset(QDialog, FORM_CLASS, TableKeyValue):
         folder = os.path.join(self.folder, file_name)
         help_string = '<html>'
         help_string += tr(
-            "You can associate predefined styles with layers. You need to add QML file(s) in this folder :"
+            'You can associate predefined styles with layers. You need to add QML file(s) in this folder :'
         )
         help_string += '<br><b>'
-        help_string += f"<a href=\"{folder}\">{folder}</a>"
+        help_string += f'<a href="{folder}">{folder}</a>'
         help_string += '</b><br><br>'
-        help_string += tr("The name of QML files must follow this convention")
-        help_string += " : "
-        help_string += "<b>&#123;"
-        help_string += tr("name of the preset")
-        help_string += "&#125;</b>_<b>&#123;"
-        help_string += tr("name of the query")
-        help_string += "&#125;</b>_<b>&#123;"
-        help_string += tr("geometry")
-        help_string += "&#125;</b>.qml"
+        help_string += tr('The name of QML files must follow this convention')
+        help_string += ' : '
+        help_string += '<b>&#123;'
+        help_string += tr('name of the preset')
+        help_string += '&#125;</b>_<b>&#123;'
+        help_string += tr('name of the query')
+        help_string += '&#125;</b>_<b>&#123;'
+        help_string += tr('geometry')
+        help_string += '&#125;</b>.qml'
         help_string += '<br><br>'
         help_string += tr("These parameters are separated by '_' and the geometry must be one these values :")
         help_string += ' '
@@ -165,7 +160,7 @@ class EditPreset(QDialog, FORM_CLASS, TableKeyValue):
         help_string += tr(f'and the current query "{query_name}"')
         help_string += '<br>'
         help_string += tr('this is the list of filenames you can use')
-        help_string += " :"
+        help_string += ' :'
         help_string += '<ul>'
         for layer_type in LayerType:
             help_string += '<li><b>'
@@ -249,7 +244,7 @@ class EditPreset(QDialog, FORM_CLASS, TableKeyValue):
     def add_query(self, default_name: str = ''):
         """Add a query in the preset"""
         if not default_name:
-            text, ok = QInputDialog().getText(self, "New query", "Name of the query")
+            text, ok = QInputDialog().getText(self, 'New query', 'Name of the query')
             if not ok:
                 return
         else:
@@ -281,9 +276,11 @@ class EditPreset(QDialog, FORM_CLASS, TableKeyValue):
         """Delete a query in the preset"""
         name = self.list_queries.item(row).text()
         validate_delete = QMessageBox(
-            QMessageBox.Icon.Warning, tr('Confirm query deletion'),
-            tr(f'Are you sure you want to delete the query \'{name}\'?'),
-            QMessageBox.StandardButton.Yes | QMessageBox.StandardButton.Cancel, self
+            QMessageBox.Icon.Warning,
+            tr('Confirm query deletion'),
+            tr(f"Are you sure you want to delete the query '{name}'?"),
+            QMessageBox.StandardButton.Yes | QMessageBox.StandardButton.Cancel,
+            self,
         )
         ok = validate_delete.exec()
 
@@ -307,9 +304,7 @@ class EditPreset(QDialog, FORM_CLASS, TableKeyValue):
     def rename_query(self, query: QListWidgetItem):
         """Rename a query in the preset"""
         input_dialog = QInputDialog(self)
-        new_name = input_dialog.getText(
-            self, tr("Rename the query"),
-            tr("New name:"), text=query.text())
+        new_name = input_dialog.getText(self, tr('Rename the query'), tr('New name:'), text=query.text())
         if new_name[1] and new_name[0]:
             query.setText(new_name[0].replace(' ', '_'))
             self.update_qml_format()
@@ -405,4 +400,4 @@ class EditPreset(QDialog, FORM_CLASS, TableKeyValue):
     @staticmethod
     def open_help():
         """Open the help web page"""
-        QDesktopServices.openUrl(QUrl("https://quickosm.github.io/QuickOSM/user-guide/map-preset/"))
+        QDesktopServices.openUrl(QUrl('https://quickosm.github.io/QuickOSM/user-guide/map-preset/'))

@@ -1,4 +1,5 @@
 """Panel OSM base class."""
+
 import datetime
 import json
 import logging
@@ -48,7 +49,6 @@ LOGGER = logging.getLogger('QuickOSM')
 
 
 class QuickQueryPanel(BaseOverpassPanel, TableKeyValue):
-
     """Final implementation for the panel."""
 
     def __init__(self, dialog: QDialog):
@@ -71,8 +71,8 @@ class QuickQueryPanel(BaseOverpassPanel, TableKeyValue):
         # Table Keys/Values
         self.setup_table()
 
-        self.dialog.button_map_features.setIcon(QIcon(":images/themes/default/mActionEditHelpContent.svg"))
-        self.dialog.button_run_query_qq.setIcon(QIcon(QgsApplication.iconPath("mActionStart.svg")))
+        self.dialog.button_map_features.setIcon(QIcon(':images/themes/default/mActionEditHelpContent.svg'))
+        self.dialog.button_run_query_qq.setIcon(QIcon(QgsApplication.iconPath('mActionStart.svg')))
         # self.dialog.button_show_query.setIcon(QIcon(resources_path('icons', 'edit.png')))
 
         # Query type
@@ -84,13 +84,13 @@ class QuickQueryPanel(BaseOverpassPanel, TableKeyValue):
 
         self.dialog.combo_query_type_qq.setItemIcon(0, QIcon(resources_path('icons', 'in.svg')))
         self.dialog.combo_query_type_qq.setItemIcon(1, QIcon(resources_path('icons', 'around.svg')))
-        self.dialog.combo_query_type_qq.setItemIcon(2, QIcon(":images/themes/default/mLayoutItemMap.svg"))
+        self.dialog.combo_query_type_qq.setItemIcon(2, QIcon(':images/themes/default/mLayoutItemMap.svg'))
         self.dialog.combo_query_type_qq.setItemIcon(
-            3, QIcon(":images/themes/default/algorithms/mAlgorithmRandomPointsWithinExtent.svg"))
+            3, QIcon(':images/themes/default/algorithms/mAlgorithmRandomPointsWithinExtent.svg')
+        )
         self.dialog.combo_query_type_qq.setItemIcon(4, QgsLayerItem.iconTable())
 
-        self.dialog.combo_query_type_qq.currentIndexChanged.connect(
-            self.query_type_updated)
+        self.dialog.combo_query_type_qq.currentIndexChanged.connect(self.query_type_updated)
 
         self.dialog.button_save_query.setMenu(QMenu())
 
@@ -116,7 +116,8 @@ class QuickQueryPanel(BaseOverpassPanel, TableKeyValue):
         self.dialog.button_run_query_qq.clicked.connect(self.run)
         self.dialog.button_map_features.clicked.connect(open_plugin_documentation)
         self.dialog.button_box_qq.button(QDialogButtonBox.StandardButton.Reset).clicked.connect(
-            self.dialog.reset_form)
+            self.dialog.reset_form
+        )
 
         # setup callbacks for friendly-label-update only
         self.dialog.line_place_qq.textChanged.connect(self.update_friendly)
@@ -135,7 +136,8 @@ class QuickQueryPanel(BaseOverpassPanel, TableKeyValue):
             self.dialog.combo_query_type_qq,
             self.dialog.stacked_query_type,
             self.dialog.spin_place_qq,
-            self.dialog.checkbox_selection_qq)
+            self.dialog.checkbox_selection_qq,
+        )
         self.update_friendly()
 
     def save_new(self):
@@ -220,7 +222,7 @@ class QuickQueryPanel(BaseOverpassPanel, TableKeyValue):
                 around_distance=properties['distance'],
                 osm_objects=properties['osm_objects'],
                 timeout=properties['timeout'],
-                print_mode=properties['metadata']
+                print_mode=properties['metadata'],
             )
             query = query_factory.make(QueryLanguage.OQL)
             description = query_factory.friendly_message()
@@ -243,16 +245,17 @@ class QuickQueryPanel(BaseOverpassPanel, TableKeyValue):
             bbox=properties['bbox'],
             output_geometry_types=properties['outputs'],
             output_directory=properties['output_directory'],
-            output_format=properties['output_format']
+            output_format=properties['output_format'],
         )
         if self.existing_preset:
             preset_folder = query_preset()
-            presets = filter(
-                lambda folder: os.path.isdir(join(preset_folder, folder)), os.listdir(preset_folder))
+            presets = filter(lambda folder: os.path.isdir(join(preset_folder, folder)), os.listdir(preset_folder))
             chosen_preset = QInputDialog.getItem(
-                self.dialog, tr('Add in an existing preset'),
+                self.dialog,
+                tr('Add in an existing preset'),
                 tr('Please select the preset in which the query will be added:'),
-                presets, editable=False
+                presets,
+                editable=False,
             )
             if chosen_preset[1]:
                 q_manage.add_query_in_preset(chosen_preset[0])
@@ -279,7 +282,7 @@ class QuickQueryPanel(BaseOverpassPanel, TableKeyValue):
             output_geometry_types=data['output_geom_type'],
             white_list_column=data['white_list_column'],
             output_directory=data['output_directory'],
-            output_format=data['output_format']
+            output_format=data['output_format'],
         )
         q_manage.add_preset(data['file_name'])
 
@@ -297,14 +300,13 @@ class QuickQueryPanel(BaseOverpassPanel, TableKeyValue):
         for file in files[::-1]:
             file_path = join(historic_folder, file)
             with open(file_path, encoding='utf8') as json_file:
-
                 try:
                     data = json.load(json_file, object_hook=as_enum)
                 except Exception:
                     # TODO, the fix should be done when writing the JSON file as well
                     # Issue https://github.com/QuickOSM/QuickOSM/issues/493
                     # Issue https://github.com/QuickOSM/QuickOSM/issues/526
-                    LOGGER.critical("Error while reading JSON {}, please report it on GitHub".format(file_path))
+                    LOGGER.critical('Error while reading JSON {}, please report it on GitHub'.format(file_path))
 
             name = data['file_name']
 
@@ -330,8 +332,8 @@ class QuickQueryPanel(BaseOverpassPanel, TableKeyValue):
             hbox.addItem(vbox)
             button_run = QPushButton()
             button_save = QPushButton()
-            button_run.setIcon(QIcon(QgsApplication.iconPath("mActionStart.svg")))
-            button_save.setIcon(QIcon(QgsApplication.iconPath("mActionFileSave.svg")))
+            button_run.setIcon(QIcon(QgsApplication.iconPath('mActionStart.svg')))
+            button_save.setIcon(QIcon(QgsApplication.iconPath('mActionFileSave.svg')))
             button_run.setSizePolicy(QSizePolicy.Policy.Fixed, QSizePolicy.Policy.Fixed)
             button_save.setSizePolicy(QSizePolicy.Policy.Fixed, QSizePolicy.Policy.Fixed)
             button_run.setToolTip(tr('Run the query'))
@@ -368,10 +370,7 @@ class QuickQueryPanel(BaseOverpassPanel, TableKeyValue):
                 file_name = self.join
                 config = {}
                 for osm_type in Osm_Layers:
-                    config[osm_type] = {
-                        'namelayer': name,
-                        'style': file_name.format(osm_type)
-                    }
+                    config[osm_type] = {'namelayer': name, 'style': file_name.format(osm_type)}
             else:
                 config = None
 
@@ -390,7 +389,7 @@ class QuickQueryPanel(BaseOverpassPanel, TableKeyValue):
                     output_geometry_types=data['output_geom_type'][k],
                     output_format=data['output_format'][k],
                     output_dir=data['output_directory'][k],
-                    config_outputs=config
+                    config_outputs=config,
                 )
             else:
                 if 'query_type' in data:
@@ -414,7 +413,7 @@ class QuickQueryPanel(BaseOverpassPanel, TableKeyValue):
                     layer_name=name,
                     white_list_values=data['white_list_column'][k],
                     output_geometry_types=data['output_geom_type'][k],
-                    config_outputs=config
+                    config_outputs=config,
                 )
             self.end_query(num_layers)
 
@@ -438,7 +437,8 @@ class QuickQueryPanel(BaseOverpassPanel, TableKeyValue):
             output_format=properties['output_format'],
             prefix_file=properties['prefix_file'],
             layer_name=properties['layer_name'],
-            output_geometry_types=properties['outputs'])
+            output_geometry_types=properties['outputs'],
+        )
         self.update_history_view()
         self.end_query(num_layers)
 
@@ -456,9 +456,8 @@ class QuickQueryPanel(BaseOverpassPanel, TableKeyValue):
 
         # Transfer each output with zip
         check_boxes = zip(
-            self.dialog.output_buttons[Panels.QuickQuery],
-            self.dialog.output_buttons[Panels.Query],
-            strict=False)
+            self.dialog.output_buttons[Panels.QuickQuery], self.dialog.output_buttons[Panels.Query], strict=False
+        )
         for couple in check_boxes:
             couple[1].setChecked(couple[0].isChecked())
 
@@ -483,7 +482,7 @@ class QuickQueryPanel(BaseOverpassPanel, TableKeyValue):
             around_distance=properties['distance'],
             osm_objects=properties['osm_objects'],
             timeout=properties['timeout'],
-            print_mode=properties['metadata']
+            print_mode=properties['metadata'],
         )
         try:
             query = query_factory.make(output)
@@ -516,7 +515,7 @@ class QuickQueryPanel(BaseOverpassPanel, TableKeyValue):
             area=properties['place'],
             around_distance=properties['distance'],
             osm_objects=properties['osm_objects'],
-            timeout=properties['timeout']
+            timeout=properties['timeout'],
         )
         try:
             msg = query_factory.friendly_message()

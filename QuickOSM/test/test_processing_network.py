@@ -26,12 +26,12 @@ class TestProcessing(unittest.TestCase):
 
     @classmethod
     def setUpClass(cls):
-        """ Set up the server. """
+        """Set up the server."""
         cls.server, cls.port = launch()
 
     @classmethod
     def tearDownClass(cls):
-        """ Stop the server. """
+        """Stop the server."""
         cls.server.stop()
 
     def setUp(self) -> None:
@@ -46,10 +46,10 @@ class TestProcessing(unittest.TestCase):
         handler = SequentialHandler()
         handler.add(
             'GET',
-            "/interpreter?data=[out:xml]%20[timeout:25];%0A%20area(3600028722)%20-%3E%20.area_0;"
-            "%0A(%0A%20%20%20%20node[%22amenity%22%3D%22bench%22](area.area_0);%0A%20%20%20%20way"
-            "[%22amenity%22%3D%22bench%22](area.area_0);%0A%20%20%20%20relation[%22amenity%22%3D%22bench%22]"
-            "(area.area_0);%0A);%0A(._;%3E;);%0Aout%20body;&info=QgisQuickOSMPlugin",
+            '/interpreter?data=[out:xml]%20[timeout:25];%0A%20area(3600028722)%20-%3E%20.area_0;'
+            '%0A(%0A%20%20%20%20node[%22amenity%22%3D%22bench%22](area.area_0);%0A%20%20%20%20way'
+            '[%22amenity%22%3D%22bench%22](area.area_0);%0A%20%20%20%20relation[%22amenity%22%3D%22bench%22]'
+            '(area.area_0);%0A);%0A(._;%3E;);%0Aout%20body;&info=QgisQuickOSMPlugin',
             200,
             {'Content-type': 'text/xml'},
             open(plugin_test_data_path('overpass', 'empty_osm_file.xml'), encoding='utf8').read(),
@@ -58,18 +58,17 @@ class TestProcessing(unittest.TestCase):
             result = processing.run(
                 'quickosm:downloadosmdatarawquery',
                 {
-                    'QUERY':
-                        '[out:xml] [timeout:25];\n area(3600028722) -> .area_0;\n'
-                        '(\n    node[\"amenity\"=\"bench\"](area.area_0);\n    '
-                        'way[\"amenity\"=\"bench\"](area.area_0);\n    '
-                        'relation[\"amenity\"=\"bench\"](area.area_0);\n);\n'
-                        '(._;>;);\nout body;',
+                    'QUERY': '[out:xml] [timeout:25];\n area(3600028722) -> .area_0;\n'
+                    '(\n    node["amenity"="bench"](area.area_0);\n    '
+                    'way["amenity"="bench"](area.area_0);\n    '
+                    'relation["amenity"="bench"](area.area_0);\n);\n'
+                    '(._;>;);\nout body;',
                     'TIMEOUT': 25,
                     'SERVER': f'http://localhost:{self.port}/interpreter',
                     'EXTENT': '3.809971100,3.963647400,43.557942300,43.654612100 [EPSG:4326]',
                     'AREA': '',
-                    'FILE': ''
-                }
+                    'FILE': '',
+                },
             )
 
         self.assertIsInstance(result['OUTPUT_POINTS'], QgsVectorLayer)
@@ -96,8 +95,8 @@ class TestProcessing(unittest.TestCase):
                     'KEY': 'amenity',
                     'SERVER': f'http://localhost:{self.port}/interpreter',
                     'TIMEOUT': 25,
-                    'VALUE': 'foo'
-                }
+                    'VALUE': 'foo',
+                },
             )
 
         self.assertIsInstance(result['OUTPUT_POINTS'], QgsVectorLayer)
@@ -126,8 +125,8 @@ class TestProcessing(unittest.TestCase):
                     'KEY': 'amenity',
                     'SERVER': f'http://localhost:{self.port}/interpreter',
                     'TIMEOUT': 25,
-                    'VALUE': 'bench'
-                }
+                    'VALUE': 'bench',
+                },
             )
 
         self.assertIsInstance(result['OUTPUT_POINTS'], QgsVectorLayer)
@@ -157,8 +156,8 @@ class TestProcessing(unittest.TestCase):
                     'KEY': 'amenity',
                     'SERVER': f'http://localhost:{self.port}/interpreter',
                     'TIMEOUT': 25,
-                    'VALUE': 'bench'
-                }
+                    'VALUE': 'bench',
+                },
             )
 
         self.assertIsInstance(result['OUTPUT_POINTS'], QgsVectorLayer)
@@ -187,8 +186,8 @@ class TestProcessing(unittest.TestCase):
                     'KEY': 'amenity',
                     'SERVER': f'http://localhost:{self.port}/interpreter',
                     'TIMEOUT': 25,
-                    'VALUE': 'bench'
-                }
+                    'VALUE': 'bench',
+                },
             )
 
         self.assertIsInstance(result['OUTPUT_POINTS'], QgsVectorLayer)
@@ -226,7 +225,7 @@ class TestProcessing(unittest.TestCase):
                     'TIMEOUT': 25,
                     'SERVER': f'http://localhost:{self.port}/interpreter',
                 },
-                context=context
+                context=context,
             )
 
         self.assertIsInstance(result['OUTPUT_POINTS'], QgsVectorLayer)

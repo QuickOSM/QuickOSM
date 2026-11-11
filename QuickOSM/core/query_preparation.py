@@ -22,12 +22,16 @@ LOGGER = logging.getLogger(plugin_name())
 
 
 class QueryPreparation:
-
     """Prepare the query before sending it to Overpass."""
 
     def __init__(
-            self, query: str, extent: QgsRectangle = None, area: Union[str, List[str]] = None,
-            overpass: str = None, output_format: str = 'xml'):
+        self,
+        query: str,
+        extent: QgsRectangle = None,
+        area: Union[str, List[str]] = None,
+        overpass: str = None,
+        output_format: str = 'xml',
+    ):
         """Constructor.
 
         :param query: The query to prepare.
@@ -40,8 +44,7 @@ class QueryPreparation:
         :type area: str, list(str)
         """
         if overpass is None:
-            server = get_setting(
-                'defaultOAPI', OVERPASS_SERVERS[0]) + 'interpreter'
+            server = get_setting('defaultOAPI', OVERPASS_SERVERS[0]) + 'interpreter'
             self._overpass = QUrl(server)
         else:
             self._overpass = QUrl(overpass)
@@ -125,8 +128,7 @@ class QueryPreparation:
         else:
             new_string = f'lat="{coord_y}" lon="{coord_x}"'
 
-        self._query_prepared = (
-            re.sub(template, new_string, self._query_prepared))
+        self._query_prepared = re.sub(template, new_string, self._query_prepared)
 
     def replace_bbox(self):
         """Replace {{bbox}} by the extent BBOX if needed.
@@ -162,9 +164,9 @@ class QueryPreparation:
             area_is_too_big = True
 
         if area_is_too_big:
-            LOGGER.info(tr(
-                'The area was overlapping the WGS84 limits ±90 / ±180 degrees. The query has '
-                'been restricted.'))
+            LOGGER.info(
+                tr('The area was overlapping the WGS84 limits ±90 / ±180 degrees. The query has been restricted.')
+            )
 
         y_min = self._format_decimals_wgs84(y_min)
         y_max = self._format_decimals_wgs84(y_max)
@@ -175,25 +177,24 @@ class QueryPreparation:
             new_string = f'{y_min},{x_min},{y_max},{x_max}'
         else:
             new_string = f'e="{x_max}" n="{y_max}" s="{y_min}" w="{x_min}"'
-        self._query_prepared = (
-            re.sub(template, new_string, self._query_prepared))
+        self._query_prepared = re.sub(template, new_string, self._query_prepared)
 
     @staticmethod
     def _format_decimals_wgs84(coordinate: float) -> str:
-        """ Reduce the number of decimals, see #344 """
+        """Reduce the number of decimals, see #344"""
         # https://en.wikipedia.org/wiki/Decimal_degrees
         # We keep 5 decimals : individual trees, houses
-        multiplier = 10 ** 5
+        multiplier = 10**5
         try:
             value = int(coordinate * multiplier)
         except OverflowError:
             # GitHub https://github.com/QuickOSM/QuickOSM/issues/567
             # cannot convert float infinity to integer
-            LOGGER.error("Infinite coordinate was given ? Check the other log")
+            LOGGER.error('Infinite coordinate was given ? Check the other log')
             raise
         number = str(value / multiplier)
-        number = number.rstrip("0")
-        number = number.rstrip(".")
+        number = number.rstrip('0')
+        number = number.rstrip('.')
         return number
 
     def _replace_geocode_coords(self):
@@ -201,6 +202,7 @@ class QueryPreparation:
 
         The temporary query will be updated.
         """
+
         def replace(catch, default_nominatim):
 
             if default_nominatim:
@@ -237,14 +239,15 @@ class QueryPreparation:
 
         template = r'{{(geocodeCoords):([^}]*)}}'
         self._query_prepared = re.sub(
-            template, lambda m: replace(
-                m.groups()[1], self._places), self._query_prepared)
+            template, lambda m: replace(m.groups()[1], self._places), self._query_prepared
+        )
 
     def _replace_geocode_area(self):
         """Replace {{geocodeCoords}} by the centroid of the extent.
 
         The temporary query will be updated.
         """
+
         def replace(catch, default_nominatim):
 
             if default_nominatim:
@@ -281,8 +284,9 @@ class QueryPreparation:
             return new_string
 
         template = r'{{(nominatimArea|geocodeArea):([^}]*)}}'
-        self._query_prepared = re.sub(template, lambda m: replace(
-            m.groups()[1], self._places), self._query_prepared)
+        self._query_prepared = re.sub(
+            template, lambda m: replace(m.groups()[1], self._places), self._query_prepared
+        )
 
         return self._query_prepared
 
@@ -330,14 +334,8 @@ class QueryPreparation:
             return None
 
         if self._output_format:
-            query = re.sub(
-                r'output="[a-z]*"',
-                f'output="{self._output_format}"',
-                self._query_prepared)
-            query = re.sub(
-                r'\[out:[a-z]*',
-                f'[out:{self._output_format}',
-                query)
+            query = re.sub(r'output="[a-z]*"', f'output="{self._output_format}"', self._query_prepared)
+            query = re.sub(r'\[out:[a-z]*', f'[out:{self._output_format}', query)
         else:
             query = self._query_prepared
 
@@ -345,9 +343,9 @@ class QueryPreparation:
         query_string = QUrlQuery()
         query_string.addQueryItem('data', query)
         if output == QueryLanguage.XML:
-            query_string.addQueryItem('target', "xml")
+            query_string.addQueryItem('target', 'xml')
         elif output == QueryLanguage.OQL:
-            query_string.addQueryItem('target', "mapql")
+            query_string.addQueryItem('target', 'mapql')
         query_string.addQueryItem('info', 'QgisQuickOSMPlugin')
         url_query.setQuery(query_string)
         return url_query.toString()

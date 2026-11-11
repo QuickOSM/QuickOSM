@@ -37,7 +37,6 @@ LOGGER = logging.getLogger('QuickOSM')
 
 
 class Dialog(QDialog, FORM_CLASS):
-
     """Main class about the dialog of the plugin"""
 
     def __init__(self, iface=None, parent=None):
@@ -108,7 +107,7 @@ class Dialog(QDialog, FORM_CLASS):
                 self.checkbox_points_qq,
                 self.checkbox_lines_qq,
                 self.checkbox_multilinestrings_qq,
-                self.checkbox_multipolygons_qq
+                self.checkbox_multipolygons_qq,
             ],
             Panels.Query: [
                 self.checkbox_points_q,
@@ -121,19 +120,19 @@ class Dialog(QDialog, FORM_CLASS):
                 self.checkbox_lines_f,
                 self.checkbox_multilinestrings_f,
                 self.checkbox_multipolygons_f,
-            ]
+            ],
         }
         self.output_directories = {
             Panels.MapPreset: None,
             Panels.QuickQuery: self.output_directory_qq,
             Panels.Query: self.output_directory_q,
-            Panels.File: self.output_directory_f
+            Panels.File: self.output_directory_f,
         }
         self.output_format = {
             Panels.MapPreset: None,
             Panels.QuickQuery: self.combo_format_qq,
             Panels.Query: self.combo_format_q,
-            Panels.File: self.combo_format_f
+            Panels.File: self.combo_format_f,
         }
         self.prefix_edits = {
             Panels.MapPreset: None,
@@ -165,12 +164,11 @@ class Dialog(QDialog, FORM_CLASS):
         }
 
         icon = QIcon(resources_path('icons', 'QuickOSM.svg'))
-        self.reload_action = QAction(icon, tr("Reload the query in a new file"), self.iface)
+        self.reload_action = QAction(icon, tr('Reload the query in a new file'), self.iface)
         actions = Actions(self)
         reloader = partial(actions.pre_run_reload)
         self.reload_action.triggered.connect(reloader)
-        self.iface.addCustomActionForLayerType(
-            self.reload_action, "", QgsMapLayer.LayerType.VectorLayer, False)
+        self.iface.addCustomActionForLayerType(self.reload_action, '', QgsMapLayer.LayerType.VectorLayer, False)
 
         self.feedback_process = QgsFeedback()
 
@@ -189,13 +187,11 @@ class Dialog(QDialog, FORM_CLASS):
         self.label_gnu.setPixmap(QPixmap(resources_path('icons', 'gnu.png')))
 
         # Set minimum width for the menu
-        self.menu_widget.setMinimumWidth(
-            self.menu_widget.sizeHintForColumn(0) + 10)
+        self.menu_widget.setMinimumWidth(self.menu_widget.sizeHintForColumn(0) + 10)
 
         self.progress_text.setText('')
 
-        self.menu_widget.currentRowChanged['int'].connect(
-            self.stacked_panels_widget.setCurrentIndex)
+        self.menu_widget.currentRowChanged['int'].connect(self.stacked_panels_widget.setCurrentIndex)
 
         for panel in self.external_panels.values():
             panel.setup_panel()
@@ -245,8 +241,7 @@ class Dialog(QDialog, FORM_CLASS):
         f_name = split(exc_tb.tb_frame.f_code.co_filename)[1]
         _, _, tb = exc_info()
         traceback.print_tb(tb)
-        LOGGER.critical(
-            tr('A critical error occurred, this is the traceback:'))
+        LOGGER.critical(tr('A critical error occurred, this is the traceback:'))
         LOGGER.critical(exc_type)
         LOGGER.critical(f_name)
         LOGGER.critical(exception)
@@ -260,16 +255,18 @@ class Dialog(QDialog, FORM_CLASS):
             ),
             level=Qgis.MessageLevel.Critical,
             open_logs=True,
-            duration=10)
+            duration=10,
+        )
 
     def display_message_bar(
-            self,
-            title: str,
-            message: str = None,
-            level: Qgis.MessageLevel = Qgis.MessageLevel.Info,
-            duration: int = 5,
-            more_details: str = None,
-            open_logs: bool = False):
+        self,
+        title: str,
+        message: str = None,
+        level: Qgis.MessageLevel = Qgis.MessageLevel.Info,
+        duration: int = 5,
+        more_details: str = None,
+        open_logs: bool = False,
+    ):
         """Display a message.
 
         :param title: Title of the message.
@@ -299,13 +296,11 @@ class Dialog(QDialog, FORM_CLASS):
             if open_logs:
                 button.setText(tr('Open log panel'))
                 # noinspection PyUnresolvedReferences
-                button.pressed.connect(
-                    lambda: open_log_panel())
+                button.pressed.connect(lambda: open_log_panel())
             else:
                 button.setText(tr('More details'))
                 # noinspection PyUnresolvedReferences
-                button.pressed.connect(
-                    lambda: QMessageBox.information(None, title, more_details))
+                button.pressed.connect(lambda: QMessageBox.information(None, title, more_details))
 
         self.message_bar.pushWidget(widget, level, duration)
 

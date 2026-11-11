@@ -41,20 +41,21 @@ LOGGER = logging.getLogger('QuickOSM')
 
 
 def open_file(
-        dialog: QDialog = None,
-        osm_file: str = None,
-        output_geom_types: list = None,
-        white_list_column: dict = None,
-        key: Union[str, List[str]] = None,
-        layer_name: str = "OsmFile",
-        config_outputs: dict = None,
-        output_dir: str = None,
-        output_format: Format = None,
-        final_query: str = None,
-        prefix_file: str = None,
-        subset: bool = False,
-        subset_query: str = None,
-        feedback: QgsFeedback = None) -> int:
+    dialog: QDialog = None,
+    osm_file: str = None,
+    output_geom_types: list = None,
+    white_list_column: dict = None,
+    key: Union[str, List[str]] = None,
+    layer_name: str = 'OsmFile',
+    config_outputs: dict = None,
+    output_dir: str = None,
+    output_format: Format = None,
+    final_query: str = None,
+    prefix_file: str = None,
+    subset: bool = False,
+    subset_query: str = None,
+    feedback: QgsFeedback = None,
+) -> int:
     """
     Open an osm file.
 
@@ -91,7 +92,8 @@ def open_file(
         white_list_column=white_list_column,
         subset=subset,
         subset_query=subset_query,
-        feedback=feedback)
+        feedback=feedback,
+    )
 
     if dialog:
         osm_parser.signalText.connect(dialog.set_progress_text)
@@ -100,7 +102,7 @@ def open_file(
     start_time = time.time()
     layers = osm_parser.processing_parse()
     elapsed_time = time.time() - start_time
-    parser_time = time.strftime("%Hh %Mm %Ss", time.gmtime(elapsed_time))
+    parser_time = time.strftime('%Hh %Mm %Ss', time.gmtime(elapsed_time))
     LOGGER.info(f'The OSM parser took: {parser_time}')
 
     if feedback:
@@ -114,9 +116,7 @@ def open_file(
         if dialog:
             dialog.set_progress_percentage(int(i / len(layers) * 100))
         QApplication.processEvents()
-        if item['featureCount'] and (
-                LayerType(layer.capitalize()) in output_geom_types):
-
+        if item['featureCount'] and (LayerType(layer.capitalize()) in output_geom_types):
             final_layer_name = layer_name
             # If configOutputs is not None (from My Queries)
             if config_outputs:
@@ -130,7 +130,7 @@ def open_file(
             if config_outputs and config_outputs[layer]['style']:
                 new_layer.loadNamedStyle(config_outputs[layer]['style'])
             else:
-                if "colour" in item['tags']:
+                if 'colour' in item['tags']:
                     index = item['tags'].index('colour')
                     colors = new_layer.uniqueValues(index)
                     categories = []
@@ -139,15 +139,15 @@ def open_file(
                             value = ''
                         if layer in ['lines', 'multilinestrings']:
                             symbol = QgsSymbol.defaultSymbol(QgsWkbTypes.GeometryType.LineGeometry)
-                        elif layer == "points":
+                        elif layer == 'points':
                             symbol = QgsSymbol.defaultSymbol(QgsWkbTypes.GeometryType.PointGeometry)
-                        elif layer == "multipolygons":
+                        elif layer == 'multipolygons':
                             symbol = QgsSymbol.defaultSymbol(QgsWkbTypes.GeometryType.PolygonGeometry)
                         symbol.setColor(QColor(value))
                         category = QgsRendererCategory(str(value), symbol, str(value))
                         categories.append(category)
 
-                    renderer = QgsCategorizedSymbolRenderer("colour", categories)
+                    renderer = QgsCategorizedSymbolRenderer('colour', categories)
                     new_layer.setRenderer(renderer)
 
             # Add action about OpenStreetMap
@@ -156,14 +156,13 @@ def open_file(
             QgsProject.instance().addMapLayer(new_layer)
 
             if final_query:
-                QgsExpressionContextUtils.setLayerVariable(
-                    new_layer, 'quickosm_query', final_query)
+                QgsExpressionContextUtils.setLayerVariable(new_layer, 'quickosm_query', final_query)
                 actions.add_relaunch_action(new_layer, final_layer_name)
                 if dialog:
                     dialog.iface.addCustomActionForLayer(dialog.reload_action, new_layer)
 
             metadata = QgsLayerMetadata()
-            metadata.setRights([tr("© OpenStreetMap contributors")])
+            metadata.setRights([tr('© OpenStreetMap contributors')])
             metadata.setLicenses(['https://openstreetmap.org/copyright'])
             new_layer.setMetadata(metadata)
             num_layers += 1
@@ -171,12 +170,8 @@ def open_file(
     return num_layers
 
 
-def reload_query(
-        query: str,
-        layer_name: str = 'Reloaded_query',
-        dialog: QDialog = None,
-        new_file: bool = True):
-    """ Reload a query with only the query """
+def reload_query(query: str, layer_name: str = 'Reloaded_query', dialog: QDialog = None, new_file: bool = True):
+    """Reload a query with only the query"""
     # Getting the default overpass api and running the query
     server = get_setting('defaultOAPI', OVERPASS_SERVERS[0]) + 'interpreter'
 
@@ -188,30 +183,32 @@ def reload_query(
     osm_file = connexion_overpass_api.run()
 
     if new_file:
-        layer_name += "_reloaded"
+        layer_name += '_reloaded'
         return open_file(
             dialog=dialog,
             osm_file=osm_file,
             layer_name=layer_name,
-            final_query=final_query,)
+            final_query=final_query,
+        )
 
 
 def process_query(
-        dialog: QDialog = None,
-        query: str = None,
-        description: str = None,
-        area: Union[str, List[str]] = None,
-        key: Union[str, List[str]] = None,
-        value: Union[str, List[str]] = None,
-        type_multi_request: list = None,
-        bbox: QgsRectangle = None,
-        output_dir: str = None,
-        output_format: Format = None,
-        prefix_file: str = None,
-        output_geometry_types: list = None,
-        layer_name: str = "OsmQuery",
-        white_list_values: dict = None,
-        config_outputs: dict = None) -> int:
+    dialog: QDialog = None,
+    query: str = None,
+    description: str = None,
+    area: Union[str, List[str]] = None,
+    key: Union[str, List[str]] = None,
+    value: Union[str, List[str]] = None,
+    type_multi_request: list = None,
+    bbox: QgsRectangle = None,
+    output_dir: str = None,
+    output_format: Format = None,
+    prefix_file: str = None,
+    output_geometry_types: list = None,
+    layer_name: str = 'OsmQuery',
+    white_list_values: dict = None,
+    config_outputs: dict = None,
+) -> int:
     """execute a query and send the result file to open_file."""
     # Save the query in the historic
     q_manage = QueryManagement(
@@ -225,7 +222,7 @@ def process_query(
         area=area,
         bbox=bbox,
         output_geometry_types=output_geometry_types,
-        white_list_column=white_list_values
+        white_list_column=white_list_values,
     )
     q_manage.write_query_historic()
 
@@ -237,9 +234,7 @@ def process_query(
 
     # Getting the default overpass api and running the query
     server = get_setting('defaultOAPI', OVERPASS_SERVERS[0]) + 'interpreter'
-    dialog.set_progress_text(
-        tr('Downloading data from Overpass {server_name}'.format(
-            server_name=server)))
+    dialog.set_progress_text(tr('Downloading data from Overpass {server_name}'.format(server_name=server)))
     # Replace Nominatim or BBOX
     query = QueryPreparation(query, bbox, area, server)
     QApplication.processEvents()
@@ -261,29 +256,31 @@ def process_query(
         prefix_file=prefix_file,
         final_query=final_query,
         config_outputs=config_outputs,
-        feedback=dialog.feedback_process)
+        feedback=dialog.feedback_process,
+    )
 
 
 def process_quick_query(
-        dialog: QDialog = None,
-        description: str = None,
-        type_multi_request: list = None,
-        query_type: QueryType = None,
-        key: Union[str, List[str]] = None,
-        value: Union[str, List[str]] = None,
-        bbox: QgsRectangle = None,
-        area: str = None,
-        distance: int = None,
-        osm_objects: List[OsmType] = None,
-        metadata: str = 'body',
-        timeout: int = 25,
-        output_directory: str = None,
-        output_format: Format = None,
-        prefix_file: str = None,
-        layer_name: str = None,
-        white_list_values: dict = None,
-        output_geometry_types: list = None,
-        config_outputs: dict = None) -> int:
+    dialog: QDialog = None,
+    description: str = None,
+    type_multi_request: list = None,
+    query_type: QueryType = None,
+    key: Union[str, List[str]] = None,
+    value: Union[str, List[str]] = None,
+    bbox: QgsRectangle = None,
+    area: str = None,
+    distance: int = None,
+    osm_objects: List[OsmType] = None,
+    metadata: str = 'body',
+    timeout: int = 25,
+    output_directory: str = None,
+    output_format: Format = None,
+    prefix_file: str = None,
+    layer_name: str = None,
+    white_list_values: dict = None,
+    output_geometry_types: list = None,
+    config_outputs: dict = None,
+) -> int:
     """
     Generate a query and send it to process_query.
     """
@@ -300,7 +297,7 @@ def process_quick_query(
         around_distance=distance,
         osm_objects=osm_objects,
         timeout=timeout,
-        print_mode=metadata
+        print_mode=metadata,
     )
     query = query_factory.make(QueryLanguage.OQL)
     if description is None:
@@ -325,4 +322,5 @@ def process_quick_query(
         output_geometry_types=output_geometry_types,
         layer_name=layer_name,
         white_list_values=white_list_values,
-        config_outputs=config_outputs,)
+        config_outputs=config_outputs,
+    )

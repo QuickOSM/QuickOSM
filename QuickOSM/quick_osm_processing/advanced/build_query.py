@@ -1,6 +1,5 @@
 """Processing algorithm for building a query."""
 
-
 from typing import Dict
 
 try:
@@ -46,7 +45,8 @@ class BuildQueryBasedAlgorithm(QgisAlgorithm):
         return self.tr(
             'This algorithm builds a query and then encode it into the '
             'Overpass API URL. The "Download File" algorithm might be used '
-            'after that to fetch the result.')
+            'after that to fetch the result.'
+        )
 
     def flags(self):
         """Return the flags."""
@@ -75,14 +75,15 @@ class BuildQueryBasedAlgorithm(QgisAlgorithm):
             value=self.value,
             area=self.area,
             around_distance=self.distance,
-            timeout=self.timeout)
+            timeout=self.timeout,
+        )
         raw_query = query_factory.make(QueryLanguage.OQL)
         self.feedback.pushInfo(query_factory.friendly_message())
         query_preparation = QueryPreparation(
             raw_query,
             area=self.area,
             extent=self.extent,  # It must be already in 4326 when fetching parameters
-            overpass=self.server
+            overpass=self.server,
         )
         raw_query = query_preparation.prepare_query()
         url = query_preparation.prepare_url()

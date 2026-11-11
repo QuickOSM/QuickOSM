@@ -1,4 +1,5 @@
 """Set up and manage a custum table widget."""
+
 import logging
 import os
 
@@ -72,31 +73,25 @@ class TableKeyValue:
                 icon_path = self.preset_data.elements[key].icon
                 widget_item = QListWidgetItem(key)
                 if icon_path:
-                    icon_path = resources_path('icons', "josm", icon_path)
+                    icon_path = resources_path('icons', 'josm', icon_path)
                     if os.path.exists(icon_path):
                         icon = QPixmap(icon_path)
                         widget_item.setData(
-                            Qt.ItemDataRole.DecorationRole,
-                            icon.scaled(20, 20, Qt.AspectRatioMode.KeepAspectRatio)
+                            Qt.ItemDataRole.DecorationRole, icon.scaled(20, 20, Qt.AspectRatioMode.KeepAspectRatio)
                         )
                         self.preset.setItemData(
-                            k + 1, icon.scaled(20, 20, Qt.AspectRatioMode.KeepAspectRatio),
-                            Qt.ItemDataRole.DecorationRole
+                            k + 1,
+                            icon.scaled(20, 20, Qt.AspectRatioMode.KeepAspectRatio),
+                            Qt.ItemDataRole.DecorationRole,
                         )
                 self.preset_items.append(widget_item)
         self.preset.setCompleter(keys_preset_completer)
-        self.preset.completer().setCompletionMode(
-            QCompleter.CompletionMode.PopupCompletion)
-        self.preset.completer().setFilterMode(
-            Qt.MatchFlag.MatchContains
-        )
-        self.preset.completer().setCaseSensitivity(
-            Qt.CaseSensitivity.CaseInsensitive
-        )
+        self.preset.completer().setCompletionMode(QCompleter.CompletionMode.PopupCompletion)
+        self.preset.completer().setFilterMode(Qt.MatchFlag.MatchContains)
+        self.preset.completer().setCaseSensitivity(Qt.CaseSensitivity.CaseInsensitive)
 
         self.preset.activated.connect(self.choice_preset)
-        self.preset.lineEdit().setPlaceholderText(
-            tr('Not mandatory. Ex: bakery'))
+        self.preset.lineEdit().setPlaceholderText(tr('Not mandatory. Ex: bakery'))
 
         osm_keys = parser.osm_keys_values()
         self.set_couple(osm_keys)
@@ -145,8 +140,11 @@ class TableKeyValue:
         """Set up the choice of multi request type for a row in the table widget."""
         type_operation = QComboBox()
         type_operation.setToolTip(
-            tr('Set the type of multi-request. '
-                '"And" verify both conditions. "Or" verify either of the conditions.'))
+            tr(
+                'Set the type of multi-request. '
+                '"And" verify both conditions. "Or" verify either of the conditions.'
+            )
+        )
         type_operation.addItem(MultiType.AND.value, MultiType.AND)
         type_operation.addItem(MultiType.OR.value, MultiType.OR)
 
@@ -164,14 +162,10 @@ class TableKeyValue:
         keys_completer = QCompleter(self.keys)
         key_field.addItems(self.keys)
         key_field.setCompleter(keys_completer)
-        key_field.completer().setCompletionMode(
-            QCompleter.CompletionMode.PopupCompletion)
-        key_field.completer().setCaseSensitivity(
-            Qt.CaseSensitivity.CaseInsensitive
-        )
+        key_field.completer().setCompletionMode(QCompleter.CompletionMode.PopupCompletion)
+        key_field.completer().setCaseSensitivity(Qt.CaseSensitivity.CaseInsensitive)
 
-        key_field.lineEdit().setPlaceholderText(
-            self.all_keys_placeholder)
+        key_field.lineEdit().setPlaceholderText(self.all_keys_placeholder)
 
         row = partial(self.key_edited, None)
         key_field.editTextChanged.connect(row)
@@ -185,8 +179,7 @@ class TableKeyValue:
         value_field.setToolTip(tr('An OSM value to fetch. If empty, all values will be fetched.'))
         value_field.installEventFilter(self.dialog)
 
-        value_field.lineEdit().setPlaceholderText(
-            self.all_values_placeholder)
+        value_field.lineEdit().setPlaceholderText(self.all_values_placeholder)
 
         value_field.editTextChanged.connect(self.update_friendly)
 

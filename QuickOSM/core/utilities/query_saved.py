@@ -1,4 +1,5 @@
 """Manage the saved query in history or preset."""
+
 import json
 import logging
 import os
@@ -29,20 +30,20 @@ class QueryManagement:
     """Manage the saved query in history or preset."""
 
     def __init__(
-            self,
-            query: Union[str, List[str]] = '',
-            name: str = '',
-            description: Union[str, List[str]] = '',
-            advanced: bool = False,
-            type_multi_request: list = None,
-            keys: Union[str, List[str]] = None,
-            values: Union[str, List[str]] = None,
-            area: Union[str, List[str]] = None,
-            bbox: Union[QgsRectangle, List[QgsRectangle]] = None,
-            output_geometry_types: list = None,
-            white_list_column: dict = None,
-            output_directory: str = None,
-            output_format: Format = None
+        self,
+        query: Union[str, List[str]] = '',
+        name: str = '',
+        description: Union[str, List[str]] = '',
+        advanced: bool = False,
+        type_multi_request: list = None,
+        keys: Union[str, List[str]] = None,
+        values: Union[str, List[str]] = None,
+        area: Union[str, List[str]] = None,
+        bbox: Union[QgsRectangle, List[QgsRectangle]] = None,
+        output_geometry_types: list = None,
+        white_list_column: dict = None,
+        output_directory: str = None,
+        output_format: Format = None,
     ):
         """Constructor"""
         if isinstance(query, str):
@@ -160,7 +161,7 @@ class QueryManagement:
         files = listdir(preset_folder)
         nb_files = len(files)
 
-        self.name[0] = name_preset if name_preset != "OsmQuery" else f'OsmQuery_{nb_files}'
+        self.name[0] = name_preset if name_preset != 'OsmQuery' else f'OsmQuery_{nb_files}'
         final_name = self.name[0] + '.json'
 
         new_file = join(preset_folder, self.name[0], final_name)
@@ -184,7 +185,7 @@ class QueryManagement:
             'output_geom_type': self.output_geom_type,
             'white_list_column': self.white_list,
             'output_directory': self.output_directory,
-            'output_format': self.output_format
+            'output_format': self.output_format,
         }
 
         with open(file, 'w', encoding='utf8') as json_file:
@@ -211,7 +212,7 @@ class QueryManagement:
                     files = os.listdir(join(preset_folder, file))
                     files_qml = filter(lambda file_ext: file_ext[-4:] == '.qml', files)
                     for file_qml in files_qml:
-                        end_file_name = file_qml[len(file):]
+                        end_file_name = file_qml[len(file) :]
                         new_file_qml = join(join(preset_folder, new_name), new_name + end_file_name)
                         old_file_qml = join(join(preset_folder, file), file + 'qml')
                         rename(old_file_qml, new_file_qml)
@@ -293,7 +294,7 @@ class QueryManagement:
         files = os.listdir(old_folder)
         files_qml = filter(lambda file_ext: file_ext[-4:] == '.qml', files)
         for file in files_qml:
-            end_file_name = file[len(former_name):]
+            end_file_name = file[len(former_name) :]
             new_file_qml = join(new_folder, new_name + end_file_name)
             old_file_qml = join(old_folder, file)
             rename(old_file_qml, new_file_qml)

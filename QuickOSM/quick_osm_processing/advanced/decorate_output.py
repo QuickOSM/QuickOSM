@@ -64,18 +64,14 @@ class DecorateLayerAlgorithm(QgisAlgorithm):
 
     def add_parameters(self):
         """Set up the parameters."""
-        param = QgsProcessingParameterVectorLayer(
-            self.LAYER, tr('Layer')
-        )
+        param = QgsProcessingParameterVectorLayer(self.LAYER, tr('Layer'))
         help_string = tr('Path where the file will be download.')
         param.setHelp(help_string)
         self.addParameter(param)
 
     def add_outputs(self):
         """Set up the outputs of the algorithm."""
-        output = QgsProcessingOutputVectorLayer(
-            self.OUTPUT_LAYER, tr('Output layer')
-        )
+        output = QgsProcessingOutputVectorLayer(self.OUTPUT_LAYER, tr('Output layer'))
         self.addOutput(output)
 
     def fetch_based_parameters(self, parameters, context):
@@ -99,7 +95,7 @@ class DecorateLayerAlgorithm(QgisAlgorithm):
 
         self.feedback.pushInfo('Write the metadata of the layer.')
         metadata = QgsLayerMetadata()
-        metadata.setRights([tr("© OpenStreetMap contributors")])
+        metadata.setRights([tr('© OpenStreetMap contributors')])
         metadata.setLicenses(['https://openstreetmap.org/copyright'])
         self.layer.setMetadata(metadata)
 
@@ -114,12 +110,7 @@ class SetColoringPostProcessor(QgsProcessingLayerPostProcessorInterface):
 
     instance = None
     fields = []
-    layer_type_dict = {
-        'points': 1,
-        'lines': 2,
-        'multilinestrings': 5,
-        'multipolygons': 6
-    }
+    layer_type_dict = {'points': 1, 'lines': 2, 'multilinestrings': 5, 'multipolygons': 6}
 
     def postProcessLayer(self, layer, context, feedback):
         """Run the coloring process"""
@@ -146,7 +137,7 @@ class SetColoringPostProcessor(QgsProcessingLayerPostProcessorInterface):
                 category = QgsRendererCategory(str(value), symbol, str(value))
                 categories.append(category)
 
-            renderer = QgsCategorizedSymbolRenderer("colour", categories)
+            renderer = QgsCategorizedSymbolRenderer('colour', categories)
             layer.setRenderer(renderer)
 
             layer.triggerRepaint()

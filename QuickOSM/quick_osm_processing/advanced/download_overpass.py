@@ -45,17 +45,14 @@ class DownloadOverpassUrl(QgisAlgorithm):
         return self.tr(
             'Like the native QGIS File Downloader algorithm, this algorithm '
             'will download an URL but it will also perform a OSM integrity '
-            'check at the end of the download.')
+            'check at the end of the download.'
+        )
 
     def initAlgorithm(self, config=None):
         """Set up of the algorithm."""
-        self.addParameter(
-            QgsProcessingParameterString(
-                self.URL, self.tr('URL, with the query encoded')))
+        self.addParameter(QgsProcessingParameterString(self.URL, self.tr('URL, with the query encoded')))
 
-        self.addOutput(
-            QgsProcessingOutputFile(
-                self.OUTPUT, self.tr('Output')))
+        self.addOutput(QgsProcessingOutputFile(self.OUTPUT, self.tr('Output')))
 
     def processAlgorithm(self, parameters, context, feedback) -> dict:
         """Run the algorithm."""

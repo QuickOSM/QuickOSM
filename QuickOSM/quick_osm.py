@@ -50,8 +50,7 @@ class QuickOSMPlugin:
 
         setup_logger(plugin_name())
 
-        locale, file_path = setup_translation(
-            folder=plugin_path("i18n"), file_pattern="quickosm_{}.qm")
+        locale, file_path = setup_translation(folder=plugin_path('i18n'), file_pattern='quickosm_{}.qm')
         if file_path:
             # LOGGER.info('Translation to {}'.format(file_path))
             self.translator = QTranslator()
@@ -74,7 +73,7 @@ class QuickOSMPlugin:
 
     @staticmethod
     def extract_zip_file():
-        """ Extract or not the ZIP resources/i18n. """
+        """Extract or not the ZIP resources/i18n."""
         # resources/i18n is created with plugin installation
 
         preset_translation_path = join(resources_path(), 'i18n')
@@ -122,8 +121,7 @@ class QuickOSMPlugin:
                                     # Ticket #418
                                     os.rename(file_path, new_file_path)
                         except FileExistsError:
-                            LOGGER.critical(
-                                f'Error about existing file when extracting the ZIP file about {file}')
+                            LOGGER.critical(f'Error about existing file when extracting the ZIP file about {file}')
             else:
                 os.mkdir(preset_translation_path)
 
@@ -162,9 +160,8 @@ class QuickOSMPlugin:
 
         # Action JOSM
         self.josm_action = QAction(
-            QIcon(resources_path('icons', 'josm_icon.svg')),
-            tr('JOSM Remote'),
-            self.iface.mainWindow())
+            QIcon(resources_path('icons', 'josm_icon.svg')), tr('JOSM Remote'), self.iface.mainWindow()
+        )
         self.josm_action.triggered.connect(self.josm_remote)
         self.toolbar.addAction(self.josm_action)
 
@@ -172,7 +169,7 @@ class QuickOSMPlugin:
         self.quickosm_menu.addAction(self.main_window_action)
         self.quickosm_menu.addAction(self.josm_action)
 
-        LOGGER.info(f"Plugin loaded with version : {version()}")
+        LOGGER.info(f'Plugin loaded with version : {version()}')
 
     def unload(self):
         """Unload the user interface."""
@@ -206,11 +203,13 @@ class QuickOSMPlugin:
         flag, title, error = check_processing_enable()
         if not flag:
             error_dialog = QMessageBox(
-                QMessageBox.Icon.Critical, title, error, QMessageBox.StandardButton.Ok, self.iface.mainWindow())
+                QMessageBox.Icon.Critical, title, error, QMessageBox.StandardButton.Ok, self.iface.mainWindow()
+            )
             error_dialog.exec()
             return
 
         from QuickOSM.ui.dialog import Dialog
+
         dialog = Dialog()
         self.open_copyright_message(dialog)
         dialog.exec()
@@ -221,26 +220,29 @@ class QuickOSMPlugin:
 
         def read_copyright():
             open_webpage('https://www.openstreetmap.org/copyright')
-            set_setting("copyright_dialog", "OpenStreetMap")
+            set_setting('copyright_dialog', 'OpenStreetMap')
 
         def know_copyright():
-            set_setting("copyright_dialog", "OpenStreetMap")
+            set_setting('copyright_dialog', 'OpenStreetMap')
 
-        if not get_setting("copyright_dialog"):
-
+        if not get_setting('copyright_dialog'):
             message = QMessageBox(dialog)
-            text = tr(
-                'OpenStreetMap® is open data, licensed under the'
-                ' Open Data Commons Open Database License (ODbL) '
-                'by the OpenStreetMap Foundation.'
-            ) + '\n'
-            text += tr(
-                'The Foundation requires that you use the credit '
-                '“© OpenStreetMap contributors” on any product using OSM data.'
-            ) + '\n'
-            text += tr(
-                'You should read https://www.openstreetmap.org/copyright'
+            text = (
+                tr(
+                    'OpenStreetMap® is open data, licensed under the'
+                    ' Open Data Commons Open Database License (ODbL) '
+                    'by the OpenStreetMap Foundation.'
+                )
+                + '\n'
             )
+            text += (
+                tr(
+                    'The Foundation requires that you use the credit '
+                    '“© OpenStreetMap contributors” on any product using OSM data.'
+                )
+                + '\n'
+            )
+            text += tr('You should read https://www.openstreetmap.org/copyright')
             message.setText(text)
             message.setIcon(QMessageBox.Icon.Question)
             no_button = QPushButton(tr('I understand the copyrights, access to the plugin'), message)

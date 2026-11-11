@@ -6,6 +6,7 @@ from enum import Enum, unique
 @unique
 class Visibility(Enum):
     """Visibility of actions."""
+
     Canvas = 'Canvas'
     """Canvas"""
 
@@ -22,6 +23,7 @@ class Visibility(Enum):
 @unique
 class SaveType(Enum):
     """Type of save for saving a query."""
+
     New = 'Create new'
     """Create a new query"""
 

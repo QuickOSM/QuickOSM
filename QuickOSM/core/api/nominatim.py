@@ -19,7 +19,6 @@ LOGGER = logging.getLogger('QuickOSM')
 
 
 class Nominatim(Downloader):
-
     """Manage connexion to Nominatim."""
 
     def __init__(self, url: str = None):
@@ -30,8 +29,7 @@ class Nominatim(Downloader):
         """
         super().__init__(url)
 
-        temporary = QTemporaryFile(
-            os.path.join(QDir.tempPath(), 'request-XXXXXX.json'))
+        temporary = QTemporaryFile(os.path.join(QDir.tempPath(), 'request-XXXXXX.json'))
         temporary.open()
         self.result_path = temporary.fileName()
         temporary.close()

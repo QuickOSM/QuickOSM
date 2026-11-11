@@ -17,7 +17,6 @@ A pull request is more than welcome if you want to add your server in QuickOSM
 core by updating this list below.
 """
 
-
 # The list is from the OSM wiki page
 # https://wiki.openstreetmap.org/wiki/Overpass_API
 # Updated 2023-03-29

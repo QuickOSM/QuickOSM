@@ -33,7 +33,7 @@ def plugin_name():
     :rtype: basestring
     """
     metadata = metadata_config()
-    name = metadata["general"]["name"]
+    name = metadata['general']['name']
     return name
 
 
@@ -43,7 +43,7 @@ def metadata_config() -> configparser:
     :return: The config parser object.
     :rtype: ConfigParser
     """
-    path = plugin_path("metadata.txt")
+    path = plugin_path('metadata.txt')
     config = configparser.ConfigParser()
     config.read(path, encoding='utf8')
     return config
@@ -61,7 +61,7 @@ def plugin_test_data_path(*args, copy=False):
     :return: Absolute path to the resources folder.
     :rtype: str
     """
-    path = abspath(abspath(join(plugin_path(), "test", "data")))
+    path = abspath(abspath(join(plugin_path(), 'test', 'data')))
     for item in args:
         path = abspath(join(path, item))
 
@@ -82,7 +82,7 @@ def resources_path(*args):
     :return: Absolute path to the resources folder.
     :rtype: str
     """
-    path = abspath(abspath(join(plugin_path(), "resources")))
+    path = abspath(abspath(join(plugin_path(), 'resources')))
     for item in args:
         path = abspath(join(path, item))
 
@@ -97,5 +97,5 @@ def load_ui(*args):
 
     :return: Compiled UI file.
     """
-    ui_class, _ = uic.loadUiType(resources_path("ui", *args))
+    ui_class, _ = uic.loadUiType(resources_path('ui', *args))
     return ui_class
