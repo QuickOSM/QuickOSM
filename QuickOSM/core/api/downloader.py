@@ -6,6 +6,7 @@ import os
 from typing import Optional
 
 from qgis.core import Qgis, QgsFileDownloader
+from qgis.PyQt import sip
 from qgis.PyQt.QtCore import QByteArray, QEventLoop, QUrl, QUrlQuery
 
 LOGGER = logging.getLogger('QuickOSM')
@@ -23,8 +24,12 @@ class Downloader:
         self.result_path = None
         self.errors = []
 
-    def error(self, messages: str):
-        """Store the messages error"""
+    def error(self, messages: list[str]):
+        """Store the messages error.
+
+        It's called by a Qt signal, so it must not raise an exception:
+        it would not reach the caller of download().
+        """
         self.errors = messages
 
     @staticmethod
@@ -39,6 +44,7 @@ class Downloader:
 
     def download(self, get=False):
         """Download the data"""
+        self.errors = []
         if os.getenv('CI', False) or get:
             # On CI for testing,
             # With the mocked web server, the switch to POST doesn't work well for now...
@@ -65,6 +71,13 @@ class Downloader:
                 httpMethod=Qgis.HttpMethod.Post,
                 data=QByteArray(str.encode(data)),
             )
+        # QgsFileDownloader deletes itself with deleteLater() when the download is finished.
+        # It must not be owned by Python too, otherwise it's destroyed as soon as this method
+        # returns: it aborts the network reply while some of its events are still pending,
+        # and QGIS crashes when they are processed by the next event loop.
+        # https://github.com/QuickOSM/QuickOSM/issues/573
+        sip.transferto(downloader, None)
+
         loop = QEventLoop()
         downloader.downloadExited.connect(loop.quit)
         downloader.downloadError.connect(self.error)

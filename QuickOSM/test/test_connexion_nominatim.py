@@ -4,6 +4,7 @@ from qgis.testing import unittest
 
 from QuickOSM.core.api.nominatim import Nominatim
 from QuickOSM.core.exceptions import (
+    NetWorkErrorException,
     NominatimAreaException,
     NominatimBadRequest,
 )
@@ -24,6 +25,20 @@ class TestNominatim(unittest.TestCase):
             nominatim.query('')
 
         self.assertEqual(str(error.exception), 'Nominatim hasn\'t found any data for an area called "".')
+
+    def test_network_error(self):
+        """Test a network error, the exception must reach the caller.
+
+        It was raised in a Qt slot, so it was lost.
+        """
+        # Nothing is listening on this port
+        nominatim = Nominatim('http://127.0.0.1:9/search?')
+
+        for _ in range(2):
+            with self.assertRaises(NetWorkErrorException) as error:
+                nominatim.get_first_polygon_from_query('Montpellier')
+
+            self.assertIn('Nominatim API', str(error.exception))
 
     def test_wrong_request_area(self):
         """Test wrong osm_id request.
