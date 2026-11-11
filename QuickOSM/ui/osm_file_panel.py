@@ -136,7 +136,7 @@ class OsmFilePanel(BaseProcessingPanel, TableKeyValue):
         if key:
 
             keys = []
-            for k, v in zip(key, val):
+            for k, v in zip(key, val, strict=False):
                 if v:
                     keys.append(f'\"{k}\"=\'{v}\'')
                 else:

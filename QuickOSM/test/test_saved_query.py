@@ -234,7 +234,7 @@ class TestBookmarkQuery(unittest.TestCase):
         self.assertEqual(saved['values'][0], values)
 
         reopened = EditPreset(self.dialog, saved)
-        for row, (key, value) in enumerate(zip(keys, values)):
+        for row, (key, value) in enumerate(zip(keys, values, strict=True)):
             self.assertEqual(
                 reopened.table_keys_values_eb.cellWidget(row, 1).currentText(), key)
             self.assertEqual(

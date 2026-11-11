@@ -200,7 +200,7 @@ class QueryFactory:
                 int(self._distance_around)
             except ValueError:
                 raise QueryFactoryException(
-                    tr('Wrong distance parameter.'))
+                    tr('Wrong distance parameter.')) from None
 
         if self._distance_around and self._query_type == QueryType.InArea:
             raise QueryFactoryException(
@@ -515,7 +515,7 @@ class QueryFactory:
         if key:
 
             keys = []
-            for k, v in zip(key, val):
+            for k, v in zip(key, val, strict=False):
                 if v:
                     keys.append(f'\'{k}\'=\'{v}\'')
                 else:

@@ -457,7 +457,8 @@ class QuickQueryPanel(BaseOverpassPanel, TableKeyValue):
         # Transfer each output with zip
         check_boxes = zip(
             self.dialog.output_buttons[Panels.QuickQuery],
-            self.dialog.output_buttons[Panels.Query])
+            self.dialog.output_buttons[Panels.Query],
+            strict=False)
         for couple in check_boxes:
             couple[1].setChecked(couple[0].isChecked())
 

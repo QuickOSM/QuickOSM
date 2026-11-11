@@ -1,0 +1,35 @@
+[tool.qgis-plugin-ci]
+plugin_path = "QuickOSM"
+github_organization_slug = "QuickOSM"
+project_slug = "QuickOSM"
+transifex_organization = "quickosm"
+transifex_project = "gui"
+transifex_resource = "quickosm"
+transifex_coordinator = "etrimaille"
+
+[tool.ruff]
+line-length = 115
+target-version = "py310"
+extend-exclude = [
+    "QuickOSM/test/mocked_web_server.py",
+    "x_test*.py",
+]
+
+[tool.ruff.lint]
+select = [
+    "E",    # pycodestyle errors
+    "W",    # pycodestyle warnings
+    "F",    # pyflakes
+    "B",    # flake8-bugbear
+    "A",    # flake8-builtins
+    "I",    # isort
+    "TID",  # flake8-tidy-imports, for absolute imports
+    "UP031",  # no printf-style formatting, like flake8-pep3101
+]
+
+[tool.ruff.lint.flake8-tidy-imports]
+ban-relative-imports = "all"
+
+[tool.ruff.lint.isort]
+known-first-party = ["QuickOSM"]
+lines-between-types = 1
