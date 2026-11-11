@@ -1,21 +1,25 @@
 #!/usr/bin/env bash
+# Generate the Processing documentation in docs/processing, used by the mkdocs website.
+# QGIS 4.2 minimum, e.g. ./processing_doc.sh or QGIS_VERSION=4.4 ./processing_doc.sh
+set -e
+
 export $(grep -v '^#' .env | xargs)
 
-#xhost +
+QGIS_VERSION=${QGIS_VERSION:-4.2}
+CONTAINER=qgis-processing-doc
 
-docker run -d \
-  --name qgis-testing-environment \
-  -v  $(pwd)/../${PLUGIN_NAME}:/tests_directory/${PLUGIN_NAME} \
-  -v  $(pwd)/../docs/processing:/processing \
-  -e DISPLAY=:99 \
-  qgis/qgis:release-3_16
+docker run -d -t \
+  --name ${CONTAINER} \
+  -v "$(pwd)/../${PLUGIN_NAME}:/tests_directory/${PLUGIN_NAME}" \
+  -v "$(pwd)/processing_doc.py:/processing_doc.py:ro" \
+  -v "$(pwd)/../docs/processing:/output" \
+  -e QT_QPA_PLATFORM=offscreen \
+  qgis/qgis:${QGIS_VERSION}
 
-sleep 10
+trap 'docker rm -f ${CONTAINER} > /dev/null' EXIT
 
-echo "Setting up"
-docker exec -t qgis-testing-environment sh -c "qgis_setup.sh ${PLUGIN_NAME}"
-docker exec -t qgis-testing-environment sh \
-  -c "qgis_testrunner.sh ${PLUGIN_NAME}.qgis_plugin_tools.infrastructure.doc_processing.generate_processing_doc"
+echo "Generating the Processing documentation with QGIS ${QGIS_VERSION}"
+docker exec -t ${CONTAINER} sh -c 'PYTHONPATH=/tests_directory:${PYTHONPATH} python3 /processing_doc.py /output'
 
-docker kill qgis-testing-environment
-docker rm qgis-testing-environment
+# Files are written by root in the container
+docker exec -t ${CONTAINER} chown -R "$(id -u):$(id -g)" /output
