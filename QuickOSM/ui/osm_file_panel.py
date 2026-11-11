@@ -24,7 +24,6 @@ LOGGER = logging.getLogger('QuickOSM')
 
 
 class OsmFilePanel(BaseProcessingPanel, TableKeyValue):
-
     """Final implementation for the panel."""
 
     def __init__(self, dialog: QDialog):
@@ -80,9 +79,9 @@ class OsmFilePanel(BaseProcessingPanel, TableKeyValue):
             self.dialog.output_directory_f.setEnabled(False)
             self.dialog.combo_format_f.setEnabled(False)
             self.dialog.line_file_prefix_file.setEnabled(False)
-            run_possible = \
-                not self.dialog.osm_conf.lineEdit().isNull() or \
-                bool(self.dialog.osm_conf.lineEdit().placeholderText())
+            run_possible = not self.dialog.osm_conf.lineEdit().isNull() or bool(
+                self.dialog.osm_conf.lineEdit().placeholderText()
+            )
             self.dialog.button_run_file.setEnabled(osm_file and run_possible)
         elif self.dialog.radio_selection_keys.isChecked():
             self.dialog.table_keys_values_f.setEnabled(True)
@@ -106,8 +105,7 @@ class OsmFilePanel(BaseProcessingPanel, TableKeyValue):
         if conf:
             properties['osm_conf'] = conf
         else:
-            properties['osm_conf'] = (
-                self.dialog.osm_conf.lineEdit().placeholderText())
+            properties['osm_conf'] = self.dialog.osm_conf.lineEdit().placeholderText()
 
         properties['subset'] = self.dialog.radio_selection_keys.isChecked()
         if properties['subset']:
@@ -115,11 +113,11 @@ class OsmFilePanel(BaseProcessingPanel, TableKeyValue):
         properties['load_only'] = self.dialog.radio_osm_conf.isChecked()
 
         if not isfile(properties['osm_file']):
-            raise FileDoesntExistException(suffix="*.osm or *.pbf")
+            raise FileDoesntExistException(suffix='*.osm or *.pbf')
 
         if properties['load_only']:
             if not isfile(properties['osm_conf']):
-                raise FileDoesntExistException(suffix="*.ini")
+                raise FileDoesntExistException(suffix='*.ini')
 
         return properties
 
@@ -134,13 +132,12 @@ class OsmFilePanel(BaseProcessingPanel, TableKeyValue):
         multi_keys = len(key) > 1
 
         if key:
-
             keys = []
             for k, v in zip(key, val, strict=False):
                 if v:
-                    keys.append(f'\"{k}\"=\'{v}\'')
+                    keys.append(f'"{k}"=\'{v}\'')
                 else:
-                    keys.append(f'\"{k}\"')
+                    keys.append(f'"{k}"')
 
             if multi_keys:
                 type_multi = properties['type_multi_request']
@@ -190,10 +187,8 @@ class OsmFilePanel(BaseProcessingPanel, TableKeyValue):
             # Change in osm_file_dialog.py L131 too
             output_geom_legacy = [layer.value.lower() for layer in properties['outputs']]
             osm_parser = OsmParser(
-                properties['osm_file'],
-                load_only=True,
-                osm_conf=properties['osm_conf'],
-                layers=output_geom_legacy)
+                properties['osm_file'], load_only=True, osm_conf=properties['osm_conf'], layers=output_geom_legacy
+            )
             layers = osm_parser.processing_parse()
             for item in layers.values():
                 # noinspection PyArgumentList
@@ -209,12 +204,9 @@ class OsmFilePanel(BaseProcessingPanel, TableKeyValue):
                 output_format=properties['output_format'],
                 prefix_file=properties['prefix_file'],
                 subset=True,
-                subset_query=sql_query
+                subset_query=sql_query,
             )
-            self.dialog.display_message_bar(
-                tr('Successful query'),
-                level=Qgis.MessageLevel.Success,
-                duration=5)
+            self.dialog.display_message_bar(tr('Successful query'), level=Qgis.MessageLevel.Success, duration=5)
         else:
             open_file(
                 dialog=self.dialog,
@@ -222,8 +214,6 @@ class OsmFilePanel(BaseProcessingPanel, TableKeyValue):
                 output_geom_types=properties['outputs'],
                 output_dir=properties['output_directory'],
                 output_format=properties['output_format'],
-                prefix_file=properties['prefix_file'])
-            self.dialog.display_message_bar(
-                tr('Successful query'),
-                level=Qgis.MessageLevel.Success,
-                duration=5)
+                prefix_file=properties['prefix_file'],
+            )
+            self.dialog.display_message_bar(tr('Successful query'), level=Qgis.MessageLevel.Success, duration=5)

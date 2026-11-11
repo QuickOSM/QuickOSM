@@ -16,7 +16,7 @@ class TestPresetParser(unittest.TestCase):
         self.data = col.namedtuple('data', ['type', 'icon', 'ancestors', 'heirs'])
 
     def test_parser_simple_files(self):
-        """ Test if the parser return the format expected"""
+        """Test if the parser return the format expected"""
 
         # Simple file 1 group 1 item
         xml_template = (
@@ -30,14 +30,8 @@ class TestPresetParser(unittest.TestCase):
         )
         expected_dict_item = {'route': {'foo': 'bar'}}
         expected_dict_element = {
-            'Highways/route': self.data(
-                type='item', icon='',
-                ancestors=['Highways'], heirs=['route']
-            ),
-            'Highways': self.data(
-                type='group', icon='',
-                ancestors=[], heirs=['route']
-            )
+            'Highways/route': self.data(type='item', icon='', ancestors=['Highways'], heirs=['route']),
+            'Highways': self.data(type='group', icon='', ancestors=[], heirs=['route']),
         }
         self.parser.file = xml.parseString(xml_template)
         result = self.parser.parser()
@@ -57,23 +51,11 @@ class TestPresetParser(unittest.TestCase):
             '</group>'
             '</presets>'
         )
-        expected_dict_item = {
-            'route': {'foo': 'bar'},
-            'railway': {'bar': 'foo'}
-        }
+        expected_dict_item = {'route': {'foo': 'bar'}, 'railway': {'bar': 'foo'}}
         expected_dict_element = {
-            'Highways/route': self.data(
-                type='item', icon='',
-                ancestors=['Highways'], heirs=['route']
-            ),
-            'Highways/railway': self.data(
-                type='item', icon='',
-                ancestors=['Highways'], heirs=['railway']
-            ),
-            'Highways': self.data(
-                type='group', icon='',
-                ancestors=[], heirs=['route', 'railway']
-            )
+            'Highways/route': self.data(type='item', icon='', ancestors=['Highways'], heirs=['route']),
+            'Highways/railway': self.data(type='item', icon='', ancestors=['Highways'], heirs=['railway']),
+            'Highways': self.data(type='group', icon='', ancestors=[], heirs=['route', 'railway']),
         }
         self.parser.file = xml.parseString(xml_template)
         result = self.parser.parser()
@@ -81,7 +63,7 @@ class TestPresetParser(unittest.TestCase):
         self.assertEqual(expected_dict_element, result.elements)
 
     def test_parser_complex_files(self):
-        """ Test if the parser return the format expected"""
+        """Test if the parser return the format expected"""
 
         # Complex file 3 groups, 2 groups interlocked, multiple items
         xml_template = (
@@ -103,11 +85,7 @@ class TestPresetParser(unittest.TestCase):
             '</group>'
             '</presets>'
         )
-        expected_dict_item = {
-            'route': {'foo': 'bar'},
-            'railway': {'bar': 'foo'},
-            'tramway': {'foobar': 'barfoo'}
-        }
+        expected_dict_item = {'route': {'foo': 'bar'}, 'railway': {'bar': 'foo'}, 'tramway': {'foobar': 'barfoo'}}
         expected_dict_element = {
             'country/Highways/route': self.data(
                 type='item', icon='', ancestors=['country', 'Highways'], heirs=['route']
@@ -121,12 +99,8 @@ class TestPresetParser(unittest.TestCase):
             'country/Road/tramway': self.data(
                 type='item', icon='', ancestors=['country', 'Road'], heirs=['tramway']
             ),
-            'country/Road': self.data(
-                type='group', icon='', ancestors=['country'], heirs=['tramway']
-            ),
-            'country': self.data(
-                type='group', icon='', ancestors=[], heirs=['route', 'railway', 'tramway']
-            )
+            'country/Road': self.data(type='group', icon='', ancestors=['country'], heirs=['tramway']),
+            'country': self.data(type='group', icon='', ancestors=[], heirs=['route', 'railway', 'tramway']),
         }
         self.parser.file = xml.parseString(xml_template)
         result = self.parser.parser()
@@ -163,7 +137,7 @@ class TestPresetParser(unittest.TestCase):
             'route': {'foo': 'bar', 'foofoo': 'barbar'},
             'railway': {'bar': 'foo'},
             'tramway': {'foobar': 'barfoo'},
-            'boat': {'barfoo': 'foobar'}
+            'boat': {'barfoo': 'foobar'},
         }
         expected_dict_element = {
             'country/Highways/route': self.data(
@@ -178,18 +152,10 @@ class TestPresetParser(unittest.TestCase):
             'country/Road/tramway': self.data(
                 type='item', icon='', ancestors=['country', 'Road'], heirs=['tramway']
             ),
-            'country/Road': self.data(
-                type='group', icon='', ancestors=['country'], heirs=['tramway']
-            ),
-            'country': self.data(
-                type='group', icon='', ancestors=[], heirs=['route', 'railway', 'tramway']
-            ),
-            'River/boat': self.data(
-                type='item', icon='', ancestors=['River'], heirs=['boat']
-            ),
-            'River': self.data(
-                type='group', icon='', ancestors=[], heirs=['boat']
-            )
+            'country/Road': self.data(type='group', icon='', ancestors=['country'], heirs=['tramway']),
+            'country': self.data(type='group', icon='', ancestors=[], heirs=['route', 'railway', 'tramway']),
+            'River/boat': self.data(type='item', icon='', ancestors=['River'], heirs=['boat']),
+            'River': self.data(type='group', icon='', ancestors=[], heirs=['boat']),
         }
         self.parser.file = xml.parseString(xml_template)
         result = self.parser.parser()
@@ -197,7 +163,7 @@ class TestPresetParser(unittest.TestCase):
         self.assertEqual(expected_dict_element, result.elements)
 
     def test_retrieval_couples(self):
-        """ Test if we can retrieve the key/value couples """
+        """Test if we can retrieve the key/value couples"""
 
         xml_template = (
             '<presets>'

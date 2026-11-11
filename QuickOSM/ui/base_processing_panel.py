@@ -1,4 +1,5 @@
 """Panel OSM Processing base class."""
+
 from os.path import isdir
 
 from qgis.core import QgsFeedback
@@ -19,7 +20,6 @@ from QuickOSM.ui.base_panel import BasePanel
 
 
 class BaseProcessingPanel(BasePanel):
-
     """Base for processing panel.
 
     This panels will have a run button.
@@ -69,23 +69,18 @@ class BaseProcessingPanel(BasePanel):
     def setup_panel(self):
         """Function to set custom UI for some panels."""
         if self.dialog.output_directories[self.panel]:
-            self.dialog.output_directories[self.panel].lineEdit().setPlaceholderText(
-                tr('Save to temporary file'))
-            self.dialog.output_directories[self.panel].setStorageMode(
-                QgsFileWidget.StorageMode.GetDirectory)
+            self.dialog.output_directories[self.panel].lineEdit().setPlaceholderText(tr('Save to temporary file'))
+            self.dialog.output_directories[self.panel].setStorageMode(QgsFileWidget.StorageMode.GetDirectory)
             self.dialog.output_directories[self.panel].setDialogTitle(tr('Select a directory'))
 
-            self.dialog.output_format[self.panel].addItem(
-                Format.GeoPackage.value.label, Format.GeoPackage)
-            self.dialog.output_format[self.panel].addItem(
-                Format.GeoJSON.value.label, Format.GeoJSON)
-            self.dialog.output_format[self.panel].addItem(
-                Format.Shapefile.value.label, Format.Shapefile)
-            self.dialog.output_format[self.panel].addItem(
-                Format.Kml.value.label, Format.Kml)
+            self.dialog.output_format[self.panel].addItem(Format.GeoPackage.value.label, Format.GeoPackage)
+            self.dialog.output_format[self.panel].addItem(Format.GeoJSON.value.label, Format.GeoJSON)
+            self.dialog.output_format[self.panel].addItem(Format.Shapefile.value.label, Format.Shapefile)
+            self.dialog.output_format[self.panel].addItem(Format.Kml.value.label, Format.Kml)
 
             self.dialog.output_directories[self.panel].lineEdit().textChanged.connect(
-                self.disable_enable_format_prefix)
+                self.disable_enable_format_prefix
+            )
             self.disable_enable_format_prefix()
 
         self.dialog.execute_buttons[self.panel].setCurrentIndex(0)
@@ -170,14 +165,11 @@ class BaseProcessingPanel(BasePanel):
         if not properties['outputs']:
             raise OutPutGeomTypesException
 
-        properties['output_directory'] = (
-            self.dialog.output_directories[self.panel].filePath())
-        properties['output_format'] = (
-            self.dialog.output_format[self.panel].currentData())
+        properties['output_directory'] = self.dialog.output_directories[self.panel].filePath()
+        properties['output_format'] = self.dialog.output_format[self.panel].currentData()
         properties['prefix_file'] = self.dialog.prefix_edits[self.panel].text()
 
-        if properties['output_directory'] and not (
-                isdir(properties['output_directory'])):
+        if properties['output_directory'] and not (isdir(properties['output_directory'])):
             raise DirectoryOutPutException
 
         return properties

@@ -66,7 +66,8 @@ class OpenOsmFile(QgisAlgorithm):
         return self.tr(
             'Open all sub-layers from an OSM file. A custom OSM configuration file can be specified '
             'following the OGR documentation. This algorithm will not make a copy of the input file, '
-            'it will only open it using OGR and custom INI file if provided.')
+            'it will only open it using OGR and custom INI file if provided.'
+        )
 
     def initAlgorithm(self, config=None):
         """Set up of the algorithm."""
@@ -75,40 +76,36 @@ class OpenOsmFile(QgisAlgorithm):
         param.setHelp(help_string)
         self.addParameter(param)
 
-        param = QgsProcessingParameterFile(
-            self.OSM_CONF, tr('OSM configuration'), optional=True
-        )
+        param = QgsProcessingParameterFile(self.OSM_CONF, tr('OSM configuration'), optional=True)
         help_string = tr(
             'The OGR OSM configuration file. This file is used to customize the import process '
-            'about OSM tags. You should read the OGR documentation {url}').format(
-            url='https://gdal.org/drivers/vector/osm.html'
-        )
+            'about OSM tags. You should read the OGR documentation {url}'
+        ).format(url='https://gdal.org/drivers/vector/osm.html')
         param.setHelp(help_string)
         self.addParameter(param)
 
         output = QgsProcessingOutputVectorLayer(
-            self.OUTPUT_POINTS, tr('Output points'), QgsProcessing.SourceType.TypeVectorPoint)
-        self.addOutput(output)
-
-        output = QgsProcessingOutputVectorLayer(
-            self.OUTPUT_LINES, tr('Output lines'), QgsProcessing.SourceType.TypeVectorLine)
-        self.addOutput(output)
-
-        output = QgsProcessingOutputVectorLayer(
-            self.OUTPUT_MULTILINESTRINGS, tr('Output multilinestrings'),
-            QgsProcessing.SourceType.TypeVectorLine
+            self.OUTPUT_POINTS, tr('Output points'), QgsProcessing.SourceType.TypeVectorPoint
         )
         self.addOutput(output)
 
         output = QgsProcessingOutputVectorLayer(
-            self.OUTPUT_MULTIPOLYGONS, tr('Output multipolygons'),
-            QgsProcessing.SourceType.TypeVectorPolygon
+            self.OUTPUT_LINES, tr('Output lines'), QgsProcessing.SourceType.TypeVectorLine
         )
         self.addOutput(output)
 
         output = QgsProcessingOutputVectorLayer(
-            self.OUTPUT_OTHER_RELATIONS, tr('Output other relations'),
-            QgsProcessing.SourceType.TypeVector
+            self.OUTPUT_MULTILINESTRINGS, tr('Output multilinestrings'), QgsProcessing.SourceType.TypeVectorLine
+        )
+        self.addOutput(output)
+
+        output = QgsProcessingOutputVectorLayer(
+            self.OUTPUT_MULTIPOLYGONS, tr('Output multipolygons'), QgsProcessing.SourceType.TypeVectorPolygon
+        )
+        self.addOutput(output)
+
+        output = QgsProcessingOutputVectorLayer(
+            self.OUTPUT_OTHER_RELATIONS, tr('Output other relations'), QgsProcessing.SourceType.TypeVector
         )
         self.addOutput(output)
 
@@ -116,13 +113,11 @@ class OpenOsmFile(QgisAlgorithm):
         """Run the algorithm."""
         self.feedback = feedback
         file = self.parameterAsString(parameters, self.FILE, context)
-        osm_configuration = self.parameterAsString(
-            parameters, self.OSM_CONF, context)
+        osm_configuration = self.parameterAsString(parameters, self.OSM_CONF, context)
 
         if osm_configuration:
             if not exists(osm_configuration):
-                raise QgsProcessingException(
-                    self.tr('OSM Configuration file not found'))
+                raise QgsProcessingException(self.tr('OSM Configuration file not found'))
 
             gdal.SetConfigOption('OSM_CONFIG_FILE', osm_configuration)
 
@@ -148,7 +143,7 @@ class OpenOsmFile(QgisAlgorithm):
             self.OUTPUT_LINES: lines.id(),
             self.OUTPUT_MULTILINESTRINGS: multilinestrings.id(),
             self.OUTPUT_MULTIPOLYGONS: multipolygons.id(),
-            self.OUTPUT_OTHER_RELATIONS: other_relations.id()
+            self.OUTPUT_OTHER_RELATIONS: other_relations.id(),
         }
 
         gdal.SetConfigOption('OSM_CONFIG_FILE', None)

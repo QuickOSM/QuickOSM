@@ -23,9 +23,7 @@ class TestNominatim(unittest.TestCase):
         with self.assertRaises(NominatimBadRequest) as error:
             nominatim.query('')
 
-        self.assertEqual(
-            str(error.exception), 'Nominatim hasn\'t found any data for an area called "".'
-        )
+        self.assertEqual(str(error.exception), 'Nominatim hasn\'t found any data for an area called "".')
 
     def test_wrong_request_area(self):
         """Test wrong osm_id request.
@@ -40,8 +38,9 @@ class TestNominatim(unittest.TestCase):
         self.assertEqual(
             str(error.exception),
             '(\'No named area found for OSM relation called "CosWos".\', '
-            '\'No OSM polygon (relation) has been found, you should try the '
-            '"Around" query which will search for other OSM type.\')')
+            "'No OSM polygon (relation) has been found, you should try the "
+            '"Around" query which will search for other OSM type.\')',
+        )
 
     def test_request_area(self):
         """Test valid osm_id request.
@@ -64,9 +63,7 @@ class TestNominatim(unittest.TestCase):
         with self.assertRaises(NominatimBadRequest) as error:
             nominatim.get_first_point_from_query('fake_query')
 
-        self.assertEqual(
-            str(error.exception),
-            'Nominatim hasn\'t found any data for an area called "fake_query".')
+        self.assertEqual(str(error.exception), 'Nominatim hasn\'t found any data for an area called "fake_query".')
 
     def test_request_coord(self):
         """Test valid coordinate request.
@@ -77,7 +74,7 @@ class TestNominatim(unittest.TestCase):
 
         coord = nominatim.get_first_point_from_query('Montpellier', True)
 
-        self.assertTupleEqual(coord, ("3.8767337", "43.6112422"))
+        self.assertTupleEqual(coord, ('3.8767337', '43.6112422'))
 
 
 if __name__ == '__main__':

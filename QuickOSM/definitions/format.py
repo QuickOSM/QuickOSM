@@ -1,4 +1,5 @@
 """Definitions for output formats."""
+
 import collections
 
 from enum import Enum, unique
@@ -9,13 +10,14 @@ format_output = collections.namedtuple(
         'label',
         'driver_name',
         'extension',
-    ]
+    ],
 )
 
 
 @unique
 class Format(Enum):
-    """ Name of output formats."""
+    """Name of output formats."""
+
     GeoJSON = format_output('GeoJSON', 'GeoJSON', 'geojson')
     """GeoJSON"""
 

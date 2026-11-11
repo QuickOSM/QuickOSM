@@ -1,4 +1,5 @@
 """Tests for the preset and the history of queries."""
+
 import json
 import os
 
@@ -39,8 +40,7 @@ class TestBookmarkQuery(unittest.TestCase):
 
     def set_up_preset_data_text(self) -> dict:
         """Load the data save in the json file linked to the preset."""
-        preset_file = os.path.join(
-            self.preset_folder, self.name_preset, self.name_preset + '.json')
+        preset_file = os.path.join(self.preset_folder, self.name_preset, self.name_preset + '.json')
         with open(preset_file, encoding='utf8') as json_file:
             data_preset = json.load(json_file)
 
@@ -49,8 +49,7 @@ class TestBookmarkQuery(unittest.TestCase):
     def set_up_preset_data(self) -> dict:
         """Load the data save in the json file linked to the preset."""
         preset_folder = query_preset()
-        preset_file = os.path.join(
-            preset_folder, self.name_preset, self.name_preset + '.json')
+        preset_file = os.path.join(preset_folder, self.name_preset, self.name_preset + '.json')
         with open(preset_file, encoding='utf8') as json_file:
             data_preset = json.load(json_file, object_hook=as_enum)
 
@@ -71,38 +70,36 @@ class TestBookmarkQuery(unittest.TestCase):
         data_preset = self.set_up_preset_data_text()
 
         expected_json = {
-            "query":
+            'query': [
+                '[out:xml] [timeout:25];\n {{geocodeArea:foo}} -> .area_0;\n(\n'
+                '    node["amenity"="bench"](area.area_0);\n    '
+                'way["amenity"="bench"](area.area_0);\n    '
+                'relation["amenity"="bench"](area.area_0);\n);\n'
+                '(._;>;);\nout body;'
+            ],
+            'description': ["All OSM objects with the key 'amenity'='bench' in foo are going to be downloaded."],
+            'advanced': False,
+            'file_name': 'amenity_bench_foo',
+            'query_layer_name': ['amenity_bench_foo'],
+            'query_name': ['Query1'],
+            'type_multi_request': [[]],
+            'keys': [['amenity']],
+            'values': [['bench']],
+            'area': ['foo'],
+            'bbox': [''],
+            'output_geom_type': [
                 [
-                    "[out:xml] [timeout:25];\n {{geocodeArea:foo}} -> .area_0;\n(\n"
-                    "    node[\"amenity\"=\"bench\"](area.area_0);\n    "
-                    "way[\"amenity\"=\"bench\"](area.area_0);\n    "
-                    "relation[\"amenity\"=\"bench\"](area.area_0);\n);\n"
-                    "(._;>;);\nout body;"
-                ],
-            "description":
-                ["All OSM objects with the key 'amenity'='bench' in foo are going to be downloaded."],
-            "advanced": False,
-            "file_name": "amenity_bench_foo",
-            "query_layer_name": ["amenity_bench_foo"],
-            "query_name": ["Query1"],
-            "type_multi_request": [[]],
-            "keys": [["amenity"]],
-            "values": [["bench"]],
-            "area": ["foo"],
-            "bbox": [""],
-            "output_geom_type":
-                [
-                    [
-                        {"__enum__": "LayerType.Points"},
-                        {"__enum__": "LayerType.Lines"},
-                        {"__enum__": "LayerType.Multilinestrings"},
-                        {"__enum__": "LayerType.Multipolygons"}
-                    ]
-                ],
-            "white_list_column":
-                [{"multilinestrings": None, "points": None, "lines": None, "multipolygons": None}],
-            "output_directory": [""],
-            "output_format": [{"__enum__": "Format.GeoPackage"}]
+                    {'__enum__': 'LayerType.Points'},
+                    {'__enum__': 'LayerType.Lines'},
+                    {'__enum__': 'LayerType.Multilinestrings'},
+                    {'__enum__': 'LayerType.Multipolygons'},
+                ]
+            ],
+            'white_list_column': [
+                {'multilinestrings': None, 'points': None, 'lines': None, 'multipolygons': None}
+            ],
+            'output_directory': [''],
+            'output_format': [{'__enum__': 'Format.GeoPackage'}],
         }
 
         self.assertDictEqual(expected_json, data_preset)
@@ -114,9 +111,7 @@ class TestBookmarkQuery(unittest.TestCase):
         edit_dialog = EditPreset(self.dialog, data_preset)
 
         self.assertEqual(data_preset['file_name'], edit_dialog.preset_name.text())
-        self.assertEqual(
-            data_preset['description'], edit_dialog.description.toPlainText().split('\\n')
-        )
+        self.assertEqual(data_preset['description'], edit_dialog.description.toPlainText().split('\\n'))
         self.assertEqual(data_preset['query_layer_name'][0], edit_dialog.layer_name.text())
         self.assertEqual(data_preset['query'][0], edit_dialog.query.toPlainText())
         self.assertEqual(data_preset['area'][0], edit_dialog.area.text())
@@ -131,9 +126,7 @@ class TestBookmarkQuery(unittest.TestCase):
         self.assertFalse(edit_dialog.white_multilinestrings.text())
         self.assertFalse(edit_dialog.white_multipolygons.text())
         self.assertEqual(edit_dialog.combo_output_format.currentData(), Format.GeoPackage)
-        self.assertEqual(
-            data_preset['output_directory'][0], edit_dialog.output_directory.filePath()
-        )
+        self.assertEqual(data_preset['output_directory'][0], edit_dialog.output_directory.filePath())
 
         nb_queries = edit_dialog.list_queries.count()
         self.assertEqual(nb_queries, 1)
@@ -186,32 +179,23 @@ class TestBookmarkQuery(unittest.TestCase):
         new_data = self.set_up_preset_data_text()
 
         expected_json = {
-            "query":
-                [
-                    "I would like two pencils please."
-                ],
-            "description":
-                ["Be or not to be...", "Shakespear"],
-            "advanced": False,
-            "file_name": "amenity_bench_foo",
-            "query_layer_name": ["Misery"],
-            "query_name": ["Query1"],
-            "type_multi_request": [[]],
-            "keys": [["amenity"]],
-            "values": [["bench"]],
-            "area": ["foo"],
-            "bbox": [''],
-            "output_geom_type":
-                [
-                    [
-                        {"__enum__": "LayerType.Points"},
-                        {"__enum__": "LayerType.Lines"}
-                    ]
-                ],
-            "white_list_column":
-                [{"multilinestrings": None, "points": 'name', "lines": None, "multipolygons": None}],
-            "output_directory": [""],
-            "output_format": [{"__enum__": "Format.Kml"}]
+            'query': ['I would like two pencils please.'],
+            'description': ['Be or not to be...', 'Shakespear'],
+            'advanced': False,
+            'file_name': 'amenity_bench_foo',
+            'query_layer_name': ['Misery'],
+            'query_name': ['Query1'],
+            'type_multi_request': [[]],
+            'keys': [['amenity']],
+            'values': [['bench']],
+            'area': ['foo'],
+            'bbox': [''],
+            'output_geom_type': [[{'__enum__': 'LayerType.Points'}, {'__enum__': 'LayerType.Lines'}]],
+            'white_list_column': [
+                {'multilinestrings': None, 'points': 'name', 'lines': None, 'multipolygons': None}
+            ],
+            'output_directory': [''],
+            'output_format': [{'__enum__': 'Format.Kml'}],
         }
 
         self.assertDictEqual(expected_json, new_data)
@@ -235,10 +219,8 @@ class TestBookmarkQuery(unittest.TestCase):
 
         reopened = EditPreset(self.dialog, saved)
         for row, (key, value) in enumerate(zip(keys, values, strict=True)):
-            self.assertEqual(
-                reopened.table_keys_values_eb.cellWidget(row, 1).currentText(), key)
-            self.assertEqual(
-                reopened.table_keys_values_eb.cellWidget(row, 2).currentText(), value)
+            self.assertEqual(reopened.table_keys_values_eb.cellWidget(row, 1).currentText(), key)
+            self.assertEqual(reopened.table_keys_values_eb.cellWidget(row, 2).currentText(), value)
         reopened.close()
 
     def test_advanced_view(self):
@@ -287,47 +269,44 @@ class TestBookmarkQuery(unittest.TestCase):
         new_data = self.set_up_preset_data_text()
 
         expected_json = {
-            "query":
+            'query': [
+                '[out:xml] [timeout:25];\n {{geocodeArea:foo}} -> .area_0;\n(\n'
+                '    node["amenity"="bench"](area.area_0);\n    '
+                'way["amenity"="bench"](area.area_0);\n    '
+                'relation["amenity"="bench"](area.area_0);\n);\n'
+                '(._;>;);\nout body;',
+                '',
+            ],
+            'description': ["All OSM objects with the key 'amenity'='bench' in foo are going to be downloaded."],
+            'advanced': False,
+            'file_name': 'amenity_bench_foo',
+            'query_layer_name': ['amenity_bench_foo', 'Query2'],
+            'query_name': ['Query1', 'Query2'],
+            'type_multi_request': [[], [{'__enum__': 'MultiType.AND'}]],
+            'keys': [['amenity'], ['type', 'route']],
+            'values': [['bench'], ['route', 'bicycle']],
+            'area': ['foo', ''],
+            'bbox': ['', ''],
+            'output_geom_type': [
                 [
-                    "[out:xml] [timeout:25];\n {{geocodeArea:foo}} -> .area_0;\n(\n"
-                    "    node[\"amenity\"=\"bench\"](area.area_0);\n    "
-                    "way[\"amenity\"=\"bench\"](area.area_0);\n    "
-                    "relation[\"amenity\"=\"bench\"](area.area_0);\n);\n"
-                    "(._;>;);\nout body;",
-                    ""
+                    {'__enum__': 'LayerType.Points'},
+                    {'__enum__': 'LayerType.Lines'},
+                    {'__enum__': 'LayerType.Multilinestrings'},
+                    {'__enum__': 'LayerType.Multipolygons'},
                 ],
-            "description":
-                ["All OSM objects with the key 'amenity'='bench' in foo are going to be downloaded."],
-            "advanced": False,
-            "file_name": "amenity_bench_foo",
-            "query_layer_name": ["amenity_bench_foo", "Query2"],
-            "query_name": ["Query1", "Query2"],
-            "type_multi_request": [[], [{"__enum__": "MultiType.AND"}]],
-            "keys": [["amenity"], ["type", "route"]],
-            "values": [["bench"], ["route", "bicycle"]],
-            "area": ["foo", ""],
-            "bbox": ['', ''],
-            "output_geom_type":
                 [
-                    [
-                        {"__enum__": "LayerType.Points"},
-                        {"__enum__": "LayerType.Lines"},
-                        {"__enum__": "LayerType.Multilinestrings"},
-                        {"__enum__": "LayerType.Multipolygons"}
-                    ], [
-                        {"__enum__": "LayerType.Points"},
-                        {"__enum__": "LayerType.Lines"},
-                        {"__enum__": "LayerType.Multilinestrings"},
-                        {"__enum__": "LayerType.Multipolygons"}
-                    ]
+                    {'__enum__': 'LayerType.Points'},
+                    {'__enum__': 'LayerType.Lines'},
+                    {'__enum__': 'LayerType.Multilinestrings'},
+                    {'__enum__': 'LayerType.Multipolygons'},
                 ],
-            "white_list_column":
-                [
-                    {"multilinestrings": None, "points": None, "lines": None, "multipolygons": None},
-                    {"multilinestrings": None, "points": None, "lines": None, "multipolygons": None}
-                ],
-            "output_directory": ["", ""],
-            "output_format": [{"__enum__": "Format.GeoPackage"}, None]
+            ],
+            'white_list_column': [
+                {'multilinestrings': None, 'points': None, 'lines': None, 'multipolygons': None},
+                {'multilinestrings': None, 'points': None, 'lines': None, 'multipolygons': None},
+            ],
+            'output_directory': ['', ''],
+            'output_format': [{'__enum__': 'Format.GeoPackage'}, None],
         }
 
         self.assertDictEqual(expected_json, new_data)
@@ -350,11 +329,9 @@ class TestBookmarkQuery(unittest.TestCase):
         rect = QgsRectangle(x_min, y_min, x_max, y_max)
         edit_dialog.bbox.setOutputExtentFromUser(rect, crs)
 
-        self.assertEqual(
-            edit_dialog.stacked_parameters_preset.currentWidget(), edit_dialog.basic_parameters)
+        self.assertEqual(edit_dialog.stacked_parameters_preset.currentWidget(), edit_dialog.basic_parameters)
         edit_dialog.radio_advanced.setChecked(True)
-        self.assertEqual(
-            edit_dialog.stacked_parameters_preset.currentWidget(), edit_dialog.advanced_parameters)
+        self.assertEqual(edit_dialog.stacked_parameters_preset.currentWidget(), edit_dialog.advanced_parameters)
 
         edit_dialog.button_box.button(QDialogButtonBox.StandardButton.Ok).click()
         self.preset = self.dialog.list_personal_preset_mp.item(0)
@@ -362,34 +339,30 @@ class TestBookmarkQuery(unittest.TestCase):
         new_data = self.set_up_preset_data_text()
 
         expected_json = {
-            "query":
+            'query': [''],
+            'description': ["All OSM objects with the key 'amenity'='bench' in foo are going to be downloaded."],
+            'advanced': True,
+            'file_name': 'amenity_bench_foo',
+            'query_layer_name': ['Query2'],
+            'query_name': ['Query1'],
+            'type_multi_request': [[{'__enum__': 'MultiType.AND'}]],
+            'keys': [['type', 'route']],
+            'values': [['route', 'bicycle']],
+            'area': [''],
+            'bbox': [{'__extent__': '2.71828 0.0 3.1415926 1.6180339'}],
+            'output_geom_type': [
                 [
-                    ""
-                ],
-            "description":
-                ["All OSM objects with the key 'amenity'='bench' in foo are going to be downloaded."],
-            "advanced": True,
-            "file_name": "amenity_bench_foo",
-            "query_layer_name": ["Query2"],
-            "query_name": ["Query1"],
-            "type_multi_request": [[{"__enum__": "MultiType.AND"}]],
-            "keys": [["type", "route"]],
-            "values": [["route", "bicycle"]],
-            "area": [""],
-            "bbox": [{'__extent__': '2.71828 0.0 3.1415926 1.6180339'}],
-            "output_geom_type":
-                [
-                    [
-                        {"__enum__": "LayerType.Points"},
-                        {"__enum__": "LayerType.Lines"},
-                        {"__enum__": "LayerType.Multilinestrings"},
-                        {"__enum__": "LayerType.Multipolygons"}
-                    ]
-                ],
-            "white_list_column":
-                [{"multilinestrings": None, "points": None, "lines": None, "multipolygons": None}],
-            "output_directory": [""],
-            "output_format": [None]
+                    {'__enum__': 'LayerType.Points'},
+                    {'__enum__': 'LayerType.Lines'},
+                    {'__enum__': 'LayerType.Multilinestrings'},
+                    {'__enum__': 'LayerType.Multipolygons'},
+                ]
+            ],
+            'white_list_column': [
+                {'multilinestrings': None, 'points': None, 'lines': None, 'multipolygons': None}
+            ],
+            'output_directory': [''],
+            'output_format': [None],
         }
 
         self.assertDictEqual(expected_json, new_data)
@@ -413,7 +386,7 @@ class TestBookmarkQuery(unittest.TestCase):
             advanced=False,
             keys='aeroway',
             values='control_tower',
-            area='foo'
+            area='foo',
         )
         q_manage.add_query_in_preset('amenity_bench_foo')
 

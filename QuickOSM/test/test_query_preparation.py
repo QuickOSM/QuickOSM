@@ -24,7 +24,6 @@ class FakeNominatim(Nominatim):
 
 
 class TestQueryPreparation(unittest.TestCase):
-
     """Tests for the query preparation."""
 
     def setUp(self):
@@ -36,7 +35,7 @@ class TestQueryPreparation(unittest.TestCase):
         self.assertFalse(QueryPreparation('</osm-script>').is_oql_query())
 
     def test_invalid_query(self):
-        """ Test an invalid query. """
+        """Test an invalid query."""
         # out center is not compatible with OGR
         query = """
         );
@@ -91,7 +90,7 @@ class TestQueryPreparation(unittest.TestCase):
         self.assertEqual(expected, query._query_prepared)
 
     def test_decimals(self):
-        """ Test to have the correct number of decimals. """
+        """Test to have the correct number of decimals."""
         self.assertEqual(QueryPreparation._format_decimals_wgs84(0.123456), '0.12345')
         self.assertEqual(QueryPreparation._format_decimals_wgs84(0.12345), '0.12345')
         self.assertEqual(QueryPreparation._format_decimals_wgs84(0.1234), '0.1234')
@@ -115,8 +114,7 @@ class TestQueryPreparation(unittest.TestCase):
 
         # Two bbox.
         query = 'foo{{bbox}}foo{{bbox}}foo'
-        expected = 'fooe="20" n="1.5" s="0.5" w="10"fooe="20" n="1.5" ' \
-                   's="0.5" w="10"foo'
+        expected = 'fooe="20" n="1.5" s="0.5" w="10"fooe="20" n="1.5" s="0.5" w="10"foo'
         test(query, expected, extent)
 
         # One bbox in OQL.
@@ -164,14 +162,8 @@ class TestQueryPreparation(unittest.TestCase):
         test(query, expected)
 
         # Test with Paris and Montpellier.
-        query = (
-            'foo{{geocodeCoords:Paris,France}}bar'
-            'foo{{geocodeCoords:Montpellier}}bar'
-        )
-        expected = (
-            'foolat="Paris,France" lon="Paris,France"bar'
-            'foolat="Montpellier" lon="Montpellier"bar'
-        )
+        query = 'foo{{geocodeCoords:Paris,France}}barfoo{{geocodeCoords:Montpellier}}bar'
+        expected = 'foolat="Paris,France" lon="Paris,France"barfoolat="Montpellier" lon="Montpellier"bar'
         test(query, expected)
 
     def test_replace_geocode_area(self):
@@ -212,14 +204,8 @@ class TestQueryPreparation(unittest.TestCase):
 
         # Test with foo_BAR
         # and bar_FOO.
-        query = (
-            'foo{{geocodeArea:foo_BAR}}bar'
-            'foo{{geocodeArea:bar_FOO}}bar'
-        )
-        expected = (
-            'fooref="3600012345" type="area"bar'
-            'fooref="3600054321" type="area"bar'
-        )
+        query = 'foo{{geocodeArea:foo_BAR}}barfoo{{geocodeArea:bar_FOO}}bar'
+        expected = 'fooref="3600012345" type="area"barfooref="3600054321" type="area"bar'
         test(query, expected)
 
     def test_clean_query(self):

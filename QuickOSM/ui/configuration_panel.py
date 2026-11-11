@@ -31,7 +31,6 @@ class Server:
 
 
 class ConfigurationPanel(BasePanel):
-
     """Final implementation for the panel."""
 
     def __init__(self, dialog: QDialog):
@@ -44,35 +43,29 @@ class ConfigurationPanel(BasePanel):
         self.dialog.save_config_overpass.clicked.connect(self.set_server_overpass_api)
         self.dialog.save_config_nominatim.clicked.connect(self.set_server_nominatim_api)
 
-        self.dialog.save_config_overpass.setIcon(
-            QIcon(":images/themes/default/mActionFileSave.svg"))
-        self.dialog.save_config_nominatim.setIcon(
-            QIcon(":images/themes/default/mActionFileSave.svg"))
+        self.dialog.save_config_overpass.setIcon(QIcon(':images/themes/default/mActionFileSave.svg'))
+        self.dialog.save_config_nominatim.setIcon(QIcon(':images/themes/default/mActionFileSave.svg'))
 
-        self.dialog.line_edit_overpass_url.setPlaceholderText("https://my-overpass.org/api/")
-        self.dialog.line_edit_nominatim_url.setPlaceholderText("https://my-nominatim.org/search?")
+        self.dialog.line_edit_overpass_url.setPlaceholderText('https://my-overpass.org/api/')
+        self.dialog.line_edit_nominatim_url.setPlaceholderText('https://my-nominatim.org/search?')
 
         add_new_server = tr('Add a new server in the list')
         remove_selected_server = tr('Remove the selected server from the list')
 
         self.dialog.btn_add_overpass.setText('')
-        self.dialog.btn_add_overpass.setIcon(
-            QIcon(QgsApplication.iconPath('symbologyAdd.svg')))
+        self.dialog.btn_add_overpass.setIcon(QIcon(QgsApplication.iconPath('symbologyAdd.svg')))
         self.dialog.btn_add_overpass.setToolTip(add_new_server)
 
         self.dialog.btn_remove_overpass.setText('')
-        self.dialog.btn_remove_overpass.setIcon(
-            QIcon(QgsApplication.iconPath('symbologyRemove.svg')))
+        self.dialog.btn_remove_overpass.setIcon(QIcon(QgsApplication.iconPath('symbologyRemove.svg')))
         self.dialog.btn_remove_overpass.setToolTip(remove_selected_server)
 
         self.dialog.btn_add_nominatim.setText('')
-        self.dialog.btn_add_nominatim.setIcon(
-            QIcon(QgsApplication.iconPath('symbologyAdd.svg')))
+        self.dialog.btn_add_nominatim.setIcon(QIcon(QgsApplication.iconPath('symbologyAdd.svg')))
         self.dialog.btn_add_nominatim.setToolTip(add_new_server)
 
         self.dialog.btn_remove_nominatim.setText('')
-        self.dialog.btn_remove_nominatim.setIcon(
-            QIcon(QgsApplication.iconPath('symbologyRemove.svg')))
+        self.dialog.btn_remove_nominatim.setIcon(QIcon(QgsApplication.iconPath('symbologyRemove.svg')))
         self.dialog.btn_remove_nominatim.setToolTip(remove_selected_server)
 
         self.dialog.btn_add_overpass.clicked.connect(partial(self._add_custom_server, Server.Overpass))
@@ -141,26 +134,18 @@ class ConfigurationPanel(BasePanel):
             list_widget = self.dialog.list_custom_nominatim
 
         url = input_widget.text().strip()
-        all_items = [
-            combo_widget.itemText(i) for i in range(combo_widget.count())
-        ]
+        all_items = [combo_widget.itemText(i) for i in range(combo_widget.count())]
 
         if not url:
-            QMessageBox.warning(
-                self.dialog, 'QuickOSM',
-                tr('Please enter a URL.'))
+            QMessageBox.warning(self.dialog, 'QuickOSM', tr('Please enter a URL.'))
             return False
 
         if not url.startswith('http'):
-            QMessageBox.warning(
-                self.dialog, 'QuickOSM',
-                tr('The URL must begin with “http”.'))
+            QMessageBox.warning(self.dialog, 'QuickOSM', tr('The URL must begin with “http”.'))
             return False
 
         if url in all_items:
-            QMessageBox.information(
-                self.dialog, 'QuickOSM',
-                tr('This server is already in the list.'))
+            QMessageBox.information(self.dialog, 'QuickOSM', tr('This server is already in the list.'))
             return False
 
         # Add to combo and list widget
@@ -191,9 +176,7 @@ class ConfigurationPanel(BasePanel):
 
         selected = list_widget.currentItem()
         if not selected:
-            QMessageBox.warning(
-                self.dialog, 'QuickOSM',
-                tr('Please select a server from the list.'))
+            QMessageBox.warning(self.dialog, 'QuickOSM', tr('Please select a server from the list.'))
             return False
 
         url = selected.text()

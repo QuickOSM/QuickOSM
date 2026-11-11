@@ -20,7 +20,6 @@ from QuickOSM.ui.base_processing_panel import BaseProcessingPanel
 
 
 class BaseOverpassPanel(BaseProcessingPanel):
-
     """Panel OSM Processing base class.
 
     This panels will have a run button.
@@ -55,8 +54,7 @@ class BaseOverpassPanel(BaseProcessingPanel):
 
     def query_language_updated(self):
         """Transfer the wanted language through panels."""
-        if self.dialog.query_language[Panels.Query] != \
-                self.dialog.query_language[Panels.QuickQuery]:
+        if self.dialog.query_language[Panels.Query] != self.dialog.query_language[Panels.QuickQuery]:
             self.dialog.query_language[Panels.Query] = self.dialog.query_language[Panels.QuickQuery]
         if self.dialog.query_language[Panels.Query] == QueryLanguage.OQL:
             self.dialog.action_xml[Panels.Query].setEnabled(True)
@@ -81,8 +79,7 @@ class BaseOverpassPanel(BaseProcessingPanel):
             nominatim_completer = QCompleter(self.last_places)
             for line_edit in self.dialog.places_edits.values():
                 line_edit.setCompleter(nominatim_completer)
-                line_edit.completer().setCompletionMode(
-                    QCompleter.CompletionMode.PopupCompletion)
+                line_edit.completer().setCompletionMode(QCompleter.CompletionMode.PopupCompletion)
 
     @staticmethod
     def sort_nominatim_places(existing_places: list, place: str) -> list:
@@ -172,16 +169,16 @@ class BaseOverpassPanel(BaseProcessingPanel):
         :rtype num_layers: int
         """
         if num_layers:
-            text = tr(
-                'Successful query, {} layer(s) has been loaded.').format(
-                num_layers)
+            text = tr('Successful query, {} layer(s) has been loaded.').format(num_layers)
             self.dialog.set_progress_text(text)
             self.dialog.display_message_bar(text, level=Qgis.MessageLevel.Success, duration=5)
         else:
             self.dialog.set_progress_text(tr('No result'))
             self.dialog.display_message_bar(
                 tr('Successful query, but no OSM data matched the Overpass query on this Overpass server.'),
-                level=Qgis.MessageLevel.Warning, duration=7)
+                level=Qgis.MessageLevel.Warning,
+                duration=7,
+            )
 
     def gather_values(self) -> dict:
         """Retrieval of the values set by the user."""
@@ -215,8 +212,7 @@ class BaseOverpassPanel(BaseProcessingPanel):
                 layer = self.dialog.layers_buttons[self.panel].currentLayer()
                 if not layer:
                     raise MissingLayerUI
-                if self.dialog.selection_features[self.panel].isChecked() \
-                        and isinstance(layer, QgsVectorLayer):
+                if self.dialog.selection_features[self.panel].isChecked() and isinstance(layer, QgsVectorLayer):
                     geom_extent = layer.boundingBoxOfSelected()
                     if geom_extent == QgsRectangle(0, 0, 0, 0):
                         raise NoSelectedFeatures
@@ -230,8 +226,7 @@ class BaseOverpassPanel(BaseProcessingPanel):
             geom_extent = QgsGeometry.fromRect(geom_extent)
             epsg_4326 = QgsCoordinateReferenceSystem('EPSG:4326')
             # noinspection PyArgumentList
-            crs_transform = QgsCoordinateTransform(
-                source_crs, epsg_4326, QgsProject.instance())
+            crs_transform = QgsCoordinateTransform(source_crs, epsg_4326, QgsProject.instance())
             geom_extent.transform(crs_transform)
             properties['bbox'] = geom_extent.boundingBox()
             properties['place'] = None

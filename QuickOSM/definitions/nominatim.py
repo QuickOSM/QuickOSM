@@ -17,9 +17,5 @@ A pull request is more than welcome if you want to add your server in QuickOSM
 core by updating this list below.
 """
 
-
 # The order is important. The first server will be the default.
-NOMINATIM_SERVERS = [
-    'https://nominatim.qgis.org/search?',
-    'https://nominatim.openstreetmap.org/search?'
-]
+NOMINATIM_SERVERS = ['https://nominatim.qgis.org/search?', 'https://nominatim.openstreetmap.org/search?']

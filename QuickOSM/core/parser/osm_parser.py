@@ -1,4 +1,5 @@
 """OSM Parser file."""
+
 import logging
 
 from os.path import basename, dirname, isfile, join, realpath
@@ -25,7 +26,6 @@ LOGGER = logging.getLogger('QuickOSM')
 
 
 class OsmParser(QObject):
-
     """
     Parse an OSM file with OGR.
     """
@@ -39,22 +39,23 @@ class OsmParser(QObject):
     DIC_OSM_TYPE = {'node': 'n', 'way': 'w', 'relation': 'r'}
 
     def __init__(
-            self,
-            osm_file: str,
-            layers: List[str] = None,
-            output_format: Format = None,
-            output_dir: str = None,
-            prefix_file: str = None,
-            layer_name: str = None,
-            white_list_column: dict = None,
-            key: List[str] = None,
-            delete_empty_layers: bool = False,
-            load_only: bool = False,
-            osm_conf: str = None,
-            subset: bool = False,
-            subset_query: str = None,
-            feedback_alg: bool = False,
-            feedback: QgsProcessingFeedback = None):
+        self,
+        osm_file: str,
+        layers: List[str] = None,
+        output_format: Format = None,
+        output_dir: str = None,
+        prefix_file: str = None,
+        layer_name: str = None,
+        white_list_column: dict = None,
+        key: List[str] = None,
+        delete_empty_layers: bool = False,
+        load_only: bool = False,
+        osm_conf: str = None,
+        subset: bool = False,
+        subset_query: str = None,
+        feedback_alg: bool = False,
+        feedback: QgsProcessingFeedback = None,
+    ):
         self.__osmFile = osm_file
         if layers is None:
             self.__layers = Osm_Layers
@@ -100,7 +101,7 @@ class OsmParser(QObject):
         if not isfile(self.__osmFile):
             raise QuickOsmException(tr('File does not exist'))
 
-        uri = self.__osmFile + "|layername="
+        uri = self.__osmFile + '|layername='
         layers = {}
 
         # If loadOnly, no parsing required:
@@ -108,8 +109,7 @@ class OsmParser(QObject):
         if self.__loadOnly:
             file_name = basename(self.__osmFile)
             for layer in self.__layers:
-                layers[layer] = QgsVectorLayer(
-                    uri + layer, file_name + ' ' + layer, 'ogr')
+                layers[layer] = QgsVectorLayer(uri + layer, file_name + ' ' + layer, 'ogr')
 
                 if not layers[layer].isValid():
                     message = tr('Error on the layer : {layer} is not valid.').format(layer=layer)
@@ -123,8 +123,7 @@ class OsmParser(QObject):
             layers[layer] = {}
 
             # Reading it with a QgsVectorLayer
-            layers[layer]['vectorLayer'] = QgsVectorLayer(
-                uri + layer, 'test_' + layer, 'ogr')
+            layers[layer]['vectorLayer'] = QgsVectorLayer(uri + layer, 'test_' + layer, 'ogr')
 
             if not layers[layer]['vectorLayer'].isValid():
                 message = f'Error on the layer : {layer} is not valid.'
@@ -141,24 +140,25 @@ class OsmParser(QObject):
                 raise QgsProcessingException(error)
 
             validity = processing.run(
-                "qgis:checkvalidity", {
+                'qgis:checkvalidity',
+                {
                     'INPUT_LAYER': layers[layer]['vectorLayer'],
                     'METHOD': 2,  # GEOS
                     'IGNORE_RING_SELF_INTERSECTION': False,
                     'VALID_OUTPUT': 'TEMPORARY_OUTPUT',
                     'INVALID_OUTPUT': 'TEMPORARY_OUTPUT',
-                    'ERROR_OUTPUT': 'TEMPORARY_OUTPUT'
-                }, feedback=self.feedback if self.feedback_alg else None
+                    'ERROR_OUTPUT': 'TEMPORARY_OUTPUT',
+                },
+                feedback=self.feedback if self.feedback_alg else None,
             )
             if validity['INVALID_COUNT'] > 0:
                 LOGGER.info(f'Fixing geometries in layer: {layer}')
                 if self.feedback_alg:
                     self.feedback.pushInfo(f'Fixing the geometry of the layer {layer}.')
                 layers[layer]['vectorLayer'] = processing.run(
-                    "native:fixgeometries", {
-                        'INPUT': layers[layer]['vectorLayer'],
-                        'OUTPUT': 'TEMPORARY_OUTPUT'
-                    }, feedback=self.feedback if self.feedback_alg else None
+                    'native:fixgeometries',
+                    {'INPUT': layers[layer]['vectorLayer'], 'OUTPUT': 'TEMPORARY_OUTPUT'},
+                    feedback=self.feedback if self.feedback_alg else None,
                 )['OUTPUT']
 
             layers[layer]['vectorLayer'].setProviderEncoding('UTF-8')
@@ -180,11 +180,14 @@ class OsmParser(QObject):
                 if self.feedback.isCanceled():
                     return None
             layers[layer]['vector_layer'] = processing.run(
-                "native:explodehstorefield", {
+                'native:explodehstorefield',
+                {
                     'INPUT': layers[layer]['vectorLayer'],
-                    'FIELD': 'other_tags', 'EXPECTED_FIELDS': expected_fields,
-                    'OUTPUT': 'TEMPORARY_OUTPUT'
-                }, feedback=self.feedback if self.feedback_alg else None
+                    'FIELD': 'other_tags',
+                    'EXPECTED_FIELDS': expected_fields,
+                    'OUTPUT': 'TEMPORARY_OUTPUT',
+                },
+                feedback=self.feedback if self.feedback_alg else None,
             )['OUTPUT']
             if self.__subset:
                 LOGGER.info(f'Subset filter: {self.__subset_query}')
@@ -238,9 +241,7 @@ class OsmParser(QObject):
                         osm_type = 'way'
                         index_way = fields.indexOf('osm_way_id')
                         attr_value_fi = {index_fi: self.DIC_OSM_TYPE[osm_type] + str(attributes[index_way])}
-                        layer_provider.changeAttributeValues(
-                            {id_f: {index: str(attributes[index_way])}}
-                        )
+                        layer_provider.changeAttributeValues({id_f: {index: str(attributes[index_way])}})
                 attr_value_ot = {index_ot: osm_type}
                 layer_provider.changeAttributeValues({id_f: attr_value_ot})
 
@@ -268,14 +269,15 @@ class OsmParser(QObject):
 
                     if self.__output_format in [Format.GeoPackage, Format.Kml]:
                         output_file = join(
-                            self.__output_dir,
-                            self.__prefix_file + "." + self.__output_format.value.extension)
+                            self.__output_dir, self.__prefix_file + '.' + self.__output_format.value.extension
+                        )
                         final_name = self.__prefix_file + '_' + layer
-                        layers[layer]['layer_name'] = f'ogr:dbname=\'{output_file}\' table=\"{final_name}\" (geom)'
+                        layers[layer]['layer_name'] = f'ogr:dbname=\'{output_file}\' table="{final_name}" (geom)'
                     elif self.__output_format in [Format.GeoJSON, Format.Shapefile]:
                         layers[layer]['layer_name'] = join(
                             self.__output_dir,
-                            self.__prefix_file + "_" + layer + "." + self.__output_format.value.extension)
+                            self.__prefix_file + '_' + layer + '.' + self.__output_format.value.extension,
+                        )
                     else:
                         raise NotImplementedError
 
@@ -287,51 +289,48 @@ class OsmParser(QObject):
                 tags = layers[layer]['vector_layer'].fields().names()
 
                 fields_mapping = [
-                    {'expression': '\"full_id\"', 'length': 0, 'name': 'full_id', 'precision': 0, 'type': 10},
-                    {'expression': '\"osm_id\"', 'length': 0, 'name': 'osm_id', 'precision': 0, 'type': 10},
+                    {'expression': '"full_id"', 'length': 0, 'name': 'full_id', 'precision': 0, 'type': 10},
+                    {'expression': '"osm_id"', 'length': 0, 'name': 'osm_id', 'precision': 0, 'type': 10},
                 ]
                 begin = 1
                 nb_metadata = 5
                 if layer == 'multipolygons':
                     begin += 1
-                fields_mapping.append({
-                    'expression': '\"osm_type\"', 'length': 0,
-                    'name': 'osm_type', 'precision': 0, 'type': 10
-                })
+                fields_mapping.append(
+                    {'expression': '"osm_type"', 'length': 0, 'name': 'osm_type', 'precision': 0, 'type': 10}
+                )
                 if meta:
-                    for name in tags[begin:begin + nb_metadata]:
-                        fields_mapping.append({
-                            'expression': '\"' + name + '\"',
-                            'length': 0, 'name': name,
-                            'precision': 0, 'type': 10
-                        })
+                    for name in tags[begin : begin + nb_metadata]:
+                        fields_mapping.append(
+                            {'expression': '"' + name + '"', 'length': 0, 'name': name, 'precision': 0, 'type': 10}
+                        )
                 begin += nb_metadata
 
                 for key in list(set(self.__key)):
                     if key in tags:
-                        fields_mapping.append({
-                            'expression': '\"' + key + '\"',
-                            'length': 0, 'name': key,
-                            'precision': 0, 'type': 10
-                        })
+                        fields_mapping.append(
+                            {'expression': '"' + key + '"', 'length': 0, 'name': key, 'precision': 0, 'type': 10}
+                        )
 
                 for name in tags[begin:-2]:
                     if name not in self.__key:
-                        fields_mapping.append({
-                            'expression': '\"' + name + '\"',
-                            'length': 0, 'name': name,
-                            'precision': 0, 'type': 10
-                        })
+                        fields_mapping.append(
+                            {'expression': '"' + name + '"', 'length': 0, 'name': name, 'precision': 0, 'type': 10}
+                        )
 
-                layers[layer]['vector_layer'] = processing.run("native:refactorfields", {
-                    'INPUT': layers[layer]['vector_layer'],
-                    'FIELDS_MAPPING': fields_mapping,
-                    'OUTPUT': layers[layer]['layer_name']
-                }, feedback=self.feedback if self.feedback_alg else None)['OUTPUT']
+                layers[layer]['vector_layer'] = processing.run(
+                    'native:refactorfields',
+                    {
+                        'INPUT': layers[layer]['vector_layer'],
+                        'FIELDS_MAPPING': fields_mapping,
+                        'OUTPUT': layers[layer]['layer_name'],
+                    },
+                    feedback=self.feedback if self.feedback_alg else None,
+                )['OUTPUT']
 
                 if self.__output_dir:
                     layers[layer]['vector_layer'] = QgsVectorLayer(
-                        layers[layer]['vector_layer'], self.__prefix_file + "_" + layer, 'ogr'
+                        layers[layer]['vector_layer'], self.__prefix_file + '_' + layer, 'ogr'
                     )
 
                 fields = layers[layer]['vector_layer'].fields()

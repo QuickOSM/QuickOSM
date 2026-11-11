@@ -1,4 +1,5 @@
 """A tool that enable to select or show an extent in the canvas."""
+
 import logging
 
 from qgis.core import (

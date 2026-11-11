@@ -59,7 +59,7 @@ class TestOverpass(unittest.TestCase):
             ConnexionOAPI.is_query_timed_out(string)
 
     def test_read_xml_encoding(self):
-        """ Test #240 related to encoding. """
+        """Test #240 related to encoding."""
         encoding_file = plugin_test_data_path('overpass', 'error_decode_utf8.xml')
         ConnexionOAPI.check_file(encoding_file)
 
@@ -70,9 +70,7 @@ class TestOverpass(unittest.TestCase):
         with self.assertRaises(OverpassTimeoutException) as error:
             ConnexionOAPI.check_file(timeout_file)
 
-        self.assertEqual(
-            str(error.exception),
-            'OverpassAPI timeout, try again later or a smaller query.')
+        self.assertEqual(str(error.exception), 'OverpassAPI timeout, try again later or a smaller query.')
 
         run_out_memory = plugin_test_data_path('overpass', 'run_out_memory.xml')
         with self.assertRaises(OverpassMemoryException) as error:
@@ -81,7 +79,8 @@ class TestOverpass(unittest.TestCase):
         self.assertEqual(
             str(error.exception),
             "('OverpassAPI is out of memory, try another query or a smaller area.',"
-            " 'The server would need more or less 513 MB of RAM.')")
+            " 'The server would need more or less 513 MB of RAM.')",
+        )
 
         generic_error = plugin_test_data_path('overpass', 'generic_error.xml')
         with self.assertRaises(OverpassRuntimeError) as error:
@@ -91,10 +90,9 @@ class TestOverpass(unittest.TestCase):
 
         bad_query = plugin_test_data_path('overpass', 'bad_query.xml')
         with self.assertRaises(OverpassBadRequestException) as error:
-
             ConnexionOAPI.check_file(bad_query)
 
         self.assertEqual(
             str(error.exception),
-            'Bad request OverpassAPI.  line 10: parse error: Invalid parameter for print: &quot;centre&quot; '
+            'Bad request OverpassAPI.  line 10: parse error: Invalid parameter for print: &quot;centre&quot; ',
         )

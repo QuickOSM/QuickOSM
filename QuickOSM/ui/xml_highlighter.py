@@ -13,64 +13,55 @@ class QueryHighlighter(QSyntaxHighlighter):
         keyword_format = QTextCharFormat()
         keyword_format.setForeground(Qt.GlobalColor.darkMagenta)
 
-        keyword_patterns = [
-            "\\?xml\\b", "/>", ">", "<",
-            ";", r"\[", r"\]", r"\(", r"\)"
-        ]
+        keyword_patterns = ['\\?xml\\b', '/>', '>', '<', ';', r'\[', r'\]', r'\(', r'\)']
 
-        self.highlightingRules = [
-            (QRegularExpression(pattern), keyword_format)
-            for pattern in keyword_patterns
-        ]
+        self.highlightingRules = [(QRegularExpression(pattern), keyword_format) for pattern in keyword_patterns]
 
         element_format = QTextCharFormat()
-        element_format.setForeground(QColor("#117700"))
-        self.highlightingRules.append(
-            (QRegularExpression("\\b[A-Za-z_\\-]+(?=[\\s\\/>:;])"), element_format))
+        element_format.setForeground(QColor('#117700'))
+        self.highlightingRules.append((QRegularExpression('\\b[A-Za-z_\\-]+(?=[\\s\\/>:;])'), element_format))
 
         nominatim_area_format = QTextCharFormat()
         nominatim_area_format.setFontItalic(True)
         nominatim_area_format.setFontWeight(QFont.Weight.Bold)
-        nominatim_area_format.setForeground(QColor("#FF7C00"))
-        self.highlightingRules.append(
-            (QRegularExpression(r"\{\{[A-Za-z0-9:, ]*\}\}"), nominatim_area_format))
+        nominatim_area_format.setForeground(QColor('#FF7C00'))
+        self.highlightingRules.append((QRegularExpression(r'\{\{[A-Za-z0-9:, ]*\}\}'), nominatim_area_format))
 
         attribute_format = QTextCharFormat()
         attribute_format.setFontItalic(True)
-        attribute_format.setForeground(QColor("#2020D2"))
+        attribute_format.setForeground(QColor('#2020D2'))
         self.highlightingRules.append(
-            (QRegularExpression("\\b[A-Za-z0-9_-]+(?=\\=|\\[|\\(|$|\\.)"), attribute_format))
+            (QRegularExpression('\\b[A-Za-z0-9_-]+(?=\\=|\\[|\\(|$|\\.)'), attribute_format)
+        )
 
         value_format = QTextCharFormat()
         value_format.setForeground(Qt.GlobalColor.red)
         self.highlightingRules.append(
-            (QRegularExpression("(\"[A-Za-z0-9:, _.]*\"|\\:([0-9]+)(?=\\,|\\]))"), value_format))
+            (QRegularExpression('("[A-Za-z0-9:, _.]*"|\\:([0-9]+)(?=\\,|\\]))'), value_format)
+        )
 
         area_format = QTextCharFormat()
-        area_format.setForeground(QColor("#11CC00"))
-        area_pattern = [
-            "\\.([A-Za-z0-9_]{2,})(?=\\)|\\;)",
-            r"\(([0-9]{2,})\)", "[0-9]+[.]+[0-9]+"
-        ]
+        area_format.setForeground(QColor('#11CC00'))
+        area_pattern = ['\\.([A-Za-z0-9_]{2,})(?=\\)|\\;)', r'\(([0-9]{2,})\)', '[0-9]+[.]+[0-9]+']
         for pattern in area_pattern:
-            self.highlightingRules.append(
-                (QRegularExpression(pattern), area_format))
+            self.highlightingRules.append((QRegularExpression(pattern), area_format))
 
         single_line_comment_format = QTextCharFormat()
         single_line_comment_format.setForeground(Qt.GlobalColor.gray)
-        self.highlightingRules.append(
-            (QRegularExpression("(<!--[^\n]*-->|//[^\n]*)"), single_line_comment_format))
+        self.highlightingRules.append((QRegularExpression('(<!--[^\n]*-->|//[^\n]*)'), single_line_comment_format))
 
         # Multi lines comment
-        self.oql_start_comment = QRegularExpression(r"\/\*")
+        self.oql_start_comment = QRegularExpression(r'\/\*')
         self.oql_end_comment = QRegularExpression(r'\*\/')
 
     def match_multiline(
-            self, text: str,
-            start_delimiter: QRegularExpression,
-            end_delimiter: QRegularExpression,
-            in_state: int,
-            style: Qt) -> bool:
+        self,
+        text: str,
+        start_delimiter: QRegularExpression,
+        end_delimiter: QRegularExpression,
+        in_state: int,
+        style: Qt,
+    ) -> bool:
         """Do highlight of multi-line strings. ``delimiter`` should be a
         ``QRegularExpression`` for triple-single-quotes or triple-double-quotes, and
         ``in_state`` should be a unique integer to represent the corresponding
@@ -114,7 +105,6 @@ class QueryHighlighter(QSyntaxHighlighter):
         """Highlight of a comment block"""
         # for every pattern
         for pattern, char_format in self.highlightingRules:
-
             # Create a regular expression from the retrieved pattern
             expression = pattern
 
@@ -129,9 +119,4 @@ class QueryHighlighter(QSyntaxHighlighter):
                 self.setFormat(index, length, char_format)
 
         # Do multi-line strings
-        self.match_multiline(
-            text,
-            self.oql_start_comment,
-            self.oql_end_comment,
-            1,
-            Qt.GlobalColor.gray)
+        self.match_multiline(text, self.oql_start_comment, self.oql_end_comment, 1, Qt.GlobalColor.gray)

@@ -77,7 +77,7 @@ def quickosm_user_folder() -> str:
 
 
 def check_processing_enable() -> Tuple[bool, str, str]:
-    """ Check if Processing is enabled. """
+    """Check if Processing is enabled."""
     # https://github.com/QuickOSM/QuickOSM/issues/527
     if qgis.utils.iface is None:
         return True, '', ''
@@ -93,7 +93,7 @@ def check_processing_enable() -> Tuple[bool, str, str]:
         tr(
             'To be able to use QuickOSM, you need to have the "Processing" plugin enabled. '
             'Please check in your QGIS Plugin manager that the "Processing" plugin is enabled.'
-        )
+        ),
     )
 
 

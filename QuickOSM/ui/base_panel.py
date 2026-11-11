@@ -1,4 +1,5 @@
 """Panel core base class."""
+
 from typing import List, Optional
 
 from qgis.PyQt.QtWidgets import QDialog
@@ -7,7 +8,6 @@ from QuickOSM.definitions.gui import Panels
 
 
 class BasePanel:
-
     """Base panel for QuickOSM dialog.
 
     This is a kind of virtual class.
@@ -42,7 +42,7 @@ class BasePanel:
 
     @staticmethod
     def filter_file_names(file_name: str, files_qml: List[str]) -> List[str]:
-        """ Filter all QML files. """
+        """Filter all QML files."""
         files = []
         for qml_file in files_qml:
             if qml_file.startswith(file_name):

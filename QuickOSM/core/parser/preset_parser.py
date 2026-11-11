@@ -1,4 +1,4 @@
-""" Parser of the presets file. """
+"""Parser of the presets file."""
 
 import collections as col
 import json
@@ -20,8 +20,7 @@ class PresetsParser:
     def __init__(self):
 
         self.file = xml.parse(PRESET_PATH)  # nosec
-        locale, translate_path = setup_translation(
-            file_pattern="preset_{}.po")
+        locale, translate_path = setup_translation(file_pattern='preset_{}.po')
         if translate_path:
             # LOGGER.info('Translation of presets to {}'.format(file_path))
             self.translate = self.preset_translate(translate_path)
@@ -62,7 +61,6 @@ class PresetsParser:
                 heirs_item_name, got_values = fetch_keys(inner_group, [])
 
                 if got_values:
-
                     if ancestors_name[0] in self.translate:
                         name_completion = self.translate[ancestors_name[0]]
                     else:
@@ -113,7 +111,6 @@ class PresetsParser:
                 heirs_name.append(name)
 
                 if got_value:
-
                     name_completion = ''
                     ancestors = []
                     for ancestor in ancestors_name:
@@ -174,7 +171,7 @@ class PresetsParser:
             return node.tagName == search
 
     def osm_keys_values(self) -> dict:
-        """ Retrieval of key/value couple """
+        """Retrieval of key/value couple"""
         couple = {}
         items = self.items.copy()
 
@@ -218,8 +215,8 @@ class PresetsParser:
         with open(file, encoding='utf8') as f:
             text = f.read()
             pattern = (
-                "#: master_preset.xml:[0-9]+\\((group|item):name[a-zA-Z0-9|_ :\\/\\(\\)\\-\n\\&\\+#.]+"
-                "(msgctxt \"[a-zA-Z_ \\-]+\"|)\nmsgid \"(.*?)\"\nmsgstr \"(.*?)\""
+                '#: master_preset.xml:[0-9]+\\((group|item):name[a-zA-Z0-9|_ :\\/\\(\\)\\-\n\\&\\+#.]+'
+                '(msgctxt "[a-zA-Z_ \\-]+"|)\nmsgid "(.*?)"\nmsgstr "(.*?)"'
             )
             result = re.findall(pattern, text)
 

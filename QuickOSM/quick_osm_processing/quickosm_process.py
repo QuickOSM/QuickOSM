@@ -1,4 +1,5 @@
 """Run the process of the plugin as an algorithm."""
+
 from os.path import basename, dirname
 
 import processing
@@ -50,7 +51,7 @@ class DownloadOSMData(QgisAlgorithm):
         OUTPUT_POINTS: None,
         OUTPUT_LINES: None,
         OUTPUT_MULTILINESTRINGS: None,
-        OUTPUT_MULTIPOLYGONS: None
+        OUTPUT_MULTIPOLYGONS: None,
     }
 
     def __init__(self):
@@ -86,9 +87,7 @@ class DownloadOSMData(QgisAlgorithm):
 
     def add_parameters(self):
         """Set up additional parameters."""
-        param = QgsProcessingParameterFileDestination(
-            self.FILE, tr('Output file'),
-            optional=True)
+        param = QgsProcessingParameterFileDestination(self.FILE, tr('Output file'), optional=True)
         param.setFileFilter('*.gpkg')
         help_string = tr('Path where the file will be download.')
         param.setHelp(help_string)
@@ -97,22 +96,22 @@ class DownloadOSMData(QgisAlgorithm):
     def add_outputs(self):
         """Set up the outputs of the algorithm."""
         output = QgsProcessingOutputVectorLayer(
-            self.OUTPUT_POINTS, tr('Output points'), QgsProcessing.SourceType.TypeVectorPoint)
-        self.addOutput(output)
-
-        output = QgsProcessingOutputVectorLayer(
-            self.OUTPUT_LINES, tr('Output lines'), QgsProcessing.SourceType.TypeVectorLine)
-        self.addOutput(output)
-
-        output = QgsProcessingOutputVectorLayer(
-            self.OUTPUT_MULTILINESTRINGS, tr('Output multilinestrings'),
-            QgsProcessing.SourceType.TypeVectorLine
+            self.OUTPUT_POINTS, tr('Output points'), QgsProcessing.SourceType.TypeVectorPoint
         )
         self.addOutput(output)
 
         output = QgsProcessingOutputVectorLayer(
-            self.OUTPUT_MULTIPOLYGONS, tr('Output multipolygons'),
-            QgsProcessing.SourceType.TypeVectorPolygon
+            self.OUTPUT_LINES, tr('Output lines'), QgsProcessing.SourceType.TypeVectorLine
+        )
+        self.addOutput(output)
+
+        output = QgsProcessingOutputVectorLayer(
+            self.OUTPUT_MULTILINESTRINGS, tr('Output multilinestrings'), QgsProcessing.SourceType.TypeVectorLine
+        )
+        self.addOutput(output)
+
+        output = QgsProcessingOutputVectorLayer(
+            self.OUTPUT_MULTIPOLYGONS, tr('Output multipolygons'), QgsProcessing.SourceType.TypeVectorPolygon
         )
         self.addOutput(output)
 
@@ -153,7 +152,7 @@ class DownloadOSMData(QgisAlgorithm):
             output_dir=out_dir,
             prefix_file=out_file,
             feedback_alg=True,
-            feedback=self.feedback
+            feedback=self.feedback,
         )
 
         layers = osm_parser.processing_parse()
@@ -170,37 +169,24 @@ class DownloadOSMData(QgisAlgorithm):
             'points': self.OUTPUT_POINTS,
             'lines': self.OUTPUT_LINES,
             'multilinestrings': self.OUTPUT_MULTILINESTRINGS,
-            'multipolygons': self.OUTPUT_MULTIPOLYGONS
+            'multipolygons': self.OUTPUT_MULTIPOLYGONS,
         }
 
         for layer in layers:
             layers[layer]['layer_decorated'] = processing.run(
-                "quickosm:decoratelayer",
-                {
-                    'LAYER': layers[layer]['vector_layer']
-                },
-                feedback=self.feedback
+                'quickosm:decoratelayer', {'LAYER': layers[layer]['vector_layer']}, feedback=self.feedback
             )
             context.temporaryLayerStore().addMapLayer(layers[layer]['vector_layer'])
             layer_output.append(
-                QgsProcessingUtils.mapLayerFromString(
-                    layers[layer]['vector_layer'].id(), context, True
-                )
+                QgsProcessingUtils.mapLayerFromString(layers[layer]['vector_layer'].id(), context, True)
             )
             if 'tags' in layers[layer]:
                 layer_details = QgsProcessingContext.LayerDetails(
-                    'OSMQuery_' + layer,
-                    context.project(),
-                    OUTPUT[layer]
+                    'OSMQuery_' + layer, context.project(), OUTPUT[layer]
                 )
                 if 'colour' in layers[layer]['tags']:
-                    layer_details.setPostProcessor(
-                        SetColoringPostProcessor.create(layers[layer]['tags'])
-                    )
-                context.addLayerToLoadOnCompletion(
-                    layers[layer]['vector_layer'].id(),
-                    layer_details
-                )
+                    layer_details.setPostProcessor(SetColoringPostProcessor.create(layers[layer]['tags']))
+                context.addLayerToLoadOnCompletion(layers[layer]['vector_layer'].id(), layer_details)
 
         if self.feedback.isCanceled():
             self.feedback.reportError('The algorithm has been canceled during the post processing.')
@@ -246,14 +232,14 @@ class DownloadOSMDataRawQuery(DownloadOSMData, BuildRaw):
         self.feedback.pushInfo('Building the query.')
 
         raw_query = processing.run(
-            "quickosm:buildrawquery",
+            'quickosm:buildrawquery',
             {
                 'AREA': self.area,
                 'EXTENT': QgsReferencedRectangle(self.extent, self.extent_crs),
                 'QUERY': self.query,
-                'SERVER': self.server
+                'SERVER': self.server,
             },
-            feedback=self.feedback
+            feedback=self.feedback,
         )
         url = raw_query['OUTPUT_URL']
 
@@ -291,15 +277,15 @@ class DownloadOSMDataNotSpatialQuery(DownloadOSMData, BuildQueryNotSpatialAlgori
         self.feedback.pushInfo('Building the query.')
 
         query = processing.run(
-            "quickosm:buildquerybyattributeonly",
+            'quickosm:buildquerybyattributeonly',
             {
                 'KEY': self.key,
                 'SERVER': self.server,
                 'TIMEOUT': self.timeout,
                 'TYPE_MULTI_REQUEST': self.type_multi_request,
-                'VALUE': self.value
+                'VALUE': self.value,
             },
-            feedback=self.feedback
+            feedback=self.feedback,
         )
         url = query['OUTPUT_URL']
 
@@ -337,16 +323,16 @@ class DownloadOSMDataInAreaQuery(DownloadOSMData, BuildQueryInAreaAlgorithm):
         self.feedback.pushInfo('Building the query.')
 
         query = processing.run(
-            "quickosm:buildqueryinsidearea",
+            'quickosm:buildqueryinsidearea',
             {
                 'AREA': self.area,
                 'KEY': self.key,
                 'SERVER': self.server,
                 'TIMEOUT': self.timeout,
                 'TYPE_MULTI_REQUEST': self.type_multi_request,
-                'VALUE': self.value
+                'VALUE': self.value,
             },
-            feedback=self.feedback
+            feedback=self.feedback,
         )
         url = query['OUTPUT_URL']
 
@@ -384,7 +370,7 @@ class DownloadOSMDataAroundAreaQuery(DownloadOSMData, BuildQueryAroundAreaAlgori
         self.feedback.pushInfo('Building the query.')
 
         query = processing.run(
-            "quickosm:buildqueryaroundarea",
+            'quickosm:buildqueryaroundarea',
             {
                 'AREA': self.area,
                 'DISTANCE': self.distance,
@@ -392,9 +378,9 @@ class DownloadOSMDataAroundAreaQuery(DownloadOSMData, BuildQueryAroundAreaAlgori
                 'SERVER': self.server,
                 'TIMEOUT': self.timeout,
                 'TYPE_MULTI_REQUEST': self.type_multi_request,
-                'VALUE': self.value
+                'VALUE': self.value,
             },
-            feedback=self.feedback
+            feedback=self.feedback,
         )
         url = query['OUTPUT_URL']
 
@@ -432,16 +418,16 @@ class DownloadOSMDataExtentQuery(DownloadOSMData, BuildQueryExtentAlgorithm):
         self.feedback.pushInfo('Building the query.')
 
         query = processing.run(
-            "quickosm:buildqueryextent",
+            'quickosm:buildqueryextent',
             {
                 'EXTENT': QgsReferencedRectangle(self.extent, self.extent_crs),
                 'KEY': self.key,
                 'SERVER': self.server,
                 'TIMEOUT': self.timeout,
                 'TYPE_MULTI_REQUEST': self.type_multi_request,
-                'VALUE': self.value
+                'VALUE': self.value,
             },
-            feedback=self.feedback
+            feedback=self.feedback,
         )
         url = query['OUTPUT_URL']
 

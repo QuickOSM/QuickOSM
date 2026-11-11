@@ -1,6 +1,5 @@
 """Set up the parameters for the processing algorithms."""
 
-
 try:
     from processing.algs.qgis.QgisAlgorithm import QgisAlgorithm
 except ImportError:
@@ -48,8 +47,7 @@ class BuildBased(QgisAlgorithm):
 
     def add_bottom_parameters(self):
         """Set up the advanced parameters."""
-        param = QgsProcessingParameterNumber(
-            self.TIMEOUT, tr('Timeout'), defaultValue=25, minValue=5)
+        param = QgsProcessingParameterNumber(self.TIMEOUT, tr('Timeout'), defaultValue=25, minValue=5)
         param.setFlags(param.flags() | QgsProcessingParameterDefinition.Flag.FlagAdvanced)
         help_string = tr('The timeout to use for the Overpass API.')
         param.setHelp(help_string)
@@ -57,10 +55,8 @@ class BuildBased(QgisAlgorithm):
 
         server = get_setting('defaultOAPI', OVERPASS_SERVERS[0]) + 'interpreter'
         param = QgsProcessingParameterString(
-            self.SERVER,
-            tr('Overpass server'),
-            optional=False,
-            defaultValue=server)
+            self.SERVER, tr('Overpass server'), optional=False, defaultValue=server
+        )
         param.setFlags(param.flags() | QgsProcessingParameterDefinition.Flag.FlagAdvanced)
         help_string = tr('The Overpass API server to use to build the encoded URL.')
         param.setHelp(help_string)
@@ -98,12 +94,8 @@ class BuildRaw(BuildBased):
         """Set up the parameters."""
         super().add_top_parameters()
 
-        param = QgsProcessingParameterString(
-            self.QUERY, tr('Query'), optional=False, multiLine=True
-        )
-        help_string = tr(
-            'A XML or OQL query to be send to the Overpass API. It can contains some {{}} tokens.'
-        )
+        param = QgsProcessingParameterString(self.QUERY, tr('Query'), optional=False, multiLine=True)
+        help_string = tr('A XML or OQL query to be send to the Overpass API. It can contains some {{}} tokens.')
         param.setHelp(help_string)
         self.addParameter(param)
 
@@ -112,26 +104,17 @@ class BuildRaw(BuildBased):
         super().add_bottom_parameters()
 
         param = QgsProcessingParameterExtent(
-            self.EXTENT, tr('Extent, if "{{bbox}}" in the query'),
-            defaultValue='0,1,0,1 []', optional=True
+            self.EXTENT, tr('Extent, if "{{bbox}}" in the query'), defaultValue='0,1,0,1 []', optional=True
         )
-        param.setFlags(
-            param.flags() | QgsProcessingParameterDefinition.Flag.FlagAdvanced
-        )
-        help_string = tr(
-            'If the query has a {{bbox}} token, this extent will be used for replacement.'
-        )
+        param.setFlags(param.flags() | QgsProcessingParameterDefinition.Flag.FlagAdvanced)
+        help_string = tr('If the query has a {{bbox}} token, this extent will be used for replacement.')
         param.setHelp(help_string)
         self.addParameter(param)
 
         param = QgsProcessingParameterString(
-            self.AREA,
-            tr('Area (if {{geocodeArea}} in the query)'),
-            optional=True
+            self.AREA, tr('Area (if {{geocodeArea}} in the query)'), optional=True
         )
-        param.setFlags(
-            param.flags() | QgsProcessingParameterDefinition.Flag.FlagAdvanced
-        )
+        param.setFlags(param.flags() | QgsProcessingParameterDefinition.Flag.FlagAdvanced)
         help_string = tr('If the query has a {{geocodeArea}} token, this place will be used.')
         param.setHelp(help_string)
         self.addParameter(param)
@@ -162,38 +145,30 @@ class BuildBasedQuery(BuildBased):
         """Set up the parameters."""
         super().add_top_parameters()
 
-        param = QgsProcessingParameterString(
-            self.KEY, tr('Key, default to all keys'), optional=True
-        )
+        param = QgsProcessingParameterString(self.KEY, tr('Key, default to all keys'), optional=True)
         help_string = tr(
             'The OSM key to use. It can be empty and it will default to all keys. '
-            'Multiple keys can be ask by adding the separator \',\' between each key. '
+            "Multiple keys can be ask by adding the separator ',' between each key. "
             'In this case make sure the number of keys match the number of values'
         )
         param.setHelp(help_string)
         self.addParameter(param)
 
-        param = QgsProcessingParameterString(
-            self.VALUE, tr('Value, default to all values'), optional=True
-        )
+        param = QgsProcessingParameterString(self.VALUE, tr('Value, default to all values'), optional=True)
         help_string = tr(
             'The OSM value to use. It can be empty and it will default to all values.'
-            'Multiple values can be ask by adding the separator \',\' between each value. '
+            "Multiple values can be ask by adding the separator ',' between each value. "
             'In this case make sure the number of values match the number of keys'
         )
         param.setHelp(help_string)
         self.addParameter(param)
 
         param = QgsProcessingParameterString(
-            self.TYPE_MULTI_REQUEST,
-            tr('Operator types to combine multiple keys and values with'),
-            optional=True
+            self.TYPE_MULTI_REQUEST, tr('Operator types to combine multiple keys and values with'), optional=True
         )
 
         # TODO: expand help string
-        help_string = tr(
-            'The logical operators used to combine keys and values, if there are multiple.'
-        )
+        help_string = tr('The logical operators used to combine keys and values, if there are multiple.')
         param.setHelp(help_string)
         self.addParameter(param)
 
@@ -221,8 +196,7 @@ class BuildBasedInAreaQuery(BuildBasedQuery):
 
         param = QgsProcessingParameterString(self.AREA, tr('Inside the area'), optional=False)
         help_string = tr(
-            'The name of the area. '
-            'This will make a first query to the Nominatim API to fetch the OSM ID.'
+            'The name of the area. This will make a first query to the Nominatim API to fetch the OSM ID.'
         )
         param.setHelp(help_string)
         self.addParameter(param)
@@ -247,11 +221,9 @@ class BuildBasedAroundAreaQuery(BuildBasedInAreaQuery):
         """Set up the parameter."""
         super().add_top_parameters()
 
-        param = QgsProcessingParameterNumber(
-            self.DISTANCE, tr('Distance (meters)'), defaultValue=1000, minValue=1)
+        param = QgsProcessingParameterNumber(self.DISTANCE, tr('Distance (meters)'), defaultValue=1000, minValue=1)
         help_string = tr(
-            'The distance to use when doing the buffering around the named area. '
-            'The distance must be in meters.'
+            'The distance to use when doing the buffering around the named area. The distance must be in meters.'
         )
         param.setHelp(help_string)
         self.addParameter(param)

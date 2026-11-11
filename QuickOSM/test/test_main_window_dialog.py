@@ -70,14 +70,8 @@ class TestUiMainWindow(unittest.TestCase):
         dialog.external_panels[Panels.QuickQuery].choice_preset()
         index_01 = dialog.table_keys_values_qq.cellWidget(0, 1).findText('shop')
         index_02 = dialog.table_keys_values_qq.cellWidget(0, 2).findText('bakery')
-        self.assertEqual(
-            dialog.table_keys_values_qq.cellWidget(0, 1).currentIndex(),
-            index_01
-        )
-        self.assertEqual(
-            dialog.table_keys_values_qq.cellWidget(0, 2).currentIndex(),
-            index_02
-        )
+        self.assertEqual(dialog.table_keys_values_qq.cellWidget(0, 1).currentIndex(), index_01)
+        self.assertEqual(dialog.table_keys_values_qq.cellWidget(0, 2).currentIndex(), index_02)
 
     def test_add_row_below(self):
         """Test we can add a row below in the table."""
@@ -86,7 +80,7 @@ class TestUiMainWindow(unittest.TestCase):
         dialog.table_keys_values_qq.cellWidget(0, 1).setCurrentIndex(index_01)
         index_02 = dialog.table_keys_values_qq.cellWidget(0, 2).findText('bench')
         dialog.table_keys_values_qq.cellWidget(0, 2).setCurrentIndex(index_02)
-        dialog .table_keys_values_qq.cellWidget(0, 3).click()
+        dialog.table_keys_values_qq.cellWidget(0, 3).click()
         index_11 = dialog.table_keys_values_qq.cellWidget(1, 1).findText('amenity')
         dialog.table_keys_values_qq.cellWidget(1, 1).setCurrentIndex(index_11)
         dialog.external_panels[Panels.QuickQuery].key_edited(1)
@@ -94,22 +88,10 @@ class TestUiMainWindow(unittest.TestCase):
         dialog.table_keys_values_qq.cellWidget(1, 2).setCurrentIndex(index_12)
         dialog.table_keys_values_qq.cellWidget(0, 3).click()
         self.assertEqual(dialog.table_keys_values_qq.rowCount(), 3)
-        self.assertEqual(
-            dialog.table_keys_values_qq.cellWidget(2, 1).currentIndex(),
-            index_11
-        )
-        self.assertEqual(
-            dialog.table_keys_values_qq.cellWidget(2, 2).currentIndex(),
-            index_12
-        )
-        self.assertEqual(
-            dialog.table_keys_values_qq.cellWidget(1, 1).currentIndex(),
-            0
-        )
-        self.assertEqual(
-            dialog.table_keys_values_qq.cellWidget(0, 1).currentIndex(),
-            index_01
-        )
+        self.assertEqual(dialog.table_keys_values_qq.cellWidget(2, 1).currentIndex(), index_11)
+        self.assertEqual(dialog.table_keys_values_qq.cellWidget(2, 2).currentIndex(), index_12)
+        self.assertEqual(dialog.table_keys_values_qq.cellWidget(1, 1).currentIndex(), 0)
+        self.assertEqual(dialog.table_keys_values_qq.cellWidget(0, 1).currentIndex(), index_01)
 
     def test_remove_row(self):
         """Test we can remove a row in the table."""
@@ -118,7 +100,7 @@ class TestUiMainWindow(unittest.TestCase):
         dialog.table_keys_values_qq.cellWidget(0, 1).setCurrentIndex(index)
         index = dialog.table_keys_values_qq.cellWidget(0, 2).findText('bench')
         dialog.table_keys_values_qq.cellWidget(0, 2).setCurrentIndex(index)
-        dialog .table_keys_values_qq.cellWidget(0, 3).click()
+        dialog.table_keys_values_qq.cellWidget(0, 3).click()
         index_11 = dialog.table_keys_values_qq.cellWidget(1, 1).findText('amenity')
         dialog.table_keys_values_qq.cellWidget(1, 1).setCurrentIndex(index_11)
         dialog.external_panels[Panels.QuickQuery].key_edited(1)
@@ -128,11 +110,5 @@ class TestUiMainWindow(unittest.TestCase):
         dialog.table_keys_values_qq.cellWidget(0, 2).setCurrentIndex(index)
         dialog.table_keys_values_qq.cellWidget(0, 4).click()
         self.assertEqual(dialog.table_keys_values_qq.rowCount(), 1)
-        self.assertEqual(
-            dialog.table_keys_values_qq.cellWidget(0, 1).currentIndex(),
-            index_11
-        )
-        self.assertEqual(
-            dialog.table_keys_values_qq.cellWidget(0, 2).currentIndex(),
-            index_12
-        )
+        self.assertEqual(dialog.table_keys_values_qq.cellWidget(0, 1).currentIndex(), index_11)
+        self.assertEqual(dialog.table_keys_values_qq.cellWidget(0, 2).currentIndex(), index_12)

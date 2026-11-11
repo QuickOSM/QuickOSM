@@ -18,45 +18,40 @@ from QuickOSM.tools.i18n import tr
 SPACE_INDENT = '    '
 
 # Simple keys/values
-ALL_OBJECTS = tr(
-    'All OSM objects in {extent} are going to be downloaded.')
-ALL_VALUES = tr(
-    'All OSM objects with the key {key} in {extent} are going to be downloaded.')
+ALL_OBJECTS = tr('All OSM objects in {extent} are going to be downloaded.')
+ALL_VALUES = tr('All OSM objects with the key {key} in {extent} are going to be downloaded.')
 ALL_VALUES_WITH_DISTANCE = tr(
-    'All OSM objects with the key {key} in {dist} meters of {extent} are going to be downloaded.')
+    'All OSM objects with the key {key} in {dist} meters of {extent} are going to be downloaded.'
+)
 NO_KEY = tr('All OSM objects in {extent} are going to be downloaded.')
-NO_KEY_WITH_DISTANCE = tr(
-    'All OSM objects in {dist} meters of {extent} are going to be downloaded.')
-ATTRIBUTE_ONLY = tr(
-    'All OSM objects with the key {key} are going to be downloaded.')
+NO_KEY_WITH_DISTANCE = tr('All OSM objects in {dist} meters of {extent} are going to be downloaded.')
+ATTRIBUTE_ONLY = tr('All OSM objects with the key {key} are going to be downloaded.')
 
 # Multiple keys/values
-ATTRIBUTES_ONLY = tr(
-    'All OSM objects with keys {key} are going to be downloaded.')
-ALL_MULTI = tr(
-    'All OSM objects with keys {key} in {extent} are going to be downloaded.')
+ATTRIBUTES_ONLY = tr('All OSM objects with keys {key} are going to be downloaded.')
+ALL_MULTI = tr('All OSM objects with keys {key} in {extent} are going to be downloaded.')
 ALL_MULTI_WITH_DISTANCE = tr(
-    'All OSM objects with keys {key} in {dist} meters of {extent} are going to be downloaded.')
+    'All OSM objects with keys {key} in {dist} meters of {extent} are going to be downloaded.'
+)
 
 LOGGER = logging.getLogger('QuickOSM')
 
 
 class QueryFactory:
-
     """Build a XML or OQL query."""
 
     def __init__(
-            self,
-            type_multi_request: list = None,
-            query_type: QueryType = None,
-            key: str = None,
-            value: str = None,
-            area: str = None,
-            around_distance: int = None,
-            osm_objects: List[OsmType] = None,
-            output: str = 'xml',
-            timeout: int = 25,
-            print_mode: str = 'body',
+        self,
+        type_multi_request: list = None,
+        query_type: QueryType = None,
+        key: str = None,
+        value: str = None,
+        area: str = None,
+        around_distance: int = None,
+        osm_objects: List[OsmType] = None,
+        output: str = 'xml',
+        timeout: int = 25,
+        print_mode: str = 'body',
     ):
         """
         Query Factory constructor according to Overpass API.
@@ -173,8 +168,7 @@ class QueryFactory:
                 elif type_ == 'OR':
                     types.append(MultiType.OR)
                 else:
-                    raise QueryFactoryException(
-                        tr('Only values "AND"/"OR" are allowed as logical operators.'))
+                    raise QueryFactoryException(tr('Only values "AND"/"OR" are allowed as logical operators.'))
         return types
 
     def _check_parameters(self) -> bool:
@@ -193,60 +187,46 @@ class QueryFactory:
 
         if self._query_type == QueryType.AroundArea:
             if not self._distance_around:
-                raise QueryFactoryException(
-                    tr('No distance provided with the "around" query.'))
+                raise QueryFactoryException(tr('No distance provided with the "around" query.'))
 
             try:
                 int(self._distance_around)
             except ValueError:
-                raise QueryFactoryException(
-                    tr('Wrong distance parameter.')) from None
+                raise QueryFactoryException(tr('Wrong distance parameter.')) from None
 
         if self._distance_around and self._query_type == QueryType.InArea:
-            raise QueryFactoryException(
-                tr('Distance parameter is incompatible with this query.'))
+            raise QueryFactoryException(tr('Distance parameter is incompatible with this query.'))
 
         if self._query_type == QueryType.InArea and not self._area:
-            raise QueryFactoryException(
-                tr('Named area is required when the query is "In".'))
+            raise QueryFactoryException(tr('Named area is required when the query is "In".'))
 
         if self._query_type == QueryType.AroundArea and not self._area:
-            raise QueryFactoryException(
-                tr('Named area or a WKT is required when the query is "Around".'))
+            raise QueryFactoryException(tr('Named area or a WKT is required when the query is "Around".'))
 
         if not self._key and self._value:
-            raise QueryFactoryException(
-                tr('Not possible to query a specific value without a key.'))
+            raise QueryFactoryException(tr('Not possible to query a specific value without a key.'))
 
         if self._query_type == QueryType.NotSpatial:
             if not self._key:
-                raise QueryFactoryException(
-                    tr('A key is required.'))
+                raise QueryFactoryException(tr('A key is required.'))
 
         if len(self._key) > len(self._value):
             if len(self._key) != 1:
-                raise QueryFactoryException(
-                    tr('Missing some values for some keys.'))
+                raise QueryFactoryException(tr('Missing some values for some keys.'))
 
         if len(self._key) < len(self._value):
-            raise QueryFactoryException(
-                tr('Missing some keys for some values.'))
+            raise QueryFactoryException(tr('Missing some keys for some values.'))
 
         for key in self._key:
             if key != key.strip():
-                raise QueryFactoryException(
-                    tr(f'Key "{key}" contains leading or trailing whitespace.'))
+                raise QueryFactoryException(tr(f'Key "{key}" contains leading or trailing whitespace.'))
 
         if len(self._key) != 0:
             if len(self._type_multi_request) > len(self._key) - 1:
-                raise QueryFactoryException(
-                    tr('Too many logical operators were provided.')
-                )
+                raise QueryFactoryException(tr('Too many logical operators were provided.'))
 
             if len(self._type_multi_request) < len(self._key) - 1:
-                raise QueryFactoryException(
-                    tr('Not enough logical operators were provided.')
-                )
+                raise QueryFactoryException(tr('Not enough logical operators were provided.'))
 
         self._checked = True
         return True
@@ -264,10 +244,8 @@ class QueryFactory:
         This is a hack to get pretty XML working, because templates are not a
         valid XML !
         """
-        query = re.sub(
-            r' area_coords="(.*?)"', r' {{geocodeCoords:\1}}', query)
-        query = re.sub(
-            r' area="(.*?)"', r' {{geocodeArea:\1}}', query)
+        query = re.sub(r' area_coords="(.*?)"', r' {{geocodeCoords:\1}}', query)
+        query = re.sub(r' area="(.*?)"', r' {{geocodeArea:\1}}', query)
         query = query.replace(' bbox="custom"', ' {{bbox}}')
         return query
 
@@ -284,7 +262,6 @@ class QueryFactory:
             nominatim = None
 
         if nominatim and self._query_type != QueryType.AroundArea:
-
             for i, one_place in enumerate(nominatim):
                 query += f'<id-query area="{one_place}" into="area_{i}"/>'
 
@@ -365,7 +342,6 @@ class QueryFactory:
             nominatim = None
 
         if nominatim and self._query_type == QueryType.InArea:
-
             for i, one_place in enumerate(nominatim):
                 query += f' area="{one_place}" -> .area_{i};\n'
 
@@ -513,13 +489,12 @@ class QueryFactory:
         multi_keys = len(key) > 1
 
         if key:
-
             keys = []
             for k, v in zip(key, val, strict=False):
                 if v:
-                    keys.append(f'\'{k}\'=\'{v}\'')
+                    keys.append(f"'{k}'='{v}'")
                 else:
-                    keys.append(f'\'{k}\'')
+                    keys.append(f"'{k}'")
 
             if multi_keys:
                 type_multi = self._type_multi_request
