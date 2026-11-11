@@ -1,7 +1,7 @@
 site_name: QuickOSM
 site_author: Etienne
 site_description: Download OSM data within QGIS with the Overpass
-site_url: https://github.com/QuickOSM/QuickOSM
+site_url: https://quickosm.github.io/QuickOSM/
 repo_url: https://github.com/QuickOSM/QuickOSM
 copyright: '<span class="copyleft">&copy;</span> QuickOSM Project'
 
@@ -15,13 +15,6 @@ nav:
         - 'Map preset': 'user-guide/map-preset.md'
         - 'QGIS Model and Python API': 'user-guide/processing.md'
     - Processing: processing/README.md
-    - Documentation:
-        # - 'Developer documentation': 'code-documentation/developer.md'
-        - 'Definition files': 'code-documentation/definitions.md'
-        - 'Processing files': 'code-documentation/processing.md'
-        - 'Core files': 'code-documentation/core.md'
-        - 'Ui files': 'code-documentation/ui.md'
-        - 'Tests files': 'code-documentation/tests.md'
     - Changelog: changelog.md
     - Contributing: contributing.md
     - Translation: translation-stats.md

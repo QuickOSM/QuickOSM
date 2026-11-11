@@ -9,7 +9,7 @@ on:
       - 'CONTRIBUTING.md'
       - 'docs/**'
       - 'mkdocs.yml'
-      - '.github/workflow/publish-doc.yml'
+      - '.github/workflows/publish-doc.yml'
 
 jobs:
   deploy:
