@@ -34,12 +34,6 @@ class Nominatim(Downloader):
         self.result_path = temporary.fileName()
         temporary.close()
 
-    def error(self, messages: str):
-        """Display the status in logger"""
-        for message in messages:
-            LOGGER.error(message)
-        raise NetWorkErrorException('Nominatim API', ', '.join(messages))
-
     def query(self, query: str) -> dict:
         """Perform a nominatim query.
 
@@ -61,6 +55,11 @@ class Nominatim(Downloader):
         # Use GET for Nominatim
         # https://github.com/QuickOSM/QuickOSM/issues/472
         self.download(get=True)
+
+        if self.errors:
+            for message in self.errors:
+                LOGGER.error(message)
+            raise NetWorkErrorException('Nominatim API', ', '.join(self.errors))
 
         with open(self.result_path, encoding='utf8') as json_file:
             data = json.load(json_file)
