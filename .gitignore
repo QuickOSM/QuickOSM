@@ -8,6 +8,9 @@
 # IDE
 .idea
 
+# Docker tests
+debug-docker/
+
 # Data
 *.osm
 
