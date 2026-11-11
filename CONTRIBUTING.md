@@ -24,7 +24,8 @@ SQL and Python are covered by unittests with Docker.
 
 ```bash
 pip install -r requirements/dev.txt
-flake8
+pre-commit install
+make lint
 make tests
 ```
 
