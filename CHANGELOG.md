@@ -2,7 +2,10 @@
 
 ## Unreleased
 
+## 2.6.0 - 2026-11-11
+
 * Raise to QGIS 3.44 minimum
+* Fix custom OSM keys and values, such as lifecycle tags, lost when editing a preset, contribution from @mhatipog
 * Fix the message of exceptions without details, regression from 2.5.2
 * Tests are now launched with `pytest`, instead of the removed `qgis_plugin_tools` runner
 
