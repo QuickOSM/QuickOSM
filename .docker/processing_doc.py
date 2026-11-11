@@ -62,6 +62,10 @@ TEMPLATE_ALGORITHM = """
 
 """
 
+TEMPLATE_FOOTER = """
+*Documentation generated with QGIS {version}.*
+"""
+
 TEMPLATE_PARAMETERS = '{id}|{description}|{type}|{info}|{required}|{advanced}|{option}|\n'
 
 TEMPLATE_OUTPUT = '{id}|{description}|{type}|{info}|\n'
@@ -196,6 +200,7 @@ def generate_processing_doc(provider, output_dir: Path):
         if group:
             markdown_all += TEMPLATE_GROUP.format(group=group)
         markdown_all += ''.join(algorithms)
+    markdown_all += TEMPLATE_FOOTER.format(version=Qgis.version())
 
     (output_dir / 'README.md').write_text(markdown_all, encoding='utf-8')
     print(f'{len(provider.algorithms())} algorithms documented in {output_dir}')
