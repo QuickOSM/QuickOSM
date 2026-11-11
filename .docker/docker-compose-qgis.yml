@@ -1,6 +1,6 @@
 services:
   qgis:
-    image: qgis/qgis:3.40
+    image: qgis/qgis:${QGIS_VERSION:-3.40}
     container_name: qgis
     # The default command is bash, it exits without a TTY
     tty: true

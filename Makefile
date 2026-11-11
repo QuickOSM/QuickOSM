@@ -1,5 +1,9 @@
+# QGIS version used for tests, e.g. make tests QGIS_VERSION=4.2
+QGIS_VERSION ?= 3.40
+export QGIS_VERSION
+
 start_tests:
-	@echo 'Start docker compose'
+	@echo "Start docker compose with QGIS $(QGIS_VERSION)"
 	@cd .docker && ./start.sh
 
 run_tests:
