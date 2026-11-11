@@ -87,7 +87,7 @@ class BuildRaw(BuildBased):
         self.extent_crs = self.parameterAsExtentCrs(parameters, self.EXTENT, context)
 
         # Always transform to 4326
-        crs_4326 = QgsCoordinateReferenceSystem(4326)
+        crs_4326 = QgsCoordinateReferenceSystem('EPSG:4326')
         transform = QgsCoordinateTransform(self.extent_crs, crs_4326, context.project())
         self.extent = transform.transform(self.extent)
         self.extent_crs = crs_4326
@@ -270,7 +270,7 @@ class BuildBasedExtentQuery(BuildBasedQuery):
         self.extent_crs = self.parameterAsExtentCrs(parameters, self.EXTENT, context)
 
         # Always transform to 4326
-        crs_4326 = QgsCoordinateReferenceSystem(4326)
+        crs_4326 = QgsCoordinateReferenceSystem('EPSG:4326')
         transform = QgsCoordinateTransform(self.extent_crs, crs_4326, context.project())
         self.extent = transform.transform(self.extent)
         self.extent_crs = crs_4326

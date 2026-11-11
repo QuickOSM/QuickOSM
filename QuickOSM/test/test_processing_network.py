@@ -212,7 +212,7 @@ class TestProcessing(unittest.TestCase):
             open(plugin_test_data_path('overpass', 'empty_osm_file.xml'), encoding='utf8').read(),
         )
         project = QgsProject()
-        project.setCrs(QgsCoordinateReferenceSystem(2154))
+        project.setCrs(QgsCoordinateReferenceSystem('EPSG:2154'))
         context = QgsProcessingContext()
         context.setProject(project)
 
