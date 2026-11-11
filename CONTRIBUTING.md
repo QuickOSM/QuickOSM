@@ -44,6 +44,7 @@ make tests
 
 ```python
 from qgis.utils import plugins
+
 plugins['QuickOSM'].run_tests()  # or run_tests('-k', 'processing')
 ```
 

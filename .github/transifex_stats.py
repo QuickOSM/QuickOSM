@@ -41,7 +41,7 @@ LANGUAGE_MAP = {
 
 # Catch the Transifex api token value (passed as argument to the python command)
 if len(argv) <= 1:
-    print("Missing transifex token argument")
+    print('Missing transifex token argument')
     exit(1)
 
 TX_TOKEN = argv[1]
@@ -57,13 +57,10 @@ ORGANIZATION = 'quickosm'
 PROJECT = 'gui'
 
 headers = {'Authorization': f'Bearer {TX_TOKEN}'}
-project_id = f"o:{ORGANIZATION}:p:{PROJECT}"
+project_id = f'o:{ORGANIZATION}:p:{PROJECT}'
 
 # Load target languages of the QGIS Documentation project from transifex
-target_languages = requests.get(
-    f"https://rest.api.transifex.com/projects/{project_id}/languages",
-    headers=headers
-    )
+target_languages = requests.get(f'https://rest.api.transifex.com/projects/{project_id}/languages', headers=headers)
 target_languages = target_languages.json()
 # Where we store statistics of each language
 language_rate = {}
@@ -85,19 +82,17 @@ for lang in language_rate:
     total_strings = 0
 
     resource_language_stats = requests.get(
-        f"https://rest.api.transifex.com/resource_language_stats?"
-        f"filter[project]={project_id}&filter[language]=l:{lang}",
-        headers=headers)
+        f'https://rest.api.transifex.com/resource_language_stats?'
+        f'filter[project]={project_id}&filter[language]=l:{lang}',
+        headers=headers,
+    )
     resource_language_stats = resource_language_stats.json()
 
     all_resources = resource_language_stats['data']
 
     # Walk through pagination
     while 'next' in resource_language_stats['links'].keys():
-        resource_language_stats = requests.get(
-            resource_language_stats['links']['next'],
-            headers=headers
-            ).json()
+        resource_language_stats = requests.get(resource_language_stats['links']['next'], headers=headers).json()
         all_resources.extend(resource_language_stats['data'])
 
     for resource in all_resources:
@@ -105,8 +100,7 @@ for lang in language_rate:
         total_strings += resource['attributes']['total_strings']
 
     language_rate[lang]['translated_strings'] = translated_strings
-    language_rate[lang]['percentage'] = round(
-        translated_strings * 100 / total_strings, 2)
+    language_rate[lang]['percentage'] = round(translated_strings * 100 / total_strings, 2)
     # Keep total count of available strings in 'en' only,
     # no need to store multiple times
     if lang == 'en':
@@ -116,10 +110,7 @@ for lang in language_rate:
 
 # Sort by language name for a better display in docs
 language_rate = {
-    k: v for k, v in sorted(
-        language_rate.items(),
-        key=lambda item: item[1]['percentage'], reverse=True
-    )
+    k: v for k, v in sorted(language_rate.items(), key=lambda item: item[1]['percentage'], reverse=True)
 }
 
 # Stats for the whole project (== English source language)
@@ -128,18 +119,11 @@ nb_languages = len(language_rate) - 1
 # Total number of strings in English to translate
 total_strings = language_rate['en']['total_strings']
 # translation percentage of the whole project, let's not count 'en'
-total_translated_strings = sum(
-    language_rate[lang]['translated_strings']
-    for lang in language_rate if lang != 'en')
-global_percentage = round(
-    total_translated_strings * 100 / (total_strings * nb_languages), 2)
+total_translated_strings = sum(language_rate[lang]['translated_strings'] for lang in language_rate if lang != 'en')
+global_percentage = round(total_translated_strings * 100 / (total_strings * nb_languages), 2)
 
 language_rate['en'].update(
-    {
-        'nb_languages': nb_languages,
-        'translated_strings': total_translated_strings,
-        'percentage': global_percentage
-    }
+    {'nb_languages': nb_languages, 'translated_strings': total_translated_strings, 'percentage': global_percentage}
 )
 
 # print('all ', language_rate)
@@ -148,27 +132,26 @@ language_rate['en'].update(
 def load_overall_stats():
     """Format statistics of translation in the project"""
 
-    text = (
-        f"""
+    text = f"""
 | Number of strings | Number of target languages | Overall Translation ratio |
 |:-:|:-:|:-:|
 {total_strings}|{nb_languages}|{global_percentage}
-""")
+"""
     return text
 
 
 def load_lang_stats(target_langs):
     """Format statistics of translated languages into a multi-column table"""
 
-    text = "| Language | Translation ratio (%) |"
-    text += "\n|:-:|:-:|\n"
+    text = '| Language | Translation ratio (%) |'
+    text += '\n|:-:|:-:|\n'
 
     for lang in target_langs:
         if lang == 'en':
             continue
 
-        text += f"{target_langs[lang]['name']} {LANGUAGE_MAP.get(lang, '')}|"
-        text += f"[={target_langs[lang]['percentage']}% \"{target_langs[lang]['percentage']}\"]|\n"
+        text += f'{target_langs[lang]["name"]} {LANGUAGE_MAP.get(lang, "")}|'
+        text += f'[={target_langs[lang]["percentage"]}% "{target_langs[lang]["percentage"]}"]|\n'
 
     return text
 
@@ -195,5 +178,5 @@ knowledge is required.
 """)
 
 
-with open("QuickOSM/resources/json/i18n.json", 'w', encoding="utf8") as f:
+with open('QuickOSM/resources/json/i18n.json', 'w', encoding='utf8') as f:
     json.dump(language_rate, f, indent=4)
