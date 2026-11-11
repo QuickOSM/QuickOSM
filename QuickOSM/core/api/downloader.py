@@ -14,7 +14,7 @@ LOGGER = logging.getLogger('QuickOSM')
 class Downloader:
     """Manage downloader."""
 
-    def __init__(self, url: Optional[str] = None ):
+    def __init__(self, url: Optional[str] = None):
         """Constructor."""
         if url is None:
             url = 'https://nominatim.openstreetmap.org/search?'
