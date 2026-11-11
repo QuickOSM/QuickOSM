@@ -7,7 +7,7 @@ docker run -d -t \
   --name qgis-testing-environment \
   -v  $(pwd)/../:/plugin \
   -e DISPLAY=:99 \
-  qgis/qgis:3.40
+  qgis/qgis:3.44
 
 sleep 10
 

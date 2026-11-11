@@ -1,5 +1,5 @@
 # QGIS version used for tests, e.g. make tests QGIS_VERSION=4.2
-QGIS_VERSION ?= 3.40
+QGIS_VERSION ?= 3.44
 export QGIS_VERSION
 
 start_tests:

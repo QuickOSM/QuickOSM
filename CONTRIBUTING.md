@@ -33,8 +33,8 @@ make tests
   The QGIS application, a fake `iface` and the Processing provider are set up in `QuickOSM/test/conftest.py`.
   * They are launched on GitHub Actions, you can check the [CI status](https://github.com/QuickOSM/QuickOSM/actions/workflows/ci.yml) on each commits and pull requests.
   * You can launch them locally:
-     * `make tests` using Docker, with QGIS 3.40 by default.
-        * Another QGIS version can be used, with any `qgis/qgis` tag available on [Docker Hub](https://hub.docker.com/r/qgis/qgis/tags): `make tests QGIS_VERSION=3.44` or `make tests QGIS_VERSION=4.2`.
+     * `make tests` using Docker, with QGIS 3.44 by default.
+        * Another QGIS version can be used, with any `qgis/qgis` tag available on [Docker Hub](https://hub.docker.com/r/qgis/qgis/tags): `make tests QGIS_VERSION=4.2`.
         * Or step by step: `make start_tests`, then `make run_tests` as many times as needed, then `make stop_tests`.
         * Extra pytest arguments can be given: `cd .docker && ./exec.sh -k processing`.
         * If you are using docker, do not forget to update your image from time to time `docker pull qgis/qgis:latest`.

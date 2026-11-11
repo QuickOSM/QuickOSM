@@ -18,7 +18,8 @@
 | 1.8 → 1.17  | 3.4      | 3.14     |                                                                        |
 | 2.0 → 2.1.1 | 3.16     | 3.22     |                                                                        |
 | 2.2 → 2.5.3 | 3.22     | 4.2      |                                                                        |
-| 2.5.4 →     | 3.40     | 4.99     | [main](https://github.com/QuickOSM/QuickOSM/tree/main)                 |
+| 2.5.4       | 3.40     | 4.99     |                                                                        |
+| 2.6.0 →     | 3.44     | 4.99     | [main](https://github.com/QuickOSM/QuickOSM/tree/main)                 |
 
 ## Documentation
 

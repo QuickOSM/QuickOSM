@@ -61,7 +61,7 @@ if qgis.utils.iface is None:
 try:
     import processing  # noqa: F401
 except ModuleNotFoundError:
-    # Not in the PYTHONPATH in some Docker images, e.g. qgis/qgis:3.40
+    # Not in the PYTHONPATH in some Docker images, e.g. qgis/qgis:3.44
     sys.path.append(str(Path(QgsApplication.pkgDataPath()) / 'python' / 'plugins'))
 
 from processing.core.Processing import Processing  # noqa: E402
