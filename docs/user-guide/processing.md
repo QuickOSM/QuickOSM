@@ -1,6 +1,6 @@
 # Using QGIS Processing
 
-For the list of algorithms, read the [Processing](./processing/) section.
+For the list of algorithms, read the [Processing](../processing/README.md) section.
 
 Since QGIS 3.4, QuickOSM is available in the
 [Processing modeler](https://docs.qgis.org/latest/en/docs/user_manual/processing/modeler.html).
