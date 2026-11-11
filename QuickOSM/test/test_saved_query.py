@@ -11,6 +11,7 @@ from QuickOSM.core.utilities.query_saved import QueryManagement
 from QuickOSM.core.utilities.tools import query_preset
 from QuickOSM.definitions.format import Format
 from QuickOSM.definitions.gui import Panels
+from QuickOSM.definitions.osm import MultiType
 from QuickOSM.ui.dialog import Dialog
 from QuickOSM.ui.edit_preset import EditPreset
 
@@ -214,6 +215,31 @@ class TestBookmarkQuery(unittest.TestCase):
         }
 
         self.assertDictEqual(expected_json, new_data)
+
+    def test_custom_osm_keys_survive_preset_edit(self):
+        """Keep user-defined OSM keys and values when editing a preset."""
+        data_preset = self.set_up_preset_data()
+        keys = ['building', 'was:building', 'demolished:building', 'building']
+        values = ['yes', 'residential', 'yes', 'custom_unlisted_value']
+        data_preset['keys'][0] = keys
+        data_preset['values'][0] = values
+        data_preset['type_multi_request'][0] = [MultiType.OR] * 3
+
+        edit_dialog = EditPreset(self.dialog, data_preset)
+        edit_dialog.button_box.button(QDialogButtonBox.StandardButton.Ok).click()
+        self.preset = self.dialog.list_personal_preset_mp.item(0)
+
+        saved = self.set_up_preset_data()
+        self.assertEqual(saved['keys'][0], keys)
+        self.assertEqual(saved['values'][0], values)
+
+        reopened = EditPreset(self.dialog, saved)
+        for row, (key, value) in enumerate(zip(keys, values)):
+            self.assertEqual(
+                reopened.table_keys_values_eb.cellWidget(row, 1).currentText(), key)
+            self.assertEqual(
+                reopened.table_keys_values_eb.cellWidget(row, 2).currentText(), value)
+        reopened.close()
 
     def test_advanced_view(self):
         """Test if the view match the preset type."""

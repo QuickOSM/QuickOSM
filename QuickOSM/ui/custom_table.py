@@ -311,6 +311,15 @@ class TableKeyValue:
 
         self.fill_table(keys, values, type_multi_request, row)
 
+    @staticmethod
+    def _set_combo_value(combo: QComboBox, value: str):
+        """Restore a value even when it is not in the suggested items."""
+        index = combo.findText(value)
+        if index >= 0:
+            combo.setCurrentIndex(index)
+        else:
+            combo.setEditText(value)
+
     def fill_table(self, keys: list, values: list, type_multi_request: list, row: int = 0):
         """Fill the table with custom parameters."""
         self.table.setRowCount(1)
@@ -323,12 +332,10 @@ class TableKeyValue:
                     self.table.cellWidget(row + num, 0).setCurrentIndex(0)
                 elif type_multi_request[num - 1] == MultiType.OR:
                     self.table.cellWidget(row + num, 0).setCurrentIndex(1)
-            index = self.table.cellWidget(row + num, 1).findText(keys[num])
-            self.table.cellWidget(row + num, 1).setCurrentIndex(index)
+            self._set_combo_value(self.table.cellWidget(row + num, 1), keys[num])
             self.key_edited(row + num)
             if values[num]:
-                index = self.table.cellWidget(row + num, 2).findText(values[num])
-                self.table.cellWidget(row + num, 2).setCurrentIndex(index)
+                self._set_combo_value(self.table.cellWidget(row + num, 2), values[num])
             self.add_row_to_table(row + num)
         if len(keys) > 0:
             num = len(keys) - 1
@@ -337,15 +344,12 @@ class TableKeyValue:
                     self.table.cellWidget(row + num, 0).setCurrentIndex(0)
                 elif type_multi_request[num - 1] == MultiType.OR:
                     self.table.cellWidget(row + num, 0).setCurrentIndex(1)
-            index = self.table.cellWidget(row + num, 1).findText(keys[-1])
-            self.table.cellWidget(row + num, 1).setCurrentIndex(index)
+            self._set_combo_value(self.table.cellWidget(row + num, 1), keys[-1])
             self.key_edited(row + num)
             if values[-1]:
-                index = self.table.cellWidget(row + num, 2).findText(values[-1])
-                self.table.cellWidget(row + num, 2).setCurrentIndex(index)
+                self._set_combo_value(self.table.cellWidget(row + num, 2), values[-1])
 
-            index = self.table.cellWidget(row, 2).findText(values[0])
-            self.table.cellWidget(row, 2).setCurrentIndex(index)
+            self._set_combo_value(self.table.cellWidget(row, 2), values[0])
 
     def key_edited(self, row: int = None):
         """Add values to the combobox according to the key."""
