@@ -29,20 +29,24 @@ make tests
 ```
 
 * For panels, you can find a quick diagram in the `doc` folder.
-* For tests, it's using the `unittest` framework.
+* For tests, they are written with `unittest` and launched with `pytest`.
+  The QGIS application, a fake `iface` and the Processing provider are set up in `QuickOSM/test/conftest.py`.
   * They are launched on GitHub Actions, you can check the [CI status](https://github.com/QuickOSM/QuickOSM/actions/workflows/ci.yml) on each commits and pull requests.
   * You can launch them locally:
-     * `make docker_test` using Docker with the current LTR following the [QGIS release schedule](https://www.qgis.org/en/site/getinvolved/development/roadmap.html#release-schedule).
-        * `qgis_plugin_tools/docker_test.sh QuickOSM release-3_4` for QGIS 3.4
-        * `qgis_plugin_tools/docker_test.sh QuickOSM latest` for QGIS Master or any other tags available on [Docker Hub](https://hub.docker.com/r/qgis/qgis/tags).
+     * `make tests` using Docker, with QGIS 3.44 by default.
+        * Another QGIS version can be used, with any `qgis/qgis` tag available on [Docker Hub](https://hub.docker.com/r/qgis/qgis/tags): `make tests QGIS_VERSION=4.2`.
+        * Or step by step: `make start_tests`, then `make run_tests` as many times as needed, then `make stop_tests`.
+        * Extra pytest arguments can be given: `cd .docker && ./exec.sh -k processing`.
         * If you are using docker, do not forget to update your image from time to time `docker pull qgis/qgis:latest`.
-     * Setting up your IDE to launch them by adding paths to your QGIS installation. I personally use PyCharm on Ubuntu.
-     * Launching tests from QGIS Desktop app, in the Python console using :
+     * With `python3 -m pytest QuickOSM/test`, from a Python environment where `qgis` and `processing` can be imported.
+     * From QGIS Desktop, in the Python console, if `pytest` is installed in the QGIS Python environment:
 
 ```python
 from qgis.utils import plugins
-plugins['QuickOSM'].run_tests()
+plugins['QuickOSM'].run_tests()  # or run_tests('-k', 'processing')
 ```
+
+  * Some tests are using internet (Nominatim, Overpass), they can fail if these servers are down.
 
 ## Documentation
 

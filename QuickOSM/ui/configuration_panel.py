@@ -77,7 +77,7 @@ class ConfigurationPanel(BasePanel):
 
         self.dialog.btn_add_overpass.clicked.connect(partial(self._add_custom_server, Server.Overpass))
         self.dialog.btn_remove_overpass.clicked.connect(partial(self._remove_custom_server, Server.Overpass))
-        self.dialog.btn_add_nominatim.clicked.connect(partial(self._add_custom_server,Server.Nominatim))
+        self.dialog.btn_add_nominatim.clicked.connect(partial(self._add_custom_server, Server.Nominatim))
         self.dialog.btn_remove_nominatim.clicked.connect(partial(self._remove_custom_server, Server.Nominatim))
 
         # --- Populate built-in servers into combo boxes ---

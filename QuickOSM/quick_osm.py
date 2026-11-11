@@ -252,16 +252,31 @@ class QuickOSMPlugin:
             message.exec()
 
     @staticmethod
-    def run_tests():
-        """Run the test inside QGIS."""
-        try:
-            from pathlib import Path
+    def run_tests(*args: str) -> int:
+        """Run the tests inside QGIS, with pytest.
 
-            from QuickOSM.qgis_plugin_tools.infrastructure.test_runner import (
-                test_package,
-            )
-            test_package(f'{Path(__file__).parent.name}.__init__')
-        except (AttributeError, ModuleNotFoundError):
+        From the Python console:
+            from qgis.utils import plugins
+            plugins['QuickOSM'].run_tests()
+
+        Extra pytest arguments can be given, e.g. run_tests('-k', 'processing').
+        """
+        from pathlib import Path
+
+        test_folder = Path(__file__).parent / 'test'
+        if not test_folder.exists():
             message = 'Could not load tests. Are you using a production package?'
             print(message)
             LOGGER.debug(message)
+            return 1
+
+        try:
+            import pytest
+        except ModuleNotFoundError:
+            message = 'Pytest is required to run the tests, install it in the QGIS Python environment.'
+            print(message)
+            LOGGER.debug(message)
+            return 1
+
+        # No cache provider, the plugin folder might not be writable.
+        return pytest.main([str(test_folder), '-v', '-p', 'no:cacheprovider', *args])

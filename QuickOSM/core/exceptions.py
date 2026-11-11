@@ -28,6 +28,12 @@ class QuickOsmException(Exception):
         self.duration = 7
         super().__init__(message, more_details)
 
+    def __str__(self) -> str:
+        """Only the message if there isn't any details, instead of "('message', None)"."""
+        if self.more_details:
+            return super().__str__()
+        return str(self.message)
+
 
 # Overpass or network
 

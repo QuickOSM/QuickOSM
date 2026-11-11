@@ -2,6 +2,10 @@
 
 ## Unreleased
 
+* Raise to QGIS 3.44 minimum
+* Fix the message of exceptions without details, regression from 2.5.2
+* Tests are now launched with `pytest`, instead of the removed `qgis_plugin_tools` runner
+
 ## 2.5.4 - 2026-10-06
 
 * Fix loading in QGIS 4.4, contribution from @ptitjano

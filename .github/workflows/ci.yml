@@ -71,16 +71,21 @@ jobs:
 #        run: pylint --rcfile=setup.cfg ./QuickOSM
 
   test-qgis:
-    name: QGIS Desktop
+    name: QGIS Desktop ${{ matrix.qgis-version }}
     runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        # Docker image tags of qgis/qgis
+        qgis-version: ['3.44', '4.2']
+    env:
+      QGIS_VERSION: ${{ matrix.qgis-version }}
     defaults:
       run:
         working-directory: .docker
     steps:
       - name: Check out repository
         uses: actions/checkout@v7
-        with:
-          submodules: 'true'
       - name: Launching docker compose
         run: ./start.sh
       - name: Running tests
