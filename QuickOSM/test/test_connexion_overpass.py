@@ -17,6 +17,8 @@ from QuickOSM.tools.resources import plugin_test_data_path
 class TestOverpass(unittest.TestCase):
     """Tests for Overpass API requests."""
 
+    # TODO Enable again when overpass-api.de is reachable, it was down in November 2026
+    @unittest.skip('Temporarily disabled, this test is using internet')
     def test_real_wrong_request(self):
         """Test wrong request.
 

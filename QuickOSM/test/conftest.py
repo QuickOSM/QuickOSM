@@ -7,6 +7,9 @@ Tests can be launched:
   application, iface and provider are reused.
 """
 
+import sys
+
+from pathlib import Path
 from unittest import mock
 
 import qgis.utils
@@ -54,6 +57,12 @@ class _FakeIface(QObject):
 # so it must be set before the test modules are collected.
 if qgis.utils.iface is None:
     qgis.utils.iface = _FakeIface()
+
+try:
+    import processing  # noqa: F401
+except ModuleNotFoundError:
+    # Not in the PYTHONPATH in some Docker images, e.g. qgis/qgis:3.40
+    sys.path.append(str(Path(QgsApplication.pkgDataPath()) / 'python' / 'plugins'))
 
 from processing.core.Processing import Processing  # noqa: E402
 
