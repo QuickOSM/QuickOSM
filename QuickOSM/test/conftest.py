@@ -1,20 +1,30 @@
-"""Pytest configuration: start a QGIS application before the tests are collected.
+"""Pytest configuration: set up QGIS before the tests are collected.
 
-Previously, tests were launched inside QGIS by qgis_testrunner.sh, which provided
-a real iface, the Processing plugin and the QuickOSM plugin loaded. With pytest,
-we need to set up this environment ourselves.
+Tests can be launched:
+* outside QGIS, with pytest: the QGIS application, a fake iface, Processing and
+  the QuickOSM provider are set up here;
+* inside QGIS Desktop, with `plugins['QuickOSM'].run_tests()`: the running
+  application, iface and provider are reused.
 """
 
 from unittest import mock
 
 import qgis.utils
 
-from qgis.core import QgsCoordinateReferenceSystem, QgsRectangle
+from qgis.core import (
+    QgsApplication,
+    QgsCoordinateReferenceSystem,
+    QgsRectangle,
+)
 from qgis.gui import QgsMapCanvas
 from qgis.PyQt.QtCore import QObject
 from qgis.testing import start_app
 
-QGIS_APP = start_app()
+if QgsApplication.instance() is None:
+    QGIS_APP = start_app()
+else:
+    # Inside QGIS Desktop
+    QGIS_APP = QgsApplication.instance()
 
 
 class _FakeIface(QObject):
@@ -47,15 +57,16 @@ if qgis.utils.iface is None:
 
 from processing.core.Processing import Processing  # noqa: E402
 
+# It does nothing if Processing is already initialized.
 Processing.initialize()
 # QuickOSM checks that the Processing plugin is enabled.
 qgis.utils.plugins.setdefault('processing', mock.MagicMock())
 
-from qgis.core import QgsApplication  # noqa: E402
-
 from QuickOSM.quick_osm_processing.provider import Provider  # noqa: E402
 
-# Keep a reference, otherwise the Python object is garbage collected
-# and the provider loses its id and its algorithms.
-PROVIDER = Provider()
-QgsApplication.processingRegistry().addProvider(PROVIDER)
+PROVIDER = None
+if not QgsApplication.processingRegistry().providerById('quickosm'):
+    # Keep a reference, otherwise the Python object is garbage collected
+    # and the provider loses its id and its algorithms.
+    PROVIDER = Provider()
+    QgsApplication.processingRegistry().addProvider(PROVIDER)

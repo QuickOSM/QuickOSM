@@ -38,6 +38,13 @@ make tests
         * Extra pytest arguments can be given: `cd .docker && ./exec.sh -k processing`.
         * If you are using docker, do not forget to update your image from time to time `docker pull qgis/qgis:latest`.
      * With `python3 -m pytest QuickOSM/test`, from a Python environment where `qgis` and `processing` can be imported.
+     * From QGIS Desktop, in the Python console, if `pytest` is installed in the QGIS Python environment:
+
+```python
+from qgis.utils import plugins
+plugins['QuickOSM'].run_tests()  # or run_tests('-k', 'processing')
+```
+
   * Some tests are using internet (Nominatim, Overpass), they can fail if these servers are down.
 
 ## Documentation
