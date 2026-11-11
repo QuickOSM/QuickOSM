@@ -14,6 +14,9 @@ on:
 jobs:
   deploy:
     runs-on: ubuntu-latest
+    permissions:
+      # Push the website to the gh-pages branch
+      contents: write
     steps:
 
     - name: Get source code
