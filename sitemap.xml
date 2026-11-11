@@ -1,47 +1,47 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
-         <loc>https://docs.3liz.org/QuickOSM/</loc>
-         <lastmod>2026-01-02</lastmod>
+         <loc>https://quickosm.github.io/QuickOSM/</loc>
+         <lastmod>2026-11-11</lastmod>
     </url>
     <url>
-         <loc>https://docs.3liz.org/QuickOSM/CHANGELOG/</loc>
-         <lastmod>2026-01-02</lastmod>
+         <loc>https://quickosm.github.io/QuickOSM/CHANGELOG/</loc>
+         <lastmod>2026-11-11</lastmod>
     </url>
     <url>
-         <loc>https://docs.3liz.org/QuickOSM/CONTRIBUTING/</loc>
-         <lastmod>2026-01-02</lastmod>
+         <loc>https://quickosm.github.io/QuickOSM/CONTRIBUTING/</loc>
+         <lastmod>2026-11-11</lastmod>
     </url>
     <url>
-         <loc>https://docs.3liz.org/QuickOSM/changelog/</loc>
-         <lastmod>2026-01-02</lastmod>
+         <loc>https://quickosm.github.io/QuickOSM/changelog/</loc>
+         <lastmod>2026-11-11</lastmod>
     </url>
     <url>
-         <loc>https://docs.3liz.org/QuickOSM/contributing/</loc>
-         <lastmod>2026-01-02</lastmod>
+         <loc>https://quickosm.github.io/QuickOSM/contributing/</loc>
+         <lastmod>2026-11-11</lastmod>
     </url>
     <url>
-         <loc>https://docs.3liz.org/QuickOSM/references/</loc>
-         <lastmod>2026-01-02</lastmod>
+         <loc>https://quickosm.github.io/QuickOSM/references/</loc>
+         <lastmod>2026-11-11</lastmod>
     </url>
     <url>
-         <loc>https://docs.3liz.org/QuickOSM/translation-stats/</loc>
-         <lastmod>2026-01-02</lastmod>
+         <loc>https://quickosm.github.io/QuickOSM/translation-stats/</loc>
+         <lastmod>2026-11-11</lastmod>
     </url>
     <url>
-         <loc>https://docs.3liz.org/QuickOSM/processing/</loc>
-         <lastmod>2026-01-02</lastmod>
+         <loc>https://quickosm.github.io/QuickOSM/processing/</loc>
+         <lastmod>2026-11-11</lastmod>
     </url>
     <url>
-         <loc>https://docs.3liz.org/QuickOSM/user-guide/end-user/</loc>
-         <lastmod>2026-01-02</lastmod>
+         <loc>https://quickosm.github.io/QuickOSM/user-guide/end-user/</loc>
+         <lastmod>2026-11-11</lastmod>
     </url>
     <url>
-         <loc>https://docs.3liz.org/QuickOSM/user-guide/map-preset/</loc>
-         <lastmod>2026-01-02</lastmod>
+         <loc>https://quickosm.github.io/QuickOSM/user-guide/map-preset/</loc>
+         <lastmod>2026-11-11</lastmod>
     </url>
     <url>
-         <loc>https://docs.3liz.org/QuickOSM/user-guide/processing/</loc>
-         <lastmod>2026-01-02</lastmod>
+         <loc>https://quickosm.github.io/QuickOSM/user-guide/processing/</loc>
+         <lastmod>2026-11-11</lastmod>
     </url>
 </urlset>
