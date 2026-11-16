@@ -87,10 +87,10 @@ jobs:
           cache: "pip"
           cache-dependency-path: "requirements/packaging.txt"
 
-#      - name: Install Qt lrelease for translations
-#        run: |
-#          sudo apt-get update
-#          sudo apt-get install qttools5-dev-tools
+      - name: Install Qt lrelease for translations
+        run: |
+          sudo apt-get update
+          sudo apt-get install qt6-l10n-tools
 
       - name: Install Python requirements
         run: pip install -r requirements/packaging.txt
@@ -104,6 +104,7 @@ jobs:
         run: >-
           qgis-plugin-ci
           package ${{ env.VERSION }}
+          --transifex-token ${{ secrets.TRANSIFEX_TOKEN }}
 
       - name: Unzip
         run: unzip QuickOSM.${{ env.VERSION }}.zip -d tmp
@@ -134,7 +135,7 @@ jobs:
       - name: Install Qt lrelease
         run: |
           sudo apt-get update
-          sudo apt-get install qttools5-dev-tools
+          sudo apt-get install qt6-l10n-tools
 
       - uses: actions/cache@v6.1.0
         with:

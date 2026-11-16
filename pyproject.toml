@@ -6,6 +6,7 @@ transifex_organization = "quickosm"
 transifex_project = "gui"
 transifex_resource = "quickosm"
 transifex_coordinator = "etrimaille"
+lrelease_path= "/usr/lib/qt6/bin/lrelease"
 
 [tool.ruff]
 line-length = 115
