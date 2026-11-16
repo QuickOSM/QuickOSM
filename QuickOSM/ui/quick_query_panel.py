@@ -40,7 +40,7 @@ from QuickOSM.definitions.osm import (
     QueryLanguage,
     QueryType,
 )
-from QuickOSM.tools.i18n import tr
+from QuickOSM.tools.i18n import translate
 from QuickOSM.tools.resources import resources_path
 from QuickOSM.ui.base_overpass_panel import BaseOverpassPanel
 from QuickOSM.ui.custom_table import TableKeyValue
@@ -76,11 +76,11 @@ class QuickQueryPanel(BaseOverpassPanel, TableKeyValue):
         # self.dialog.button_show_query.setIcon(QIcon(resources_path('icons', 'edit.png')))
 
         # Query type
-        self.dialog.combo_query_type_qq.addItem(tr('In'), 'in')
-        self.dialog.combo_query_type_qq.addItem(tr('Around'), 'around')
-        self.dialog.combo_query_type_qq.addItem(tr('Canvas Extent'), 'canvas')
-        self.dialog.combo_query_type_qq.addItem(tr('Layer Extent'), 'layer')
-        self.dialog.combo_query_type_qq.addItem(tr('Not Spatial'), 'attributes')
+        self.dialog.combo_query_type_qq.addItem(translate('@default', 'In'), 'in')
+        self.dialog.combo_query_type_qq.addItem(translate('@default', 'Around'), 'around')
+        self.dialog.combo_query_type_qq.addItem(translate('@default', 'Canvas Extent'), 'canvas')
+        self.dialog.combo_query_type_qq.addItem(translate('@default', 'Layer Extent'), 'layer')
+        self.dialog.combo_query_type_qq.addItem(translate('@default', 'Not Spatial'), 'attributes')
 
         self.dialog.combo_query_type_qq.setItemIcon(0, QIcon(resources_path('icons', 'in.svg')))
         self.dialog.combo_query_type_qq.setItemIcon(1, QIcon(resources_path('icons', 'around.svg')))
@@ -143,12 +143,12 @@ class QuickQueryPanel(BaseOverpassPanel, TableKeyValue):
     def save_new(self):
         """Verify the save destination."""
         self.existing_preset = False
-        self.dialog.button_save_query.setText(tr('Save query in a new preset'))
+        self.dialog.button_save_query.setText(translate('@default', 'Save query in a new preset'))
 
     def save_add_existing(self):
         """Verify and ask the save destination."""
         self.existing_preset = True
-        self.dialog.button_save_query.setText(tr('Save and add query to an existing preset'))
+        self.dialog.button_save_query.setText(translate('@default', 'Save and add query to an existing preset'))
 
     def query_language_oql(self):
         """Update the wanted language."""
@@ -199,7 +199,7 @@ class QuickQueryPanel(BaseOverpassPanel, TableKeyValue):
             expected_name.append(properties['place'])
             expected_name.append(distance_string)
         elif not properties['key']:
-            key = tr('allKeys')
+            key = translate('@default', 'allKeys')
             expected_name = [key, properties['value'], properties['place'], distance_string]
         else:
             expected_name = [properties['key'], properties['value'], properties['place'], distance_string]
@@ -252,8 +252,8 @@ class QuickQueryPanel(BaseOverpassPanel, TableKeyValue):
             presets = filter(lambda folder: os.path.isdir(join(preset_folder, folder)), os.listdir(preset_folder))
             chosen_preset = QInputDialog.getItem(
                 self.dialog,
-                tr('Add in an existing preset'),
-                tr('Please select the preset in which the query will be added:'),
+                translate('@default', 'Add in an existing preset'),
+                translate('@default', 'Please select the preset in which the query will be added:'),
                 presets,
                 editable=False,
             )
@@ -325,7 +325,7 @@ class QuickQueryPanel(BaseOverpassPanel, TableKeyValue):
             vbox.addWidget(label_name)
             for label in data['description']:
                 if not label:
-                    label = tr('No description')
+                    label = translate('@default', 'No description')
                 real_label = QLabel(label)
                 real_label.setWordWrap(True)
                 vbox.addWidget(real_label)
@@ -336,8 +336,8 @@ class QuickQueryPanel(BaseOverpassPanel, TableKeyValue):
             button_save.setIcon(QIcon(QgsApplication.iconPath('mActionFileSave.svg')))
             button_run.setSizePolicy(QSizePolicy.Policy.Fixed, QSizePolicy.Policy.Fixed)
             button_save.setSizePolicy(QSizePolicy.Policy.Fixed, QSizePolicy.Policy.Fixed)
-            button_run.setToolTip(tr('Run the query'))
-            button_save.setToolTip(tr('Save this query in a new preset'))
+            button_run.setToolTip(translate('@default', 'Run the query'))
+            button_save.setToolTip(translate('@default', 'Save this query in a new preset'))
             hbox.addWidget(button_run)
             hbox.addWidget(button_save)
             group.setLayout(hbox)

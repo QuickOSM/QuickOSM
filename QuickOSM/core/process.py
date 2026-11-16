@@ -35,7 +35,7 @@ from QuickOSM.definitions.osm import (
     QueryType,
 )
 from QuickOSM.definitions.overpass import OVERPASS_SERVERS
-from QuickOSM.tools.i18n import tr
+from QuickOSM.tools.i18n import translate
 
 LOGGER = logging.getLogger('QuickOSM')
 
@@ -162,7 +162,7 @@ def open_file(
                     dialog.iface.addCustomActionForLayer(dialog.reload_action, new_layer)
 
             metadata = QgsLayerMetadata()
-            metadata.setRights([tr('© OpenStreetMap contributors')])
+            metadata.setRights([translate('@default', '© OpenStreetMap contributors')])
             metadata.setLicenses(['https://openstreetmap.org/copyright'])
             new_layer.setMetadata(metadata)
             num_layers += 1
@@ -230,11 +230,13 @@ def process_query(
         return None
 
     # Prepare outputs
-    dialog.set_progress_text(tr('Prepare outputs'))
+    dialog.set_progress_text(translate('@default', 'Prepare outputs'))
 
     # Getting the default overpass api and running the query
     server = get_setting('defaultOAPI', OVERPASS_SERVERS[0]) + 'interpreter'
-    dialog.set_progress_text(tr('Downloading data from Overpass {server_name}'.format(server_name=server)))
+    dialog.set_progress_text(
+        translate('@default', 'Downloading data from Overpass {server_name}').format(server_name=server)
+    )
     # Replace Nominatim or BBOX
     query = QueryPreparation(query, bbox, area, server)
     QApplication.processEvents()

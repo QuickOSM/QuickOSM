@@ -15,7 +15,7 @@ from QuickOSM.core.exceptions import (
 from QuickOSM.definitions.format import Format
 from QuickOSM.definitions.gui import Panels
 from QuickOSM.definitions.osm import LayerType
-from QuickOSM.tools.i18n import tr
+from QuickOSM.tools.i18n import translate
 from QuickOSM.ui.base_panel import BasePanel
 
 
@@ -69,9 +69,11 @@ class BaseProcessingPanel(BasePanel):
     def setup_panel(self):
         """Function to set custom UI for some panels."""
         if self.dialog.output_directories[self.panel]:
-            self.dialog.output_directories[self.panel].lineEdit().setPlaceholderText(tr('Save to temporary file'))
+            self.dialog.output_directories[self.panel].lineEdit().setPlaceholderText(
+                translate('@default', 'Save to temporary file')
+            )
             self.dialog.output_directories[self.panel].setStorageMode(QgsFileWidget.StorageMode.GetDirectory)
-            self.dialog.output_directories[self.panel].setDialogTitle(tr('Select a directory'))
+            self.dialog.output_directories[self.panel].setDialogTitle(translate('@default', 'Select a directory'))
 
             self.dialog.output_format[self.panel].addItem(Format.GeoPackage.value.label, Format.GeoPackage)
             self.dialog.output_format[self.panel].addItem(Format.GeoJSON.value.label, Format.GeoJSON)

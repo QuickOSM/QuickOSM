@@ -34,7 +34,7 @@ from QuickOSM.quick_osm_processing.advanced.decorate_output import (
     SetColoringPostProcessor,
 )
 from QuickOSM.quick_osm_processing.build_input import BuildRaw
-from QuickOSM.tools.i18n import tr
+from QuickOSM.tools.i18n import translate
 from QuickOSM.tools.resources import resources_path
 
 
@@ -71,7 +71,7 @@ class DownloadOSMData(QgisAlgorithm):
 
     def shortHelpString(self) -> str:
         """Return a helper for the algorithm."""
-        return tr('Fetch the OSM data that match the request.')
+        return translate('@default', 'Fetch the OSM data that match the request.')
 
     def icon(self):
         """Return the icon."""
@@ -87,31 +87,37 @@ class DownloadOSMData(QgisAlgorithm):
 
     def add_parameters(self):
         """Set up additional parameters."""
-        param = QgsProcessingParameterFileDestination(self.FILE, tr('Output file'), optional=True)
+        param = QgsProcessingParameterFileDestination(
+            self.FILE, translate('@default', 'Output file'), optional=True
+        )
         param.setFileFilter('*.gpkg')
-        help_string = tr('Path where the file will be download.')
+        help_string = translate('@default', 'Path where the file will be download.')
         param.setHelp(help_string)
         self.addParameter(param)
 
     def add_outputs(self):
         """Set up the outputs of the algorithm."""
         output = QgsProcessingOutputVectorLayer(
-            self.OUTPUT_POINTS, tr('Output points'), QgsProcessing.SourceType.TypeVectorPoint
+            self.OUTPUT_POINTS, translate('@default', 'Output points'), QgsProcessing.SourceType.TypeVectorPoint
         )
         self.addOutput(output)
 
         output = QgsProcessingOutputVectorLayer(
-            self.OUTPUT_LINES, tr('Output lines'), QgsProcessing.SourceType.TypeVectorLine
+            self.OUTPUT_LINES, translate('@default', 'Output lines'), QgsProcessing.SourceType.TypeVectorLine
         )
         self.addOutput(output)
 
         output = QgsProcessingOutputVectorLayer(
-            self.OUTPUT_MULTILINESTRINGS, tr('Output multilinestrings'), QgsProcessing.SourceType.TypeVectorLine
+            self.OUTPUT_MULTILINESTRINGS,
+            translate('@default', 'Output multilinestrings'),
+            QgsProcessing.SourceType.TypeVectorLine,
         )
         self.addOutput(output)
 
         output = QgsProcessingOutputVectorLayer(
-            self.OUTPUT_MULTIPOLYGONS, tr('Output multipolygons'), QgsProcessing.SourceType.TypeVectorPolygon
+            self.OUTPUT_MULTIPOLYGONS,
+            translate('@default', 'Output multipolygons'),
+            QgsProcessing.SourceType.TypeVectorPolygon,
         )
         self.addOutput(output)
 
@@ -212,7 +218,7 @@ class DownloadOSMDataRawQuery(DownloadOSMData, BuildRaw):
     @staticmethod
     def displayName() -> str:
         """Return the display name of the algorithm."""
-        return tr('Download OSM data from a raw query')
+        return translate('@default', 'Download OSM data from a raw query')
 
     def flags(self):
         """Return the flags."""
@@ -257,7 +263,7 @@ class DownloadOSMDataNotSpatialQuery(DownloadOSMData, BuildQueryNotSpatialAlgori
     @staticmethod
     def displayName() -> str:
         """Return the display name of the algorithm."""
-        return tr('Download OSM data from a not spatial query')
+        return translate('@default', 'Download OSM data from a not spatial query')
 
     def flags(self):
         """Return the flags."""
@@ -303,7 +309,7 @@ class DownloadOSMDataInAreaQuery(DownloadOSMData, BuildQueryInAreaAlgorithm):
     @staticmethod
     def displayName() -> str:
         """Return the display name of the algorithm."""
-        return tr('Download OSM data from query in an area')
+        return translate('@default', 'Download OSM data from query in an area')
 
     def flags(self):
         """Return the flags."""
@@ -350,7 +356,7 @@ class DownloadOSMDataAroundAreaQuery(DownloadOSMData, BuildQueryAroundAreaAlgori
     @staticmethod
     def displayName() -> str:
         """Return the display name of the algorithm."""
-        return tr('Download OSM data from a query around an area')
+        return translate('@default', 'Download OSM data from a query around an area')
 
     def flags(self):
         """Return the flags."""
@@ -398,7 +404,7 @@ class DownloadOSMDataExtentQuery(DownloadOSMData, BuildQueryExtentAlgorithm):
     @staticmethod
     def displayName() -> str:
         """Return the display name of the algorithm."""
-        return tr('Download OSM data from a query in an extent')
+        return translate('@default', 'Download OSM data from a query in an extent')
 
     def flags(self):
         """Return the flags."""

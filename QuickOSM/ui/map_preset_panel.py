@@ -30,7 +30,7 @@ from QuickOSM.core.utilities.query_saved import QueryManagement
 from QuickOSM.core.utilities.tools import query_preset
 from QuickOSM.definitions.gui import Panels
 from QuickOSM.definitions.osm import Osm_Layers, QueryType
-from QuickOSM.tools.i18n import tr
+from QuickOSM.tools.i18n import translate
 from QuickOSM.tools.resources import resources_path
 from QuickOSM.ui.base_overpass_panel import BaseOverpassPanel
 from QuickOSM.ui.edit_preset import EditPreset
@@ -55,11 +55,11 @@ class MapPresetPanel(BaseOverpassPanel):
         """Setup the UI for the QuickQuery."""
 
         # Query type
-        self.dialog.combo_query_type_mp.addItem(tr('In'), 'in')
-        self.dialog.combo_query_type_mp.addItem(tr('Around'), 'around')
-        self.dialog.combo_query_type_mp.addItem(tr('Canvas Extent'), 'canvas')
-        self.dialog.combo_query_type_mp.addItem(tr('Layer Extent'), 'layer')
-        self.dialog.combo_query_type_mp.addItem(tr('Not Spatial'), 'attributes')
+        self.dialog.combo_query_type_mp.addItem(translate('@default', 'In'), 'in')
+        self.dialog.combo_query_type_mp.addItem(translate('@default', 'Around'), 'around')
+        self.dialog.combo_query_type_mp.addItem(translate('@default', 'Canvas Extent'), 'canvas')
+        self.dialog.combo_query_type_mp.addItem(translate('@default', 'Layer Extent'), 'layer')
+        self.dialog.combo_query_type_mp.addItem(translate('@default', 'Not Spatial'), 'attributes')
 
         self.dialog.combo_query_type_mp.currentIndexChanged.connect(self.query_type_updated)
         self.dialog.combo_extent_layer_mp.layerChanged.connect(self.query_type_updated)
@@ -112,7 +112,7 @@ class MapPresetPanel(BaseOverpassPanel):
             vbox.addWidget(title)
             for label in data['description']:
                 if not label:
-                    label = tr('No description')
+                    label = translate('@default', 'No description')
                 real_label = QLabel(label)
                 real_label.setWordWrap(True)
                 vbox.addWidget(real_label)
@@ -189,7 +189,7 @@ class MapPresetPanel(BaseOverpassPanel):
             vbox.addWidget(label_name)
             for label in data['description']:
                 if not label:
-                    label = tr('No description')
+                    label = translate('@default', 'No description')
                 real_label = QLabel(label)
                 real_label.setWordWrap(True)
                 vbox.addWidget(real_label)
@@ -200,8 +200,8 @@ class MapPresetPanel(BaseOverpassPanel):
             button_remove.setIcon(QIcon(QgsApplication.iconPath('symbologyRemove.svg')))
             button_edit.setSizePolicy(QSizePolicy.Policy.Fixed, QSizePolicy.Policy.Fixed)
             button_remove.setSizePolicy(QSizePolicy.Policy.Fixed, QSizePolicy.Policy.Fixed)
-            button_edit.setToolTip(tr('Edit the preset'))
-            button_remove.setToolTip(tr('Delete the preset'))
+            button_edit.setToolTip(translate('@default', 'Edit the preset'))
+            button_remove.setToolTip(translate('@default', 'Delete the preset'))
             hbox.addWidget(button_edit)
             hbox.addWidget(button_remove)
             if data['advanced']:
@@ -244,8 +244,8 @@ class MapPresetPanel(BaseOverpassPanel):
         """Verification of the removal a preset."""
         validate_delete = QMessageBox(
             QMessageBox.Icon.Warning,
-            tr('Confirm preset deletion'),
-            tr(f"Are you sure you want to delete the preset '{name}'?"),
+            translate('@default', 'Confirm preset deletion'),
+            translate('@default', "Are you sure you want to delete the preset '{name}'?").format(name=name),
             QMessageBox.StandardButton.Yes | QMessageBox.StandardButton.Cancel,
             self.dialog,
         )

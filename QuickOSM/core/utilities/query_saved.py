@@ -21,7 +21,7 @@ from QuickOSM.definitions.osm import (
     LayerType,
     MultiType,
 )
-from QuickOSM.tools.i18n import tr
+from QuickOSM.tools.i18n import translate
 
 LOGGER = logging.getLogger('QuickOSM')
 
@@ -176,7 +176,7 @@ class QueryManagement:
             'advanced': self.advanced,
             'file_name': self.name[0],
             'query_layer_name': self.name,
-            'query_name': [tr('Query') + '1'],
+            'query_name': [translate('@default', 'Query') + '1'],
             'type_multi_request': self.type_multi_request,
             'keys': self.keys,
             'values': self.values,
@@ -226,7 +226,7 @@ class QueryManagement:
         """Add an empty query in a preset file"""
         data['query'].append('')
         data['query_layer_name'].append('')
-        data['query_name'].append(tr('Query') + str(len(data['query'])))
+        data['query_name'].append(translate('@default', 'Query') + str(len(data['query'])))
         data['type_multi_request'].append([])
         data['keys'].append([])
         data['values'].append([])
@@ -248,7 +248,7 @@ class QueryManagement:
 
         data['query'].append(self.query[0])
         data['query_layer_name'].append(self.name[0])
-        data['query_name'].append(tr('Query') + str(len(data['query'])))
+        data['query_name'].append(translate('@default', 'Query') + str(len(data['query'])))
         data['type_multi_request'].append(self.type_multi_request[0])
         data['keys'].append(self.keys[0])
         data['values'].append(self.values[0])

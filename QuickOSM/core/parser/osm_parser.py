@@ -20,7 +20,7 @@ from QuickOSM.core.exceptions import FileOutPutException, QuickOsmException
 from QuickOSM.core.utilities.tools import check_processing_enable
 from QuickOSM.definitions.format import Format
 from QuickOSM.definitions.osm import WHITE_LIST, Osm_Layers
-from QuickOSM.tools.i18n import tr
+from QuickOSM.tools.i18n import translate
 
 LOGGER = logging.getLogger('QuickOSM')
 
@@ -99,7 +99,7 @@ class OsmParser(QObject):
         gdal.SetConfigOption('OSM_USE_CUSTOM_INDEXING', 'NO')
 
         if not isfile(self.__osmFile):
-            raise QuickOsmException(tr('File does not exist'))
+            raise QuickOsmException(translate('@default', 'File does not exist'))
 
         uri = self.__osmFile + '|layername='
         layers = {}
@@ -112,14 +112,16 @@ class OsmParser(QObject):
                 layers[layer] = QgsVectorLayer(uri + layer, file_name + ' ' + layer, 'ogr')
 
                 if not layers[layer].isValid():
-                    message = tr('Error on the layer : {layer} is not valid.').format(layer=layer)
+                    message = translate('@default', 'Error on the layer : {layer} is not valid.').format(
+                        layer=layer
+                    )
                     raise QuickOsmException(message)
 
             return layers
 
         # Foreach layers
         for k, layer in enumerate(self.__layers):
-            self.signalText.emit(tr('Parsing layer : {layer}').format(layer=layer))
+            self.signalText.emit(translate('@default', 'Parsing layer : {layer}').format(layer=layer))
             layers[layer] = {}
 
             # Reading it with a QgsVectorLayer

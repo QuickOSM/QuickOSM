@@ -18,7 +18,7 @@ from QuickOSM.quick_osm_processing.build_input import (
     BuildBasedInAreaQuery,
     BuildBasedNotSpatialQuery,
 )
-from QuickOSM.tools.i18n import tr
+from QuickOSM.tools.i18n import translate
 
 
 class BuildQueryBasedAlgorithm(QgisAlgorithm):
@@ -33,7 +33,7 @@ class BuildQueryBasedAlgorithm(QgisAlgorithm):
     @staticmethod
     def group() -> str:
         """Return the group of the algorithm."""
-        return tr('Advanced')
+        return translate('@default', 'Advanced')
 
     @staticmethod
     def groupId() -> str:
@@ -54,10 +54,10 @@ class BuildQueryBasedAlgorithm(QgisAlgorithm):
 
     def add_outputs(self):
         """Set up the advanced parameters."""
-        output = QgsProcessingOutputString(self.OUTPUT_URL, tr('Query as encoded URL'))
+        output = QgsProcessingOutputString(self.OUTPUT_URL, translate('@default', 'Query as encoded URL'))
         self.addOutput(output)
 
-        output = QgsProcessingOutputString(self.OUTPUT_OQL_QUERY, tr('Raw query as OQL'))
+        output = QgsProcessingOutputString(self.OUTPUT_OQL_QUERY, translate('@default', 'Raw query as OQL'))
         self.addOutput(output)
 
     def initAlgorithm(self, config=None):
@@ -106,7 +106,7 @@ class BuildQueryNotSpatialAlgorithm(BuildBasedNotSpatialQuery, BuildQueryBasedAl
     @staticmethod
     def displayName() -> str:
         """Return the display name of the algorithm."""
-        return tr('Build query by attribute only')
+        return translate('@default', 'Build query by attribute only')
 
     def processAlgorithm(self, parameters, context, feedback) -> Dict[str, str]:
         """Run the algorithm."""
@@ -126,7 +126,7 @@ class BuildQueryInAreaAlgorithm(BuildBasedInAreaQuery, BuildQueryBasedAlgorithm)
     @staticmethod
     def displayName() -> str:
         """Return the display name of the algorithm."""
-        return tr('Build query inside an area')
+        return translate('@default', 'Build query inside an area')
 
     def processAlgorithm(self, parameters, context, feedback) -> Dict[str, str]:
         """Run the algorithm."""
@@ -146,7 +146,7 @@ class BuildQueryAroundAreaAlgorithm(BuildQueryBasedAlgorithm, BuildBasedAroundAr
     @staticmethod
     def displayName() -> str:
         """Return the display name of the algorithm."""
-        return tr('Build query around an area')
+        return translate('@default', 'Build query around an area')
 
     def processAlgorithm(self, parameters, context, feedback) -> Dict[str, str]:
         """Run the algorithm."""
@@ -166,7 +166,7 @@ class BuildQueryExtentAlgorithm(BuildQueryBasedAlgorithm, BuildBasedExtentQuery)
     @staticmethod
     def displayName() -> str:
         """Return the display name of the algorithm."""
-        return tr('Build query inside an extent')
+        return translate('@default', 'Build query inside an extent')
 
     def processAlgorithm(self, parameters, context, feedback) -> Dict[str, str]:
         """Run the algorithm."""

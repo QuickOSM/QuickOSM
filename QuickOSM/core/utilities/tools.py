@@ -12,7 +12,7 @@ import qgis.utils
 from qgis.core import QgsApplication, QgsSettings
 from qgis.PyQt.QtCore import QDir
 
-from QuickOSM.tools.i18n import tr
+from QuickOSM.tools.i18n import translate
 
 
 def custom_config_file() -> str:
@@ -89,10 +89,11 @@ def check_processing_enable() -> Tuple[bool, str, str]:
 
     return (
         False,
-        tr('Error with the Processing plugin'),
-        tr(
+        translate('@default', 'Error with the Processing plugin'),
+        translate(
+            '@default',
             'To be able to use QuickOSM, you need to have the "Processing" plugin enabled. '
-            'Please check in your QGIS Plugin manager that the "Processing" plugin is enabled.'
+            'Please check in your QGIS Plugin manager that the "Processing" plugin is enabled.',
         ),
     )
 

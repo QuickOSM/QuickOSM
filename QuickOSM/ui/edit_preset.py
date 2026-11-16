@@ -21,7 +21,7 @@ from QuickOSM.core.utilities.tools import query_preset
 from QuickOSM.definitions.format import Format
 from QuickOSM.definitions.gui import Panels
 from QuickOSM.definitions.osm import LayerType
-from QuickOSM.tools.i18n import tr
+from QuickOSM.tools.i18n import translate
 from QuickOSM.tools.resources import load_ui, resources_path
 from QuickOSM.ui.custom_table import TableKeyValue
 
@@ -52,12 +52,12 @@ class EditPreset(QDialog, FORM_CLASS, TableKeyValue):
 
         self.button_add.setIcon(QIcon(QgsApplication.iconPath('symbologyAdd.svg')))
         self.button_add.setText('')
-        self.button_add.setToolTip(tr('Add a new query to the map preset'))
+        self.button_add.setToolTip(translate('@default', 'Add a new query to the map preset'))
         self.button_add.clicked.connect(self.add_query)
 
         self.button_remove.setIcon(QIcon(QgsApplication.iconPath('symbologyRemove.svg')))
         self.button_remove.setText('')
-        self.button_remove.setToolTip(tr('Remove the selected query from the map preset'))
+        self.button_remove.setToolTip(translate('@default', 'Remove the selected query from the map preset'))
         self.button_remove.clicked.connect(self.remove_selection)
 
         self.list_queries.currentRowChanged.connect(self.change_query)
@@ -76,7 +76,7 @@ class EditPreset(QDialog, FORM_CLASS, TableKeyValue):
         self.combo_output_format.addItem(Format.Shapefile.value.label, Format.Shapefile)
         self.combo_output_format.addItem(Format.Kml.value.label, Format.Kml)
 
-        self.output_directory.lineEdit().setPlaceholderText(tr('Save to temporary file'))
+        self.output_directory.lineEdit().setPlaceholderText(translate('@default', 'Save to temporary file'))
         self.output_directory.setStorageMode(QgsFileWidget.StorageMode.GetDirectory)
 
         self.data = data_preset.copy()
@@ -112,8 +112,8 @@ class EditPreset(QDialog, FORM_CLASS, TableKeyValue):
         """Set context submenu to delete item in the list."""
         item = self.list_queries.mapToGlobal(pos)
         submenu = QMenu()
-        rename_action = submenu.addAction(tr('Rename'))
-        delete_action = submenu.addAction(tr('Delete'))
+        rename_action = submenu.addAction(translate('@default', 'Rename'))
+        delete_action = submenu.addAction(translate('@default', 'Delete'))
         right_click_item = submenu.exec(item)
         if right_click_item and right_click_item == delete_action:
             index = self.list_queries.indexAt(pos).row()
@@ -134,32 +134,35 @@ class EditPreset(QDialog, FORM_CLASS, TableKeyValue):
 
         folder = os.path.join(self.folder, file_name)
         help_string = '<html>'
-        help_string += tr(
-            'You can associate predefined styles with layers. You need to add QML file(s) in this folder :'
+        help_string += translate(
+            '@default',
+            'You can associate predefined styles with layers. You need to add QML file(s) in this folder :',
         )
         help_string += '<br><b>'
         help_string += f'<a href="{folder}">{folder}</a>'
         help_string += '</b><br><br>'
-        help_string += tr('The name of QML files must follow this convention')
+        help_string += translate('@default', 'The name of QML files must follow this convention')
         help_string += ' : '
         help_string += '<b>&#123;'
-        help_string += tr('name of the preset')
+        help_string += translate('@default', 'name of the preset')
         help_string += '&#125;</b>_<b>&#123;'
-        help_string += tr('name of the query')
+        help_string += translate('@default', 'name of the query')
         help_string += '&#125;</b>_<b>&#123;'
-        help_string += tr('geometry')
+        help_string += translate('@default', 'geometry')
         help_string += '&#125;</b>.qml'
         help_string += '<br><br>'
-        help_string += tr("These parameters are separated by '_' and the geometry must be one these values :")
+        help_string += translate(
+            '@default', "These parameters are separated by '_' and the geometry must be one these values :"
+        )
         help_string += ' '
         help_string += ', '.join(['"' + j.value.lower() + '"' for j in LayerType])
         help_string += '.<br>'
         help_string += '<br>'
-        help_string += tr(f'For the current preset "{file_name}"')
+        help_string += translate('@default', 'For the current preset "{file_name}"').format(file_name=file_name)
         help_string += '<br>'
-        help_string += tr(f'and the current query "{query_name}"')
+        help_string += translate('@default', 'and the current query "{query_name}"').format(query_name=query_name)
         help_string += '<br>'
-        help_string += tr('this is the list of filenames you can use')
+        help_string += translate('@default', 'this is the list of filenames you can use')
         help_string += ' :'
         help_string += '<ul>'
         for layer_type in LayerType:
@@ -252,7 +255,7 @@ class EditPreset(QDialog, FORM_CLASS, TableKeyValue):
             text = default_name
 
         if not text:
-            text = tr('Query') + str(self.nb_queries + 1)
+            text = translate('@default', 'Query') + str(self.nb_queries + 1)
 
         q_manage = QueryManagement()
         self.data = q_manage.add_empty_query_in_preset(self.data)
@@ -277,8 +280,8 @@ class EditPreset(QDialog, FORM_CLASS, TableKeyValue):
         name = self.list_queries.item(row).text()
         validate_delete = QMessageBox(
             QMessageBox.Icon.Warning,
-            tr('Confirm query deletion'),
-            tr(f"Are you sure you want to delete the query '{name}'?"),
+            translate('@default', 'Confirm query deletion'),
+            translate('@default', "Are you sure you want to delete the query '{name}'?").format(name=name),
             QMessageBox.StandardButton.Yes | QMessageBox.StandardButton.Cancel,
             self,
         )
@@ -297,14 +300,16 @@ class EditPreset(QDialog, FORM_CLASS, TableKeyValue):
         self.data = q_manage.remove_query_in_preset(self.data, row)
 
         for k in range(row, self.nb_queries):
-            self.list_queries.item(k).setText(tr('Query') + str(k + 1))
+            self.list_queries.item(k).setText(translate('@default', 'Query') + str(k + 1))
 
         self.current_query = self.list_queries.currentRow()
 
     def rename_query(self, query: QListWidgetItem):
         """Rename a query in the preset"""
         input_dialog = QInputDialog(self)
-        new_name = input_dialog.getText(self, tr('Rename the query'), tr('New name:'), text=query.text())
+        new_name = input_dialog.getText(
+            self, translate('@default', 'Rename the query'), translate('@default', 'New name:'), text=query.text()
+        )
         if new_name[1] and new_name[0]:
             query.setText(new_name[0].replace(' ', '_'))
             self.update_qml_format()

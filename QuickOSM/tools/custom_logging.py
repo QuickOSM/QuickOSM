@@ -4,7 +4,7 @@ import logging
 
 from qgis.core import Qgis, QgsMessageLog
 
-from QuickOSM.tools.i18n import tr
+from QuickOSM.tools.i18n import translate
 from QuickOSM.tools.resources import plugin_name
 
 PLUGIN_NAME = plugin_name()
@@ -54,8 +54,8 @@ class QgsLogHandler(logging.Handler):
         try:
             QgsMessageLog.logMessage(record.getMessage(), PLUGIN_NAME, qgis_level(record.levelname))
         except MemoryError:
-            message = tr(
-                'Due to memory limitations on this machine, the plugin {} can not handle the full log'
+            message = translate(
+                '@default', 'Due to memory limitations on this machine, the plugin {} can not handle the full log'
             ).format(PLUGIN_NAME)
             print(message)
             QgsMessageLog.logMessage(message, PLUGIN_NAME, Qgis.MessageLevel.Critical)

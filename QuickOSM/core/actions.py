@@ -15,7 +15,7 @@ from QuickOSM.core import process
 from QuickOSM.core.josm_remote import open_object
 from QuickOSM.core.utilities.utilities_qgis import open_webpage
 from QuickOSM.definitions.action import Visibility
-from QuickOSM.tools.i18n import tr
+from QuickOSM.tools.i18n import translate
 from QuickOSM.tools.resources import resources_path
 
 ACTIONS_PATH = 'from QuickOSM.core.actions import Actions\n'
@@ -33,7 +33,7 @@ def add_actions(layer: QgsVectorLayer, keys: list):
     """
     actions = layer.actions()
 
-    title = tr('OpenStreetMap Browser')
+    title = translate('@default', 'OpenStreetMap Browser')
     osm_browser = QgsAction(
         QgsAction.ActionType.OpenUrl,
         title,
@@ -59,7 +59,7 @@ def add_actions(layer: QgsVectorLayer, keys: list):
     )
     actions.addAction(josm)
 
-    title = tr('User default editor')
+    title = translate('@default', 'User default editor')
     default_editor = QgsAction(
         QgsAction.ActionType.OpenUrl,
         title,
@@ -101,7 +101,7 @@ def add_actions(layer: QgsVectorLayer, keys: list):
     if 'network' in keys and 'ref' in keys:
         sketch_line = QgsAction(
             QgsAction.ActionType.GenericPython,
-            tr('Sketchline'),
+            translate('@default', 'Sketchline'),
             (ACTIONS_PATH + 'Actions.run_sketch_line("[% "network" %]","[% "ref" %]")'),
             '',
             False,
@@ -116,7 +116,7 @@ def add_relaunch_action(layer: QgsVectorLayer, layer_name: str = ''):
     """Add the relaunch action"""
     actions = layer.actions()
 
-    title = tr('Reload the query in a new file')
+    title = translate('@default', 'Reload the query in a new file')
     reload = QgsAction(
         QgsAction.ActionType.GenericPython,
         title,
@@ -152,7 +152,9 @@ class Actions:
 
         if value == '':
             iface.messageBar().pushMessage(
-                tr("Sorry, the field '{fieldname}' is empty for this entity.".format(fieldname=field)),
+                translate('@default', "Sorry, the field '{fieldname}' is empty for this entity.").format(
+                    fieldname=field
+                ),
                 level=Qgis.MessageLevel.Warning,
                 duration=7,
             )
@@ -187,7 +189,9 @@ class Actions:
             elif field == 'josm':
                 if not open_object(value):
                     iface.messageBar().pushMessage(
-                        tr('The JOSM remote seems to be disabled.'), level=Qgis.MessageLevel.Critical, duration=7
+                        translate('@default', 'The JOSM remote seems to be disabled.'),
+                        level=Qgis.MessageLevel.Critical,
+                        duration=7,
                     )
 
             # NOT USED
@@ -211,7 +215,9 @@ class Actions:
         """
         if network == '' or ref == '':
             iface.messageBar().pushMessage(
-                tr('Sorry, this field is empty for this entity.'), level=Qgis.MessageLevel.Warning, duration=7
+                translate('@default', 'Sorry, this field is empty for this entity.'),
+                level=Qgis.MessageLevel.Warning,
+                duration=7,
             )
         else:
             url = f'http://www.overpass-api.de/api/sketch-line?network={network}&ref={ref}'

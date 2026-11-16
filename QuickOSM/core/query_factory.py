@@ -13,25 +13,27 @@ from QuickOSM.definitions.osm import (
     QueryLanguage,
     QueryType,
 )
-from QuickOSM.tools.i18n import tr
+from QuickOSM.tools.i18n import translate
 
 SPACE_INDENT = '    '
 
 # Simple keys/values
-ALL_OBJECTS = tr('All OSM objects in {extent} are going to be downloaded.')
-ALL_VALUES = tr('All OSM objects with the key {key} in {extent} are going to be downloaded.')
-ALL_VALUES_WITH_DISTANCE = tr(
-    'All OSM objects with the key {key} in {dist} meters of {extent} are going to be downloaded.'
+ALL_OBJECTS = translate('@default', 'All OSM objects in {extent} are going to be downloaded.')
+ALL_VALUES = translate('@default', 'All OSM objects with the key {key} in {extent} are going to be downloaded.')
+ALL_VALUES_WITH_DISTANCE = translate(
+    '@default', 'All OSM objects with the key {key} in {dist} meters of {extent} are going to be downloaded.'
 )
-NO_KEY = tr('All OSM objects in {extent} are going to be downloaded.')
-NO_KEY_WITH_DISTANCE = tr('All OSM objects in {dist} meters of {extent} are going to be downloaded.')
-ATTRIBUTE_ONLY = tr('All OSM objects with the key {key} are going to be downloaded.')
+NO_KEY = translate('@default', 'All OSM objects in {extent} are going to be downloaded.')
+NO_KEY_WITH_DISTANCE = translate(
+    '@default', 'All OSM objects in {dist} meters of {extent} are going to be downloaded.'
+)
+ATTRIBUTE_ONLY = translate('@default', 'All OSM objects with the key {key} are going to be downloaded.')
 
 # Multiple keys/values
-ATTRIBUTES_ONLY = tr('All OSM objects with keys {key} are going to be downloaded.')
-ALL_MULTI = tr('All OSM objects with keys {key} in {extent} are going to be downloaded.')
-ALL_MULTI_WITH_DISTANCE = tr(
-    'All OSM objects with keys {key} in {dist} meters of {extent} are going to be downloaded.'
+ATTRIBUTES_ONLY = translate('@default', 'All OSM objects with keys {key} are going to be downloaded.')
+ALL_MULTI = translate('@default', 'All OSM objects with keys {key} in {extent} are going to be downloaded.')
+ALL_MULTI_WITH_DISTANCE = translate(
+    '@default', 'All OSM objects with keys {key} in {dist} meters of {extent} are going to be downloaded.'
 )
 
 LOGGER = logging.getLogger('QuickOSM')
@@ -168,7 +170,9 @@ class QueryFactory:
                 elif type_ == 'OR':
                     types.append(MultiType.OR)
                 else:
-                    raise QueryFactoryException(tr('Only values "AND"/"OR" are allowed as logical operators.'))
+                    raise QueryFactoryException(
+                        translate('@default', 'Only values "AND"/"OR" are allowed as logical operators.')
+                    )
         return types
 
     def _check_parameters(self) -> bool:
@@ -179,54 +183,62 @@ class QueryFactory:
         :raise QueryFactoryException:
         """
         if not isinstance(self._query_type, QueryType):
-            raise QueryFactoryException(tr('Wrong query type.'))
+            raise QueryFactoryException(translate('@default', 'Wrong query type.'))
 
         for osmObject in self._osm_objects:
             if not isinstance(osmObject, OsmType):
-                raise QueryFactoryException(tr('Wrong OSM object.'))
+                raise QueryFactoryException(translate('@default', 'Wrong OSM object.'))
 
         if self._query_type == QueryType.AroundArea:
             if not self._distance_around:
-                raise QueryFactoryException(tr('No distance provided with the "around" query.'))
+                raise QueryFactoryException(translate('@default', 'No distance provided with the "around" query.'))
 
             try:
                 int(self._distance_around)
             except ValueError:
-                raise QueryFactoryException(tr('Wrong distance parameter.')) from None
+                raise QueryFactoryException(translate('@default', 'Wrong distance parameter.')) from None
 
         if self._distance_around and self._query_type == QueryType.InArea:
-            raise QueryFactoryException(tr('Distance parameter is incompatible with this query.'))
+            raise QueryFactoryException(
+                translate('@default', 'Distance parameter is incompatible with this query.')
+            )
 
         if self._query_type == QueryType.InArea and not self._area:
-            raise QueryFactoryException(tr('Named area is required when the query is "In".'))
+            raise QueryFactoryException(translate('@default', 'Named area is required when the query is "In".'))
 
         if self._query_type == QueryType.AroundArea and not self._area:
-            raise QueryFactoryException(tr('Named area or a WKT is required when the query is "Around".'))
+            raise QueryFactoryException(
+                translate('@default', 'Named area or a WKT is required when the query is "Around".')
+            )
 
         if not self._key and self._value:
-            raise QueryFactoryException(tr('Not possible to query a specific value without a key.'))
+            raise QueryFactoryException(
+                translate('@default', 'Not possible to query a specific value without a key.')
+            )
 
         if self._query_type == QueryType.NotSpatial:
             if not self._key:
-                raise QueryFactoryException(tr('A key is required.'))
+                raise QueryFactoryException(translate('@default', 'A key is required.'))
 
         if len(self._key) > len(self._value):
             if len(self._key) != 1:
-                raise QueryFactoryException(tr('Missing some values for some keys.'))
+                raise QueryFactoryException(translate('@default', 'Missing some values for some keys.'))
 
         if len(self._key) < len(self._value):
-            raise QueryFactoryException(tr('Missing some keys for some values.'))
+            raise QueryFactoryException(translate('@default', 'Missing some keys for some values.'))
 
         for key in self._key:
             if key != key.strip():
-                raise QueryFactoryException(tr(f'Key "{key}" contains leading or trailing whitespace.'))
+                raise QueryFactoryException(
+                    translate('@default', 'Key "{key}" contains leading or trailing whitespace.').format(key=key)
+                )
 
         if len(self._key) != 0:
             if len(self._type_multi_request) > len(self._key) - 1:
-                raise QueryFactoryException(tr('Too many logical operators were provided.'))
+                raise QueryFactoryException(translate('@default', 'Too many logical operators were provided.'))
 
             if len(self._type_multi_request) < len(self._key) - 1:
-                raise QueryFactoryException(tr('Not enough logical operators were provided.'))
+                raise QueryFactoryException(translate('@default', 'Not enough logical operators were provided.'))
 
         self._checked = True
         return True
@@ -451,7 +463,7 @@ class QueryFactory:
         place = self._area
         if self._area is not None:
             # human format a list
-            and_str = tr('and')
+            and_str = translate('@default', 'and')
             if len(self._area) == 1:
                 place = self._area[0]  # simply unwrap the list
             elif len(self._area) == 2:
@@ -475,7 +487,7 @@ class QueryFactory:
             use_with_dist = True
 
         elif self._query_type == QueryType.BBox:
-            extent_lbl = tr('the canvas or layer extent')
+            extent_lbl = translate('@default', 'the canvas or layer extent')
 
         elif self._query_type == QueryType.NotSpatial:
             attrib_only = True

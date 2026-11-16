@@ -19,7 +19,7 @@ from QuickOSM.core.utilities.tools import (
 from QuickOSM.definitions.gui import Panels
 from QuickOSM.definitions.nominatim import NOMINATIM_SERVERS
 from QuickOSM.definitions.overpass import OVERPASS_SERVERS
-from QuickOSM.tools.i18n import tr
+from QuickOSM.tools.i18n import translate
 from QuickOSM.ui.base_panel import BasePanel
 
 LOGGER = logging.getLogger('QuickOSM')
@@ -49,8 +49,8 @@ class ConfigurationPanel(BasePanel):
         self.dialog.line_edit_overpass_url.setPlaceholderText('https://my-overpass.org/api/')
         self.dialog.line_edit_nominatim_url.setPlaceholderText('https://my-nominatim.org/search?')
 
-        add_new_server = tr('Add a new server in the list')
-        remove_selected_server = tr('Remove the selected server from the list')
+        add_new_server = translate('@default', 'Add a new server in the list')
+        remove_selected_server = translate('@default', 'Remove the selected server from the list')
 
         self.dialog.btn_add_overpass.setText('')
         self.dialog.btn_add_overpass.setIcon(QIcon(QgsApplication.iconPath('symbologyAdd.svg')))
@@ -137,15 +137,17 @@ class ConfigurationPanel(BasePanel):
         all_items = [combo_widget.itemText(i) for i in range(combo_widget.count())]
 
         if not url:
-            QMessageBox.warning(self.dialog, 'QuickOSM', tr('Please enter a URL.'))
+            QMessageBox.warning(self.dialog, 'QuickOSM', translate('@default', 'Please enter a URL.'))
             return False
 
         if not url.startswith('http'):
-            QMessageBox.warning(self.dialog, 'QuickOSM', tr('The URL must begin with “http”.'))
+            QMessageBox.warning(self.dialog, 'QuickOSM', translate('@default', 'The URL must begin with “http”.'))
             return False
 
         if url in all_items:
-            QMessageBox.information(self.dialog, 'QuickOSM', tr('This server is already in the list.'))
+            QMessageBox.information(
+                self.dialog, 'QuickOSM', translate('@default', 'This server is already in the list.')
+            )
             return False
 
         # Add to combo and list widget
@@ -176,7 +178,9 @@ class ConfigurationPanel(BasePanel):
 
         selected = list_widget.currentItem()
         if not selected:
-            QMessageBox.warning(self.dialog, 'QuickOSM', tr('Please select a server from the list.'))
+            QMessageBox.warning(
+                self.dialog, 'QuickOSM', translate('@default', 'Please select a server from the list.')
+            )
             return False
 
         url = selected.text()
