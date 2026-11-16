@@ -7,7 +7,7 @@ try:
 except ImportError:
     # Since QGIS 4.4
     from qgisprovider.qgis_algorithm import QgisAlgorithm
-from qgis.core import QgsProcessingAlgorithm, QgsProcessingOutputString
+from qgis.core import Qgis, QgsProcessingOutputString
 
 from QuickOSM.core.query_factory import QueryFactory
 from QuickOSM.core.query_preparation import QueryPreparation
@@ -50,7 +50,7 @@ class BuildQueryBasedAlgorithm(QgisAlgorithm):
 
     def flags(self):
         """Return the flags."""
-        return super().flags() | QgsProcessingAlgorithm.Flag.FlagHideFromToolbox
+        return super().flags() | Qgis.ProcessingAlgorithmFlag.HideFromToolbox
 
     def add_outputs(self):
         """Set up the advanced parameters."""

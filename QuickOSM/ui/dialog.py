@@ -7,7 +7,7 @@ from functools import partial
 from os.path import split
 from sys import exc_info
 
-from qgis.core import Qgis, QgsFeedback, QgsMapLayer
+from qgis.core import Qgis, QgsFeedback
 from qgis.PyQt.QtCore import QEvent, QObject
 from qgis.PyQt.QtGui import QIcon, QPixmap
 from qgis.PyQt.QtWidgets import (
@@ -168,7 +168,7 @@ class Dialog(QDialog, FORM_CLASS):
         actions = Actions(self)
         reloader = partial(actions.pre_run_reload)
         self.reload_action.triggered.connect(reloader)
-        self.iface.addCustomActionForLayerType(self.reload_action, '', QgsMapLayer.LayerType.VectorLayer, False)
+        self.iface.addCustomActionForLayerType(self.reload_action, '', Qgis.LayerType.Vector, False)
 
         self.feedback_process = QgsFeedback()
 

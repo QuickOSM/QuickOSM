@@ -6,6 +6,7 @@ import time
 from typing import List, Union
 
 from qgis.core import (
+    Qgis,
     QgsCategorizedSymbolRenderer,
     QgsExpressionContextUtils,
     QgsFeedback,
@@ -14,7 +15,6 @@ from qgis.core import (
     QgsRectangle,
     QgsRendererCategory,
     QgsSymbol,
-    QgsWkbTypes,
 )
 from qgis.PyQt.QtGui import QColor
 from qgis.PyQt.QtWidgets import QApplication, QDialog
@@ -138,11 +138,11 @@ def open_file(
                         if str(value) == 'None':
                             value = ''
                         if layer in ['lines', 'multilinestrings']:
-                            symbol = QgsSymbol.defaultSymbol(QgsWkbTypes.GeometryType.LineGeometry)
+                            symbol = QgsSymbol.defaultSymbol(Qgis.GeometryType.Line)
                         elif layer == 'points':
-                            symbol = QgsSymbol.defaultSymbol(QgsWkbTypes.GeometryType.PointGeometry)
+                            symbol = QgsSymbol.defaultSymbol(Qgis.GeometryType.Point)
                         elif layer == 'multipolygons':
-                            symbol = QgsSymbol.defaultSymbol(QgsWkbTypes.GeometryType.PolygonGeometry)
+                            symbol = QgsSymbol.defaultSymbol(Qgis.GeometryType.Polygon)
                         symbol.setColor(QColor(value))
                         category = QgsRendererCategory(str(value), symbol, str(value))
                         categories.append(category)

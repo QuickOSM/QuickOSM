@@ -14,7 +14,7 @@ from qgis.core import (
     QgsProcessingFeedback,
     QgsVectorLayer,
 )
-from qgis.PyQt.QtCore import QObject, QVariant, pyqtSignal
+from qgis.PyQt.QtCore import QMetaType, QObject, pyqtSignal
 
 from QuickOSM.core.exceptions import FileOutPutException, QuickOsmException
 from QuickOSM.core.utilities.tools import check_processing_enable
@@ -200,8 +200,8 @@ class OsmParser(QObject):
 
             fields = layers[layer]['vector_layer'].fields()
             layer_provider.deleteAttributes([fields.indexOf('other_tags')])
-            layer_provider.addAttributes([QgsField('osm_type', QVariant.String)])
-            layer_provider.addAttributes([QgsField('full_id', QVariant.String)])
+            layer_provider.addAttributes([QgsField('osm_type', QMetaType.Type.QString)])
+            layer_provider.addAttributes([QgsField('full_id', QMetaType.Type.QString)])
             layers[layer]['vector_layer'].updateFields()
 
             fields = layers[layer]['vector_layer'].fields()

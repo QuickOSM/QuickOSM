@@ -6,9 +6,9 @@ except ImportError:
     # Since QGIS 4.4
     from qgisprovider.qgis_algorithm import QgisAlgorithm
 from qgis.core import (
+    Qgis,
     QgsCoordinateReferenceSystem,
     QgsCoordinateTransform,
-    QgsProcessingParameterDefinition,
     QgsProcessingParameterExtent,
     QgsProcessingParameterNumber,
     QgsProcessingParameterString,
@@ -50,7 +50,7 @@ class BuildBased(QgisAlgorithm):
         param = QgsProcessingParameterNumber(
             self.TIMEOUT, translate('@default', 'Timeout'), defaultValue=25, minValue=5
         )
-        param.setFlags(param.flags() | QgsProcessingParameterDefinition.Flag.FlagAdvanced)
+        param.setFlags(param.flags() | Qgis.ProcessingParameterFlag.Advanced)
         help_string = translate('@default', 'The timeout to use for the Overpass API.')
         param.setHelp(help_string)
         self.addParameter(param)
@@ -59,7 +59,7 @@ class BuildBased(QgisAlgorithm):
         param = QgsProcessingParameterString(
             self.SERVER, translate('@default', 'Overpass server'), optional=False, defaultValue=server
         )
-        param.setFlags(param.flags() | QgsProcessingParameterDefinition.Flag.FlagAdvanced)
+        param.setFlags(param.flags() | Qgis.ProcessingParameterFlag.Advanced)
         help_string = translate('@default', 'The Overpass API server to use to build the encoded URL.')
         param.setHelp(help_string)
         self.addParameter(param)
@@ -115,7 +115,7 @@ class BuildRaw(BuildBased):
             defaultValue='0,1,0,1 []',
             optional=True,
         )
-        param.setFlags(param.flags() | QgsProcessingParameterDefinition.Flag.FlagAdvanced)
+        param.setFlags(param.flags() | Qgis.ProcessingParameterFlag.Advanced)
         help_string = translate(
             '@default', 'If the query has a {{bbox}} token, this extent will be used for replacement.'
         )
@@ -125,7 +125,7 @@ class BuildRaw(BuildBased):
         param = QgsProcessingParameterString(
             self.AREA, translate('@default', 'Area (if {{geocodeArea}} in the query)'), optional=True
         )
-        param.setFlags(param.flags() | QgsProcessingParameterDefinition.Flag.FlagAdvanced)
+        param.setFlags(param.flags() | Qgis.ProcessingParameterFlag.Advanced)
         help_string = translate('@default', 'If the query has a {{geocodeArea}} token, this place will be used.')
         param.setHelp(help_string)
         self.addParameter(param)

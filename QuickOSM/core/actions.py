@@ -35,7 +35,7 @@ def add_actions(layer: QgsVectorLayer, keys: list):
 
     title = translate('@default', 'OpenStreetMap Browser')
     osm_browser = QgsAction(
-        QgsAction.ActionType.OpenUrl,
+        Qgis.AttributeActionType.OpenUrl,
         title,
         'http://www.openstreetmap.org/browse/[% "osm_type" %]/[% "osm_id" %]',
         '',
@@ -48,7 +48,7 @@ def add_actions(layer: QgsVectorLayer, keys: list):
 
     title = 'JOSM'
     josm = QgsAction(
-        QgsAction.ActionType.GenericPython,
+        Qgis.AttributeActionType.GenericPython,
         title,
         ACTIONS_PATH + 'Actions.run("josm","[% "full_id" %]")',
         resources_path('icons', 'josm_icon.svg'),
@@ -61,7 +61,7 @@ def add_actions(layer: QgsVectorLayer, keys: list):
 
     title = translate('@default', 'User default editor')
     default_editor = QgsAction(
-        QgsAction.ActionType.OpenUrl,
+        Qgis.AttributeActionType.OpenUrl,
         title,
         'http://www.openstreetmap.org/edit?[% "osm_type" %]=[% "osm_id" %]',
         '',
@@ -87,7 +87,7 @@ def add_actions(layer: QgsVectorLayer, keys: list):
 
             link = link.replace(':', '_')
             generic = QgsAction(
-                QgsAction.ActionType.GenericPython,
+                Qgis.AttributeActionType.GenericPython,
                 link,
                 (ACTIONS_PATH + f'Actions.run("{link}","[% "{link}" %]")'),
                 image,
@@ -100,7 +100,7 @@ def add_actions(layer: QgsVectorLayer, keys: list):
 
     if 'network' in keys and 'ref' in keys:
         sketch_line = QgsAction(
-            QgsAction.ActionType.GenericPython,
+            Qgis.AttributeActionType.GenericPython,
             translate('@default', 'Sketchline'),
             (ACTIONS_PATH + 'Actions.run_sketch_line("[% "network" %]","[% "ref" %]")'),
             '',
@@ -118,7 +118,7 @@ def add_relaunch_action(layer: QgsVectorLayer, layer_name: str = ''):
 
     title = translate('@default', 'Reload the query in a new file')
     reload = QgsAction(
-        QgsAction.ActionType.GenericPython,
+        Qgis.AttributeActionType.GenericPython,
         title,
         ACTIONS_PATH + f'Actions.run_reload(layer_name="{layer_name}")',
         '',

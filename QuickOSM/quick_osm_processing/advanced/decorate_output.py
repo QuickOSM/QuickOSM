@@ -6,15 +6,14 @@ except ImportError:
     # Since QGIS 4.4
     from qgisprovider.qgis_algorithm import QgisAlgorithm
 from qgis.core import (
+    Qgis,
     QgsCategorizedSymbolRenderer,
     QgsLayerMetadata,
-    QgsProcessingAlgorithm,
     QgsProcessingLayerPostProcessorInterface,
     QgsProcessingOutputVectorLayer,
     QgsProcessingParameterVectorLayer,
     QgsRendererCategory,
     QgsSymbol,
-    QgsWkbTypes,
 )
 from qgis.PyQt.QtGui import QColor
 
@@ -60,7 +59,7 @@ class DecorateLayerAlgorithm(QgisAlgorithm):
 
     def flags(self):
         """Return the flags."""
-        return super().flags() | QgsProcessingAlgorithm.Flag.FlagHideFromToolbox
+        return super().flags() | Qgis.ProcessingAlgorithmFlag.HideFromToolbox
 
     def add_parameters(self):
         """Set up the parameters."""
@@ -126,11 +125,11 @@ class SetColoringPostProcessor(QgsProcessingLayerPostProcessorInterface):
                 if str(value) == 'None':
                     value = ''
                 if layer_type in [self.layer_type_dict['lines'], self.layer_type_dict['multilinestrings']]:
-                    symbol = QgsSymbol.defaultSymbol(QgsWkbTypes.GeometryType.LineGeometry)
+                    symbol = QgsSymbol.defaultSymbol(Qgis.GeometryType.Line)
                 elif layer_type == self.layer_type_dict['points']:
-                    symbol = QgsSymbol.defaultSymbol(QgsWkbTypes.GeometryType.PointGeometry)
+                    symbol = QgsSymbol.defaultSymbol(Qgis.GeometryType.Point)
                 elif layer_type == self.layer_type_dict['multipolygons']:
-                    symbol = QgsSymbol.defaultSymbol(QgsWkbTypes.GeometryType.PolygonGeometry)
+                    symbol = QgsSymbol.defaultSymbol(Qgis.GeometryType.Polygon)
                 else:
                     break
                 symbol.setColor(QColor(value))

@@ -2,7 +2,7 @@
 
 import unittest
 
-from qgis.core import QgsWkbTypes
+from qgis.core import Qgis
 
 from QuickOSM.core.parser.osm_parser import OsmParser
 from QuickOSM.tools.resources import plugin_test_data_path
@@ -93,7 +93,7 @@ class TestOsmParser(unittest.TestCase):
             'barrier',
         ]
         features_expected = 52
-        geom_type_expected = QgsWkbTypes.Type.Point
+        geom_type_expected = Qgis.WkbType.Point
 
         self.assertEqual(layers['points']['tags'], tags_expected)
         self.assertEqual(layers['points']['featureCount'], features_expected)
@@ -130,7 +130,7 @@ class TestOsmParser(unittest.TestCase):
             'bus',
         ]
         features_expected = 3
-        geom_type_expected = QgsWkbTypes.Type.Point
+        geom_type_expected = Qgis.WkbType.Point
 
         self.assertEqual(layers['points']['tags'], tags_expected)
         self.assertEqual(layers['points']['featureCount'], features_expected)
