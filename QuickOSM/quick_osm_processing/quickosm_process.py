@@ -10,8 +10,7 @@ except ImportError:
     # Since QGIS 4.4
     from qgisprovider.qgis_algorithm import QgisAlgorithm
 from qgis.core import (
-    QgsProcessing,
-    QgsProcessingAlgorithm,
+    Qgis,
     QgsProcessingContext,
     QgsProcessingMultiStepFeedback,
     QgsProcessingOutputVectorLayer,
@@ -79,7 +78,7 @@ class DownloadOSMData(QgisAlgorithm):
 
     def flags(self):
         """Return the flags."""
-        return QgisAlgorithm.flags(self) | QgsProcessingAlgorithm.Flag.FlagHideFromModeler
+        return QgisAlgorithm.flags(self) | Qgis.ProcessingAlgorithmFlag.HideFromModeler
 
     def fetch_based_parameters(self, parameters, context):
         """Get the parameters."""
@@ -98,26 +97,26 @@ class DownloadOSMData(QgisAlgorithm):
     def add_outputs(self):
         """Set up the outputs of the algorithm."""
         output = QgsProcessingOutputVectorLayer(
-            self.OUTPUT_POINTS, translate('@default', 'Output points'), QgsProcessing.SourceType.TypeVectorPoint
+            self.OUTPUT_POINTS, translate('@default', 'Output points'), Qgis.ProcessingSourceType.VectorPoint
         )
         self.addOutput(output)
 
         output = QgsProcessingOutputVectorLayer(
-            self.OUTPUT_LINES, translate('@default', 'Output lines'), QgsProcessing.SourceType.TypeVectorLine
+            self.OUTPUT_LINES, translate('@default', 'Output lines'), Qgis.ProcessingSourceType.VectorLine
         )
         self.addOutput(output)
 
         output = QgsProcessingOutputVectorLayer(
             self.OUTPUT_MULTILINESTRINGS,
             translate('@default', 'Output multilinestrings'),
-            QgsProcessing.SourceType.TypeVectorLine,
+            Qgis.ProcessingSourceType.VectorLine,
         )
         self.addOutput(output)
 
         output = QgsProcessingOutputVectorLayer(
             self.OUTPUT_MULTIPOLYGONS,
             translate('@default', 'Output multipolygons'),
-            QgsProcessing.SourceType.TypeVectorPolygon,
+            Qgis.ProcessingSourceType.VectorPolygon,
         )
         self.addOutput(output)
 

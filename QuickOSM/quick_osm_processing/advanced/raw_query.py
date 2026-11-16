@@ -2,7 +2,7 @@
 
 from typing import Dict
 
-from qgis.core import QgsProcessingAlgorithm, QgsProcessingOutputString
+from qgis.core import Qgis, QgsProcessingOutputString
 
 from QuickOSM.core.query_preparation import QueryPreparation
 from QuickOSM.quick_osm_processing.build_input import BuildRaw
@@ -41,7 +41,7 @@ class RawQueryAlgorithm(BuildRaw):
 
     def flags(self):
         """Return the flags."""
-        return super().flags() | QgsProcessingAlgorithm.Flag.FlagHideFromToolbox
+        return super().flags() | Qgis.ProcessingAlgorithmFlag.HideFromToolbox
 
     def initAlgorithm(self, config=None):
         """Set up of the algorithm."""

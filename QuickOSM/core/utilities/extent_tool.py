@@ -3,12 +3,12 @@
 import logging
 
 from qgis.core import (
+    Qgis,
     QgsCoordinateReferenceSystem,
     QgsCoordinateTransform,
     QgsPointXY,
     QgsProject,
     QgsRectangle,
-    QgsWkbTypes,
 )
 from qgis.gui import QgsMapTool, QgsRubberBand
 from qgis.PyQt.QtCore import pyqtSignal
@@ -27,7 +27,7 @@ class ShowExtent(QgsMapTool):
         QgsMapTool.__init__(self, canvas)
 
         self.canvas = canvas
-        self.rubberBand = QgsRubberBand(self.canvas, QgsWkbTypes.GeometryType.PolygonGeometry)
+        self.rubberBand = QgsRubberBand(self.canvas, Qgis.GeometryType.Polygon)
         color = QColor(30, 230, 30, 65)
         self.rubberBand.setColor(color)
         self.rubberBand.setWidth(1)
@@ -46,7 +46,7 @@ class ShowExtent(QgsMapTool):
         self.end_point = QgsPointXY(extent.xMaximum(), extent.yMaximum())
         self.transform_coordinates()
 
-        self.rubberBand.reset(QgsWkbTypes.GeometryType.PolygonGeometry)
+        self.rubberBand.reset(Qgis.GeometryType.Polygon)
 
         point1 = QgsPointXY(self.start_point.x(), self.start_point.y())
         point2 = QgsPointXY(self.start_point.x(), self.end_point.y())

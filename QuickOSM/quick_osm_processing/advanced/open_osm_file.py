@@ -12,8 +12,7 @@ except ImportError:
     from qgisprovider.qgis_algorithm import QgisAlgorithm
 
 from qgis.core import (
-    QgsProcessing,
-    QgsProcessingAlgorithm,
+    Qgis,
     QgsProcessingException,
     QgsProcessingOutputVectorLayer,
     QgsProcessingParameterFile,
@@ -50,7 +49,7 @@ class OpenOsmFile(QgisAlgorithm):
 
     def flags(self):
         """Return the flags."""
-        return super().flags() | QgsProcessingAlgorithm.Flag.FlagHideFromToolbox
+        return super().flags() | Qgis.ProcessingAlgorithmFlag.HideFromToolbox
 
     @staticmethod
     def name() -> str:
@@ -88,33 +87,33 @@ class OpenOsmFile(QgisAlgorithm):
         self.addParameter(param)
 
         output = QgsProcessingOutputVectorLayer(
-            self.OUTPUT_POINTS, translate('@default', 'Output points'), QgsProcessing.SourceType.TypeVectorPoint
+            self.OUTPUT_POINTS, translate('@default', 'Output points'), Qgis.ProcessingSourceType.VectorPoint
         )
         self.addOutput(output)
 
         output = QgsProcessingOutputVectorLayer(
-            self.OUTPUT_LINES, translate('@default', 'Output lines'), QgsProcessing.SourceType.TypeVectorLine
+            self.OUTPUT_LINES, translate('@default', 'Output lines'), Qgis.ProcessingSourceType.VectorLine
         )
         self.addOutput(output)
 
         output = QgsProcessingOutputVectorLayer(
             self.OUTPUT_MULTILINESTRINGS,
             translate('@default', 'Output multilinestrings'),
-            QgsProcessing.SourceType.TypeVectorLine,
+            Qgis.ProcessingSourceType.VectorLine,
         )
         self.addOutput(output)
 
         output = QgsProcessingOutputVectorLayer(
             self.OUTPUT_MULTIPOLYGONS,
             translate('@default', 'Output multipolygons'),
-            QgsProcessing.SourceType.TypeVectorPolygon,
+            Qgis.ProcessingSourceType.VectorPolygon,
         )
         self.addOutput(output)
 
         output = QgsProcessingOutputVectorLayer(
             self.OUTPUT_OTHER_RELATIONS,
             translate('@default', 'Output other relations'),
-            QgsProcessing.SourceType.TypeVector,
+            Qgis.ProcessingSourceType.Vector,
         )
         self.addOutput(output)
 

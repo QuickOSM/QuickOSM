@@ -38,7 +38,7 @@ class DownloadOverpassUrl(QgisAlgorithm):
 
     def flags(self):
         """Return the flags."""
-        return super().flags()  # | QgsProcessingAlgorithm.FlagHideFromToolbox
+        return super().flags()  # | Qgis.ProcessingAlgorithmFlag.HideFromToolbox
 
     def shortHelpString(self) -> str:
         """Return a helper for the algorithm."""
