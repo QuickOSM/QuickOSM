@@ -20,7 +20,7 @@ from qgis.core import (
     QgsVectorLayer,
 )
 
-from QuickOSM.tools.i18n import tr
+from QuickOSM.tools.i18n import translate
 
 
 class OpenOsmFile(QgisAlgorithm):
@@ -41,7 +41,7 @@ class OpenOsmFile(QgisAlgorithm):
     @staticmethod
     def group() -> str:
         """Return the group of the algorithm."""
-        return tr('Advanced')
+        return translate('@default', 'Advanced')
 
     @staticmethod
     def groupId() -> str:
@@ -72,40 +72,49 @@ class OpenOsmFile(QgisAlgorithm):
     def initAlgorithm(self, config=None):
         """Set up of the algorithm."""
         param = QgsProcessingParameterFile(self.FILE, self.tr('OSM file'))
-        help_string = tr('The extension can be a OSM or PBF file.')
+        help_string = translate('@default', 'The extension can be a OSM or PBF file.')
         param.setHelp(help_string)
         self.addParameter(param)
 
-        param = QgsProcessingParameterFile(self.OSM_CONF, tr('OSM configuration'), optional=True)
-        help_string = tr(
+        param = QgsProcessingParameterFile(
+            self.OSM_CONF, translate('@default', 'OSM configuration'), optional=True
+        )
+        help_string = translate(
+            '@default',
             'The OGR OSM configuration file. This file is used to customize the import process '
-            'about OSM tags. You should read the OGR documentation {url}'
+            'about OSM tags. You should read the OGR documentation {url}',
         ).format(url='https://gdal.org/drivers/vector/osm.html')
         param.setHelp(help_string)
         self.addParameter(param)
 
         output = QgsProcessingOutputVectorLayer(
-            self.OUTPUT_POINTS, tr('Output points'), QgsProcessing.SourceType.TypeVectorPoint
+            self.OUTPUT_POINTS, translate('@default', 'Output points'), QgsProcessing.SourceType.TypeVectorPoint
         )
         self.addOutput(output)
 
         output = QgsProcessingOutputVectorLayer(
-            self.OUTPUT_LINES, tr('Output lines'), QgsProcessing.SourceType.TypeVectorLine
+            self.OUTPUT_LINES, translate('@default', 'Output lines'), QgsProcessing.SourceType.TypeVectorLine
         )
         self.addOutput(output)
 
         output = QgsProcessingOutputVectorLayer(
-            self.OUTPUT_MULTILINESTRINGS, tr('Output multilinestrings'), QgsProcessing.SourceType.TypeVectorLine
+            self.OUTPUT_MULTILINESTRINGS,
+            translate('@default', 'Output multilinestrings'),
+            QgsProcessing.SourceType.TypeVectorLine,
         )
         self.addOutput(output)
 
         output = QgsProcessingOutputVectorLayer(
-            self.OUTPUT_MULTIPOLYGONS, tr('Output multipolygons'), QgsProcessing.SourceType.TypeVectorPolygon
+            self.OUTPUT_MULTIPOLYGONS,
+            translate('@default', 'Output multipolygons'),
+            QgsProcessing.SourceType.TypeVectorPolygon,
         )
         self.addOutput(output)
 
         output = QgsProcessingOutputVectorLayer(
-            self.OUTPUT_OTHER_RELATIONS, tr('Output other relations'), QgsProcessing.SourceType.TypeVector
+            self.OUTPUT_OTHER_RELATIONS,
+            translate('@default', 'Output other relations'),
+            QgsProcessing.SourceType.TypeVector,
         )
         self.addOutput(output)
 

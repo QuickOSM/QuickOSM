@@ -24,7 +24,7 @@ from QuickOSM.core.exceptions import QuickOsmException
 from QuickOSM.core.utilities.utilities_qgis import open_log_panel
 from QuickOSM.definitions.gui import Panels
 from QuickOSM.definitions.osm import QueryLanguage
-from QuickOSM.tools.i18n import tr
+from QuickOSM.tools.i18n import translate
 from QuickOSM.tools.resources import load_ui, resources_path
 from QuickOSM.ui.configuration_panel import ConfigurationPanel
 from QuickOSM.ui.map_preset_panel import MapPresetPanel
@@ -164,7 +164,7 @@ class Dialog(QDialog, FORM_CLASS):
         }
 
         icon = QIcon(resources_path('icons', 'QuickOSM.svg'))
-        self.reload_action = QAction(icon, tr('Reload the query in a new file'), self.iface)
+        self.reload_action = QAction(icon, translate('@default', 'Reload the query in a new file'), self.iface)
         actions = Actions(self)
         reloader = partial(actions.pre_run_reload)
         self.reload_action.triggered.connect(reloader)
@@ -241,17 +241,18 @@ class Dialog(QDialog, FORM_CLASS):
         f_name = split(exc_tb.tb_frame.f_code.co_filename)[1]
         _, _, tb = exc_info()
         traceback.print_tb(tb)
-        LOGGER.critical(tr('A critical error occurred, this is the traceback:'))
+        LOGGER.critical(translate('@default', 'A critical error occurred, this is the traceback:'))
         LOGGER.critical(exc_type)
         LOGGER.critical(f_name)
         LOGGER.critical(exception)
         LOGGER.critical('\n'.join(traceback.format_tb(tb)))
 
         self.display_message_bar(
-            tr(
+            translate(
+                '@default',
                 'Error in the QGIS log window, then the QuickOSM panel, copy/paste it and '
                 'please report it, if you know how to copy/paste QGIS logs. '
-                'Please check pinned tickets first.'
+                'Please check pinned tickets first.',
             ),
             level=Qgis.MessageLevel.Critical,
             open_logs=True,
@@ -294,11 +295,11 @@ class Dialog(QDialog, FORM_CLASS):
             widget.layout().addWidget(button)
 
             if open_logs:
-                button.setText(tr('Open log panel'))
+                button.setText(translate('@default', 'Open log panel'))
                 # noinspection PyUnresolvedReferences
                 button.pressed.connect(lambda: open_log_panel())
             else:
-                button.setText(tr('More details'))
+                button.setText(translate('@default', 'More details'))
                 # noinspection PyUnresolvedReferences
                 button.pressed.connect(lambda: QMessageBox.information(None, title, more_details))
 

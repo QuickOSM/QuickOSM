@@ -15,7 +15,7 @@ from QuickOSM.core.parser.osm_parser import OsmParser
 from QuickOSM.core.process import open_file
 from QuickOSM.definitions.gui import Panels
 from QuickOSM.definitions.osm import MultiType
-from QuickOSM.tools.i18n import tr
+from QuickOSM.tools.i18n import translate
 from QuickOSM.tools.resources import resources_path
 from QuickOSM.ui.base_processing_panel import BaseProcessingPanel
 from QuickOSM.ui.custom_table import TableKeyValue
@@ -48,13 +48,13 @@ class OsmFilePanel(BaseProcessingPanel, TableKeyValue):
         # Table Keys/Values
         self.setup_table()
 
-        self.dialog.osm_file.setDialogTitle(tr('Select an OSM/PBF file'))
+        self.dialog.osm_file.setDialogTitle(translate('@default', 'Select an OSM/PBF file'))
         self.dialog.osm_file.setFilter('OSM file (*.osm *.pbf)')
 
         default_osm_conf = resources_path('ogr', 'to_be_modified_osmconf.ini')
         if not isfile(default_osm_conf):
             default_osm_conf = ''
-        self.dialog.osm_conf.setDialogTitle(tr('Select OSM conf file'))
+        self.dialog.osm_conf.setDialogTitle(translate('@default', 'Select OSM conf file'))
         self.dialog.osm_conf.setFilter('OSM conf (*.ini)')
         self.dialog.osm_conf.lineEdit().setPlaceholderText(default_osm_conf)
 
@@ -206,7 +206,9 @@ class OsmFilePanel(BaseProcessingPanel, TableKeyValue):
                 subset=True,
                 subset_query=sql_query,
             )
-            self.dialog.display_message_bar(tr('Successful query'), level=Qgis.MessageLevel.Success, duration=5)
+            self.dialog.display_message_bar(
+                translate('@default', 'Successful query'), level=Qgis.MessageLevel.Success, duration=5
+            )
         else:
             open_file(
                 dialog=self.dialog,
@@ -216,4 +218,6 @@ class OsmFilePanel(BaseProcessingPanel, TableKeyValue):
                 output_format=properties['output_format'],
                 prefix_file=properties['prefix_file'],
             )
-            self.dialog.display_message_bar(tr('Successful query'), level=Qgis.MessageLevel.Success, duration=5)
+            self.dialog.display_message_bar(
+                translate('@default', 'Successful query'), level=Qgis.MessageLevel.Success, duration=5
+            )

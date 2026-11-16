@@ -24,7 +24,7 @@ from QuickOSM.core.utilities.completer_free import (
 )
 from QuickOSM.definitions.gui import Panels
 from QuickOSM.definitions.osm import MultiType
-from QuickOSM.tools.i18n import tr
+from QuickOSM.tools.i18n import translate
 from QuickOSM.tools.resources import resources_path
 
 LOGGER = logging.getLogger('QuickOSM')
@@ -42,8 +42,8 @@ class TableKeyValue:
         self.couple = None
         self.keys = None
 
-        self.all_keys_placeholder = tr('Query on all keys')
-        self.all_values_placeholder = tr('Query on all values')
+        self.all_keys_placeholder = translate('@default', 'Query on all keys')
+        self.all_values_placeholder = translate('@default', 'Query on all values')
 
     def set_couple(self, couple: dict):
         """Set the couple parameter"""
@@ -91,7 +91,7 @@ class TableKeyValue:
         self.preset.completer().setCaseSensitivity(Qt.CaseSensitivity.CaseInsensitive)
 
         self.preset.activated.connect(self.choice_preset)
-        self.preset.lineEdit().setPlaceholderText(tr('Not mandatory. Ex: bakery'))
+        self.preset.lineEdit().setPlaceholderText(translate('@default', 'Not mandatory. Ex: bakery'))
 
         osm_keys = parser.osm_keys_values()
         self.set_couple(osm_keys)
@@ -125,11 +125,11 @@ class TableKeyValue:
         add_row = QPushButton()
         add_row.setIcon(QIcon(QgsApplication.iconPath('symbologyAdd.svg')))
         add_row.setText('')
-        add_row.setToolTip(tr('Add a line below.'))
+        add_row.setToolTip(translate('@default', 'Add a line below.'))
         remove_row = QPushButton()
         remove_row.setIcon(QIcon(QgsApplication.iconPath('symbologyRemove.svg')))
         remove_row.setText('')
-        remove_row.setToolTip(tr('Remove the line.'))
+        remove_row.setToolTip(translate('@default', 'Remove the line.'))
 
         add_row.clicked.connect(self.add_row_to_table)
         remove_row.clicked.connect(self.remove_selection)
@@ -140,9 +140,10 @@ class TableKeyValue:
         """Set up the choice of multi request type for a row in the table widget."""
         type_operation = QComboBox()
         type_operation.setToolTip(
-            tr(
+            translate(
+                '@default',
                 'Set the type of multi-request. '
-                '"And" verify both conditions. "Or" verify either of the conditions.'
+                '"And" verify both conditions. "Or" verify either of the conditions.',
             )
         )
         type_operation.addItem(MultiType.AND.value, MultiType.AND)
@@ -156,7 +157,7 @@ class TableKeyValue:
         """Set up the key field for a row in the table widget."""
         key_field = QComboBox()
         key_field.setEditable(True)
-        key_field.setToolTip(tr('An OSM key to fetch. If empty, all keys will be fetched.'))
+        key_field.setToolTip(translate('@default', 'An OSM key to fetch. If empty, all keys will be fetched.'))
         key_field.installEventFilter(self.dialog)
 
         keys_completer = QCompleter(self.keys)
@@ -176,7 +177,9 @@ class TableKeyValue:
         """Set up the value field for a row in the table widget."""
         value_field = QComboBox()
         value_field.setEditable(True)
-        value_field.setToolTip(tr('An OSM value to fetch. If empty, all values will be fetched.'))
+        value_field.setToolTip(
+            translate('@default', 'An OSM value to fetch. If empty, all values will be fetched.')
+        )
         value_field.installEventFilter(self.dialog)
 
         value_field.lineEdit().setPlaceholderText(self.all_values_placeholder)

@@ -40,5 +40,10 @@ def setup_translation(file_pattern='{}.qm', folder=None):
     return locale, None
 
 
-def tr(text, context='@default'):
+def translate(context, text):
+    """Translate a text in the given context.
+
+    The function is named "translate" with the context as first argument, so that
+    pylupdate6 extracts the string with this context, even outside a class.
+    """
     return QApplication.translate(context, text)

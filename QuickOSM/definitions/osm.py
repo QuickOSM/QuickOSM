@@ -2,7 +2,7 @@
 
 from enum import Enum, unique
 
-from QuickOSM.tools.i18n import tr
+from QuickOSM.tools.i18n import translate
 
 # Wait for python 3.6 minimum version
 # class AutoEnum(Enum):
@@ -85,8 +85,8 @@ WHITE_LIST = {'multilinestrings': None, 'points': None, 'lines': None, 'multipol
 class MultiType(Enum):
     """Type of combination of two queries"""
 
-    AND = tr('And')
+    AND = translate('@default', 'And')
     """And"""
 
-    OR = tr('Or')
+    OR = translate('@default', 'Or')
     """Or"""

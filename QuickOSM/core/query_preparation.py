@@ -15,7 +15,7 @@ from QuickOSM.core.utilities.tools import get_setting
 from QuickOSM.definitions.nominatim import NOMINATIM_SERVERS
 from QuickOSM.definitions.osm import QueryLanguage
 from QuickOSM.definitions.overpass import OVERPASS_SERVERS
-from QuickOSM.tools.i18n import tr
+from QuickOSM.tools.i18n import translate
 from QuickOSM.tools.resources import plugin_name
 
 LOGGER = logging.getLogger(plugin_name())
@@ -118,7 +118,7 @@ class QueryPreparation:
         if not re.search(template, self._query_prepared):
             return
         if self._extent is None:
-            raise QueryFactoryException(tr('Missing extent parameter.'))
+            raise QueryFactoryException(translate('@default', 'Missing extent parameter.'))
 
         coord_y = self._format_decimals_wgs84(self._extent.center().y())
         coord_x = self._format_decimals_wgs84(self._extent.center().x())
@@ -139,7 +139,7 @@ class QueryPreparation:
         if not re.search(template, self._query_prepared):
             return
         if self._extent is None:
-            raise QueryFactoryException(tr('Missing extent parameter.'))
+            raise QueryFactoryException(translate('@default', 'Missing extent parameter.'))
 
         y_min = self._extent.yMinimum()
         y_max = self._extent.yMaximum()
@@ -165,7 +165,10 @@ class QueryPreparation:
 
         if area_is_too_big:
             LOGGER.info(
-                tr('The area was overlapping the WGS84 limits ±90 / ±180 degrees. The query has been restricted.')
+                translate(
+                    '@default',
+                    'The area was overlapping the WGS84 limits ±90 / ±180 degrees. The query has been restricted.',
+                )
             )
 
         y_min = self._format_decimals_wgs84(y_min)
@@ -220,7 +223,7 @@ class QueryPreparation:
                     point = geom.asPoint()
                     lon = point.x()
                     lat = point.y()
-                    LOGGER.info(tr('WKT detected for "geocodeCoords".'))
+                    LOGGER.info(translate('@default', 'WKT detected for "geocodeCoords".'))
                 except TypeError:
                     pass
 

@@ -27,7 +27,7 @@ from QuickOSM.core.utilities.utilities_qgis import open_webpage
 from QuickOSM.definitions.urls import DOC_PLUGIN_URL
 from QuickOSM.quick_osm_processing.provider import Provider
 from QuickOSM.tools.custom_logging import setup_logger
-from QuickOSM.tools.i18n import setup_translation, tr
+from QuickOSM.tools.i18n import setup_translation, translate
 from QuickOSM.tools.resources import plugin_name, plugin_path, resources_path
 from QuickOSM.tools.version import version
 
@@ -160,7 +160,9 @@ class QuickOSMPlugin:
 
         # Action JOSM
         self.josm_action = QAction(
-            QIcon(resources_path('icons', 'josm_icon.svg')), tr('JOSM Remote'), self.iface.mainWindow()
+            QIcon(resources_path('icons', 'josm_icon.svg')),
+            translate('@default', 'JOSM Remote'),
+            self.iface.mainWindow(),
         )
         self.josm_action.triggered.connect(self.josm_remote)
         self.toolbar.addAction(self.josm_action)
@@ -189,11 +191,13 @@ class QuickOSMPlugin:
     def josm_remote(self):
         """Call the JOSM remote control using the current canvas extent."""
         map_settings = self.iface.mapCanvas().mapSettings()
-        title = tr('JOSM Remote')
+        title = translate('@default', 'JOSM Remote')
         if open_extent(map_settings.extent(), map_settings.destinationCrs()):
-            self.iface.messageBar().pushSuccess(title, tr('Import done, check JOSM.'))
+            self.iface.messageBar().pushSuccess(title, translate('@default', 'Import done, check JOSM.'))
         else:
-            self.iface.messageBar().pushCritical(title, tr('Is the remote enabled in the JOSM settings?'))
+            self.iface.messageBar().pushCritical(
+                title, translate('@default', 'Is the remote enabled in the JOSM settings?')
+            )
 
     def open_dialog(self):
         """Create and open the main dialog."""
@@ -228,25 +232,29 @@ class QuickOSMPlugin:
         if not get_setting('copyright_dialog'):
             message = QMessageBox(dialog)
             text = (
-                tr(
+                translate(
+                    '@default',
                     'OpenStreetMap® is open data, licensed under the'
                     ' Open Data Commons Open Database License (ODbL) '
-                    'by the OpenStreetMap Foundation.'
+                    'by the OpenStreetMap Foundation.',
                 )
                 + '\n'
             )
             text += (
-                tr(
+                translate(
+                    '@default',
                     'The Foundation requires that you use the credit '
-                    '“© OpenStreetMap contributors” on any product using OSM data.'
+                    '“© OpenStreetMap contributors” on any product using OSM data.',
                 )
                 + '\n'
             )
-            text += tr('You should read https://www.openstreetmap.org/copyright')
+            text += translate('@default', 'You should read https://www.openstreetmap.org/copyright')
             message.setText(text)
             message.setIcon(QMessageBox.Icon.Question)
-            no_button = QPushButton(tr('I understand the copyrights, access to the plugin'), message)
-            yes_button = QPushButton(tr('I want to read the copyrights'), message)
+            no_button = QPushButton(
+                translate('@default', 'I understand the copyrights, access to the plugin'), message
+            )
+            yes_button = QPushButton(translate('@default', 'I want to read the copyrights'), message)
             message.addButton(no_button, QMessageBox.ButtonRole.NoRole)
             message.addButton(yes_button, QMessageBox.ButtonRole.YesRole)
             yes_button.clicked.connect(read_copyright)

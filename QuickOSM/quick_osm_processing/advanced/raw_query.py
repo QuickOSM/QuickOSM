@@ -6,7 +6,7 @@ from qgis.core import QgsProcessingAlgorithm, QgsProcessingOutputString
 
 from QuickOSM.core.query_preparation import QueryPreparation
 from QuickOSM.quick_osm_processing.build_input import BuildRaw
-from QuickOSM.tools.i18n import tr
+from QuickOSM.tools.i18n import translate
 
 
 class RawQueryAlgorithm(BuildRaw):
@@ -18,7 +18,7 @@ class RawQueryAlgorithm(BuildRaw):
     @staticmethod
     def group() -> str:
         """Return the group of the algorithm."""
-        return tr('Advanced')
+        return translate('@default', 'Advanced')
 
     @staticmethod
     def groupId() -> str:
@@ -33,7 +33,7 @@ class RawQueryAlgorithm(BuildRaw):
     @staticmethod
     def displayName() -> str:
         """Return the display name of the algorithm."""
-        return tr('Build raw query')
+        return translate('@default', 'Build raw query')
 
     def shortHelpString(self) -> str:
         """Return a helper for the algorithm."""
@@ -48,10 +48,10 @@ class RawQueryAlgorithm(BuildRaw):
         self.add_top_parameters()
         self.add_bottom_parameters()
 
-        output = QgsProcessingOutputString(self.OUTPUT_URL, tr('Query as encoded URL'))
+        output = QgsProcessingOutputString(self.OUTPUT_URL, translate('@default', 'Query as encoded URL'))
         self.addOutput(output)
 
-        output = QgsProcessingOutputString(self.OUTPUT_OQL_QUERY, tr('Raw query as OQL'))
+        output = QgsProcessingOutputString(self.OUTPUT_OQL_QUERY, translate('@default', 'Raw query as OQL'))
         self.addOutput(output)
 
     def processAlgorithm(self, parameters, context, feedback) -> Dict[str, str]:

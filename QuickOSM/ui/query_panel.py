@@ -26,7 +26,7 @@ from QuickOSM.core.utilities.utilities_qgis import (
 from QuickOSM.definitions.gui import Panels
 from QuickOSM.definitions.osm import WHITE_LIST, LayerType, QueryLanguage
 from QuickOSM.definitions.overpass import OVERPASS_SERVERS
-from QuickOSM.tools.i18n import tr
+from QuickOSM.tools.i18n import translate
 from QuickOSM.tools.resources import resources_path
 from QuickOSM.ui.base_overpass_panel import BaseOverpassPanel
 from QuickOSM.ui.xml_highlighter import QueryHighlighter
@@ -46,8 +46,8 @@ class QueryPanel(BaseOverpassPanel):
 
     def setup_panel(self):
         super().setup_panel()
-        self.dialog.combo_query_type_q.addItem(tr('Canvas Extent'), 'canvas')
-        self.dialog.combo_query_type_q.addItem(tr('Layer Extent'), 'layer')
+        self.dialog.combo_query_type_q.addItem(translate('@default', 'Canvas Extent'), 'canvas')
+        self.dialog.combo_query_type_q.addItem(translate('@default', 'Layer Extent'), 'layer')
         self.dialog.combo_query_type_q.setItemIcon(0, QIcon(':images/themes/default/mLayoutItemMap.svg'))
         self.dialog.combo_query_type_q.setItemIcon(
             1, QIcon(':images/themes/default/algorithms/mAlgorithmRandomPointsWithinExtent.svg')

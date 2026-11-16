@@ -15,7 +15,7 @@ from QuickOSM.core.exceptions import MissingLayerUI, NoSelectedFeatures
 from QuickOSM.core.utilities.tools import nominatim_file
 from QuickOSM.definitions.gui import Panels
 from QuickOSM.definitions.osm import QueryLanguage, QueryType
-from QuickOSM.tools.i18n import tr
+from QuickOSM.tools.i18n import translate
 from QuickOSM.ui.base_processing_panel import BaseProcessingPanel
 
 
@@ -169,13 +169,16 @@ class BaseOverpassPanel(BaseProcessingPanel):
         :rtype num_layers: int
         """
         if num_layers:
-            text = tr('Successful query, {} layer(s) has been loaded.').format(num_layers)
+            text = translate('@default', 'Successful query, {} layer(s) has been loaded.').format(num_layers)
             self.dialog.set_progress_text(text)
             self.dialog.display_message_bar(text, level=Qgis.MessageLevel.Success, duration=5)
         else:
-            self.dialog.set_progress_text(tr('No result'))
+            self.dialog.set_progress_text(translate('@default', 'No result'))
             self.dialog.display_message_bar(
-                tr('Successful query, but no OSM data matched the Overpass query on this Overpass server.'),
+                translate(
+                    '@default',
+                    'Successful query, but no OSM data matched the Overpass query on this Overpass server.',
+                ),
                 level=Qgis.MessageLevel.Warning,
                 duration=7,
             )

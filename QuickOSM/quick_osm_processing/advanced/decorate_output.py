@@ -19,7 +19,7 @@ from qgis.core import (
 from qgis.PyQt.QtGui import QColor
 
 from QuickOSM.core import actions
-from QuickOSM.tools.i18n import tr
+from QuickOSM.tools.i18n import translate
 
 
 class DecorateLayerAlgorithm(QgisAlgorithm):
@@ -42,12 +42,12 @@ class DecorateLayerAlgorithm(QgisAlgorithm):
     @staticmethod
     def displayName() -> str:
         """Return the display name of the algorithm."""
-        return tr('Decorate a layer from OSM')
+        return translate('@default', 'Decorate a layer from OSM')
 
     @staticmethod
     def group() -> str:
         """Return the group of the algorithm."""
-        return tr('Advanced')
+        return translate('@default', 'Advanced')
 
     @staticmethod
     def groupId() -> str:
@@ -56,7 +56,7 @@ class DecorateLayerAlgorithm(QgisAlgorithm):
 
     def shortHelpString(self) -> str:
         """Return a helper for the algorithm."""
-        return tr('Decorate the layer as an QuickOSM output.')
+        return translate('@default', 'Decorate the layer as an QuickOSM output.')
 
     def flags(self):
         """Return the flags."""
@@ -64,14 +64,14 @@ class DecorateLayerAlgorithm(QgisAlgorithm):
 
     def add_parameters(self):
         """Set up the parameters."""
-        param = QgsProcessingParameterVectorLayer(self.LAYER, tr('Layer'))
-        help_string = tr('Path where the file will be download.')
+        param = QgsProcessingParameterVectorLayer(self.LAYER, translate('@default', 'Layer'))
+        help_string = translate('@default', 'Path where the file will be download.')
         param.setHelp(help_string)
         self.addParameter(param)
 
     def add_outputs(self):
         """Set up the outputs of the algorithm."""
-        output = QgsProcessingOutputVectorLayer(self.OUTPUT_LAYER, tr('Output layer'))
+        output = QgsProcessingOutputVectorLayer(self.OUTPUT_LAYER, translate('@default', 'Output layer'))
         self.addOutput(output)
 
     def fetch_based_parameters(self, parameters, context):
@@ -95,7 +95,7 @@ class DecorateLayerAlgorithm(QgisAlgorithm):
 
         self.feedback.pushInfo('Write the metadata of the layer.')
         metadata = QgsLayerMetadata()
-        metadata.setRights([tr('© OpenStreetMap contributors')])
+        metadata.setRights([translate('@default', '© OpenStreetMap contributors')])
         metadata.setLicenses(['https://openstreetmap.org/copyright'])
         self.layer.setMetadata(metadata)
 
