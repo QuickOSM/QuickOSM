@@ -64,7 +64,7 @@ jobs:
 
   pyqt6-check:
     name: PyQt6
-    uses: qgis/qgis-plugin-ci/.github/workflows/pyqt6_test.yml@master
+    uses: qgis/qgis-plugin-ci/.github/workflows/pyqt6_test.yml@main
     with:
       plugin_path: QuickOSM
 
