@@ -1,4 +1,4 @@
-<?xml version="1.0" ?><!DOCTYPE TS><TS version="2.1" language="my_MM">
+<?xml version="1.0" ?><!DOCTYPE TS><TS version="2.1" language="my">
 <context>
     <name>@default</name>
     <message>

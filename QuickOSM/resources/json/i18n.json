@@ -131,18 +131,13 @@
         "translated_strings": 0,
         "percentage": 0.0
     },
-    "ja_JP": {
-        "name": "Japanese (Japan)",
+    "my": {
+        "name": "Burmese",
         "translated_strings": 0,
         "percentage": 0.0
     },
-    "my_MM": {
-        "name": "Burmese (Myanmar)",
-        "translated_strings": 0,
-        "percentage": 0.0
-    },
-    "tr_TR": {
-        "name": "Turkish (Turkey)",
+    "tr": {
+        "name": "Turkish",
         "translated_strings": 0,
         "percentage": 0.0
     }
