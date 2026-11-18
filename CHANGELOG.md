@@ -2,6 +2,8 @@
 
 ## Unreleased
 
+* Fix a crash of QGIS during the Nominatim lookup of the "In" and "Around" queries, #573
+
 ## 2.6.0 - 2026-11-11
 
 * Raise to QGIS 3.44 minimum
