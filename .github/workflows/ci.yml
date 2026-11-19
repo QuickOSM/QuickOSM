@@ -91,7 +91,7 @@ jobs:
           sudo apt-get install qt6-l10n-tools
 
       - name: Install QGIS-Plugin-CI
-        run: pip install git+https://github.com/qgis/qgis-plugin-ci.git@local-ts-files
+        run: pip install "qgis-plugin-ci[pyqt] @ git+https://github.com/qgis/qgis-plugin-ci.git@local-ts-files"
 
       - name: Set env
         run: |
