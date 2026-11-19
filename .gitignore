@@ -15,7 +15,6 @@ debug-docker/
 *.osm
 
 # QGIS-Plugin-CI
-QuickOSM/i18n/
 QuickOSM/resources/i18n/
 QuickOSM.*.zip
 

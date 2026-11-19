@@ -4,9 +4,38 @@ github_organization_slug = "QuickOSM"
 project_slug = "QuickOSM"
 transifex_organization = "quickosm"
 transifex_project = "gui"
-transifex_resource = "quickosm"
+i18n_resource_name = "quickosm"
 transifex_coordinator = "etrimaille"
 lrelease_path= "/usr/lib/qt6/bin/lrelease"
+translation_languages = [
+    "cs",
+    "da",
+    "de",
+    "el",
+    "es",
+    "fi",
+    "fr",
+    "he",
+    "hu",
+    "id",
+    "is",
+    "it",
+    "ja",
+    "ko",
+    "my",
+    "nl",
+    "pl",
+    "pt",
+    "pt_BR",
+    "ro",
+    "ru",
+    "sv",
+    "tr",
+    "uk",
+    "vi",
+    "zh",
+    "zh_TW",
+]
 
 [tool.ruff]
 line-length = 115
