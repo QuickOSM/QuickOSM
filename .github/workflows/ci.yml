@@ -84,16 +84,14 @@ jobs:
         uses: actions/setup-python@v7
         with:
           python-version: '3.12'
-          cache: "pip"
-          cache-dependency-path: "requirements/packaging.txt"
 
       - name: Install Qt lrelease for translations
         run: |
           sudo apt-get update
           sudo apt-get install qt6-l10n-tools
 
-      - name: Install Python requirements
-        run: pip install -r requirements/packaging.txt
+      - name: Install QGIS-Plugin-CI
+        run: pip install git+https://github.com/qgis/qgis-plugin-ci.git@local-ts-files
 
       - name: Set env
         run: |
@@ -137,15 +135,8 @@ jobs:
           sudo apt-get update
           sudo apt-get install qt6-l10n-tools
 
-      - uses: actions/cache@v6.1.0
-        with:
-          path: ~/.cache/pip
-          key: ${{ runner.os }}-pip-${{ hashFiles('requirements/packaging.txt') }}
-          restore-keys: |
-            ${{ runner.os }}-pip-
-
-      - name: Install Python requirements
-        run: pip install -r requirements/packaging.txt
+      - name: Install Python QGIS-Plugin-CI
+        run: pip install git+https://github.com/qgis/qgis-plugin-ci.git@local-ts-files
 
       - name : Fetch current changelog
         run: qgis-plugin-ci changelog ${{ env.RELEASE_VERSION }} >> release.md

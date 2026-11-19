@@ -23,15 +23,8 @@ jobs:
       with:
         python-version: '3.10'
 
-    - uses: actions/cache@v6.1.0
-      with:
-        path: ~/.cache/pip
-        key: ${{ runner.os }}-pip-${{ hashFiles('requirements/packaging.txt') }}
-        restore-keys: |
-          ${{ runner.os }}-pip-
-
-    - name: Install Python requirements
-      run: pip install -r requirements/packaging.txt
+    - name: Install Python QGIS-Plugin-CI
+      run: pip install git+https://github.com/qgis/qgis-plugin-ci.git@local-ts-files
 
     - name: Push to Transifex
       run: qgis-plugin-ci push-translation ${{ secrets.TRANSIFEX_TOKEN }}
