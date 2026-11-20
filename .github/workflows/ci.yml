@@ -102,6 +102,7 @@ jobs:
         run: >-
           qgis-plugin-ci
           package ${{ env.VERSION }}
+          --compile-all-ts
 
       - name: Unzip
         run: unzip QuickOSM.${{ env.VERSION }}.zip -d tmp
@@ -150,6 +151,7 @@ jobs:
         run: >-
           qgis-plugin-ci
           release ${{ env.RELEASE_VERSION }}
+          --compile-all-ts
           --github-token ${{ secrets.QGIS_PLUGIN_TOKEN }}
           --qgis-token ${{ secrets.QGIS_TOKEN }}
           --create-plugin-repo

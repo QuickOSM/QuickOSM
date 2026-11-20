@@ -242,7 +242,7 @@ class OsmObjectsException(QuickOsmException):
 
     def __init__(self, message: Optional[str] = None):
         if not message:
-            message = translate('@default', 'No osm objects selected. Please select one.')
+            message = translate('@default', 'No OSM objects selected. Please select one.')
         super().__init__(message)
 
 
