@@ -1,4 +1,6 @@
-<?xml version="1.0" ?><!DOCTYPE TS><TS version="2.1" language="fr">
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE TS>
+<TS version="2.1" language="fr">
 <context>
     <name>@default</name>
     <message>
@@ -14,22 +16,22 @@
     <message>
         <location filename="../quick_osm.py" line="198"/>
         <source>Is the remote enabled in the JOSM settings?</source>
-        <translation>Est-ce que la télécommande est activée dans la configuration de JOSM?</translation>
+        <translation>Est-ce que la télécommande est activée dans la configuration de JOSM&#x202f;?</translation>
     </message>
     <message>
         <location filename="../quick_osm.py" line="251"/>
         <source>You should read https://www.openstreetmap.org/copyright</source>
-        <translation>Vous devriez lire https://www.openstreetmap.org/copyright/fr.</translation>
+        <translation>Vous devriez lire https://www.openstreetmap.org/copyright/fr</translation>
     </message>
     <message>
         <location filename="../quick_osm.py" line="254"/>
         <source>I understand the copyrights, access to the plugin</source>
-        <translation>J&apos;ai pris connaissance des copyrights et veux accéder au plugin.</translation>
+        <translation>J&apos;ai pris connaissance des copyrights et veux accéder au plugin</translation>
     </message>
     <message>
         <location filename="../quick_osm.py" line="257"/>
         <source>I want to read the copyrights</source>
-        <translation>Je veux lire les copyrights.</translation>
+        <translation>Je veux lire les copyrights</translation>
     </message>
     <message>
         <location filename="../quick_osm_processing/build_input.py" line="50"/>
@@ -74,7 +76,7 @@
     <message>
         <location filename="../quick_osm_processing/build_input.py" line="125"/>
         <source>Area (if {{geocodeArea}} in the query)</source>
-        <translation>Endroit (si {{geocodeArea}} est présent dans la requête).</translation>
+        <translation>Endroit (si {{geocodeArea}} est présent dans la requête)</translation>
     </message>
     <message>
         <location filename="../quick_osm_processing/build_input.py" line="129"/>
@@ -304,7 +306,7 @@
     <message>
         <location filename="../core/exceptions.py" line="88"/>
         <source>Overpass error: {message}</source>
-        <translation>Overpass: {message}</translation>
+        <translation>Overpass&#xa0;: {message}</translation>
     </message>
     <message>
         <location filename="../core/exceptions.py" line="109"/>
@@ -364,7 +366,7 @@
     <message>
         <location filename="../core/exceptions.py" line="254"/>
         <source>No outputs selected. Please select one.</source>
-        <translation>Aucune sortie sélectionnée. Veuillez en sélectionner une. </translation>
+        <translation>Aucune sortie sélectionnée. Veuillez en sélectionner une.</translation>
     </message>
     <message>
         <location filename="../core/query_preparation.py" line="142"/>
