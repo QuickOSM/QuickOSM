@@ -26,5 +26,5 @@ jobs:
     - name: Install Python QGIS-Plugin-CI
       run: pip install "qgis-plugin-ci[pyqt,weblate] @ git+https://github.com/Gustry/qgis-plugin-ci.git@local-ts-files"
 
-    - name: Push to Transifex
-      run: qgis-plugin-ci -vv push-translation ${{ secrets.TRANSIFEX_TOKEN }}
+    - name: Push to weblate
+      run: qgis-plugin-ci -vv push-translation --weblate-token ${{ secrets.WEBLATE_TOKEN }}
