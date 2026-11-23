@@ -1,17 +1,17 @@
-name: Transifex 🗺
+name: Push translations 🗺
 
 on:
   push:
     branches:
       - main
-    paths:
-      - '**.py'
-      - '**.ui'
+#    paths:
+#      - '**.py'
+#      - '**.ui'
 
 
 jobs:
   push:
-    name: Push to Transifex
+    name: Push translations
     runs-on: ubuntu-latest
     if: github.repository == 'QuickOSM/QuickOSM'
 
@@ -24,7 +24,7 @@ jobs:
         python-version: '3.10'
 
     - name: Install Python QGIS-Plugin-CI
-      run: pip install git+https://github.com/qgis/qgis-plugin-ci.git@local-ts-files
+      run: pip install "qgis-plugin-ci[pyqt,weblate] @ git+https://github.com/Gustry/qgis-plugin-ci.git@local-ts-files"
 
     - name: Push to Transifex
-      run: qgis-plugin-ci push-translation ${{ secrets.TRANSIFEX_TOKEN }}
+      run: qgis-plugin-ci -vv push-translation ${{ secrets.TRANSIFEX_TOKEN }}

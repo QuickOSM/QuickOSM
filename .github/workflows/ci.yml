@@ -92,7 +92,7 @@ jobs:
           sudo apt-get install qt6-l10n-tools
 
       - name: Install QGIS-Plugin-CI
-        run: pip install "qgis-plugin-ci[pyqt] @ git+https://github.com/qgis/qgis-plugin-ci.git@local-ts-files"
+        run: pip install "qgis-plugin-ci[pyqt] @ git+https://github.com/Gustry/qgis-plugin-ci.git@local-ts-files"
 
       - name: Set env
         run: |
@@ -102,8 +102,9 @@ jobs:
       - name: Package
         run: >-
           qgis-plugin-ci
+          -vv
           package ${{ env.VERSION }}
-          --compile-all-ts
+          --weblate-token ${{ secrets.WEBLATE_TOKEN }}
 
       - name: Unzip
         run: unzip QuickOSM.${{ env.VERSION }}.zip -d tmp
@@ -137,7 +138,7 @@ jobs:
           sudo apt-get install qt6-l10n-tools
 
       - name: Install Python QGIS-Plugin-CI
-        run: pip install git+https://github.com/qgis/qgis-plugin-ci.git@local-ts-files
+        run: pip install git+https://github.com/Gustry/qgis-plugin-ci.git@local-ts-files
 
       - name : Fetch current changelog
         run: qgis-plugin-ci changelog ${{ env.RELEASE_VERSION }} >> release.md
@@ -151,8 +152,9 @@ jobs:
       - name: Package and deploy the zip
         run: >-
           qgis-plugin-ci
+          -vv
           release ${{ env.RELEASE_VERSION }}
-          --compile-all-ts
+          --weblate-token ${{ secrets.WEBLATE_TOKEN }}
           --github-token ${{ secrets.QGIS_PLUGIN_TOKEN }}
           --qgis-token ${{ secrets.QGIS_TOKEN }}
           --create-plugin-repo

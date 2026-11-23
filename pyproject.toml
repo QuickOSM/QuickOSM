@@ -2,10 +2,9 @@
 plugin_path = "QuickOSM"
 github_organization_slug = "QuickOSM"
 project_slug = "QuickOSM"
-transifex_organization = "quickosm"
-transifex_project = "gui"
+weblate_url = "https://hosted.weblate.org/api/"
+i18n_project = "quickosm/quickosm"
 i18n_resource_name = "quickosm"
-transifex_coordinator = "etrimaille"
 lrelease_path= "/usr/lib/qt6/bin/lrelease"
 translation_languages = [
     "cs",
