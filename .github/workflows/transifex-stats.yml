@@ -18,10 +18,10 @@ jobs:
           fetch-depth: 1
           token: ${{ secrets.BOT_HUB_TOKEN }}  # Important to launch CI on a commit from a bot
 
-      - name: Set up Python 3.10
+      - name: Set up Python 3.15
         uses: actions/setup-python@v7
         with:
-          python-version: '3.10'
+          python-version: '3.15'
 
       - name: Install dependencies
         run: python3 -m pip install requests
