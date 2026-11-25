@@ -137,7 +137,6 @@ jobs:
           qgis-plugin-ci
           -vv
           package ${{ env.VERSION }}
-          --weblate-token ${{ secrets.WEBLATE_TOKEN }}
 
       - name: Unzip
         run: unzip QuickOSM.${{ env.VERSION }}.zip -d tmp
@@ -148,7 +147,7 @@ jobs:
           path: tmp
 
   release:
-#    needs: [test-qgis, pre-commit]
+    needs: [test-qgis, pre-commit, translations]
 
     name: Package release
     runs-on: ubuntu-latest
