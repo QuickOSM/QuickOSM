@@ -45,6 +45,11 @@
         <translation>Haluan lukea tekijänoikeudet.</translation>
     </message>
     <message>
+        <location filename="../tools/custom_logging.py" line="57" />
+        <source>Due to memory limitations on this machine, the plugin {} can not handle the full log</source>
+        <translation type="unfinished" />
+    </message>
+    <message>
         <location filename="../definitions/osm.py" line="88" />
         <source>And</source>
         <translation>Ja</translation>
@@ -55,69 +60,331 @@
         <translation>Tai</translation>
     </message>
     <message>
-        <location filename="../quick_osm_processing/quickosm_process.py" line="73" />
-        <source>Fetch the OSM data that match the request.</source>
-        <translation>Lue pyyntöä vastaava OSM-data.</translation>
+        <location filename="../ui/map_preset_panel.py" line="58" />
+        <location filename="../ui/quick_query_panel.py" line="79" />
+        <source>In</source>
+        <translation>Sisällä</translation>
     </message>
     <message>
-        <location filename="../quick_osm_processing/quickosm_process.py" line="90" />
-        <source>Output file</source>
-        <translation>Tulostiedosto</translation>
+        <location filename="../ui/map_preset_panel.py" line="59" />
+        <location filename="../ui/quick_query_panel.py" line="80" />
+        <source>Around</source>
+        <translation>Ympärillä</translation>
     </message>
     <message>
-        <location filename="../quick_osm_processing/advanced/decorate_output.py" line="67" />
-        <location filename="../quick_osm_processing/quickosm_process.py" line="93" />
-        <source>Path where the file will be download.</source>
-        <translation>Polku, josta tiedosto ladataan.</translation>
+        <location filename="../ui/query_panel.py" line="49" />
+        <location filename="../ui/map_preset_panel.py" line="60" />
+        <location filename="../ui/quick_query_panel.py" line="81" />
+        <source>Canvas Extent</source>
+        <translation>Kankaan laajuus</translation>
     </message>
     <message>
-        <location filename="../quick_osm_processing/advanced/open_osm_file.py" line="90" />
-        <location filename="../quick_osm_processing/quickosm_process.py" line="100" />
-        <source>Output points</source>
-        <translation>Tulospisteet</translation>
+        <location filename="../ui/query_panel.py" line="50" />
+        <location filename="../ui/map_preset_panel.py" line="61" />
+        <location filename="../ui/quick_query_panel.py" line="82" />
+        <source>Layer Extent</source>
+        <translation>Tason laajuus</translation>
     </message>
     <message>
-        <location filename="../quick_osm_processing/advanced/open_osm_file.py" line="95" />
-        <location filename="../quick_osm_processing/quickosm_process.py" line="105" />
-        <source>Output lines</source>
-        <translation>Tulosviivat</translation>
+        <location filename="../ui/map_preset_panel.py" line="62" />
+        <location filename="../ui/quick_query_panel.py" line="83" />
+        <source>Not Spatial</source>
+        <translation>Ei spatiaalinen</translation>
     </message>
     <message>
-        <location filename="../quick_osm_processing/advanced/open_osm_file.py" line="101" />
-        <location filename="../quick_osm_processing/quickosm_process.py" line="111" />
-        <source>Output multilinestrings</source>
-        <translation>Tulos multilinestrings</translation>
+        <location filename="../ui/quick_query_panel.py" line="146" />
+        <source>Save query in a new preset</source>
+        <translation>Tallenna kysely esiasetukseksi</translation>
     </message>
     <message>
-        <location filename="../quick_osm_processing/advanced/open_osm_file.py" line="108" />
-        <location filename="../quick_osm_processing/quickosm_process.py" line="118" />
-        <source>Output multipolygons</source>
-        <translation>Tulosmultipolygonit</translation>
+        <location filename="../ui/quick_query_panel.py" line="151" />
+        <source>Save and add query to an existing preset</source>
+        <translation>Tallenna ja lisää kysely olemassaolevaan esiasetukseen</translation>
     </message>
     <message>
-        <location filename="../quick_osm_processing/quickosm_process.py" line="220" />
-        <source>Download OSM data from a raw query</source>
-        <translation>Lataa OSM-dataa raakakyselyllä.</translation>
+        <location filename="../ui/quick_query_panel.py" line="202" />
+        <source>allKeys</source>
+        <translation>kaikki avaimet</translation>
     </message>
     <message>
-        <location filename="../quick_osm_processing/quickosm_process.py" line="265" />
-        <source>Download OSM data from a not spatial query</source>
-        <translation>Lataa OSM-dataa ei-spatiaalisella kyselyllä.</translation>
+        <location filename="../ui/quick_query_panel.py" line="255" />
+        <source>Add in an existing preset</source>
+        <translation>Lisää "sisällä" olemassaolevaan esiasetukseen</translation>
     </message>
     <message>
-        <location filename="../quick_osm_processing/quickosm_process.py" line="311" />
-        <source>Download OSM data from query in an area</source>
-        <translation>Lataa OSM-dataa alueella olevalla kyselyllä.</translation>
+        <location filename="../ui/quick_query_panel.py" line="256" />
+        <source>Please select the preset in which the query will be added:</source>
+        <translation>Valitse esiasetus, johon kysely lisätään:</translation>
     </message>
     <message>
-        <location filename="../quick_osm_processing/quickosm_process.py" line="358" />
-        <source>Download OSM data from a query around an area</source>
-        <translation>Lataa OSM-dataa kyselyllä alueen ympäriltä.</translation>
+        <location filename="../ui/map_preset_panel.py" line="192" />
+        <location filename="../ui/map_preset_panel.py" line="115" />
+        <location filename="../ui/quick_query_panel.py" line="328" />
+        <source>No description</source>
+        <translation>Ei kuvausta</translation>
     </message>
     <message>
-        <location filename="../quick_osm_processing/quickosm_process.py" line="406" />
-        <source>Download OSM data from a query in an extent</source>
-        <translation>Lataa OSM-dataa kyselyllä laajuuden sisällä.</translation>
+        <location filename="../ui/quick_query_panel.py" line="339" />
+        <source>Run the query</source>
+        <translation>Suorita kysely</translation>
+    </message>
+    <message>
+        <location filename="../ui/quick_query_panel.py" line="340" />
+        <source>Save this query in a new preset</source>
+        <translation>Tallenna tämä kysely uudeksi esiasetukseksi</translation>
+    </message>
+    <message>
+        <location filename="../ui/base_overpass_panel.py" line="172" />
+        <source>Successful query, {} layer(s) has been loaded.</source>
+        <translation>Kysely onnistui, {} taso(a) ladattiin.</translation>
+    </message>
+    <message>
+        <location filename="../ui/base_overpass_panel.py" line="176" />
+        <source>No result</source>
+        <translation>Ei tuloksia.</translation>
+    </message>
+    <message>
+        <location filename="../ui/base_overpass_panel.py" line="178" />
+        <source>Successful query, but no OSM data matched the Overpass query on this Overpass server.</source>
+        <translation type="unfinished" />
+    </message>
+    <message>
+        <location filename="../ui/osm_file_panel.py" line="51" />
+        <source>Select an OSM/PBF file</source>
+        <translation>Valitse OSM/PBF-tiedosto.</translation>
+    </message>
+    <message>
+        <location filename="../ui/osm_file_panel.py" line="57" />
+        <source>Select OSM conf file</source>
+        <translation>Valitse OSM-konfigurointitiedosto</translation>
+    </message>
+    <message>
+        <location filename="../ui/osm_file_panel.py" line="222" />
+        <location filename="../ui/osm_file_panel.py" line="210" />
+        <source>Successful query</source>
+        <translation>Kysely onnistui</translation>
+    </message>
+    <message>
+        <location filename="../ui/map_preset_panel.py" line="203" />
+        <source>Edit the preset</source>
+        <translation>Muokkaa esiasetusta</translation>
+    </message>
+    <message>
+        <location filename="../ui/map_preset_panel.py" line="204" />
+        <source>Delete the preset</source>
+        <translation>Poista esiasetus</translation>
+    </message>
+    <message>
+        <location filename="../ui/map_preset_panel.py" line="247" />
+        <source>Confirm preset deletion</source>
+        <translation>Vahvista esiasetuksen poistaminen</translation>
+    </message>
+    <message>
+        <location filename="../ui/map_preset_panel.py" line="248" />
+        <source>Are you sure you want to delete the preset '{name}'?</source>
+        <translation>Haluatko varmasti poistaa esiasetuksen '{nimi}'?</translation>
+    </message>
+    <message>
+        <location filename="../ui/configuration_panel.py" line="52" />
+        <source>Add a new server in the list</source>
+        <translation type="unfinished" />
+    </message>
+    <message>
+        <location filename="../ui/configuration_panel.py" line="53" />
+        <source>Remove the selected server from the list</source>
+        <translation type="unfinished" />
+    </message>
+    <message>
+        <location filename="../ui/configuration_panel.py" line="140" />
+        <source>Please enter a URL.</source>
+        <translation type="unfinished" />
+    </message>
+    <message>
+        <location filename="../ui/configuration_panel.py" line="144" />
+        <source>The URL must begin with “http”.</source>
+        <translation type="unfinished" />
+    </message>
+    <message>
+        <location filename="../ui/configuration_panel.py" line="149" />
+        <source>This server is already in the list.</source>
+        <translation type="unfinished" />
+    </message>
+    <message>
+        <location filename="../ui/configuration_panel.py" line="182" />
+        <source>Please select a server from the list.</source>
+        <translation type="unfinished" />
+    </message>
+    <message>
+        <location filename="../ui/custom_table.py" line="45" />
+        <source>Query on all keys</source>
+        <translation>Kysely kaikilla avaimilla</translation>
+    </message>
+    <message>
+        <location filename="../ui/custom_table.py" line="46" />
+        <source>Query on all values</source>
+        <translation>Kysely kaikilla arvoilla</translation>
+    </message>
+    <message>
+        <location filename="../ui/custom_table.py" line="94" />
+        <source>Not mandatory. Ex: bakery</source>
+        <translation>Ei pakollinen. Esim: leipomo</translation>
+    </message>
+    <message>
+        <location filename="../ui/custom_table.py" line="128" />
+        <source>Add a line below.</source>
+        <translation>Lisää rivi alle.</translation>
+    </message>
+    <message>
+        <location filename="../ui/custom_table.py" line="132" />
+        <source>Remove the line.</source>
+        <translation>Poista rivi.</translation>
+    </message>
+    <message>
+        <location filename="../ui/custom_table.py" line="143" />
+        <source>Set the type of multi-request. "And" verify both conditions. "Or" verify either of the conditions.</source>
+        <translation type="unfinished" />
+    </message>
+    <message>
+        <location filename="../ui/custom_table.py" line="160" />
+        <source>An OSM key to fetch. If empty, all keys will be fetched.</source>
+        <translation>Haettava OSM-avain. Jos tyhjä, kaikki avaimet haetaan.</translation>
+    </message>
+    <message>
+        <location filename="../ui/custom_table.py" line="181" />
+        <source>An OSM value to fetch. If empty, all values will be fetched.</source>
+        <translation>Haettava OSM-arvo. Jos tyhjä, kaikki arvot haetaan.</translation>
+    </message>
+    <message>
+        <location filename="../core/actions.py" line="119" />
+        <location filename="../ui/dialog.py" line="167" />
+        <source>Reload the query in a new file</source>
+        <translation>Lataa kysely uudelleen uudessa tiedostossa</translation>
+    </message>
+    <message>
+        <location filename="../ui/dialog.py" line="244" />
+        <source>A critical error occurred, this is the traceback:</source>
+        <translation>Tapahtui kriittinen virhe, tässä jäljitys:</translation>
+    </message>
+    <message>
+        <location filename="../ui/dialog.py" line="251" />
+        <source>Error in the QGIS log window, then the QuickOSM panel, copy/paste it and please report it, if you know how to copy/paste QGIS logs. Please check pinned tickets first.</source>
+        <translation type="unfinished" />
+    </message>
+    <message>
+        <location filename="../ui/dialog.py" line="298" />
+        <source>Open log panel</source>
+        <translation>Avaa log-paneeli</translation>
+    </message>
+    <message>
+        <location filename="../ui/dialog.py" line="302" />
+        <source>More details</source>
+        <translation>Lisätietoja</translation>
+    </message>
+    <message>
+        <location filename="../ui/edit_preset.py" line="55" />
+        <source>Add a new query to the map preset</source>
+        <translation>Lisää uusi kysely karttaesiasetukseen</translation>
+    </message>
+    <message>
+        <location filename="../ui/edit_preset.py" line="60" />
+        <source>Remove the selected query from the map preset</source>
+        <translation>Poista valittu kysely kartan esiasetuksesta</translation>
+    </message>
+    <message>
+        <location filename="../ui/base_processing_panel.py" line="73" />
+        <location filename="../ui/edit_preset.py" line="79" />
+        <source>Save to temporary file</source>
+        <translation>Tallenna väliaikaiseen tiedostoon</translation>
+    </message>
+    <message>
+        <location filename="../ui/edit_preset.py" line="115" />
+        <source>Rename</source>
+        <translation>Nimeä uudelleen</translation>
+    </message>
+    <message>
+        <location filename="../ui/edit_preset.py" line="116" />
+        <source>Delete</source>
+        <translation>Poista</translation>
+    </message>
+    <message>
+        <location filename="../ui/edit_preset.py" line="137" />
+        <source>You can associate predefined styles with layers. You need to add QML file(s) in this folder :</source>
+        <translation type="unfinished" />
+    </message>
+    <message>
+        <location filename="../ui/edit_preset.py" line="144" />
+        <source>The name of QML files must follow this convention</source>
+        <translation>QML-tiedostojen nimen tulee noudattaa tätä käytäntöä</translation>
+    </message>
+    <message>
+        <location filename="../ui/edit_preset.py" line="147" />
+        <source>name of the preset</source>
+        <translation>Esiasetuksen nimi</translation>
+    </message>
+    <message>
+        <location filename="../ui/edit_preset.py" line="149" />
+        <source>name of the query</source>
+        <translation>Kyselyn nimi</translation>
+    </message>
+    <message>
+        <location filename="../ui/edit_preset.py" line="151" />
+        <source>geometry</source>
+        <translation>geometria</translation>
+    </message>
+    <message>
+        <location filename="../ui/edit_preset.py" line="154" />
+        <source>These parameters are separated by '_' and the geometry must be one these values :</source>
+        <translation>Nämä parametrit erotetaan merkillä '_', ja ​​geometrian on oltava jokin seuraavista arvoista:</translation>
+    </message>
+    <message>
+        <location filename="../ui/edit_preset.py" line="161" />
+        <source>For the current preset "{file_name}"</source>
+        <translation>Nykyiselle esiasetukselle "{file_name}"</translation>
+    </message>
+    <message>
+        <location filename="../ui/edit_preset.py" line="163" />
+        <source>and the current query "{query_name}"</source>
+        <translation>ja nykyinen kysely "{query_name}"</translation>
+    </message>
+    <message>
+        <location filename="../ui/edit_preset.py" line="165" />
+        <source>this is the list of filenames you can use</source>
+        <translation>tämä on luettelo tiedostonimistä, joita voit käyttää</translation>
+    </message>
+    <message>
+        <location filename="../core/utilities/query_saved.py" line="251" />
+        <location filename="../core/utilities/query_saved.py" line="229" />
+        <location filename="../core/utilities/query_saved.py" line="179" />
+        <location filename="../quick_osm_processing/build_input.py" line="100" />
+        <location filename="../ui/edit_preset.py" line="303" />
+        <location filename="../ui/edit_preset.py" line="258" />
+        <source>Query</source>
+        <translation>Kysely</translation>
+    </message>
+    <message>
+        <location filename="../ui/edit_preset.py" line="283" />
+        <source>Confirm query deletion</source>
+        <translation>Vahvista kyselyn poistaminen</translation>
+    </message>
+    <message>
+        <location filename="../ui/edit_preset.py" line="284" />
+        <source>Are you sure you want to delete the query '{name}'?</source>
+        <translation>Haluatko varmasti poistaa kyselyn '{nimi}'?</translation>
+    </message>
+    <message>
+        <location filename="../ui/edit_preset.py" line="311" />
+        <source>Rename the query</source>
+        <translation>Uudelleennimeä kysely</translation>
+    </message>
+    <message>
+        <location filename="../ui/edit_preset.py" line="311" />
+        <source>New name:</source>
+        <translation>Uusi nimi:</translation>
+    </message>
+    <message>
+        <location filename="../ui/base_processing_panel.py" line="76" />
+        <source>Select a directory</source>
+        <translation>Valitse hakemisto</translation>
     </message>
     <message>
         <location filename="../quick_osm_processing/build_input.py" line="51" />
@@ -138,16 +405,6 @@
         <location filename="../quick_osm_processing/build_input.py" line="63" />
         <source>The Overpass API server to use to build the encoded URL.</source>
         <translation>Overpass API -serveri koodatun URL:in tekemiseksi.</translation>
-    </message>
-    <message>
-        <location filename="../ui/edit_preset.py" line="303" />
-        <location filename="../ui/edit_preset.py" line="258" />
-        <location filename="../core/utilities/query_saved.py" line="251" />
-        <location filename="../core/utilities/query_saved.py" line="229" />
-        <location filename="../core/utilities/query_saved.py" line="179" />
-        <location filename="../quick_osm_processing/build_input.py" line="100" />
-        <source>Query</source>
-        <translation>Kysely</translation>
     </message>
     <message>
         <location filename="../quick_osm_processing/build_input.py" line="102" />
@@ -235,17 +492,134 @@
         <translation>Laajuus suorakulmiona, jota käytetään kyselyä muodostettaessa.</translation>
     </message>
     <message>
+        <location filename="../quick_osm_processing/quickosm_process.py" line="73" />
+        <source>Fetch the OSM data that match the request.</source>
+        <translation>Lue pyyntöä vastaava OSM-data.</translation>
+    </message>
+    <message>
+        <location filename="../quick_osm_processing/quickosm_process.py" line="90" />
+        <source>Output file</source>
+        <translation>Tulostiedosto</translation>
+    </message>
+    <message>
+        <location filename="../quick_osm_processing/advanced/decorate_output.py" line="67" />
+        <location filename="../quick_osm_processing/quickosm_process.py" line="93" />
+        <source>Path where the file will be download.</source>
+        <translation>Polku, josta tiedosto ladataan.</translation>
+    </message>
+    <message>
+        <location filename="../quick_osm_processing/advanced/open_osm_file.py" line="90" />
+        <location filename="../quick_osm_processing/quickosm_process.py" line="100" />
+        <source>Output points</source>
+        <translation>Tulospisteet</translation>
+    </message>
+    <message>
+        <location filename="../quick_osm_processing/advanced/open_osm_file.py" line="95" />
+        <location filename="../quick_osm_processing/quickosm_process.py" line="105" />
+        <source>Output lines</source>
+        <translation>Tulosviivat</translation>
+    </message>
+    <message>
+        <location filename="../quick_osm_processing/advanced/open_osm_file.py" line="101" />
+        <location filename="../quick_osm_processing/quickosm_process.py" line="111" />
+        <source>Output multilinestrings</source>
+        <translation>Tulos multilinestrings</translation>
+    </message>
+    <message>
+        <location filename="../quick_osm_processing/advanced/open_osm_file.py" line="108" />
+        <location filename="../quick_osm_processing/quickosm_process.py" line="118" />
+        <source>Output multipolygons</source>
+        <translation>Tulosmultipolygonit</translation>
+    </message>
+    <message>
+        <location filename="../quick_osm_processing/quickosm_process.py" line="220" />
+        <source>Download OSM data from a raw query</source>
+        <translation>Lataa OSM-dataa raakakyselyllä.</translation>
+    </message>
+    <message>
+        <location filename="../quick_osm_processing/quickosm_process.py" line="265" />
+        <source>Download OSM data from a not spatial query</source>
+        <translation>Lataa OSM-dataa ei-spatiaalisella kyselyllä.</translation>
+    </message>
+    <message>
+        <location filename="../quick_osm_processing/quickosm_process.py" line="311" />
+        <source>Download OSM data from query in an area</source>
+        <translation>Lataa OSM-dataa alueella olevalla kyselyllä.</translation>
+    </message>
+    <message>
+        <location filename="../quick_osm_processing/quickosm_process.py" line="358" />
+        <source>Download OSM data from a query around an area</source>
+        <translation>Lataa OSM-dataa kyselyllä alueen ympäriltä.</translation>
+    </message>
+    <message>
+        <location filename="../quick_osm_processing/quickosm_process.py" line="406" />
+        <source>Download OSM data from a query in an extent</source>
+        <translation>Lataa OSM-dataa kyselyllä laajuuden sisällä.</translation>
+    </message>
+    <message>
+        <location filename="../quick_osm_processing/advanced/raw_query.py" line="21" />
+        <location filename="../quick_osm_processing/advanced/decorate_output.py" line="49" />
+        <location filename="../quick_osm_processing/advanced/open_osm_file.py" line="43" />
+        <location filename="../quick_osm_processing/advanced/build_query.py" line="36" />
+        <source>Advanced</source>
+        <translation>Edistyneet toiminnot</translation>
+    </message>
+    <message>
+        <location filename="../quick_osm_processing/advanced/raw_query.py" line="51" />
+        <location filename="../quick_osm_processing/advanced/build_query.py" line="57" />
+        <source>Query as encoded URL</source>
+        <translation>Kysely koodattuna URLina</translation>
+    </message>
+    <message>
+        <location filename="../quick_osm_processing/advanced/raw_query.py" line="54" />
+        <location filename="../quick_osm_processing/advanced/build_query.py" line="60" />
+        <source>Raw query as OQL</source>
+        <translation>Raakakysely OQL:nä</translation>
+    </message>
+    <message>
+        <location filename="../quick_osm_processing/advanced/build_query.py" line="109" />
+        <source>Build query by attribute only</source>
+        <translation>Luo kysely vain attribuuteilla.</translation>
+    </message>
+    <message>
+        <location filename="../quick_osm_processing/advanced/build_query.py" line="129" />
+        <source>Build query inside an area</source>
+        <translation>Luo kysely alueen sisällä</translation>
+    </message>
+    <message>
+        <location filename="../quick_osm_processing/advanced/build_query.py" line="149" />
+        <source>Build query around an area</source>
+        <translation>Luo kysely alueen ympärille</translation>
+    </message>
+    <message>
+        <location filename="../quick_osm_processing/advanced/build_query.py" line="169" />
+        <source>Build query inside an extent</source>
+        <translation>Luo kysely laajuuden sisälle</translation>
+    </message>
+    <message>
+        <location filename="../quick_osm_processing/advanced/open_osm_file.py" line="74" />
+        <source>The extension can be a OSM or PBF file.</source>
+        <translation>Tiedostopääte voi olla OSM- tai PBF-tiedosto.</translation>
+    </message>
+    <message>
+        <location filename="../quick_osm_processing/advanced/open_osm_file.py" line="79" />
+        <source>OSM configuration</source>
+        <translation>OSM-määritykset.</translation>
+    </message>
+    <message>
+        <location filename="../quick_osm_processing/advanced/open_osm_file.py" line="81" />
+        <source>The OGR OSM configuration file. This file is used to customize the import process about OSM tags. You should read the OGR documentation {url}</source>
+        <translation type="unfinished" />
+    </message>
+    <message>
+        <location filename="../quick_osm_processing/advanced/open_osm_file.py" line="115" />
+        <source>Output other relations</source>
+        <translation>Muiden relaatioiden tulos</translation>
+    </message>
+    <message>
         <location filename="../quick_osm_processing/advanced/decorate_output.py" line="44" />
         <source>Decorate a layer from OSM</source>
         <translation>Koristele taso OSMista</translation>
-    </message>
-    <message>
-        <location filename="../quick_osm_processing/advanced/build_query.py" line="36" />
-        <location filename="../quick_osm_processing/advanced/raw_query.py" line="21" />
-        <location filename="../quick_osm_processing/advanced/open_osm_file.py" line="43" />
-        <location filename="../quick_osm_processing/advanced/decorate_output.py" line="49" />
-        <source>Advanced</source>
-        <translation>Edistyneet toiminnot</translation>
     </message>
     <message>
         <location filename="../quick_osm_processing/advanced/decorate_output.py" line="58" />
@@ -269,61 +643,25 @@
         <translation>© OpenStreetMapin vapaaehtoiset.</translation>
     </message>
     <message>
-        <location filename="../quick_osm_processing/advanced/open_osm_file.py" line="74" />
-        <source>The extension can be a OSM or PBF file.</source>
-        <translation>Tiedostopääte voi olla OSM- tai PBF-tiedosto.</translation>
-    </message>
-    <message>
-        <location filename="../quick_osm_processing/advanced/open_osm_file.py" line="79" />
-        <source>OSM configuration</source>
-        <translation>OSM-määritykset.</translation>
-    </message>
-    <message>
-        <location filename="../quick_osm_processing/advanced/open_osm_file.py" line="81" />
-        <source>The OGR OSM configuration file. This file is used to customize the import process about OSM tags. You should read the OGR documentation {url}</source>
-        <translation type="unfinished" />
-    </message>
-    <message>
-        <location filename="../quick_osm_processing/advanced/open_osm_file.py" line="115" />
-        <source>Output other relations</source>
-        <translation>Muiden relaatioiden tulos</translation>
-    </message>
-    <message>
         <location filename="../quick_osm_processing/advanced/raw_query.py" line="36" />
         <source>Build raw query</source>
         <translation>Luo raakakysely.</translation>
     </message>
     <message>
-        <location filename="../quick_osm_processing/advanced/build_query.py" line="57" />
-        <location filename="../quick_osm_processing/advanced/raw_query.py" line="51" />
-        <source>Query as encoded URL</source>
-        <translation>Kysely koodattuna URLina</translation>
+        <location filename="../core/query_preparation.py" line="142" />
+        <location filename="../core/query_preparation.py" line="121" />
+        <source>Missing extent parameter.</source>
+        <translation>Laajuusparametri puuttuu.</translation>
     </message>
     <message>
-        <location filename="../quick_osm_processing/advanced/build_query.py" line="60" />
-        <location filename="../quick_osm_processing/advanced/raw_query.py" line="54" />
-        <source>Raw query as OQL</source>
-        <translation>Raakakysely OQL:nä</translation>
+        <location filename="../core/query_preparation.py" line="168" />
+        <source>The area was overlapping the WGS84 limits ±90 / ±180 degrees. The query has been restricted.</source>
+        <translation type="unfinished" />
     </message>
     <message>
-        <location filename="../quick_osm_processing/advanced/build_query.py" line="109" />
-        <source>Build query by attribute only</source>
-        <translation>Luo kysely vain attribuuteilla.</translation>
-    </message>
-    <message>
-        <location filename="../quick_osm_processing/advanced/build_query.py" line="129" />
-        <source>Build query inside an area</source>
-        <translation>Luo kysely alueen sisällä</translation>
-    </message>
-    <message>
-        <location filename="../quick_osm_processing/advanced/build_query.py" line="149" />
-        <source>Build query around an area</source>
-        <translation>Luo kysely alueen ympärille</translation>
-    </message>
-    <message>
-        <location filename="../quick_osm_processing/advanced/build_query.py" line="169" />
-        <source>Build query inside an extent</source>
-        <translation>Luo kysely laajuuden sisälle</translation>
+        <location filename="../core/query_preparation.py" line="226" />
+        <source>WKT detected for "geocodeCoords".</source>
+        <translation>WKT havaittu kohteelle "geocodeCoords".</translation>
     </message>
     <message>
         <location filename="../core/query_factory.py" line="26" />
@@ -467,12 +805,6 @@
         <translation>Luonnosviiva</translation>
     </message>
     <message>
-        <location filename="../ui/dialog.py" line="167" />
-        <location filename="../core/actions.py" line="119" />
-        <source>Reload the query in a new file</source>
-        <translation>Lataa kysely uudelleen uudessa tiedostossa</translation>
-    </message>
-    <message>
         <location filename="../core/actions.py" line="155" />
         <source>Sorry, the field '{fieldname}' is empty for this entity.</source>
         <translation>Pahoittelut, mutta kenttä '{fieldname}' on tyhjä tälle avaimelle (entity).</translation>
@@ -486,32 +818,6 @@
         <location filename="../core/actions.py" line="218" />
         <source>Sorry, this field is empty for this entity.</source>
         <translation>Pahoittelut, mutta tämä kenttä on tyhjä tälle avaimelle (entity).</translation>
-    </message>
-    <message>
-        <location filename="../core/process.py" line="233" />
-        <source>Prepare outputs</source>
-        <translation>Valmistele tulos.</translation>
-    </message>
-    <message>
-        <location filename="../core/process.py" line="238" />
-        <source>Downloading data from Overpass {server_name}</source>
-        <translation>Ladataan dataa Overpassista {server_name}</translation>
-    </message>
-    <message>
-        <location filename="../core/query_preparation.py" line="142" />
-        <location filename="../core/query_preparation.py" line="121" />
-        <source>Missing extent parameter.</source>
-        <translation>Laajuusparametri puuttuu.</translation>
-    </message>
-    <message>
-        <location filename="../core/query_preparation.py" line="168" />
-        <source>The area was overlapping the WGS84 limits ±90 / ±180 degrees. The query has been restricted.</source>
-        <translation type="unfinished" />
-    </message>
-    <message>
-        <location filename="../core/query_preparation.py" line="226" />
-        <source>WKT detected for "geocodeCoords".</source>
-        <translation>WKT havaittu kohteelle "geocodeCoords".</translation>
     </message>
     <message>
         <location filename="../core/exceptions.py" line="46" />
@@ -614,6 +920,16 @@
         <translation>Ei tulosta valittuna. Valitse jokin.</translation>
     </message>
     <message>
+        <location filename="../core/process.py" line="233" />
+        <source>Prepare outputs</source>
+        <translation>Valmistele tulos.</translation>
+    </message>
+    <message>
+        <location filename="../core/process.py" line="238" />
+        <source>Downloading data from Overpass {server_name}</source>
+        <translation>Ladataan dataa Overpassista {server_name}</translation>
+    </message>
+    <message>
         <location filename="../core/utilities/tools.py" line="92" />
         <source>Error with the Processing plugin</source>
         <translation>Virhe Processing-lisäosassa.</translation>
@@ -637,322 +953,6 @@
         <location filename="../core/parser/osm_parser.py" line="124" />
         <source>Parsing layer : {layer}</source>
         <translation>Jäsennetään tasoa : {layer}</translation>
-    </message>
-    <message>
-        <location filename="../tools/custom_logging.py" line="57" />
-        <source>Due to memory limitations on this machine, the plugin {} can not handle the full log</source>
-        <translation type="unfinished" />
-    </message>
-    <message>
-        <location filename="../ui/custom_table.py" line="45" />
-        <source>Query on all keys</source>
-        <translation>Kysely kaikilla avaimilla</translation>
-    </message>
-    <message>
-        <location filename="../ui/custom_table.py" line="46" />
-        <source>Query on all values</source>
-        <translation>Kysely kaikilla arvoilla</translation>
-    </message>
-    <message>
-        <location filename="../ui/custom_table.py" line="94" />
-        <source>Not mandatory. Ex: bakery</source>
-        <translation>Ei pakollinen. Esim: leipomo</translation>
-    </message>
-    <message>
-        <location filename="../ui/custom_table.py" line="128" />
-        <source>Add a line below.</source>
-        <translation>Lisää rivi alle.</translation>
-    </message>
-    <message>
-        <location filename="../ui/custom_table.py" line="132" />
-        <source>Remove the line.</source>
-        <translation>Poista rivi.</translation>
-    </message>
-    <message>
-        <location filename="../ui/custom_table.py" line="143" />
-        <source>Set the type of multi-request. "And" verify both conditions. "Or" verify either of the conditions.</source>
-        <translation type="unfinished" />
-    </message>
-    <message>
-        <location filename="../ui/custom_table.py" line="160" />
-        <source>An OSM key to fetch. If empty, all keys will be fetched.</source>
-        <translation>Haettava OSM-avain. Jos tyhjä, kaikki avaimet haetaan.</translation>
-    </message>
-    <message>
-        <location filename="../ui/custom_table.py" line="181" />
-        <source>An OSM value to fetch. If empty, all values will be fetched.</source>
-        <translation>Haettava OSM-arvo. Jos tyhjä, kaikki arvot haetaan.</translation>
-    </message>
-    <message>
-        <location filename="../ui/map_preset_panel.py" line="60" />
-        <location filename="../ui/quick_query_panel.py" line="81" />
-        <location filename="../ui/query_panel.py" line="49" />
-        <source>Canvas Extent</source>
-        <translation>Kankaan laajuus</translation>
-    </message>
-    <message>
-        <location filename="../ui/map_preset_panel.py" line="61" />
-        <location filename="../ui/quick_query_panel.py" line="82" />
-        <location filename="../ui/query_panel.py" line="50" />
-        <source>Layer Extent</source>
-        <translation>Tason laajuus</translation>
-    </message>
-    <message>
-        <location filename="../ui/osm_file_panel.py" line="51" />
-        <source>Select an OSM/PBF file</source>
-        <translation>Valitse OSM/PBF-tiedosto.</translation>
-    </message>
-    <message>
-        <location filename="../ui/osm_file_panel.py" line="57" />
-        <source>Select OSM conf file</source>
-        <translation>Valitse OSM-konfigurointitiedosto</translation>
-    </message>
-    <message>
-        <location filename="../ui/osm_file_panel.py" line="222" />
-        <location filename="../ui/osm_file_panel.py" line="210" />
-        <source>Successful query</source>
-        <translation>Kysely onnistui</translation>
-    </message>
-    <message>
-        <location filename="../ui/edit_preset.py" line="55" />
-        <source>Add a new query to the map preset</source>
-        <translation>Lisää uusi kysely karttaesiasetukseen</translation>
-    </message>
-    <message>
-        <location filename="../ui/edit_preset.py" line="60" />
-        <source>Remove the selected query from the map preset</source>
-        <translation>Poista valittu kysely kartan esiasetuksesta</translation>
-    </message>
-    <message>
-        <location filename="../ui/base_processing_panel.py" line="73" />
-        <location filename="../ui/edit_preset.py" line="79" />
-        <source>Save to temporary file</source>
-        <translation>Tallenna väliaikaiseen tiedostoon</translation>
-    </message>
-    <message>
-        <location filename="../ui/edit_preset.py" line="115" />
-        <source>Rename</source>
-        <translation>Nimeä uudelleen</translation>
-    </message>
-    <message>
-        <location filename="../ui/edit_preset.py" line="116" />
-        <source>Delete</source>
-        <translation>Poista</translation>
-    </message>
-    <message>
-        <location filename="../ui/edit_preset.py" line="137" />
-        <source>You can associate predefined styles with layers. You need to add QML file(s) in this folder :</source>
-        <translation type="unfinished" />
-    </message>
-    <message>
-        <location filename="../ui/edit_preset.py" line="144" />
-        <source>The name of QML files must follow this convention</source>
-        <translation>QML-tiedostojen nimen tulee noudattaa tätä käytäntöä</translation>
-    </message>
-    <message>
-        <location filename="../ui/edit_preset.py" line="147" />
-        <source>name of the preset</source>
-        <translation>Esiasetuksen nimi</translation>
-    </message>
-    <message>
-        <location filename="../ui/edit_preset.py" line="149" />
-        <source>name of the query</source>
-        <translation>Kyselyn nimi</translation>
-    </message>
-    <message>
-        <location filename="../ui/edit_preset.py" line="151" />
-        <source>geometry</source>
-        <translation>geometria</translation>
-    </message>
-    <message>
-        <location filename="../ui/edit_preset.py" line="154" />
-        <source>These parameters are separated by '_' and the geometry must be one these values :</source>
-        <translation>Nämä parametrit erotetaan merkillä '_', ja ​​geometrian on oltava jokin seuraavista arvoista:</translation>
-    </message>
-    <message>
-        <location filename="../ui/edit_preset.py" line="161" />
-        <source>For the current preset "{file_name}"</source>
-        <translation>Nykyiselle esiasetukselle "{file_name}"</translation>
-    </message>
-    <message>
-        <location filename="../ui/edit_preset.py" line="163" />
-        <source>and the current query "{query_name}"</source>
-        <translation>ja nykyinen kysely "{query_name}"</translation>
-    </message>
-    <message>
-        <location filename="../ui/edit_preset.py" line="165" />
-        <source>this is the list of filenames you can use</source>
-        <translation>tämä on luettelo tiedostonimistä, joita voit käyttää</translation>
-    </message>
-    <message>
-        <location filename="../ui/edit_preset.py" line="283" />
-        <source>Confirm query deletion</source>
-        <translation>Vahvista kyselyn poistaminen</translation>
-    </message>
-    <message>
-        <location filename="../ui/edit_preset.py" line="284" />
-        <source>Are you sure you want to delete the query '{name}'?</source>
-        <translation>Haluatko varmasti poistaa kyselyn '{nimi}'?</translation>
-    </message>
-    <message>
-        <location filename="../ui/edit_preset.py" line="311" />
-        <source>Rename the query</source>
-        <translation>Uudelleennimeä kysely</translation>
-    </message>
-    <message>
-        <location filename="../ui/edit_preset.py" line="311" />
-        <source>New name:</source>
-        <translation>Uusi nimi:</translation>
-    </message>
-    <message>
-        <location filename="../ui/configuration_panel.py" line="52" />
-        <source>Add a new server in the list</source>
-        <translation type="unfinished" />
-    </message>
-    <message>
-        <location filename="../ui/configuration_panel.py" line="53" />
-        <source>Remove the selected server from the list</source>
-        <translation type="unfinished" />
-    </message>
-    <message>
-        <location filename="../ui/configuration_panel.py" line="140" />
-        <source>Please enter a URL.</source>
-        <translation type="unfinished" />
-    </message>
-    <message>
-        <location filename="../ui/configuration_panel.py" line="144" />
-        <source>The URL must begin with “http”.</source>
-        <translation type="unfinished" />
-    </message>
-    <message>
-        <location filename="../ui/configuration_panel.py" line="149" />
-        <source>This server is already in the list.</source>
-        <translation type="unfinished" />
-    </message>
-    <message>
-        <location filename="../ui/configuration_panel.py" line="182" />
-        <source>Please select a server from the list.</source>
-        <translation type="unfinished" />
-    </message>
-    <message>
-        <location filename="../ui/base_processing_panel.py" line="76" />
-        <source>Select a directory</source>
-        <translation>Valitse hakemisto</translation>
-    </message>
-    <message>
-        <location filename="../ui/map_preset_panel.py" line="58" />
-        <location filename="../ui/quick_query_panel.py" line="79" />
-        <source>In</source>
-        <translation>Sisällä</translation>
-    </message>
-    <message>
-        <location filename="../ui/map_preset_panel.py" line="59" />
-        <location filename="../ui/quick_query_panel.py" line="80" />
-        <source>Around</source>
-        <translation>Ympärillä</translation>
-    </message>
-    <message>
-        <location filename="../ui/map_preset_panel.py" line="62" />
-        <location filename="../ui/quick_query_panel.py" line="83" />
-        <source>Not Spatial</source>
-        <translation>Ei spatiaalinen</translation>
-    </message>
-    <message>
-        <location filename="../ui/quick_query_panel.py" line="146" />
-        <source>Save query in a new preset</source>
-        <translation>Tallenna kysely esiasetukseksi</translation>
-    </message>
-    <message>
-        <location filename="../ui/quick_query_panel.py" line="151" />
-        <source>Save and add query to an existing preset</source>
-        <translation>Tallenna ja lisää kysely olemassaolevaan esiasetukseen</translation>
-    </message>
-    <message>
-        <location filename="../ui/quick_query_panel.py" line="202" />
-        <source>allKeys</source>
-        <translation>kaikki avaimet</translation>
-    </message>
-    <message>
-        <location filename="../ui/quick_query_panel.py" line="255" />
-        <source>Add in an existing preset</source>
-        <translation>Lisää "sisällä" olemassaolevaan esiasetukseen</translation>
-    </message>
-    <message>
-        <location filename="../ui/quick_query_panel.py" line="256" />
-        <source>Please select the preset in which the query will be added:</source>
-        <translation>Valitse esiasetus, johon kysely lisätään:</translation>
-    </message>
-    <message>
-        <location filename="../ui/map_preset_panel.py" line="192" />
-        <location filename="../ui/map_preset_panel.py" line="115" />
-        <location filename="../ui/quick_query_panel.py" line="328" />
-        <source>No description</source>
-        <translation>Ei kuvausta</translation>
-    </message>
-    <message>
-        <location filename="../ui/quick_query_panel.py" line="339" />
-        <source>Run the query</source>
-        <translation>Suorita kysely</translation>
-    </message>
-    <message>
-        <location filename="../ui/quick_query_panel.py" line="340" />
-        <source>Save this query in a new preset</source>
-        <translation>Tallenna tämä kysely uudeksi esiasetukseksi</translation>
-    </message>
-    <message>
-        <location filename="../ui/map_preset_panel.py" line="203" />
-        <source>Edit the preset</source>
-        <translation>Muokkaa esiasetusta</translation>
-    </message>
-    <message>
-        <location filename="../ui/map_preset_panel.py" line="204" />
-        <source>Delete the preset</source>
-        <translation>Poista esiasetus</translation>
-    </message>
-    <message>
-        <location filename="../ui/map_preset_panel.py" line="247" />
-        <source>Confirm preset deletion</source>
-        <translation>Vahvista esiasetuksen poistaminen</translation>
-    </message>
-    <message>
-        <location filename="../ui/map_preset_panel.py" line="248" />
-        <source>Are you sure you want to delete the preset '{name}'?</source>
-        <translation>Haluatko varmasti poistaa esiasetuksen '{nimi}'?</translation>
-    </message>
-    <message>
-        <location filename="../ui/base_overpass_panel.py" line="172" />
-        <source>Successful query, {} layer(s) has been loaded.</source>
-        <translation>Kysely onnistui, {} taso(a) ladattiin.</translation>
-    </message>
-    <message>
-        <location filename="../ui/base_overpass_panel.py" line="176" />
-        <source>No result</source>
-        <translation>Ei tuloksia.</translation>
-    </message>
-    <message>
-        <location filename="../ui/base_overpass_panel.py" line="178" />
-        <source>Successful query, but no OSM data matched the Overpass query on this Overpass server.</source>
-        <translation type="unfinished" />
-    </message>
-    <message>
-        <location filename="../ui/dialog.py" line="244" />
-        <source>A critical error occurred, this is the traceback:</source>
-        <translation>Tapahtui kriittinen virhe, tässä jäljitys:</translation>
-    </message>
-    <message>
-        <location filename="../ui/dialog.py" line="251" />
-        <source>Error in the QGIS log window, then the QuickOSM panel, copy/paste it and please report it, if you know how to copy/paste QGIS logs. Please check pinned tickets first.</source>
-        <translation type="unfinished" />
-    </message>
-    <message>
-        <location filename="../ui/dialog.py" line="298" />
-        <source>Open log panel</source>
-        <translation>Avaa log-paneeli</translation>
-    </message>
-    <message>
-        <location filename="../ui/dialog.py" line="302" />
-        <source>More details</source>
-        <translation>Lisätietoja</translation>
     </message>
 </context><context>
     <name>BuildQueryBasedAlgorithm</name>

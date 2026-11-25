@@ -45,6 +45,11 @@
         <translation>저작권을 읽고 싶어요</translation>
     </message>
     <message>
+        <location filename="../tools/custom_logging.py" line="57" />
+        <source>Due to memory limitations on this machine, the plugin {} can not handle the full log</source>
+        <translation type="unfinished" />
+    </message>
+    <message>
         <location filename="../definitions/osm.py" line="88" />
         <source>And</source>
         <translation>그리고</translation>
@@ -55,69 +60,331 @@
         <translation>또는</translation>
     </message>
     <message>
-        <location filename="../quick_osm_processing/quickosm_process.py" line="73" />
-        <source>Fetch the OSM data that match the request.</source>
-        <translation>요청과 일치하는 OSM 데이터를 가져옵니다.</translation>
+        <location filename="../ui/map_preset_panel.py" line="58" />
+        <location filename="../ui/quick_query_panel.py" line="79" />
+        <source>In</source>
+        <translation>안에</translation>
     </message>
     <message>
-        <location filename="../quick_osm_processing/quickosm_process.py" line="90" />
-        <source>Output file</source>
-        <translation>출력 파일</translation>
+        <location filename="../ui/map_preset_panel.py" line="59" />
+        <location filename="../ui/quick_query_panel.py" line="80" />
+        <source>Around</source>
+        <translation>주변</translation>
     </message>
     <message>
-        <location filename="../quick_osm_processing/advanced/decorate_output.py" line="67" />
-        <location filename="../quick_osm_processing/quickosm_process.py" line="93" />
-        <source>Path where the file will be download.</source>
-        <translation>파일을 다운로드할 경로입니다.</translation>
+        <location filename="../ui/query_panel.py" line="49" />
+        <location filename="../ui/map_preset_panel.py" line="60" />
+        <location filename="../ui/quick_query_panel.py" line="81" />
+        <source>Canvas Extent</source>
+        <translation>캔버스 범위</translation>
     </message>
     <message>
-        <location filename="../quick_osm_processing/advanced/open_osm_file.py" line="90" />
-        <location filename="../quick_osm_processing/quickosm_process.py" line="100" />
-        <source>Output points</source>
-        <translation>출력 포인트</translation>
+        <location filename="../ui/query_panel.py" line="50" />
+        <location filename="../ui/map_preset_panel.py" line="61" />
+        <location filename="../ui/quick_query_panel.py" line="82" />
+        <source>Layer Extent</source>
+        <translation>레이어 범위</translation>
     </message>
     <message>
-        <location filename="../quick_osm_processing/advanced/open_osm_file.py" line="95" />
-        <location filename="../quick_osm_processing/quickosm_process.py" line="105" />
-        <source>Output lines</source>
-        <translation>출력 라인</translation>
+        <location filename="../ui/map_preset_panel.py" line="62" />
+        <location filename="../ui/quick_query_panel.py" line="83" />
+        <source>Not Spatial</source>
+        <translation>비공간</translation>
     </message>
     <message>
-        <location filename="../quick_osm_processing/advanced/open_osm_file.py" line="101" />
-        <location filename="../quick_osm_processing/quickosm_process.py" line="111" />
-        <source>Output multilinestrings</source>
-        <translation>출력 multilinestrings</translation>
+        <location filename="../ui/quick_query_panel.py" line="146" />
+        <source>Save query in a new preset</source>
+        <translation>새 사전 설정에 쿼리 저장</translation>
     </message>
     <message>
-        <location filename="../quick_osm_processing/advanced/open_osm_file.py" line="108" />
-        <location filename="../quick_osm_processing/quickosm_process.py" line="118" />
-        <source>Output multipolygons</source>
-        <translation>출력 multipolygons</translation>
+        <location filename="../ui/quick_query_panel.py" line="151" />
+        <source>Save and add query to an existing preset</source>
+        <translation>기존 사전 설정에 쿼리 저장 및 추가</translation>
     </message>
     <message>
-        <location filename="../quick_osm_processing/quickosm_process.py" line="220" />
-        <source>Download OSM data from a raw query</source>
-        <translation>원시 쿼리에서 OSM 데이터 다운로드</translation>
+        <location filename="../ui/quick_query_panel.py" line="202" />
+        <source>allKeys</source>
+        <translation>모든 키</translation>
     </message>
     <message>
-        <location filename="../quick_osm_processing/quickosm_process.py" line="265" />
-        <source>Download OSM data from a not spatial query</source>
-        <translation>비공간 쿼리에서 OSM 데이터 다운로드</translation>
+        <location filename="../ui/quick_query_panel.py" line="255" />
+        <source>Add in an existing preset</source>
+        <translation>기존 사전 설정에 추가</translation>
     </message>
     <message>
-        <location filename="../quick_osm_processing/quickosm_process.py" line="311" />
-        <source>Download OSM data from query in an area</source>
-        <translation>지역의 쿼리에서 OSM 데이터 다운로드</translation>
+        <location filename="../ui/quick_query_panel.py" line="256" />
+        <source>Please select the preset in which the query will be added:</source>
+        <translation>쿼리를 추가할 사전 설정을 선택하십시오:</translation>
     </message>
     <message>
-        <location filename="../quick_osm_processing/quickosm_process.py" line="358" />
-        <source>Download OSM data from a query around an area</source>
-        <translation>지역 주변 쿼리에서 OSM 데이터 다운로드</translation>
+        <location filename="../ui/map_preset_panel.py" line="192" />
+        <location filename="../ui/map_preset_panel.py" line="115" />
+        <location filename="../ui/quick_query_panel.py" line="328" />
+        <source>No description</source>
+        <translation>설명 없음</translation>
     </message>
     <message>
-        <location filename="../quick_osm_processing/quickosm_process.py" line="406" />
-        <source>Download OSM data from a query in an extent</source>
-        <translation>범위에서 쿼리에서 OSM 데이터 다운로드</translation>
+        <location filename="../ui/quick_query_panel.py" line="339" />
+        <source>Run the query</source>
+        <translation>쿼리 실행</translation>
+    </message>
+    <message>
+        <location filename="../ui/quick_query_panel.py" line="340" />
+        <source>Save this query in a new preset</source>
+        <translation>이 쿼리를 새 사전 설정에 저장</translation>
+    </message>
+    <message>
+        <location filename="../ui/base_overpass_panel.py" line="172" />
+        <source>Successful query, {} layer(s) has been loaded.</source>
+        <translation>성공적인 쿼리, {} 레이어가 로드되었습니다</translation>
+    </message>
+    <message>
+        <location filename="../ui/base_overpass_panel.py" line="176" />
+        <source>No result</source>
+        <translation>결과가 없습니다</translation>
+    </message>
+    <message>
+        <location filename="../ui/base_overpass_panel.py" line="178" />
+        <source>Successful query, but no OSM data matched the Overpass query on this Overpass server.</source>
+        <translation type="unfinished" />
+    </message>
+    <message>
+        <location filename="../ui/osm_file_panel.py" line="51" />
+        <source>Select an OSM/PBF file</source>
+        <translation>OSM/PBF 파일 선택</translation>
+    </message>
+    <message>
+        <location filename="../ui/osm_file_panel.py" line="57" />
+        <source>Select OSM conf file</source>
+        <translation>OSM 구성 파일 선택</translation>
+    </message>
+    <message>
+        <location filename="../ui/osm_file_panel.py" line="222" />
+        <location filename="../ui/osm_file_panel.py" line="210" />
+        <source>Successful query</source>
+        <translation>성공적인 쿼리</translation>
+    </message>
+    <message>
+        <location filename="../ui/map_preset_panel.py" line="203" />
+        <source>Edit the preset</source>
+        <translation>사전 설정 편집</translation>
+    </message>
+    <message>
+        <location filename="../ui/map_preset_panel.py" line="204" />
+        <source>Delete the preset</source>
+        <translation>사전 설정 삭제</translation>
+    </message>
+    <message>
+        <location filename="../ui/map_preset_panel.py" line="247" />
+        <source>Confirm preset deletion</source>
+        <translation>사전 설정 삭제 확인</translation>
+    </message>
+    <message>
+        <location filename="../ui/map_preset_panel.py" line="248" />
+        <source>Are you sure you want to delete the preset '{name}'?</source>
+        <translation type="unfinished" />
+    </message>
+    <message>
+        <location filename="../ui/configuration_panel.py" line="52" />
+        <source>Add a new server in the list</source>
+        <translation type="unfinished" />
+    </message>
+    <message>
+        <location filename="../ui/configuration_panel.py" line="53" />
+        <source>Remove the selected server from the list</source>
+        <translation type="unfinished" />
+    </message>
+    <message>
+        <location filename="../ui/configuration_panel.py" line="140" />
+        <source>Please enter a URL.</source>
+        <translation type="unfinished" />
+    </message>
+    <message>
+        <location filename="../ui/configuration_panel.py" line="144" />
+        <source>The URL must begin with “http”.</source>
+        <translation type="unfinished" />
+    </message>
+    <message>
+        <location filename="../ui/configuration_panel.py" line="149" />
+        <source>This server is already in the list.</source>
+        <translation type="unfinished" />
+    </message>
+    <message>
+        <location filename="../ui/configuration_panel.py" line="182" />
+        <source>Please select a server from the list.</source>
+        <translation type="unfinished" />
+    </message>
+    <message>
+        <location filename="../ui/custom_table.py" line="45" />
+        <source>Query on all keys</source>
+        <translation>모든 키에 대한 쿼리</translation>
+    </message>
+    <message>
+        <location filename="../ui/custom_table.py" line="46" />
+        <source>Query on all values</source>
+        <translation>모든 값에 대한 쿼리</translation>
+    </message>
+    <message>
+        <location filename="../ui/custom_table.py" line="94" />
+        <source>Not mandatory. Ex: bakery</source>
+        <translation>의무가 아닌. 예: 빵집</translation>
+    </message>
+    <message>
+        <location filename="../ui/custom_table.py" line="128" />
+        <source>Add a line below.</source>
+        <translation>아래에 한 줄을 추가합니다.</translation>
+    </message>
+    <message>
+        <location filename="../ui/custom_table.py" line="132" />
+        <source>Remove the line.</source>
+        <translation>줄을 제거합니다.</translation>
+    </message>
+    <message>
+        <location filename="../ui/custom_table.py" line="143" />
+        <source>Set the type of multi-request. "And" verify both conditions. "Or" verify either of the conditions.</source>
+        <translation type="unfinished" />
+    </message>
+    <message>
+        <location filename="../ui/custom_table.py" line="160" />
+        <source>An OSM key to fetch. If empty, all keys will be fetched.</source>
+        <translation>가져올 OSM 키입니다. 비어 있으면 모든 키를 가져옵니다.</translation>
+    </message>
+    <message>
+        <location filename="../ui/custom_table.py" line="181" />
+        <source>An OSM value to fetch. If empty, all values will be fetched.</source>
+        <translation>가져올 OSM 값입니다. 비어 있으면 모든 값을 가져옵니다.</translation>
+    </message>
+    <message>
+        <location filename="../core/actions.py" line="119" />
+        <location filename="../ui/dialog.py" line="167" />
+        <source>Reload the query in a new file</source>
+        <translation>새 파일에서 쿼리 다시 로드</translation>
+    </message>
+    <message>
+        <location filename="../ui/dialog.py" line="244" />
+        <source>A critical error occurred, this is the traceback:</source>
+        <translation>치명적인 오류가 발생했습니다. 이것은 역추적입니다:</translation>
+    </message>
+    <message>
+        <location filename="../ui/dialog.py" line="251" />
+        <source>Error in the QGIS log window, then the QuickOSM panel, copy/paste it and please report it, if you know how to copy/paste QGIS logs. Please check pinned tickets first.</source>
+        <translation type="unfinished" />
+    </message>
+    <message>
+        <location filename="../ui/dialog.py" line="298" />
+        <source>Open log panel</source>
+        <translation type="unfinished" />
+    </message>
+    <message>
+        <location filename="../ui/dialog.py" line="302" />
+        <source>More details</source>
+        <translation>자세한 내용은</translation>
+    </message>
+    <message>
+        <location filename="../ui/edit_preset.py" line="55" />
+        <source>Add a new query to the map preset</source>
+        <translation type="unfinished" />
+    </message>
+    <message>
+        <location filename="../ui/edit_preset.py" line="60" />
+        <source>Remove the selected query from the map preset</source>
+        <translation type="unfinished" />
+    </message>
+    <message>
+        <location filename="../ui/base_processing_panel.py" line="73" />
+        <location filename="../ui/edit_preset.py" line="79" />
+        <source>Save to temporary file</source>
+        <translation>임시 파일에 저장</translation>
+    </message>
+    <message>
+        <location filename="../ui/edit_preset.py" line="115" />
+        <source>Rename</source>
+        <translation>이름 바꾸기</translation>
+    </message>
+    <message>
+        <location filename="../ui/edit_preset.py" line="116" />
+        <source>Delete</source>
+        <translation>삭제</translation>
+    </message>
+    <message>
+        <location filename="../ui/edit_preset.py" line="137" />
+        <source>You can associate predefined styles with layers. You need to add QML file(s) in this folder :</source>
+        <translation type="unfinished" />
+    </message>
+    <message>
+        <location filename="../ui/edit_preset.py" line="144" />
+        <source>The name of QML files must follow this convention</source>
+        <translation type="unfinished" />
+    </message>
+    <message>
+        <location filename="../ui/edit_preset.py" line="147" />
+        <source>name of the preset</source>
+        <translation type="unfinished" />
+    </message>
+    <message>
+        <location filename="../ui/edit_preset.py" line="149" />
+        <source>name of the query</source>
+        <translation type="unfinished" />
+    </message>
+    <message>
+        <location filename="../ui/edit_preset.py" line="151" />
+        <source>geometry</source>
+        <translation type="unfinished" />
+    </message>
+    <message>
+        <location filename="../ui/edit_preset.py" line="154" />
+        <source>These parameters are separated by '_' and the geometry must be one these values :</source>
+        <translation type="unfinished" />
+    </message>
+    <message>
+        <location filename="../ui/edit_preset.py" line="161" />
+        <source>For the current preset "{file_name}"</source>
+        <translation type="unfinished" />
+    </message>
+    <message>
+        <location filename="../ui/edit_preset.py" line="163" />
+        <source>and the current query "{query_name}"</source>
+        <translation type="unfinished" />
+    </message>
+    <message>
+        <location filename="../ui/edit_preset.py" line="165" />
+        <source>this is the list of filenames you can use</source>
+        <translation type="unfinished" />
+    </message>
+    <message>
+        <location filename="../core/utilities/query_saved.py" line="251" />
+        <location filename="../core/utilities/query_saved.py" line="229" />
+        <location filename="../core/utilities/query_saved.py" line="179" />
+        <location filename="../quick_osm_processing/build_input.py" line="100" />
+        <location filename="../ui/edit_preset.py" line="303" />
+        <location filename="../ui/edit_preset.py" line="258" />
+        <source>Query</source>
+        <translation>쿼리</translation>
+    </message>
+    <message>
+        <location filename="../ui/edit_preset.py" line="283" />
+        <source>Confirm query deletion</source>
+        <translation>쿼리 삭제 확인</translation>
+    </message>
+    <message>
+        <location filename="../ui/edit_preset.py" line="284" />
+        <source>Are you sure you want to delete the query '{name}'?</source>
+        <translation type="unfinished" />
+    </message>
+    <message>
+        <location filename="../ui/edit_preset.py" line="311" />
+        <source>Rename the query</source>
+        <translation>쿼리 이름 바꾸기</translation>
+    </message>
+    <message>
+        <location filename="../ui/edit_preset.py" line="311" />
+        <source>New name:</source>
+        <translation>새 이름:</translation>
+    </message>
+    <message>
+        <location filename="../ui/base_processing_panel.py" line="76" />
+        <source>Select a directory</source>
+        <translation>디렉토리 선택</translation>
     </message>
     <message>
         <location filename="../quick_osm_processing/build_input.py" line="51" />
@@ -138,16 +405,6 @@
         <location filename="../quick_osm_processing/build_input.py" line="63" />
         <source>The Overpass API server to use to build the encoded URL.</source>
         <translation>인코딩된 URL을 빌드하는 데 사용할 Overpass API 서버입니다.</translation>
-    </message>
-    <message>
-        <location filename="../ui/edit_preset.py" line="303" />
-        <location filename="../ui/edit_preset.py" line="258" />
-        <location filename="../core/utilities/query_saved.py" line="251" />
-        <location filename="../core/utilities/query_saved.py" line="229" />
-        <location filename="../core/utilities/query_saved.py" line="179" />
-        <location filename="../quick_osm_processing/build_input.py" line="100" />
-        <source>Query</source>
-        <translation>쿼리</translation>
     </message>
     <message>
         <location filename="../quick_osm_processing/build_input.py" line="102" />
@@ -235,17 +492,134 @@
         <translation>쿼리를 작성할 때 사용할 사각형으로 범위입니다.</translation>
     </message>
     <message>
+        <location filename="../quick_osm_processing/quickosm_process.py" line="73" />
+        <source>Fetch the OSM data that match the request.</source>
+        <translation>요청과 일치하는 OSM 데이터를 가져옵니다.</translation>
+    </message>
+    <message>
+        <location filename="../quick_osm_processing/quickosm_process.py" line="90" />
+        <source>Output file</source>
+        <translation>출력 파일</translation>
+    </message>
+    <message>
+        <location filename="../quick_osm_processing/advanced/decorate_output.py" line="67" />
+        <location filename="../quick_osm_processing/quickosm_process.py" line="93" />
+        <source>Path where the file will be download.</source>
+        <translation>파일을 다운로드할 경로입니다.</translation>
+    </message>
+    <message>
+        <location filename="../quick_osm_processing/advanced/open_osm_file.py" line="90" />
+        <location filename="../quick_osm_processing/quickosm_process.py" line="100" />
+        <source>Output points</source>
+        <translation>출력 포인트</translation>
+    </message>
+    <message>
+        <location filename="../quick_osm_processing/advanced/open_osm_file.py" line="95" />
+        <location filename="../quick_osm_processing/quickosm_process.py" line="105" />
+        <source>Output lines</source>
+        <translation>출력 라인</translation>
+    </message>
+    <message>
+        <location filename="../quick_osm_processing/advanced/open_osm_file.py" line="101" />
+        <location filename="../quick_osm_processing/quickosm_process.py" line="111" />
+        <source>Output multilinestrings</source>
+        <translation>출력 multilinestrings</translation>
+    </message>
+    <message>
+        <location filename="../quick_osm_processing/advanced/open_osm_file.py" line="108" />
+        <location filename="../quick_osm_processing/quickosm_process.py" line="118" />
+        <source>Output multipolygons</source>
+        <translation>출력 multipolygons</translation>
+    </message>
+    <message>
+        <location filename="../quick_osm_processing/quickosm_process.py" line="220" />
+        <source>Download OSM data from a raw query</source>
+        <translation>원시 쿼리에서 OSM 데이터 다운로드</translation>
+    </message>
+    <message>
+        <location filename="../quick_osm_processing/quickosm_process.py" line="265" />
+        <source>Download OSM data from a not spatial query</source>
+        <translation>비공간 쿼리에서 OSM 데이터 다운로드</translation>
+    </message>
+    <message>
+        <location filename="../quick_osm_processing/quickosm_process.py" line="311" />
+        <source>Download OSM data from query in an area</source>
+        <translation>지역의 쿼리에서 OSM 데이터 다운로드</translation>
+    </message>
+    <message>
+        <location filename="../quick_osm_processing/quickosm_process.py" line="358" />
+        <source>Download OSM data from a query around an area</source>
+        <translation>지역 주변 쿼리에서 OSM 데이터 다운로드</translation>
+    </message>
+    <message>
+        <location filename="../quick_osm_processing/quickosm_process.py" line="406" />
+        <source>Download OSM data from a query in an extent</source>
+        <translation>범위에서 쿼리에서 OSM 데이터 다운로드</translation>
+    </message>
+    <message>
+        <location filename="../quick_osm_processing/advanced/raw_query.py" line="21" />
+        <location filename="../quick_osm_processing/advanced/decorate_output.py" line="49" />
+        <location filename="../quick_osm_processing/advanced/open_osm_file.py" line="43" />
+        <location filename="../quick_osm_processing/advanced/build_query.py" line="36" />
+        <source>Advanced</source>
+        <translation>고급</translation>
+    </message>
+    <message>
+        <location filename="../quick_osm_processing/advanced/raw_query.py" line="51" />
+        <location filename="../quick_osm_processing/advanced/build_query.py" line="57" />
+        <source>Query as encoded URL</source>
+        <translation>인코딩된 URL로 쿼리</translation>
+    </message>
+    <message>
+        <location filename="../quick_osm_processing/advanced/raw_query.py" line="54" />
+        <location filename="../quick_osm_processing/advanced/build_query.py" line="60" />
+        <source>Raw query as OQL</source>
+        <translation>OQL로 원시 쿼리</translation>
+    </message>
+    <message>
+        <location filename="../quick_osm_processing/advanced/build_query.py" line="109" />
+        <source>Build query by attribute only</source>
+        <translation>속성으로만 쿼리 작성</translation>
+    </message>
+    <message>
+        <location filename="../quick_osm_processing/advanced/build_query.py" line="129" />
+        <source>Build query inside an area</source>
+        <translation>지역 내에서 쿼리 작성</translation>
+    </message>
+    <message>
+        <location filename="../quick_osm_processing/advanced/build_query.py" line="149" />
+        <source>Build query around an area</source>
+        <translation>지역 주변에 쿼리 작성</translation>
+    </message>
+    <message>
+        <location filename="../quick_osm_processing/advanced/build_query.py" line="169" />
+        <source>Build query inside an extent</source>
+        <translation>범위내부에 쿼리 작성</translation>
+    </message>
+    <message>
+        <location filename="../quick_osm_processing/advanced/open_osm_file.py" line="74" />
+        <source>The extension can be a OSM or PBF file.</source>
+        <translation>확장자는 OSM 또는 PBF 파일일 수 있습니다.</translation>
+    </message>
+    <message>
+        <location filename="../quick_osm_processing/advanced/open_osm_file.py" line="79" />
+        <source>OSM configuration</source>
+        <translation>OSM 구성</translation>
+    </message>
+    <message>
+        <location filename="../quick_osm_processing/advanced/open_osm_file.py" line="81" />
+        <source>The OGR OSM configuration file. This file is used to customize the import process about OSM tags. You should read the OGR documentation {url}</source>
+        <translation type="unfinished" />
+    </message>
+    <message>
+        <location filename="../quick_osm_processing/advanced/open_osm_file.py" line="115" />
+        <source>Output other relations</source>
+        <translation>출력 다른 관계</translation>
+    </message>
+    <message>
         <location filename="../quick_osm_processing/advanced/decorate_output.py" line="44" />
         <source>Decorate a layer from OSM</source>
         <translation>OSM에서 레이어 꾸미기</translation>
-    </message>
-    <message>
-        <location filename="../quick_osm_processing/advanced/build_query.py" line="36" />
-        <location filename="../quick_osm_processing/advanced/raw_query.py" line="21" />
-        <location filename="../quick_osm_processing/advanced/open_osm_file.py" line="43" />
-        <location filename="../quick_osm_processing/advanced/decorate_output.py" line="49" />
-        <source>Advanced</source>
-        <translation>고급</translation>
     </message>
     <message>
         <location filename="../quick_osm_processing/advanced/decorate_output.py" line="58" />
@@ -269,61 +643,25 @@
         <translation>© OpenStreetMap 기고자</translation>
     </message>
     <message>
-        <location filename="../quick_osm_processing/advanced/open_osm_file.py" line="74" />
-        <source>The extension can be a OSM or PBF file.</source>
-        <translation>확장자는 OSM 또는 PBF 파일일 수 있습니다.</translation>
-    </message>
-    <message>
-        <location filename="../quick_osm_processing/advanced/open_osm_file.py" line="79" />
-        <source>OSM configuration</source>
-        <translation>OSM 구성</translation>
-    </message>
-    <message>
-        <location filename="../quick_osm_processing/advanced/open_osm_file.py" line="81" />
-        <source>The OGR OSM configuration file. This file is used to customize the import process about OSM tags. You should read the OGR documentation {url}</source>
-        <translation type="unfinished" />
-    </message>
-    <message>
-        <location filename="../quick_osm_processing/advanced/open_osm_file.py" line="115" />
-        <source>Output other relations</source>
-        <translation>출력 다른 관계</translation>
-    </message>
-    <message>
         <location filename="../quick_osm_processing/advanced/raw_query.py" line="36" />
         <source>Build raw query</source>
         <translation>원시 쿼리 작성</translation>
     </message>
     <message>
-        <location filename="../quick_osm_processing/advanced/build_query.py" line="57" />
-        <location filename="../quick_osm_processing/advanced/raw_query.py" line="51" />
-        <source>Query as encoded URL</source>
-        <translation>인코딩된 URL로 쿼리</translation>
+        <location filename="../core/query_preparation.py" line="142" />
+        <location filename="../core/query_preparation.py" line="121" />
+        <source>Missing extent parameter.</source>
+        <translation>범위 매개변수가 없습니다.</translation>
     </message>
     <message>
-        <location filename="../quick_osm_processing/advanced/build_query.py" line="60" />
-        <location filename="../quick_osm_processing/advanced/raw_query.py" line="54" />
-        <source>Raw query as OQL</source>
-        <translation>OQL로 원시 쿼리</translation>
+        <location filename="../core/query_preparation.py" line="168" />
+        <source>The area was overlapping the WGS84 limits ±90 / ±180 degrees. The query has been restricted.</source>
+        <translation type="unfinished" />
     </message>
     <message>
-        <location filename="../quick_osm_processing/advanced/build_query.py" line="109" />
-        <source>Build query by attribute only</source>
-        <translation>속성으로만 쿼리 작성</translation>
-    </message>
-    <message>
-        <location filename="../quick_osm_processing/advanced/build_query.py" line="129" />
-        <source>Build query inside an area</source>
-        <translation>지역 내에서 쿼리 작성</translation>
-    </message>
-    <message>
-        <location filename="../quick_osm_processing/advanced/build_query.py" line="149" />
-        <source>Build query around an area</source>
-        <translation>지역 주변에 쿼리 작성</translation>
-    </message>
-    <message>
-        <location filename="../quick_osm_processing/advanced/build_query.py" line="169" />
-        <source>Build query inside an extent</source>
-        <translation>범위내부에 쿼리 작성</translation>
+        <location filename="../core/query_preparation.py" line="226" />
+        <source>WKT detected for "geocodeCoords".</source>
+        <translation>"geocodeCoords"에 대해 WKT가 감지되었습니다.</translation>
     </message>
     <message>
         <location filename="../core/query_factory.py" line="26" />
@@ -467,12 +805,6 @@
         <translation>스케치라인</translation>
     </message>
     <message>
-        <location filename="../ui/dialog.py" line="167" />
-        <location filename="../core/actions.py" line="119" />
-        <source>Reload the query in a new file</source>
-        <translation>새 파일에서 쿼리 다시 로드</translation>
-    </message>
-    <message>
         <location filename="../core/actions.py" line="155" />
         <source>Sorry, the field '{fieldname}' is empty for this entity.</source>
         <translation>죄송합니다. 이 항목에 대한 '{fieldname}' 필드가 비어 있습니다.</translation>
@@ -486,32 +818,6 @@
         <location filename="../core/actions.py" line="218" />
         <source>Sorry, this field is empty for this entity.</source>
         <translation>죄송합니다. 이 항목에 대해 이 필드가 비어 있습니다.</translation>
-    </message>
-    <message>
-        <location filename="../core/process.py" line="233" />
-        <source>Prepare outputs</source>
-        <translation>출력 준비</translation>
-    </message>
-    <message>
-        <location filename="../core/process.py" line="238" />
-        <source>Downloading data from Overpass {server_name}</source>
-        <translation>Overpass {server_name}에서 데이터 다운로드 중</translation>
-    </message>
-    <message>
-        <location filename="../core/query_preparation.py" line="142" />
-        <location filename="../core/query_preparation.py" line="121" />
-        <source>Missing extent parameter.</source>
-        <translation>범위 매개변수가 없습니다.</translation>
-    </message>
-    <message>
-        <location filename="../core/query_preparation.py" line="168" />
-        <source>The area was overlapping the WGS84 limits ±90 / ±180 degrees. The query has been restricted.</source>
-        <translation type="unfinished" />
-    </message>
-    <message>
-        <location filename="../core/query_preparation.py" line="226" />
-        <source>WKT detected for "geocodeCoords".</source>
-        <translation>"geocodeCoords"에 대해 WKT가 감지되었습니다.</translation>
     </message>
     <message>
         <location filename="../core/exceptions.py" line="46" />
@@ -614,6 +920,16 @@
         <translation>선택된 출력이 없습니다. 하나를 골라주세요.</translation>
     </message>
     <message>
+        <location filename="../core/process.py" line="233" />
+        <source>Prepare outputs</source>
+        <translation>출력 준비</translation>
+    </message>
+    <message>
+        <location filename="../core/process.py" line="238" />
+        <source>Downloading data from Overpass {server_name}</source>
+        <translation>Overpass {server_name}에서 데이터 다운로드 중</translation>
+    </message>
+    <message>
         <location filename="../core/utilities/tools.py" line="92" />
         <source>Error with the Processing plugin</source>
         <translation type="unfinished" />
@@ -637,322 +953,6 @@
         <location filename="../core/parser/osm_parser.py" line="124" />
         <source>Parsing layer : {layer}</source>
         <translation>파싱 레이어 : {layer}</translation>
-    </message>
-    <message>
-        <location filename="../tools/custom_logging.py" line="57" />
-        <source>Due to memory limitations on this machine, the plugin {} can not handle the full log</source>
-        <translation type="unfinished" />
-    </message>
-    <message>
-        <location filename="../ui/custom_table.py" line="45" />
-        <source>Query on all keys</source>
-        <translation>모든 키에 대한 쿼리</translation>
-    </message>
-    <message>
-        <location filename="../ui/custom_table.py" line="46" />
-        <source>Query on all values</source>
-        <translation>모든 값에 대한 쿼리</translation>
-    </message>
-    <message>
-        <location filename="../ui/custom_table.py" line="94" />
-        <source>Not mandatory. Ex: bakery</source>
-        <translation>의무가 아닌. 예: 빵집</translation>
-    </message>
-    <message>
-        <location filename="../ui/custom_table.py" line="128" />
-        <source>Add a line below.</source>
-        <translation>아래에 한 줄을 추가합니다.</translation>
-    </message>
-    <message>
-        <location filename="../ui/custom_table.py" line="132" />
-        <source>Remove the line.</source>
-        <translation>줄을 제거합니다.</translation>
-    </message>
-    <message>
-        <location filename="../ui/custom_table.py" line="143" />
-        <source>Set the type of multi-request. "And" verify both conditions. "Or" verify either of the conditions.</source>
-        <translation type="unfinished" />
-    </message>
-    <message>
-        <location filename="../ui/custom_table.py" line="160" />
-        <source>An OSM key to fetch. If empty, all keys will be fetched.</source>
-        <translation>가져올 OSM 키입니다. 비어 있으면 모든 키를 가져옵니다.</translation>
-    </message>
-    <message>
-        <location filename="../ui/custom_table.py" line="181" />
-        <source>An OSM value to fetch. If empty, all values will be fetched.</source>
-        <translation>가져올 OSM 값입니다. 비어 있으면 모든 값을 가져옵니다.</translation>
-    </message>
-    <message>
-        <location filename="../ui/map_preset_panel.py" line="60" />
-        <location filename="../ui/quick_query_panel.py" line="81" />
-        <location filename="../ui/query_panel.py" line="49" />
-        <source>Canvas Extent</source>
-        <translation>캔버스 범위</translation>
-    </message>
-    <message>
-        <location filename="../ui/map_preset_panel.py" line="61" />
-        <location filename="../ui/quick_query_panel.py" line="82" />
-        <location filename="../ui/query_panel.py" line="50" />
-        <source>Layer Extent</source>
-        <translation>레이어 범위</translation>
-    </message>
-    <message>
-        <location filename="../ui/osm_file_panel.py" line="51" />
-        <source>Select an OSM/PBF file</source>
-        <translation>OSM/PBF 파일 선택</translation>
-    </message>
-    <message>
-        <location filename="../ui/osm_file_panel.py" line="57" />
-        <source>Select OSM conf file</source>
-        <translation>OSM 구성 파일 선택</translation>
-    </message>
-    <message>
-        <location filename="../ui/osm_file_panel.py" line="222" />
-        <location filename="../ui/osm_file_panel.py" line="210" />
-        <source>Successful query</source>
-        <translation>성공적인 쿼리</translation>
-    </message>
-    <message>
-        <location filename="../ui/edit_preset.py" line="55" />
-        <source>Add a new query to the map preset</source>
-        <translation type="unfinished" />
-    </message>
-    <message>
-        <location filename="../ui/edit_preset.py" line="60" />
-        <source>Remove the selected query from the map preset</source>
-        <translation type="unfinished" />
-    </message>
-    <message>
-        <location filename="../ui/base_processing_panel.py" line="73" />
-        <location filename="../ui/edit_preset.py" line="79" />
-        <source>Save to temporary file</source>
-        <translation>임시 파일에 저장</translation>
-    </message>
-    <message>
-        <location filename="../ui/edit_preset.py" line="115" />
-        <source>Rename</source>
-        <translation>이름 바꾸기</translation>
-    </message>
-    <message>
-        <location filename="../ui/edit_preset.py" line="116" />
-        <source>Delete</source>
-        <translation>삭제</translation>
-    </message>
-    <message>
-        <location filename="../ui/edit_preset.py" line="137" />
-        <source>You can associate predefined styles with layers. You need to add QML file(s) in this folder :</source>
-        <translation type="unfinished" />
-    </message>
-    <message>
-        <location filename="../ui/edit_preset.py" line="144" />
-        <source>The name of QML files must follow this convention</source>
-        <translation type="unfinished" />
-    </message>
-    <message>
-        <location filename="../ui/edit_preset.py" line="147" />
-        <source>name of the preset</source>
-        <translation type="unfinished" />
-    </message>
-    <message>
-        <location filename="../ui/edit_preset.py" line="149" />
-        <source>name of the query</source>
-        <translation type="unfinished" />
-    </message>
-    <message>
-        <location filename="../ui/edit_preset.py" line="151" />
-        <source>geometry</source>
-        <translation type="unfinished" />
-    </message>
-    <message>
-        <location filename="../ui/edit_preset.py" line="154" />
-        <source>These parameters are separated by '_' and the geometry must be one these values :</source>
-        <translation type="unfinished" />
-    </message>
-    <message>
-        <location filename="../ui/edit_preset.py" line="161" />
-        <source>For the current preset "{file_name}"</source>
-        <translation type="unfinished" />
-    </message>
-    <message>
-        <location filename="../ui/edit_preset.py" line="163" />
-        <source>and the current query "{query_name}"</source>
-        <translation type="unfinished" />
-    </message>
-    <message>
-        <location filename="../ui/edit_preset.py" line="165" />
-        <source>this is the list of filenames you can use</source>
-        <translation type="unfinished" />
-    </message>
-    <message>
-        <location filename="../ui/edit_preset.py" line="283" />
-        <source>Confirm query deletion</source>
-        <translation>쿼리 삭제 확인</translation>
-    </message>
-    <message>
-        <location filename="../ui/edit_preset.py" line="284" />
-        <source>Are you sure you want to delete the query '{name}'?</source>
-        <translation type="unfinished" />
-    </message>
-    <message>
-        <location filename="../ui/edit_preset.py" line="311" />
-        <source>Rename the query</source>
-        <translation>쿼리 이름 바꾸기</translation>
-    </message>
-    <message>
-        <location filename="../ui/edit_preset.py" line="311" />
-        <source>New name:</source>
-        <translation>새 이름:</translation>
-    </message>
-    <message>
-        <location filename="../ui/configuration_panel.py" line="52" />
-        <source>Add a new server in the list</source>
-        <translation type="unfinished" />
-    </message>
-    <message>
-        <location filename="../ui/configuration_panel.py" line="53" />
-        <source>Remove the selected server from the list</source>
-        <translation type="unfinished" />
-    </message>
-    <message>
-        <location filename="../ui/configuration_panel.py" line="140" />
-        <source>Please enter a URL.</source>
-        <translation type="unfinished" />
-    </message>
-    <message>
-        <location filename="../ui/configuration_panel.py" line="144" />
-        <source>The URL must begin with “http”.</source>
-        <translation type="unfinished" />
-    </message>
-    <message>
-        <location filename="../ui/configuration_panel.py" line="149" />
-        <source>This server is already in the list.</source>
-        <translation type="unfinished" />
-    </message>
-    <message>
-        <location filename="../ui/configuration_panel.py" line="182" />
-        <source>Please select a server from the list.</source>
-        <translation type="unfinished" />
-    </message>
-    <message>
-        <location filename="../ui/base_processing_panel.py" line="76" />
-        <source>Select a directory</source>
-        <translation>디렉토리 선택</translation>
-    </message>
-    <message>
-        <location filename="../ui/map_preset_panel.py" line="58" />
-        <location filename="../ui/quick_query_panel.py" line="79" />
-        <source>In</source>
-        <translation>안에</translation>
-    </message>
-    <message>
-        <location filename="../ui/map_preset_panel.py" line="59" />
-        <location filename="../ui/quick_query_panel.py" line="80" />
-        <source>Around</source>
-        <translation>주변</translation>
-    </message>
-    <message>
-        <location filename="../ui/map_preset_panel.py" line="62" />
-        <location filename="../ui/quick_query_panel.py" line="83" />
-        <source>Not Spatial</source>
-        <translation>비공간</translation>
-    </message>
-    <message>
-        <location filename="../ui/quick_query_panel.py" line="146" />
-        <source>Save query in a new preset</source>
-        <translation>새 사전 설정에 쿼리 저장</translation>
-    </message>
-    <message>
-        <location filename="../ui/quick_query_panel.py" line="151" />
-        <source>Save and add query to an existing preset</source>
-        <translation>기존 사전 설정에 쿼리 저장 및 추가</translation>
-    </message>
-    <message>
-        <location filename="../ui/quick_query_panel.py" line="202" />
-        <source>allKeys</source>
-        <translation>모든 키</translation>
-    </message>
-    <message>
-        <location filename="../ui/quick_query_panel.py" line="255" />
-        <source>Add in an existing preset</source>
-        <translation>기존 사전 설정에 추가</translation>
-    </message>
-    <message>
-        <location filename="../ui/quick_query_panel.py" line="256" />
-        <source>Please select the preset in which the query will be added:</source>
-        <translation>쿼리를 추가할 사전 설정을 선택하십시오:</translation>
-    </message>
-    <message>
-        <location filename="../ui/map_preset_panel.py" line="192" />
-        <location filename="../ui/map_preset_panel.py" line="115" />
-        <location filename="../ui/quick_query_panel.py" line="328" />
-        <source>No description</source>
-        <translation>설명 없음</translation>
-    </message>
-    <message>
-        <location filename="../ui/quick_query_panel.py" line="339" />
-        <source>Run the query</source>
-        <translation>쿼리 실행</translation>
-    </message>
-    <message>
-        <location filename="../ui/quick_query_panel.py" line="340" />
-        <source>Save this query in a new preset</source>
-        <translation>이 쿼리를 새 사전 설정에 저장</translation>
-    </message>
-    <message>
-        <location filename="../ui/map_preset_panel.py" line="203" />
-        <source>Edit the preset</source>
-        <translation>사전 설정 편집</translation>
-    </message>
-    <message>
-        <location filename="../ui/map_preset_panel.py" line="204" />
-        <source>Delete the preset</source>
-        <translation>사전 설정 삭제</translation>
-    </message>
-    <message>
-        <location filename="../ui/map_preset_panel.py" line="247" />
-        <source>Confirm preset deletion</source>
-        <translation>사전 설정 삭제 확인</translation>
-    </message>
-    <message>
-        <location filename="../ui/map_preset_panel.py" line="248" />
-        <source>Are you sure you want to delete the preset '{name}'?</source>
-        <translation type="unfinished" />
-    </message>
-    <message>
-        <location filename="../ui/base_overpass_panel.py" line="172" />
-        <source>Successful query, {} layer(s) has been loaded.</source>
-        <translation>성공적인 쿼리, {} 레이어가 로드되었습니다</translation>
-    </message>
-    <message>
-        <location filename="../ui/base_overpass_panel.py" line="176" />
-        <source>No result</source>
-        <translation>결과가 없습니다</translation>
-    </message>
-    <message>
-        <location filename="../ui/base_overpass_panel.py" line="178" />
-        <source>Successful query, but no OSM data matched the Overpass query on this Overpass server.</source>
-        <translation type="unfinished" />
-    </message>
-    <message>
-        <location filename="../ui/dialog.py" line="244" />
-        <source>A critical error occurred, this is the traceback:</source>
-        <translation>치명적인 오류가 발생했습니다. 이것은 역추적입니다:</translation>
-    </message>
-    <message>
-        <location filename="../ui/dialog.py" line="251" />
-        <source>Error in the QGIS log window, then the QuickOSM panel, copy/paste it and please report it, if you know how to copy/paste QGIS logs. Please check pinned tickets first.</source>
-        <translation type="unfinished" />
-    </message>
-    <message>
-        <location filename="../ui/dialog.py" line="298" />
-        <source>Open log panel</source>
-        <translation type="unfinished" />
-    </message>
-    <message>
-        <location filename="../ui/dialog.py" line="302" />
-        <source>More details</source>
-        <translation>자세한 내용은</translation>
     </message>
 </context><context>
     <name>BuildQueryBasedAlgorithm</name>

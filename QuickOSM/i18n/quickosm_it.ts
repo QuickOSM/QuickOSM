@@ -45,6 +45,11 @@
         <translation>Voglio leggere i diritti d'autore</translation>
     </message>
     <message>
+        <location filename="../tools/custom_logging.py" line="57" />
+        <source>Due to memory limitations on this machine, the plugin {} can not handle the full log</source>
+        <translation type="unfinished" />
+    </message>
+    <message>
         <location filename="../definitions/osm.py" line="88" />
         <source>And</source>
         <translation>And</translation>
@@ -55,69 +60,331 @@
         <translation>Or</translation>
     </message>
     <message>
-        <location filename="../quick_osm_processing/quickosm_process.py" line="73" />
-        <source>Fetch the OSM data that match the request.</source>
-        <translation>Recupera i dati OSM che corrispondono alla richiesta.</translation>
+        <location filename="../ui/map_preset_panel.py" line="58" />
+        <location filename="../ui/quick_query_panel.py" line="79" />
+        <source>In</source>
+        <translation>In</translation>
     </message>
     <message>
-        <location filename="../quick_osm_processing/quickosm_process.py" line="90" />
-        <source>Output file</source>
-        <translation>File in uscita</translation>
+        <location filename="../ui/map_preset_panel.py" line="59" />
+        <location filename="../ui/quick_query_panel.py" line="80" />
+        <source>Around</source>
+        <translation>Attorno</translation>
     </message>
     <message>
-        <location filename="../quick_osm_processing/advanced/decorate_output.py" line="67" />
-        <location filename="../quick_osm_processing/quickosm_process.py" line="93" />
-        <source>Path where the file will be download.</source>
-        <translation>Percorso in cui verrà scaricato il file.</translation>
+        <location filename="../ui/query_panel.py" line="49" />
+        <location filename="../ui/map_preset_panel.py" line="60" />
+        <location filename="../ui/quick_query_panel.py" line="81" />
+        <source>Canvas Extent</source>
+        <translation>Area Visualizzata</translation>
     </message>
     <message>
-        <location filename="../quick_osm_processing/advanced/open_osm_file.py" line="90" />
-        <location filename="../quick_osm_processing/quickosm_process.py" line="100" />
-        <source>Output points</source>
-        <translation>Punti in uscita</translation>
+        <location filename="../ui/query_panel.py" line="50" />
+        <location filename="../ui/map_preset_panel.py" line="61" />
+        <location filename="../ui/quick_query_panel.py" line="82" />
+        <source>Layer Extent</source>
+        <translation>Estensione del layer</translation>
     </message>
     <message>
-        <location filename="../quick_osm_processing/advanced/open_osm_file.py" line="95" />
-        <location filename="../quick_osm_processing/quickosm_process.py" line="105" />
-        <source>Output lines</source>
-        <translation>Linee in uscita</translation>
+        <location filename="../ui/map_preset_panel.py" line="62" />
+        <location filename="../ui/quick_query_panel.py" line="83" />
+        <source>Not Spatial</source>
+        <translation>Non spaziale</translation>
     </message>
     <message>
-        <location filename="../quick_osm_processing/advanced/open_osm_file.py" line="101" />
-        <location filename="../quick_osm_processing/quickosm_process.py" line="111" />
-        <source>Output multilinestrings</source>
-        <translation>Multilinestring in uscita</translation>
+        <location filename="../ui/quick_query_panel.py" line="146" />
+        <source>Save query in a new preset</source>
+        <translation>Salva interrogazione in un nuovo preset</translation>
     </message>
     <message>
-        <location filename="../quick_osm_processing/advanced/open_osm_file.py" line="108" />
-        <location filename="../quick_osm_processing/quickosm_process.py" line="118" />
-        <source>Output multipolygons</source>
-        <translation>Multipoligoni in uscita</translation>
+        <location filename="../ui/quick_query_panel.py" line="151" />
+        <source>Save and add query to an existing preset</source>
+        <translation>Salva ed aggiunge interrogazione a preset esistente</translation>
     </message>
     <message>
-        <location filename="../quick_osm_processing/quickosm_process.py" line="220" />
-        <source>Download OSM data from a raw query</source>
-        <translation>Scarica dati OSM da una query raw</translation>
+        <location filename="../ui/quick_query_panel.py" line="202" />
+        <source>allKeys</source>
+        <translation>tutte le chiavi</translation>
     </message>
     <message>
-        <location filename="../quick_osm_processing/quickosm_process.py" line="265" />
-        <source>Download OSM data from a not spatial query</source>
-        <translation>Scarica dati OSM da una query non spaziale</translation>
+        <location filename="../ui/quick_query_panel.py" line="255" />
+        <source>Add in an existing preset</source>
+        <translation>Aggiunge in un preset esistente</translation>
     </message>
     <message>
-        <location filename="../quick_osm_processing/quickosm_process.py" line="311" />
-        <source>Download OSM data from query in an area</source>
-        <translation>Scarica dati OSM da una query in un'area</translation>
+        <location filename="../ui/quick_query_panel.py" line="256" />
+        <source>Please select the preset in which the query will be added:</source>
+        <translation>Scegliere il preset al quale l'interrogazione verrà aggiunta:</translation>
     </message>
     <message>
-        <location filename="../quick_osm_processing/quickosm_process.py" line="358" />
-        <source>Download OSM data from a query around an area</source>
-        <translation>Scarica dati OSM da una query intorno a un'area</translation>
+        <location filename="../ui/map_preset_panel.py" line="192" />
+        <location filename="../ui/map_preset_panel.py" line="115" />
+        <location filename="../ui/quick_query_panel.py" line="328" />
+        <source>No description</source>
+        <translation>Nessuna descrizione</translation>
     </message>
     <message>
-        <location filename="../quick_osm_processing/quickosm_process.py" line="406" />
-        <source>Download OSM data from a query in an extent</source>
-        <translation>Scarica dati OSM da una query in una estensione</translation>
+        <location filename="../ui/quick_query_panel.py" line="339" />
+        <source>Run the query</source>
+        <translation>Esegue la richiesta</translation>
+    </message>
+    <message>
+        <location filename="../ui/quick_query_panel.py" line="340" />
+        <source>Save this query in a new preset</source>
+        <translation>Salva questa interrogazione in un nuovo preset</translation>
+    </message>
+    <message>
+        <location filename="../ui/base_overpass_panel.py" line="172" />
+        <source>Successful query, {} layer(s) has been loaded.</source>
+        <translation>Richiesta riuscita, caricato/i {} layer.</translation>
+    </message>
+    <message>
+        <location filename="../ui/base_overpass_panel.py" line="176" />
+        <source>No result</source>
+        <translation>Nessun risultato</translation>
+    </message>
+    <message>
+        <location filename="../ui/base_overpass_panel.py" line="178" />
+        <source>Successful query, but no OSM data matched the Overpass query on this Overpass server.</source>
+        <translation type="unfinished" />
+    </message>
+    <message>
+        <location filename="../ui/osm_file_panel.py" line="51" />
+        <source>Select an OSM/PBF file</source>
+        <translation>Seleziona un file OSM/PBF</translation>
+    </message>
+    <message>
+        <location filename="../ui/osm_file_panel.py" line="57" />
+        <source>Select OSM conf file</source>
+        <translation>Seleziona un file OSM conf</translation>
+    </message>
+    <message>
+        <location filename="../ui/osm_file_panel.py" line="222" />
+        <location filename="../ui/osm_file_panel.py" line="210" />
+        <source>Successful query</source>
+        <translation>Richiesta riuscita</translation>
+    </message>
+    <message>
+        <location filename="../ui/map_preset_panel.py" line="203" />
+        <source>Edit the preset</source>
+        <translation>Modifica il preset</translation>
+    </message>
+    <message>
+        <location filename="../ui/map_preset_panel.py" line="204" />
+        <source>Delete the preset</source>
+        <translation>Cancella il preset</translation>
+    </message>
+    <message>
+        <location filename="../ui/map_preset_panel.py" line="247" />
+        <source>Confirm preset deletion</source>
+        <translation>Conferma cancellazione preset</translation>
+    </message>
+    <message>
+        <location filename="../ui/map_preset_panel.py" line="248" />
+        <source>Are you sure you want to delete the preset '{name}'?</source>
+        <translation>Sei sicuro di voler cancellare il preset '{name}'?</translation>
+    </message>
+    <message>
+        <location filename="../ui/configuration_panel.py" line="52" />
+        <source>Add a new server in the list</source>
+        <translation type="unfinished" />
+    </message>
+    <message>
+        <location filename="../ui/configuration_panel.py" line="53" />
+        <source>Remove the selected server from the list</source>
+        <translation type="unfinished" />
+    </message>
+    <message>
+        <location filename="../ui/configuration_panel.py" line="140" />
+        <source>Please enter a URL.</source>
+        <translation type="unfinished" />
+    </message>
+    <message>
+        <location filename="../ui/configuration_panel.py" line="144" />
+        <source>The URL must begin with “http”.</source>
+        <translation type="unfinished" />
+    </message>
+    <message>
+        <location filename="../ui/configuration_panel.py" line="149" />
+        <source>This server is already in the list.</source>
+        <translation type="unfinished" />
+    </message>
+    <message>
+        <location filename="../ui/configuration_panel.py" line="182" />
+        <source>Please select a server from the list.</source>
+        <translation type="unfinished" />
+    </message>
+    <message>
+        <location filename="../ui/custom_table.py" line="45" />
+        <source>Query on all keys</source>
+        <translation>Richiesta di qualsiasi chiave</translation>
+    </message>
+    <message>
+        <location filename="../ui/custom_table.py" line="46" />
+        <source>Query on all values</source>
+        <translation>Richiesta di qualsiasi valore</translation>
+    </message>
+    <message>
+        <location filename="../ui/custom_table.py" line="94" />
+        <source>Not mandatory. Ex: bakery</source>
+        <translation>Non obbligatorio. Es: panetteria</translation>
+    </message>
+    <message>
+        <location filename="../ui/custom_table.py" line="128" />
+        <source>Add a line below.</source>
+        <translation>Aggiunge una riga di seguito.</translation>
+    </message>
+    <message>
+        <location filename="../ui/custom_table.py" line="132" />
+        <source>Remove the line.</source>
+        <translation>Rimuove la linea.</translation>
+    </message>
+    <message>
+        <location filename="../ui/custom_table.py" line="143" />
+        <source>Set the type of multi-request. "And" verify both conditions. "Or" verify either of the conditions.</source>
+        <translation type="unfinished" />
+    </message>
+    <message>
+        <location filename="../ui/custom_table.py" line="160" />
+        <source>An OSM key to fetch. If empty, all keys will be fetched.</source>
+        <translation>Una chiave OSM da prelevare. Se vuoto, verranno richieste tutte le chiavi.</translation>
+    </message>
+    <message>
+        <location filename="../ui/custom_table.py" line="181" />
+        <source>An OSM value to fetch. If empty, all values will be fetched.</source>
+        <translation>Un valore OSM da prelevare. Se vuoto, verranno richiesti tutti i valori.</translation>
+    </message>
+    <message>
+        <location filename="../core/actions.py" line="119" />
+        <location filename="../ui/dialog.py" line="167" />
+        <source>Reload the query in a new file</source>
+        <translation>Ricarica l'interrogazione in un nuovo file</translation>
+    </message>
+    <message>
+        <location filename="../ui/dialog.py" line="244" />
+        <source>A critical error occurred, this is the traceback:</source>
+        <translation>Si è verificato un errore critico, questo è il traceback:</translation>
+    </message>
+    <message>
+        <location filename="../ui/dialog.py" line="251" />
+        <source>Error in the QGIS log window, then the QuickOSM panel, copy/paste it and please report it, if you know how to copy/paste QGIS logs. Please check pinned tickets first.</source>
+        <translation type="unfinished" />
+    </message>
+    <message>
+        <location filename="../ui/dialog.py" line="298" />
+        <source>Open log panel</source>
+        <translation>Apri il pannello dei log</translation>
+    </message>
+    <message>
+        <location filename="../ui/dialog.py" line="302" />
+        <source>More details</source>
+        <translation>Maggiori dettagli</translation>
+    </message>
+    <message>
+        <location filename="../ui/edit_preset.py" line="55" />
+        <source>Add a new query to the map preset</source>
+        <translation>Aggiunge una nuova query alla preimpostazione della mappa</translation>
+    </message>
+    <message>
+        <location filename="../ui/edit_preset.py" line="60" />
+        <source>Remove the selected query from the map preset</source>
+        <translation>Rimuove la query selezionata dalla preimpostazione della mappa.</translation>
+    </message>
+    <message>
+        <location filename="../ui/base_processing_panel.py" line="73" />
+        <location filename="../ui/edit_preset.py" line="79" />
+        <source>Save to temporary file</source>
+        <translation>Salva su file temporaneo</translation>
+    </message>
+    <message>
+        <location filename="../ui/edit_preset.py" line="115" />
+        <source>Rename</source>
+        <translation>Rinomina</translation>
+    </message>
+    <message>
+        <location filename="../ui/edit_preset.py" line="116" />
+        <source>Delete</source>
+        <translation>Cancella</translation>
+    </message>
+    <message>
+        <location filename="../ui/edit_preset.py" line="137" />
+        <source>You can associate predefined styles with layers. You need to add QML file(s) in this folder :</source>
+        <translation type="unfinished" />
+    </message>
+    <message>
+        <location filename="../ui/edit_preset.py" line="144" />
+        <source>The name of QML files must follow this convention</source>
+        <translation>Il nome dei file QML deve seguire questa convenzione</translation>
+    </message>
+    <message>
+        <location filename="../ui/edit_preset.py" line="147" />
+        <source>name of the preset</source>
+        <translation>nome della preimpostazione</translation>
+    </message>
+    <message>
+        <location filename="../ui/edit_preset.py" line="149" />
+        <source>name of the query</source>
+        <translation>nome della query</translation>
+    </message>
+    <message>
+        <location filename="../ui/edit_preset.py" line="151" />
+        <source>geometry</source>
+        <translation>geometria</translation>
+    </message>
+    <message>
+        <location filename="../ui/edit_preset.py" line="154" />
+        <source>These parameters are separated by '_' and the geometry must be one these values :</source>
+        <translation>Questi parametri sono separati da '_' e la geometria deve essere uno di questi valori:</translation>
+    </message>
+    <message>
+        <location filename="../ui/edit_preset.py" line="161" />
+        <source>For the current preset "{file_name}"</source>
+        <translation>Per la preimpostazione corrente "{file_name}"</translation>
+    </message>
+    <message>
+        <location filename="../ui/edit_preset.py" line="163" />
+        <source>and the current query "{query_name}"</source>
+        <translation>e la query corrente "{query_name}".</translation>
+    </message>
+    <message>
+        <location filename="../ui/edit_preset.py" line="165" />
+        <source>this is the list of filenames you can use</source>
+        <translation>questo è l'elenco dei nomi di file che si possono usare</translation>
+    </message>
+    <message>
+        <location filename="../core/utilities/query_saved.py" line="251" />
+        <location filename="../core/utilities/query_saved.py" line="229" />
+        <location filename="../core/utilities/query_saved.py" line="179" />
+        <location filename="../quick_osm_processing/build_input.py" line="100" />
+        <location filename="../ui/edit_preset.py" line="303" />
+        <location filename="../ui/edit_preset.py" line="258" />
+        <source>Query</source>
+        <translation>Richiesta</translation>
+    </message>
+    <message>
+        <location filename="../ui/edit_preset.py" line="283" />
+        <source>Confirm query deletion</source>
+        <translation>Conferma cancellazione query</translation>
+    </message>
+    <message>
+        <location filename="../ui/edit_preset.py" line="284" />
+        <source>Are you sure you want to delete the query '{name}'?</source>
+        <translation>Sei sicuro di voler cancellare la richiesta '{name}'?</translation>
+    </message>
+    <message>
+        <location filename="../ui/edit_preset.py" line="311" />
+        <source>Rename the query</source>
+        <translation>Rinomina la richiesta</translation>
+    </message>
+    <message>
+        <location filename="../ui/edit_preset.py" line="311" />
+        <source>New name:</source>
+        <translation>Nuovo nome:</translation>
+    </message>
+    <message>
+        <location filename="../ui/base_processing_panel.py" line="76" />
+        <source>Select a directory</source>
+        <translation>Seleziona una directory</translation>
     </message>
     <message>
         <location filename="../quick_osm_processing/build_input.py" line="51" />
@@ -138,16 +405,6 @@
         <location filename="../quick_osm_processing/build_input.py" line="63" />
         <source>The Overpass API server to use to build the encoded URL.</source>
         <translation>Il server API Overpass da usare per costruire l'URL codificato.</translation>
-    </message>
-    <message>
-        <location filename="../ui/edit_preset.py" line="303" />
-        <location filename="../ui/edit_preset.py" line="258" />
-        <location filename="../core/utilities/query_saved.py" line="251" />
-        <location filename="../core/utilities/query_saved.py" line="229" />
-        <location filename="../core/utilities/query_saved.py" line="179" />
-        <location filename="../quick_osm_processing/build_input.py" line="100" />
-        <source>Query</source>
-        <translation>Richiesta</translation>
     </message>
     <message>
         <location filename="../quick_osm_processing/build_input.py" line="102" />
@@ -235,17 +492,134 @@
         <translation>L'estensione come rettangolo da usare quando si costruisce la query.</translation>
     </message>
     <message>
+        <location filename="../quick_osm_processing/quickosm_process.py" line="73" />
+        <source>Fetch the OSM data that match the request.</source>
+        <translation>Recupera i dati OSM che corrispondono alla richiesta.</translation>
+    </message>
+    <message>
+        <location filename="../quick_osm_processing/quickosm_process.py" line="90" />
+        <source>Output file</source>
+        <translation>File in uscita</translation>
+    </message>
+    <message>
+        <location filename="../quick_osm_processing/advanced/decorate_output.py" line="67" />
+        <location filename="../quick_osm_processing/quickosm_process.py" line="93" />
+        <source>Path where the file will be download.</source>
+        <translation>Percorso in cui verrà scaricato il file.</translation>
+    </message>
+    <message>
+        <location filename="../quick_osm_processing/advanced/open_osm_file.py" line="90" />
+        <location filename="../quick_osm_processing/quickosm_process.py" line="100" />
+        <source>Output points</source>
+        <translation>Punti in uscita</translation>
+    </message>
+    <message>
+        <location filename="../quick_osm_processing/advanced/open_osm_file.py" line="95" />
+        <location filename="../quick_osm_processing/quickosm_process.py" line="105" />
+        <source>Output lines</source>
+        <translation>Linee in uscita</translation>
+    </message>
+    <message>
+        <location filename="../quick_osm_processing/advanced/open_osm_file.py" line="101" />
+        <location filename="../quick_osm_processing/quickosm_process.py" line="111" />
+        <source>Output multilinestrings</source>
+        <translation>Multilinestring in uscita</translation>
+    </message>
+    <message>
+        <location filename="../quick_osm_processing/advanced/open_osm_file.py" line="108" />
+        <location filename="../quick_osm_processing/quickosm_process.py" line="118" />
+        <source>Output multipolygons</source>
+        <translation>Multipoligoni in uscita</translation>
+    </message>
+    <message>
+        <location filename="../quick_osm_processing/quickosm_process.py" line="220" />
+        <source>Download OSM data from a raw query</source>
+        <translation>Scarica dati OSM da una query raw</translation>
+    </message>
+    <message>
+        <location filename="../quick_osm_processing/quickosm_process.py" line="265" />
+        <source>Download OSM data from a not spatial query</source>
+        <translation>Scarica dati OSM da una query non spaziale</translation>
+    </message>
+    <message>
+        <location filename="../quick_osm_processing/quickosm_process.py" line="311" />
+        <source>Download OSM data from query in an area</source>
+        <translation>Scarica dati OSM da una query in un'area</translation>
+    </message>
+    <message>
+        <location filename="../quick_osm_processing/quickosm_process.py" line="358" />
+        <source>Download OSM data from a query around an area</source>
+        <translation>Scarica dati OSM da una query intorno a un'area</translation>
+    </message>
+    <message>
+        <location filename="../quick_osm_processing/quickosm_process.py" line="406" />
+        <source>Download OSM data from a query in an extent</source>
+        <translation>Scarica dati OSM da una query in una estensione</translation>
+    </message>
+    <message>
+        <location filename="../quick_osm_processing/advanced/raw_query.py" line="21" />
+        <location filename="../quick_osm_processing/advanced/decorate_output.py" line="49" />
+        <location filename="../quick_osm_processing/advanced/open_osm_file.py" line="43" />
+        <location filename="../quick_osm_processing/advanced/build_query.py" line="36" />
+        <source>Advanced</source>
+        <translation>Avanzato</translation>
+    </message>
+    <message>
+        <location filename="../quick_osm_processing/advanced/raw_query.py" line="51" />
+        <location filename="../quick_osm_processing/advanced/build_query.py" line="57" />
+        <source>Query as encoded URL</source>
+        <translation>Richiesta come URL codificato</translation>
+    </message>
+    <message>
+        <location filename="../quick_osm_processing/advanced/raw_query.py" line="54" />
+        <location filename="../quick_osm_processing/advanced/build_query.py" line="60" />
+        <source>Raw query as OQL</source>
+        <translation>Richiesta grezza come OQL</translation>
+    </message>
+    <message>
+        <location filename="../quick_osm_processing/advanced/build_query.py" line="109" />
+        <source>Build query by attribute only</source>
+        <translation>Crea la richiesta solo dall’attributo</translation>
+    </message>
+    <message>
+        <location filename="../quick_osm_processing/advanced/build_query.py" line="129" />
+        <source>Build query inside an area</source>
+        <translation>Crea la richiesta all’interno di un’area</translation>
+    </message>
+    <message>
+        <location filename="../quick_osm_processing/advanced/build_query.py" line="149" />
+        <source>Build query around an area</source>
+        <translation>Crea la richiesta attorno ad un’area</translation>
+    </message>
+    <message>
+        <location filename="../quick_osm_processing/advanced/build_query.py" line="169" />
+        <source>Build query inside an extent</source>
+        <translation>Costruisci la richiesta all'interno di un’estensione</translation>
+    </message>
+    <message>
+        <location filename="../quick_osm_processing/advanced/open_osm_file.py" line="74" />
+        <source>The extension can be a OSM or PBF file.</source>
+        <translation>L'estensione può essere un file OSM o PBF</translation>
+    </message>
+    <message>
+        <location filename="../quick_osm_processing/advanced/open_osm_file.py" line="79" />
+        <source>OSM configuration</source>
+        <translation>Configurazione OSM</translation>
+    </message>
+    <message>
+        <location filename="../quick_osm_processing/advanced/open_osm_file.py" line="81" />
+        <source>The OGR OSM configuration file. This file is used to customize the import process about OSM tags. You should read the OGR documentation {url}</source>
+        <translation type="unfinished" />
+    </message>
+    <message>
+        <location filename="../quick_osm_processing/advanced/open_osm_file.py" line="115" />
+        <source>Output other relations</source>
+        <translation>Altre relazioni in uscita</translation>
+    </message>
+    <message>
         <location filename="../quick_osm_processing/advanced/decorate_output.py" line="44" />
         <source>Decorate a layer from OSM</source>
         <translation>Decora un layer da OSM</translation>
-    </message>
-    <message>
-        <location filename="../quick_osm_processing/advanced/build_query.py" line="36" />
-        <location filename="../quick_osm_processing/advanced/raw_query.py" line="21" />
-        <location filename="../quick_osm_processing/advanced/open_osm_file.py" line="43" />
-        <location filename="../quick_osm_processing/advanced/decorate_output.py" line="49" />
-        <source>Advanced</source>
-        <translation>Avanzato</translation>
     </message>
     <message>
         <location filename="../quick_osm_processing/advanced/decorate_output.py" line="58" />
@@ -269,61 +643,25 @@
         <translation>© OpenStreetMap contributors</translation>
     </message>
     <message>
-        <location filename="../quick_osm_processing/advanced/open_osm_file.py" line="74" />
-        <source>The extension can be a OSM or PBF file.</source>
-        <translation>L'estensione può essere un file OSM o PBF</translation>
-    </message>
-    <message>
-        <location filename="../quick_osm_processing/advanced/open_osm_file.py" line="79" />
-        <source>OSM configuration</source>
-        <translation>Configurazione OSM</translation>
-    </message>
-    <message>
-        <location filename="../quick_osm_processing/advanced/open_osm_file.py" line="81" />
-        <source>The OGR OSM configuration file. This file is used to customize the import process about OSM tags. You should read the OGR documentation {url}</source>
-        <translation type="unfinished" />
-    </message>
-    <message>
-        <location filename="../quick_osm_processing/advanced/open_osm_file.py" line="115" />
-        <source>Output other relations</source>
-        <translation>Altre relazioni in uscita</translation>
-    </message>
-    <message>
         <location filename="../quick_osm_processing/advanced/raw_query.py" line="36" />
         <source>Build raw query</source>
         <translation>Costruisci una richiesta raw</translation>
     </message>
     <message>
-        <location filename="../quick_osm_processing/advanced/build_query.py" line="57" />
-        <location filename="../quick_osm_processing/advanced/raw_query.py" line="51" />
-        <source>Query as encoded URL</source>
-        <translation>Richiesta come URL codificato</translation>
+        <location filename="../core/query_preparation.py" line="142" />
+        <location filename="../core/query_preparation.py" line="121" />
+        <source>Missing extent parameter.</source>
+        <translation>Parametro estensione mancante.</translation>
     </message>
     <message>
-        <location filename="../quick_osm_processing/advanced/build_query.py" line="60" />
-        <location filename="../quick_osm_processing/advanced/raw_query.py" line="54" />
-        <source>Raw query as OQL</source>
-        <translation>Richiesta grezza come OQL</translation>
+        <location filename="../core/query_preparation.py" line="168" />
+        <source>The area was overlapping the WGS84 limits ±90 / ±180 degrees. The query has been restricted.</source>
+        <translation type="unfinished" />
     </message>
     <message>
-        <location filename="../quick_osm_processing/advanced/build_query.py" line="109" />
-        <source>Build query by attribute only</source>
-        <translation>Crea la richiesta solo dall’attributo</translation>
-    </message>
-    <message>
-        <location filename="../quick_osm_processing/advanced/build_query.py" line="129" />
-        <source>Build query inside an area</source>
-        <translation>Crea la richiesta all’interno di un’area</translation>
-    </message>
-    <message>
-        <location filename="../quick_osm_processing/advanced/build_query.py" line="149" />
-        <source>Build query around an area</source>
-        <translation>Crea la richiesta attorno ad un’area</translation>
-    </message>
-    <message>
-        <location filename="../quick_osm_processing/advanced/build_query.py" line="169" />
-        <source>Build query inside an extent</source>
-        <translation>Costruisci la richiesta all'interno di un’estensione</translation>
+        <location filename="../core/query_preparation.py" line="226" />
+        <source>WKT detected for "geocodeCoords".</source>
+        <translation>WKT rilevato per "geocodeCoords".</translation>
     </message>
     <message>
         <location filename="../core/query_factory.py" line="26" />
@@ -467,12 +805,6 @@
         <translation>Sketchline</translation>
     </message>
     <message>
-        <location filename="../ui/dialog.py" line="167" />
-        <location filename="../core/actions.py" line="119" />
-        <source>Reload the query in a new file</source>
-        <translation>Ricarica l'interrogazione in un nuovo file</translation>
-    </message>
-    <message>
         <location filename="../core/actions.py" line="155" />
         <source>Sorry, the field '{fieldname}' is empty for this entity.</source>
         <translation>Spiacenti, il campo “{fieldname}” è vuoto per questa entità.</translation>
@@ -486,32 +818,6 @@
         <location filename="../core/actions.py" line="218" />
         <source>Sorry, this field is empty for this entity.</source>
         <translation>Spiacenti, il campo è vuoto per questa entità.</translation>
-    </message>
-    <message>
-        <location filename="../core/process.py" line="233" />
-        <source>Prepare outputs</source>
-        <translation>Prepara gli output</translation>
-    </message>
-    <message>
-        <location filename="../core/process.py" line="238" />
-        <source>Downloading data from Overpass {server_name}</source>
-        <translation>Scaricamento dei dati da Overpass {server_name}</translation>
-    </message>
-    <message>
-        <location filename="../core/query_preparation.py" line="142" />
-        <location filename="../core/query_preparation.py" line="121" />
-        <source>Missing extent parameter.</source>
-        <translation>Parametro estensione mancante.</translation>
-    </message>
-    <message>
-        <location filename="../core/query_preparation.py" line="168" />
-        <source>The area was overlapping the WGS84 limits ±90 / ±180 degrees. The query has been restricted.</source>
-        <translation type="unfinished" />
-    </message>
-    <message>
-        <location filename="../core/query_preparation.py" line="226" />
-        <source>WKT detected for "geocodeCoords".</source>
-        <translation>WKT rilevato per "geocodeCoords".</translation>
     </message>
     <message>
         <location filename="../core/exceptions.py" line="46" />
@@ -614,6 +920,16 @@
         <translation>Nessun output selezionato. Selezionarne uno.</translation>
     </message>
     <message>
+        <location filename="../core/process.py" line="233" />
+        <source>Prepare outputs</source>
+        <translation>Prepara gli output</translation>
+    </message>
+    <message>
+        <location filename="../core/process.py" line="238" />
+        <source>Downloading data from Overpass {server_name}</source>
+        <translation>Scaricamento dei dati da Overpass {server_name}</translation>
+    </message>
+    <message>
         <location filename="../core/utilities/tools.py" line="92" />
         <source>Error with the Processing plugin</source>
         <translation>Errore con il plugin Processing</translation>
@@ -637,322 +953,6 @@
         <location filename="../core/parser/osm_parser.py" line="124" />
         <source>Parsing layer : {layer}</source>
         <translation>Analisi del layer: {layer}</translation>
-    </message>
-    <message>
-        <location filename="../tools/custom_logging.py" line="57" />
-        <source>Due to memory limitations on this machine, the plugin {} can not handle the full log</source>
-        <translation type="unfinished" />
-    </message>
-    <message>
-        <location filename="../ui/custom_table.py" line="45" />
-        <source>Query on all keys</source>
-        <translation>Richiesta di qualsiasi chiave</translation>
-    </message>
-    <message>
-        <location filename="../ui/custom_table.py" line="46" />
-        <source>Query on all values</source>
-        <translation>Richiesta di qualsiasi valore</translation>
-    </message>
-    <message>
-        <location filename="../ui/custom_table.py" line="94" />
-        <source>Not mandatory. Ex: bakery</source>
-        <translation>Non obbligatorio. Es: panetteria</translation>
-    </message>
-    <message>
-        <location filename="../ui/custom_table.py" line="128" />
-        <source>Add a line below.</source>
-        <translation>Aggiunge una riga di seguito.</translation>
-    </message>
-    <message>
-        <location filename="../ui/custom_table.py" line="132" />
-        <source>Remove the line.</source>
-        <translation>Rimuove la linea.</translation>
-    </message>
-    <message>
-        <location filename="../ui/custom_table.py" line="143" />
-        <source>Set the type of multi-request. "And" verify both conditions. "Or" verify either of the conditions.</source>
-        <translation type="unfinished" />
-    </message>
-    <message>
-        <location filename="../ui/custom_table.py" line="160" />
-        <source>An OSM key to fetch. If empty, all keys will be fetched.</source>
-        <translation>Una chiave OSM da prelevare. Se vuoto, verranno richieste tutte le chiavi.</translation>
-    </message>
-    <message>
-        <location filename="../ui/custom_table.py" line="181" />
-        <source>An OSM value to fetch. If empty, all values will be fetched.</source>
-        <translation>Un valore OSM da prelevare. Se vuoto, verranno richiesti tutti i valori.</translation>
-    </message>
-    <message>
-        <location filename="../ui/map_preset_panel.py" line="60" />
-        <location filename="../ui/quick_query_panel.py" line="81" />
-        <location filename="../ui/query_panel.py" line="49" />
-        <source>Canvas Extent</source>
-        <translation>Area Visualizzata</translation>
-    </message>
-    <message>
-        <location filename="../ui/map_preset_panel.py" line="61" />
-        <location filename="../ui/quick_query_panel.py" line="82" />
-        <location filename="../ui/query_panel.py" line="50" />
-        <source>Layer Extent</source>
-        <translation>Estensione del layer</translation>
-    </message>
-    <message>
-        <location filename="../ui/osm_file_panel.py" line="51" />
-        <source>Select an OSM/PBF file</source>
-        <translation>Seleziona un file OSM/PBF</translation>
-    </message>
-    <message>
-        <location filename="../ui/osm_file_panel.py" line="57" />
-        <source>Select OSM conf file</source>
-        <translation>Seleziona un file OSM conf</translation>
-    </message>
-    <message>
-        <location filename="../ui/osm_file_panel.py" line="222" />
-        <location filename="../ui/osm_file_panel.py" line="210" />
-        <source>Successful query</source>
-        <translation>Richiesta riuscita</translation>
-    </message>
-    <message>
-        <location filename="../ui/edit_preset.py" line="55" />
-        <source>Add a new query to the map preset</source>
-        <translation>Aggiunge una nuova query alla preimpostazione della mappa</translation>
-    </message>
-    <message>
-        <location filename="../ui/edit_preset.py" line="60" />
-        <source>Remove the selected query from the map preset</source>
-        <translation>Rimuove la query selezionata dalla preimpostazione della mappa.</translation>
-    </message>
-    <message>
-        <location filename="../ui/base_processing_panel.py" line="73" />
-        <location filename="../ui/edit_preset.py" line="79" />
-        <source>Save to temporary file</source>
-        <translation>Salva su file temporaneo</translation>
-    </message>
-    <message>
-        <location filename="../ui/edit_preset.py" line="115" />
-        <source>Rename</source>
-        <translation>Rinomina</translation>
-    </message>
-    <message>
-        <location filename="../ui/edit_preset.py" line="116" />
-        <source>Delete</source>
-        <translation>Cancella</translation>
-    </message>
-    <message>
-        <location filename="../ui/edit_preset.py" line="137" />
-        <source>You can associate predefined styles with layers. You need to add QML file(s) in this folder :</source>
-        <translation type="unfinished" />
-    </message>
-    <message>
-        <location filename="../ui/edit_preset.py" line="144" />
-        <source>The name of QML files must follow this convention</source>
-        <translation>Il nome dei file QML deve seguire questa convenzione</translation>
-    </message>
-    <message>
-        <location filename="../ui/edit_preset.py" line="147" />
-        <source>name of the preset</source>
-        <translation>nome della preimpostazione</translation>
-    </message>
-    <message>
-        <location filename="../ui/edit_preset.py" line="149" />
-        <source>name of the query</source>
-        <translation>nome della query</translation>
-    </message>
-    <message>
-        <location filename="../ui/edit_preset.py" line="151" />
-        <source>geometry</source>
-        <translation>geometria</translation>
-    </message>
-    <message>
-        <location filename="../ui/edit_preset.py" line="154" />
-        <source>These parameters are separated by '_' and the geometry must be one these values :</source>
-        <translation>Questi parametri sono separati da '_' e la geometria deve essere uno di questi valori:</translation>
-    </message>
-    <message>
-        <location filename="../ui/edit_preset.py" line="161" />
-        <source>For the current preset "{file_name}"</source>
-        <translation>Per la preimpostazione corrente "{file_name}"</translation>
-    </message>
-    <message>
-        <location filename="../ui/edit_preset.py" line="163" />
-        <source>and the current query "{query_name}"</source>
-        <translation>e la query corrente "{query_name}".</translation>
-    </message>
-    <message>
-        <location filename="../ui/edit_preset.py" line="165" />
-        <source>this is the list of filenames you can use</source>
-        <translation>questo è l'elenco dei nomi di file che si possono usare</translation>
-    </message>
-    <message>
-        <location filename="../ui/edit_preset.py" line="283" />
-        <source>Confirm query deletion</source>
-        <translation>Conferma cancellazione query</translation>
-    </message>
-    <message>
-        <location filename="../ui/edit_preset.py" line="284" />
-        <source>Are you sure you want to delete the query '{name}'?</source>
-        <translation>Sei sicuro di voler cancellare la richiesta '{name}'?</translation>
-    </message>
-    <message>
-        <location filename="../ui/edit_preset.py" line="311" />
-        <source>Rename the query</source>
-        <translation>Rinomina la richiesta</translation>
-    </message>
-    <message>
-        <location filename="../ui/edit_preset.py" line="311" />
-        <source>New name:</source>
-        <translation>Nuovo nome:</translation>
-    </message>
-    <message>
-        <location filename="../ui/configuration_panel.py" line="52" />
-        <source>Add a new server in the list</source>
-        <translation type="unfinished" />
-    </message>
-    <message>
-        <location filename="../ui/configuration_panel.py" line="53" />
-        <source>Remove the selected server from the list</source>
-        <translation type="unfinished" />
-    </message>
-    <message>
-        <location filename="../ui/configuration_panel.py" line="140" />
-        <source>Please enter a URL.</source>
-        <translation type="unfinished" />
-    </message>
-    <message>
-        <location filename="../ui/configuration_panel.py" line="144" />
-        <source>The URL must begin with “http”.</source>
-        <translation type="unfinished" />
-    </message>
-    <message>
-        <location filename="../ui/configuration_panel.py" line="149" />
-        <source>This server is already in the list.</source>
-        <translation type="unfinished" />
-    </message>
-    <message>
-        <location filename="../ui/configuration_panel.py" line="182" />
-        <source>Please select a server from the list.</source>
-        <translation type="unfinished" />
-    </message>
-    <message>
-        <location filename="../ui/base_processing_panel.py" line="76" />
-        <source>Select a directory</source>
-        <translation>Seleziona una directory</translation>
-    </message>
-    <message>
-        <location filename="../ui/map_preset_panel.py" line="58" />
-        <location filename="../ui/quick_query_panel.py" line="79" />
-        <source>In</source>
-        <translation>In</translation>
-    </message>
-    <message>
-        <location filename="../ui/map_preset_panel.py" line="59" />
-        <location filename="../ui/quick_query_panel.py" line="80" />
-        <source>Around</source>
-        <translation>Attorno</translation>
-    </message>
-    <message>
-        <location filename="../ui/map_preset_panel.py" line="62" />
-        <location filename="../ui/quick_query_panel.py" line="83" />
-        <source>Not Spatial</source>
-        <translation>Non spaziale</translation>
-    </message>
-    <message>
-        <location filename="../ui/quick_query_panel.py" line="146" />
-        <source>Save query in a new preset</source>
-        <translation>Salva interrogazione in un nuovo preset</translation>
-    </message>
-    <message>
-        <location filename="../ui/quick_query_panel.py" line="151" />
-        <source>Save and add query to an existing preset</source>
-        <translation>Salva ed aggiunge interrogazione a preset esistente</translation>
-    </message>
-    <message>
-        <location filename="../ui/quick_query_panel.py" line="202" />
-        <source>allKeys</source>
-        <translation>tutte le chiavi</translation>
-    </message>
-    <message>
-        <location filename="../ui/quick_query_panel.py" line="255" />
-        <source>Add in an existing preset</source>
-        <translation>Aggiunge in un preset esistente</translation>
-    </message>
-    <message>
-        <location filename="../ui/quick_query_panel.py" line="256" />
-        <source>Please select the preset in which the query will be added:</source>
-        <translation>Scegliere il preset al quale l'interrogazione verrà aggiunta:</translation>
-    </message>
-    <message>
-        <location filename="../ui/map_preset_panel.py" line="192" />
-        <location filename="../ui/map_preset_panel.py" line="115" />
-        <location filename="../ui/quick_query_panel.py" line="328" />
-        <source>No description</source>
-        <translation>Nessuna descrizione</translation>
-    </message>
-    <message>
-        <location filename="../ui/quick_query_panel.py" line="339" />
-        <source>Run the query</source>
-        <translation>Esegue la richiesta</translation>
-    </message>
-    <message>
-        <location filename="../ui/quick_query_panel.py" line="340" />
-        <source>Save this query in a new preset</source>
-        <translation>Salva questa interrogazione in un nuovo preset</translation>
-    </message>
-    <message>
-        <location filename="../ui/map_preset_panel.py" line="203" />
-        <source>Edit the preset</source>
-        <translation>Modifica il preset</translation>
-    </message>
-    <message>
-        <location filename="../ui/map_preset_panel.py" line="204" />
-        <source>Delete the preset</source>
-        <translation>Cancella il preset</translation>
-    </message>
-    <message>
-        <location filename="../ui/map_preset_panel.py" line="247" />
-        <source>Confirm preset deletion</source>
-        <translation>Conferma cancellazione preset</translation>
-    </message>
-    <message>
-        <location filename="../ui/map_preset_panel.py" line="248" />
-        <source>Are you sure you want to delete the preset '{name}'?</source>
-        <translation>Sei sicuro di voler cancellare il preset '{name}'?</translation>
-    </message>
-    <message>
-        <location filename="../ui/base_overpass_panel.py" line="172" />
-        <source>Successful query, {} layer(s) has been loaded.</source>
-        <translation>Richiesta riuscita, caricato/i {} layer.</translation>
-    </message>
-    <message>
-        <location filename="../ui/base_overpass_panel.py" line="176" />
-        <source>No result</source>
-        <translation>Nessun risultato</translation>
-    </message>
-    <message>
-        <location filename="../ui/base_overpass_panel.py" line="178" />
-        <source>Successful query, but no OSM data matched the Overpass query on this Overpass server.</source>
-        <translation type="unfinished" />
-    </message>
-    <message>
-        <location filename="../ui/dialog.py" line="244" />
-        <source>A critical error occurred, this is the traceback:</source>
-        <translation>Si è verificato un errore critico, questo è il traceback:</translation>
-    </message>
-    <message>
-        <location filename="../ui/dialog.py" line="251" />
-        <source>Error in the QGIS log window, then the QuickOSM panel, copy/paste it and please report it, if you know how to copy/paste QGIS logs. Please check pinned tickets first.</source>
-        <translation type="unfinished" />
-    </message>
-    <message>
-        <location filename="../ui/dialog.py" line="298" />
-        <source>Open log panel</source>
-        <translation>Apri il pannello dei log</translation>
-    </message>
-    <message>
-        <location filename="../ui/dialog.py" line="302" />
-        <source>More details</source>
-        <translation>Maggiori dettagli</translation>
     </message>
 </context><context>
     <name>BuildQueryBasedAlgorithm</name>

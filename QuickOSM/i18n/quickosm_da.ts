@@ -45,6 +45,11 @@
         <translation type="unfinished" />
     </message>
     <message>
+        <location filename="../tools/custom_logging.py" line="57" />
+        <source>Due to memory limitations on this machine, the plugin {} can not handle the full log</source>
+        <translation type="unfinished" />
+    </message>
+    <message>
         <location filename="../definitions/osm.py" line="88" />
         <source>And</source>
         <translation type="unfinished" />
@@ -55,68 +60,330 @@
         <translation type="unfinished" />
     </message>
     <message>
-        <location filename="../quick_osm_processing/quickosm_process.py" line="73" />
-        <source>Fetch the OSM data that match the request.</source>
+        <location filename="../ui/map_preset_panel.py" line="58" />
+        <location filename="../ui/quick_query_panel.py" line="79" />
+        <source>In</source>
         <translation type="unfinished" />
     </message>
     <message>
-        <location filename="../quick_osm_processing/quickosm_process.py" line="90" />
-        <source>Output file</source>
+        <location filename="../ui/map_preset_panel.py" line="59" />
+        <location filename="../ui/quick_query_panel.py" line="80" />
+        <source>Around</source>
         <translation type="unfinished" />
     </message>
     <message>
-        <location filename="../quick_osm_processing/advanced/decorate_output.py" line="67" />
-        <location filename="../quick_osm_processing/quickosm_process.py" line="93" />
-        <source>Path where the file will be download.</source>
+        <location filename="../ui/query_panel.py" line="49" />
+        <location filename="../ui/map_preset_panel.py" line="60" />
+        <location filename="../ui/quick_query_panel.py" line="81" />
+        <source>Canvas Extent</source>
         <translation type="unfinished" />
     </message>
     <message>
-        <location filename="../quick_osm_processing/advanced/open_osm_file.py" line="90" />
-        <location filename="../quick_osm_processing/quickosm_process.py" line="100" />
-        <source>Output points</source>
+        <location filename="../ui/query_panel.py" line="50" />
+        <location filename="../ui/map_preset_panel.py" line="61" />
+        <location filename="../ui/quick_query_panel.py" line="82" />
+        <source>Layer Extent</source>
         <translation type="unfinished" />
     </message>
     <message>
-        <location filename="../quick_osm_processing/advanced/open_osm_file.py" line="95" />
-        <location filename="../quick_osm_processing/quickosm_process.py" line="105" />
-        <source>Output lines</source>
+        <location filename="../ui/map_preset_panel.py" line="62" />
+        <location filename="../ui/quick_query_panel.py" line="83" />
+        <source>Not Spatial</source>
         <translation type="unfinished" />
     </message>
     <message>
-        <location filename="../quick_osm_processing/advanced/open_osm_file.py" line="101" />
-        <location filename="../quick_osm_processing/quickosm_process.py" line="111" />
-        <source>Output multilinestrings</source>
+        <location filename="../ui/quick_query_panel.py" line="146" />
+        <source>Save query in a new preset</source>
         <translation type="unfinished" />
     </message>
     <message>
-        <location filename="../quick_osm_processing/advanced/open_osm_file.py" line="108" />
-        <location filename="../quick_osm_processing/quickosm_process.py" line="118" />
-        <source>Output multipolygons</source>
+        <location filename="../ui/quick_query_panel.py" line="151" />
+        <source>Save and add query to an existing preset</source>
         <translation type="unfinished" />
     </message>
     <message>
-        <location filename="../quick_osm_processing/quickosm_process.py" line="220" />
-        <source>Download OSM data from a raw query</source>
+        <location filename="../ui/quick_query_panel.py" line="202" />
+        <source>allKeys</source>
         <translation type="unfinished" />
     </message>
     <message>
-        <location filename="../quick_osm_processing/quickosm_process.py" line="265" />
-        <source>Download OSM data from a not spatial query</source>
+        <location filename="../ui/quick_query_panel.py" line="255" />
+        <source>Add in an existing preset</source>
         <translation type="unfinished" />
     </message>
     <message>
-        <location filename="../quick_osm_processing/quickosm_process.py" line="311" />
-        <source>Download OSM data from query in an area</source>
+        <location filename="../ui/quick_query_panel.py" line="256" />
+        <source>Please select the preset in which the query will be added:</source>
         <translation type="unfinished" />
     </message>
     <message>
-        <location filename="../quick_osm_processing/quickosm_process.py" line="358" />
-        <source>Download OSM data from a query around an area</source>
+        <location filename="../ui/map_preset_panel.py" line="192" />
+        <location filename="../ui/map_preset_panel.py" line="115" />
+        <location filename="../ui/quick_query_panel.py" line="328" />
+        <source>No description</source>
         <translation type="unfinished" />
     </message>
     <message>
-        <location filename="../quick_osm_processing/quickosm_process.py" line="406" />
-        <source>Download OSM data from a query in an extent</source>
+        <location filename="../ui/quick_query_panel.py" line="339" />
+        <source>Run the query</source>
+        <translation type="unfinished" />
+    </message>
+    <message>
+        <location filename="../ui/quick_query_panel.py" line="340" />
+        <source>Save this query in a new preset</source>
+        <translation type="unfinished" />
+    </message>
+    <message>
+        <location filename="../ui/base_overpass_panel.py" line="172" />
+        <source>Successful query, {} layer(s) has been loaded.</source>
+        <translation type="unfinished" />
+    </message>
+    <message>
+        <location filename="../ui/base_overpass_panel.py" line="176" />
+        <source>No result</source>
+        <translation type="unfinished" />
+    </message>
+    <message>
+        <location filename="../ui/base_overpass_panel.py" line="178" />
+        <source>Successful query, but no OSM data matched the Overpass query on this Overpass server.</source>
+        <translation type="unfinished" />
+    </message>
+    <message>
+        <location filename="../ui/osm_file_panel.py" line="51" />
+        <source>Select an OSM/PBF file</source>
+        <translation type="unfinished" />
+    </message>
+    <message>
+        <location filename="../ui/osm_file_panel.py" line="57" />
+        <source>Select OSM conf file</source>
+        <translation type="unfinished" />
+    </message>
+    <message>
+        <location filename="../ui/osm_file_panel.py" line="222" />
+        <location filename="../ui/osm_file_panel.py" line="210" />
+        <source>Successful query</source>
+        <translation type="unfinished" />
+    </message>
+    <message>
+        <location filename="../ui/map_preset_panel.py" line="203" />
+        <source>Edit the preset</source>
+        <translation type="unfinished" />
+    </message>
+    <message>
+        <location filename="../ui/map_preset_panel.py" line="204" />
+        <source>Delete the preset</source>
+        <translation type="unfinished" />
+    </message>
+    <message>
+        <location filename="../ui/map_preset_panel.py" line="247" />
+        <source>Confirm preset deletion</source>
+        <translation type="unfinished" />
+    </message>
+    <message>
+        <location filename="../ui/map_preset_panel.py" line="248" />
+        <source>Are you sure you want to delete the preset '{name}'?</source>
+        <translation type="unfinished" />
+    </message>
+    <message>
+        <location filename="../ui/configuration_panel.py" line="52" />
+        <source>Add a new server in the list</source>
+        <translation type="unfinished" />
+    </message>
+    <message>
+        <location filename="../ui/configuration_panel.py" line="53" />
+        <source>Remove the selected server from the list</source>
+        <translation type="unfinished" />
+    </message>
+    <message>
+        <location filename="../ui/configuration_panel.py" line="140" />
+        <source>Please enter a URL.</source>
+        <translation type="unfinished" />
+    </message>
+    <message>
+        <location filename="../ui/configuration_panel.py" line="144" />
+        <source>The URL must begin with “http”.</source>
+        <translation type="unfinished" />
+    </message>
+    <message>
+        <location filename="../ui/configuration_panel.py" line="149" />
+        <source>This server is already in the list.</source>
+        <translation type="unfinished" />
+    </message>
+    <message>
+        <location filename="../ui/configuration_panel.py" line="182" />
+        <source>Please select a server from the list.</source>
+        <translation type="unfinished" />
+    </message>
+    <message>
+        <location filename="../ui/custom_table.py" line="45" />
+        <source>Query on all keys</source>
+        <translation type="unfinished" />
+    </message>
+    <message>
+        <location filename="../ui/custom_table.py" line="46" />
+        <source>Query on all values</source>
+        <translation type="unfinished" />
+    </message>
+    <message>
+        <location filename="../ui/custom_table.py" line="94" />
+        <source>Not mandatory. Ex: bakery</source>
+        <translation type="unfinished" />
+    </message>
+    <message>
+        <location filename="../ui/custom_table.py" line="128" />
+        <source>Add a line below.</source>
+        <translation type="unfinished" />
+    </message>
+    <message>
+        <location filename="../ui/custom_table.py" line="132" />
+        <source>Remove the line.</source>
+        <translation type="unfinished" />
+    </message>
+    <message>
+        <location filename="../ui/custom_table.py" line="143" />
+        <source>Set the type of multi-request. "And" verify both conditions. "Or" verify either of the conditions.</source>
+        <translation type="unfinished" />
+    </message>
+    <message>
+        <location filename="../ui/custom_table.py" line="160" />
+        <source>An OSM key to fetch. If empty, all keys will be fetched.</source>
+        <translation type="unfinished" />
+    </message>
+    <message>
+        <location filename="../ui/custom_table.py" line="181" />
+        <source>An OSM value to fetch. If empty, all values will be fetched.</source>
+        <translation type="unfinished" />
+    </message>
+    <message>
+        <location filename="../core/actions.py" line="119" />
+        <location filename="../ui/dialog.py" line="167" />
+        <source>Reload the query in a new file</source>
+        <translation type="unfinished" />
+    </message>
+    <message>
+        <location filename="../ui/dialog.py" line="244" />
+        <source>A critical error occurred, this is the traceback:</source>
+        <translation type="unfinished" />
+    </message>
+    <message>
+        <location filename="../ui/dialog.py" line="251" />
+        <source>Error in the QGIS log window, then the QuickOSM panel, copy/paste it and please report it, if you know how to copy/paste QGIS logs. Please check pinned tickets first.</source>
+        <translation type="unfinished" />
+    </message>
+    <message>
+        <location filename="../ui/dialog.py" line="298" />
+        <source>Open log panel</source>
+        <translation type="unfinished" />
+    </message>
+    <message>
+        <location filename="../ui/dialog.py" line="302" />
+        <source>More details</source>
+        <translation type="unfinished" />
+    </message>
+    <message>
+        <location filename="../ui/edit_preset.py" line="55" />
+        <source>Add a new query to the map preset</source>
+        <translation type="unfinished" />
+    </message>
+    <message>
+        <location filename="../ui/edit_preset.py" line="60" />
+        <source>Remove the selected query from the map preset</source>
+        <translation type="unfinished" />
+    </message>
+    <message>
+        <location filename="../ui/base_processing_panel.py" line="73" />
+        <location filename="../ui/edit_preset.py" line="79" />
+        <source>Save to temporary file</source>
+        <translation type="unfinished" />
+    </message>
+    <message>
+        <location filename="../ui/edit_preset.py" line="115" />
+        <source>Rename</source>
+        <translation type="unfinished" />
+    </message>
+    <message>
+        <location filename="../ui/edit_preset.py" line="116" />
+        <source>Delete</source>
+        <translation type="unfinished" />
+    </message>
+    <message>
+        <location filename="../ui/edit_preset.py" line="137" />
+        <source>You can associate predefined styles with layers. You need to add QML file(s) in this folder :</source>
+        <translation type="unfinished" />
+    </message>
+    <message>
+        <location filename="../ui/edit_preset.py" line="144" />
+        <source>The name of QML files must follow this convention</source>
+        <translation type="unfinished" />
+    </message>
+    <message>
+        <location filename="../ui/edit_preset.py" line="147" />
+        <source>name of the preset</source>
+        <translation type="unfinished" />
+    </message>
+    <message>
+        <location filename="../ui/edit_preset.py" line="149" />
+        <source>name of the query</source>
+        <translation type="unfinished" />
+    </message>
+    <message>
+        <location filename="../ui/edit_preset.py" line="151" />
+        <source>geometry</source>
+        <translation type="unfinished" />
+    </message>
+    <message>
+        <location filename="../ui/edit_preset.py" line="154" />
+        <source>These parameters are separated by '_' and the geometry must be one these values :</source>
+        <translation type="unfinished" />
+    </message>
+    <message>
+        <location filename="../ui/edit_preset.py" line="161" />
+        <source>For the current preset "{file_name}"</source>
+        <translation type="unfinished" />
+    </message>
+    <message>
+        <location filename="../ui/edit_preset.py" line="163" />
+        <source>and the current query "{query_name}"</source>
+        <translation type="unfinished" />
+    </message>
+    <message>
+        <location filename="../ui/edit_preset.py" line="165" />
+        <source>this is the list of filenames you can use</source>
+        <translation type="unfinished" />
+    </message>
+    <message>
+        <location filename="../core/utilities/query_saved.py" line="251" />
+        <location filename="../core/utilities/query_saved.py" line="229" />
+        <location filename="../core/utilities/query_saved.py" line="179" />
+        <location filename="../quick_osm_processing/build_input.py" line="100" />
+        <location filename="../ui/edit_preset.py" line="303" />
+        <location filename="../ui/edit_preset.py" line="258" />
+        <source>Query</source>
+        <translation type="unfinished" />
+    </message>
+    <message>
+        <location filename="../ui/edit_preset.py" line="283" />
+        <source>Confirm query deletion</source>
+        <translation type="unfinished" />
+    </message>
+    <message>
+        <location filename="../ui/edit_preset.py" line="284" />
+        <source>Are you sure you want to delete the query '{name}'?</source>
+        <translation type="unfinished" />
+    </message>
+    <message>
+        <location filename="../ui/edit_preset.py" line="311" />
+        <source>Rename the query</source>
+        <translation type="unfinished" />
+    </message>
+    <message>
+        <location filename="../ui/edit_preset.py" line="311" />
+        <source>New name:</source>
+        <translation type="unfinished" />
+    </message>
+    <message>
+        <location filename="../ui/base_processing_panel.py" line="76" />
+        <source>Select a directory</source>
         <translation type="unfinished" />
     </message>
     <message>
@@ -137,16 +404,6 @@
     <message>
         <location filename="../quick_osm_processing/build_input.py" line="63" />
         <source>The Overpass API server to use to build the encoded URL.</source>
-        <translation type="unfinished" />
-    </message>
-    <message>
-        <location filename="../ui/edit_preset.py" line="303" />
-        <location filename="../ui/edit_preset.py" line="258" />
-        <location filename="../core/utilities/query_saved.py" line="251" />
-        <location filename="../core/utilities/query_saved.py" line="229" />
-        <location filename="../core/utilities/query_saved.py" line="179" />
-        <location filename="../quick_osm_processing/build_input.py" line="100" />
-        <source>Query</source>
         <translation type="unfinished" />
     </message>
     <message>
@@ -235,16 +492,133 @@
         <translation type="unfinished" />
     </message>
     <message>
-        <location filename="../quick_osm_processing/advanced/decorate_output.py" line="44" />
-        <source>Decorate a layer from OSM</source>
+        <location filename="../quick_osm_processing/quickosm_process.py" line="73" />
+        <source>Fetch the OSM data that match the request.</source>
         <translation type="unfinished" />
     </message>
     <message>
-        <location filename="../quick_osm_processing/advanced/build_query.py" line="36" />
+        <location filename="../quick_osm_processing/quickosm_process.py" line="90" />
+        <source>Output file</source>
+        <translation type="unfinished" />
+    </message>
+    <message>
+        <location filename="../quick_osm_processing/advanced/decorate_output.py" line="67" />
+        <location filename="../quick_osm_processing/quickosm_process.py" line="93" />
+        <source>Path where the file will be download.</source>
+        <translation type="unfinished" />
+    </message>
+    <message>
+        <location filename="../quick_osm_processing/advanced/open_osm_file.py" line="90" />
+        <location filename="../quick_osm_processing/quickosm_process.py" line="100" />
+        <source>Output points</source>
+        <translation type="unfinished" />
+    </message>
+    <message>
+        <location filename="../quick_osm_processing/advanced/open_osm_file.py" line="95" />
+        <location filename="../quick_osm_processing/quickosm_process.py" line="105" />
+        <source>Output lines</source>
+        <translation type="unfinished" />
+    </message>
+    <message>
+        <location filename="../quick_osm_processing/advanced/open_osm_file.py" line="101" />
+        <location filename="../quick_osm_processing/quickosm_process.py" line="111" />
+        <source>Output multilinestrings</source>
+        <translation type="unfinished" />
+    </message>
+    <message>
+        <location filename="../quick_osm_processing/advanced/open_osm_file.py" line="108" />
+        <location filename="../quick_osm_processing/quickosm_process.py" line="118" />
+        <source>Output multipolygons</source>
+        <translation type="unfinished" />
+    </message>
+    <message>
+        <location filename="../quick_osm_processing/quickosm_process.py" line="220" />
+        <source>Download OSM data from a raw query</source>
+        <translation type="unfinished" />
+    </message>
+    <message>
+        <location filename="../quick_osm_processing/quickosm_process.py" line="265" />
+        <source>Download OSM data from a not spatial query</source>
+        <translation type="unfinished" />
+    </message>
+    <message>
+        <location filename="../quick_osm_processing/quickosm_process.py" line="311" />
+        <source>Download OSM data from query in an area</source>
+        <translation type="unfinished" />
+    </message>
+    <message>
+        <location filename="../quick_osm_processing/quickosm_process.py" line="358" />
+        <source>Download OSM data from a query around an area</source>
+        <translation type="unfinished" />
+    </message>
+    <message>
+        <location filename="../quick_osm_processing/quickosm_process.py" line="406" />
+        <source>Download OSM data from a query in an extent</source>
+        <translation type="unfinished" />
+    </message>
+    <message>
         <location filename="../quick_osm_processing/advanced/raw_query.py" line="21" />
-        <location filename="../quick_osm_processing/advanced/open_osm_file.py" line="43" />
         <location filename="../quick_osm_processing/advanced/decorate_output.py" line="49" />
+        <location filename="../quick_osm_processing/advanced/open_osm_file.py" line="43" />
+        <location filename="../quick_osm_processing/advanced/build_query.py" line="36" />
         <source>Advanced</source>
+        <translation type="unfinished" />
+    </message>
+    <message>
+        <location filename="../quick_osm_processing/advanced/raw_query.py" line="51" />
+        <location filename="../quick_osm_processing/advanced/build_query.py" line="57" />
+        <source>Query as encoded URL</source>
+        <translation type="unfinished" />
+    </message>
+    <message>
+        <location filename="../quick_osm_processing/advanced/raw_query.py" line="54" />
+        <location filename="../quick_osm_processing/advanced/build_query.py" line="60" />
+        <source>Raw query as OQL</source>
+        <translation type="unfinished" />
+    </message>
+    <message>
+        <location filename="../quick_osm_processing/advanced/build_query.py" line="109" />
+        <source>Build query by attribute only</source>
+        <translation type="unfinished" />
+    </message>
+    <message>
+        <location filename="../quick_osm_processing/advanced/build_query.py" line="129" />
+        <source>Build query inside an area</source>
+        <translation type="unfinished" />
+    </message>
+    <message>
+        <location filename="../quick_osm_processing/advanced/build_query.py" line="149" />
+        <source>Build query around an area</source>
+        <translation type="unfinished" />
+    </message>
+    <message>
+        <location filename="../quick_osm_processing/advanced/build_query.py" line="169" />
+        <source>Build query inside an extent</source>
+        <translation type="unfinished" />
+    </message>
+    <message>
+        <location filename="../quick_osm_processing/advanced/open_osm_file.py" line="74" />
+        <source>The extension can be a OSM or PBF file.</source>
+        <translation type="unfinished" />
+    </message>
+    <message>
+        <location filename="../quick_osm_processing/advanced/open_osm_file.py" line="79" />
+        <source>OSM configuration</source>
+        <translation type="unfinished" />
+    </message>
+    <message>
+        <location filename="../quick_osm_processing/advanced/open_osm_file.py" line="81" />
+        <source>The OGR OSM configuration file. This file is used to customize the import process about OSM tags. You should read the OGR documentation {url}</source>
+        <translation type="unfinished" />
+    </message>
+    <message>
+        <location filename="../quick_osm_processing/advanced/open_osm_file.py" line="115" />
+        <source>Output other relations</source>
+        <translation type="unfinished" />
+    </message>
+    <message>
+        <location filename="../quick_osm_processing/advanced/decorate_output.py" line="44" />
+        <source>Decorate a layer from OSM</source>
         <translation type="unfinished" />
     </message>
     <message>
@@ -269,60 +643,24 @@
         <translation>© OpenStreetMap-bidragsydere</translation>
     </message>
     <message>
-        <location filename="../quick_osm_processing/advanced/open_osm_file.py" line="74" />
-        <source>The extension can be a OSM or PBF file.</source>
-        <translation type="unfinished" />
-    </message>
-    <message>
-        <location filename="../quick_osm_processing/advanced/open_osm_file.py" line="79" />
-        <source>OSM configuration</source>
-        <translation type="unfinished" />
-    </message>
-    <message>
-        <location filename="../quick_osm_processing/advanced/open_osm_file.py" line="81" />
-        <source>The OGR OSM configuration file. This file is used to customize the import process about OSM tags. You should read the OGR documentation {url}</source>
-        <translation type="unfinished" />
-    </message>
-    <message>
-        <location filename="../quick_osm_processing/advanced/open_osm_file.py" line="115" />
-        <source>Output other relations</source>
-        <translation type="unfinished" />
-    </message>
-    <message>
         <location filename="../quick_osm_processing/advanced/raw_query.py" line="36" />
         <source>Build raw query</source>
         <translation type="unfinished" />
     </message>
     <message>
-        <location filename="../quick_osm_processing/advanced/build_query.py" line="57" />
-        <location filename="../quick_osm_processing/advanced/raw_query.py" line="51" />
-        <source>Query as encoded URL</source>
+        <location filename="../core/query_preparation.py" line="142" />
+        <location filename="../core/query_preparation.py" line="121" />
+        <source>Missing extent parameter.</source>
         <translation type="unfinished" />
     </message>
     <message>
-        <location filename="../quick_osm_processing/advanced/build_query.py" line="60" />
-        <location filename="../quick_osm_processing/advanced/raw_query.py" line="54" />
-        <source>Raw query as OQL</source>
+        <location filename="../core/query_preparation.py" line="168" />
+        <source>The area was overlapping the WGS84 limits ±90 / ±180 degrees. The query has been restricted.</source>
         <translation type="unfinished" />
     </message>
     <message>
-        <location filename="../quick_osm_processing/advanced/build_query.py" line="109" />
-        <source>Build query by attribute only</source>
-        <translation type="unfinished" />
-    </message>
-    <message>
-        <location filename="../quick_osm_processing/advanced/build_query.py" line="129" />
-        <source>Build query inside an area</source>
-        <translation type="unfinished" />
-    </message>
-    <message>
-        <location filename="../quick_osm_processing/advanced/build_query.py" line="149" />
-        <source>Build query around an area</source>
-        <translation type="unfinished" />
-    </message>
-    <message>
-        <location filename="../quick_osm_processing/advanced/build_query.py" line="169" />
-        <source>Build query inside an extent</source>
+        <location filename="../core/query_preparation.py" line="226" />
+        <source>WKT detected for "geocodeCoords".</source>
         <translation type="unfinished" />
     </message>
     <message>
@@ -467,12 +805,6 @@
         <translation type="unfinished" />
     </message>
     <message>
-        <location filename="../ui/dialog.py" line="167" />
-        <location filename="../core/actions.py" line="119" />
-        <source>Reload the query in a new file</source>
-        <translation type="unfinished" />
-    </message>
-    <message>
         <location filename="../core/actions.py" line="155" />
         <source>Sorry, the field '{fieldname}' is empty for this entity.</source>
         <translation type="unfinished" />
@@ -485,32 +817,6 @@
     <message>
         <location filename="../core/actions.py" line="218" />
         <source>Sorry, this field is empty for this entity.</source>
-        <translation type="unfinished" />
-    </message>
-    <message>
-        <location filename="../core/process.py" line="233" />
-        <source>Prepare outputs</source>
-        <translation type="unfinished" />
-    </message>
-    <message>
-        <location filename="../core/process.py" line="238" />
-        <source>Downloading data from Overpass {server_name}</source>
-        <translation type="unfinished" />
-    </message>
-    <message>
-        <location filename="../core/query_preparation.py" line="142" />
-        <location filename="../core/query_preparation.py" line="121" />
-        <source>Missing extent parameter.</source>
-        <translation type="unfinished" />
-    </message>
-    <message>
-        <location filename="../core/query_preparation.py" line="168" />
-        <source>The area was overlapping the WGS84 limits ±90 / ±180 degrees. The query has been restricted.</source>
-        <translation type="unfinished" />
-    </message>
-    <message>
-        <location filename="../core/query_preparation.py" line="226" />
-        <source>WKT detected for "geocodeCoords".</source>
         <translation type="unfinished" />
     </message>
     <message>
@@ -614,6 +920,16 @@
         <translation type="unfinished" />
     </message>
     <message>
+        <location filename="../core/process.py" line="233" />
+        <source>Prepare outputs</source>
+        <translation type="unfinished" />
+    </message>
+    <message>
+        <location filename="../core/process.py" line="238" />
+        <source>Downloading data from Overpass {server_name}</source>
+        <translation type="unfinished" />
+    </message>
+    <message>
         <location filename="../core/utilities/tools.py" line="92" />
         <source>Error with the Processing plugin</source>
         <translation type="unfinished" />
@@ -636,322 +952,6 @@
     <message>
         <location filename="../core/parser/osm_parser.py" line="124" />
         <source>Parsing layer : {layer}</source>
-        <translation type="unfinished" />
-    </message>
-    <message>
-        <location filename="../tools/custom_logging.py" line="57" />
-        <source>Due to memory limitations on this machine, the plugin {} can not handle the full log</source>
-        <translation type="unfinished" />
-    </message>
-    <message>
-        <location filename="../ui/custom_table.py" line="45" />
-        <source>Query on all keys</source>
-        <translation type="unfinished" />
-    </message>
-    <message>
-        <location filename="../ui/custom_table.py" line="46" />
-        <source>Query on all values</source>
-        <translation type="unfinished" />
-    </message>
-    <message>
-        <location filename="../ui/custom_table.py" line="94" />
-        <source>Not mandatory. Ex: bakery</source>
-        <translation type="unfinished" />
-    </message>
-    <message>
-        <location filename="../ui/custom_table.py" line="128" />
-        <source>Add a line below.</source>
-        <translation type="unfinished" />
-    </message>
-    <message>
-        <location filename="../ui/custom_table.py" line="132" />
-        <source>Remove the line.</source>
-        <translation type="unfinished" />
-    </message>
-    <message>
-        <location filename="../ui/custom_table.py" line="143" />
-        <source>Set the type of multi-request. "And" verify both conditions. "Or" verify either of the conditions.</source>
-        <translation type="unfinished" />
-    </message>
-    <message>
-        <location filename="../ui/custom_table.py" line="160" />
-        <source>An OSM key to fetch. If empty, all keys will be fetched.</source>
-        <translation type="unfinished" />
-    </message>
-    <message>
-        <location filename="../ui/custom_table.py" line="181" />
-        <source>An OSM value to fetch. If empty, all values will be fetched.</source>
-        <translation type="unfinished" />
-    </message>
-    <message>
-        <location filename="../ui/map_preset_panel.py" line="60" />
-        <location filename="../ui/quick_query_panel.py" line="81" />
-        <location filename="../ui/query_panel.py" line="49" />
-        <source>Canvas Extent</source>
-        <translation type="unfinished" />
-    </message>
-    <message>
-        <location filename="../ui/map_preset_panel.py" line="61" />
-        <location filename="../ui/quick_query_panel.py" line="82" />
-        <location filename="../ui/query_panel.py" line="50" />
-        <source>Layer Extent</source>
-        <translation type="unfinished" />
-    </message>
-    <message>
-        <location filename="../ui/osm_file_panel.py" line="51" />
-        <source>Select an OSM/PBF file</source>
-        <translation type="unfinished" />
-    </message>
-    <message>
-        <location filename="../ui/osm_file_panel.py" line="57" />
-        <source>Select OSM conf file</source>
-        <translation type="unfinished" />
-    </message>
-    <message>
-        <location filename="../ui/osm_file_panel.py" line="222" />
-        <location filename="../ui/osm_file_panel.py" line="210" />
-        <source>Successful query</source>
-        <translation type="unfinished" />
-    </message>
-    <message>
-        <location filename="../ui/edit_preset.py" line="55" />
-        <source>Add a new query to the map preset</source>
-        <translation type="unfinished" />
-    </message>
-    <message>
-        <location filename="../ui/edit_preset.py" line="60" />
-        <source>Remove the selected query from the map preset</source>
-        <translation type="unfinished" />
-    </message>
-    <message>
-        <location filename="../ui/base_processing_panel.py" line="73" />
-        <location filename="../ui/edit_preset.py" line="79" />
-        <source>Save to temporary file</source>
-        <translation type="unfinished" />
-    </message>
-    <message>
-        <location filename="../ui/edit_preset.py" line="115" />
-        <source>Rename</source>
-        <translation type="unfinished" />
-    </message>
-    <message>
-        <location filename="../ui/edit_preset.py" line="116" />
-        <source>Delete</source>
-        <translation type="unfinished" />
-    </message>
-    <message>
-        <location filename="../ui/edit_preset.py" line="137" />
-        <source>You can associate predefined styles with layers. You need to add QML file(s) in this folder :</source>
-        <translation type="unfinished" />
-    </message>
-    <message>
-        <location filename="../ui/edit_preset.py" line="144" />
-        <source>The name of QML files must follow this convention</source>
-        <translation type="unfinished" />
-    </message>
-    <message>
-        <location filename="../ui/edit_preset.py" line="147" />
-        <source>name of the preset</source>
-        <translation type="unfinished" />
-    </message>
-    <message>
-        <location filename="../ui/edit_preset.py" line="149" />
-        <source>name of the query</source>
-        <translation type="unfinished" />
-    </message>
-    <message>
-        <location filename="../ui/edit_preset.py" line="151" />
-        <source>geometry</source>
-        <translation type="unfinished" />
-    </message>
-    <message>
-        <location filename="../ui/edit_preset.py" line="154" />
-        <source>These parameters are separated by '_' and the geometry must be one these values :</source>
-        <translation type="unfinished" />
-    </message>
-    <message>
-        <location filename="../ui/edit_preset.py" line="161" />
-        <source>For the current preset "{file_name}"</source>
-        <translation type="unfinished" />
-    </message>
-    <message>
-        <location filename="../ui/edit_preset.py" line="163" />
-        <source>and the current query "{query_name}"</source>
-        <translation type="unfinished" />
-    </message>
-    <message>
-        <location filename="../ui/edit_preset.py" line="165" />
-        <source>this is the list of filenames you can use</source>
-        <translation type="unfinished" />
-    </message>
-    <message>
-        <location filename="../ui/edit_preset.py" line="283" />
-        <source>Confirm query deletion</source>
-        <translation type="unfinished" />
-    </message>
-    <message>
-        <location filename="../ui/edit_preset.py" line="284" />
-        <source>Are you sure you want to delete the query '{name}'?</source>
-        <translation type="unfinished" />
-    </message>
-    <message>
-        <location filename="../ui/edit_preset.py" line="311" />
-        <source>Rename the query</source>
-        <translation type="unfinished" />
-    </message>
-    <message>
-        <location filename="../ui/edit_preset.py" line="311" />
-        <source>New name:</source>
-        <translation type="unfinished" />
-    </message>
-    <message>
-        <location filename="../ui/configuration_panel.py" line="52" />
-        <source>Add a new server in the list</source>
-        <translation type="unfinished" />
-    </message>
-    <message>
-        <location filename="../ui/configuration_panel.py" line="53" />
-        <source>Remove the selected server from the list</source>
-        <translation type="unfinished" />
-    </message>
-    <message>
-        <location filename="../ui/configuration_panel.py" line="140" />
-        <source>Please enter a URL.</source>
-        <translation type="unfinished" />
-    </message>
-    <message>
-        <location filename="../ui/configuration_panel.py" line="144" />
-        <source>The URL must begin with “http”.</source>
-        <translation type="unfinished" />
-    </message>
-    <message>
-        <location filename="../ui/configuration_panel.py" line="149" />
-        <source>This server is already in the list.</source>
-        <translation type="unfinished" />
-    </message>
-    <message>
-        <location filename="../ui/configuration_panel.py" line="182" />
-        <source>Please select a server from the list.</source>
-        <translation type="unfinished" />
-    </message>
-    <message>
-        <location filename="../ui/base_processing_panel.py" line="76" />
-        <source>Select a directory</source>
-        <translation type="unfinished" />
-    </message>
-    <message>
-        <location filename="../ui/map_preset_panel.py" line="58" />
-        <location filename="../ui/quick_query_panel.py" line="79" />
-        <source>In</source>
-        <translation type="unfinished" />
-    </message>
-    <message>
-        <location filename="../ui/map_preset_panel.py" line="59" />
-        <location filename="../ui/quick_query_panel.py" line="80" />
-        <source>Around</source>
-        <translation type="unfinished" />
-    </message>
-    <message>
-        <location filename="../ui/map_preset_panel.py" line="62" />
-        <location filename="../ui/quick_query_panel.py" line="83" />
-        <source>Not Spatial</source>
-        <translation type="unfinished" />
-    </message>
-    <message>
-        <location filename="../ui/quick_query_panel.py" line="146" />
-        <source>Save query in a new preset</source>
-        <translation type="unfinished" />
-    </message>
-    <message>
-        <location filename="../ui/quick_query_panel.py" line="151" />
-        <source>Save and add query to an existing preset</source>
-        <translation type="unfinished" />
-    </message>
-    <message>
-        <location filename="../ui/quick_query_panel.py" line="202" />
-        <source>allKeys</source>
-        <translation type="unfinished" />
-    </message>
-    <message>
-        <location filename="../ui/quick_query_panel.py" line="255" />
-        <source>Add in an existing preset</source>
-        <translation type="unfinished" />
-    </message>
-    <message>
-        <location filename="../ui/quick_query_panel.py" line="256" />
-        <source>Please select the preset in which the query will be added:</source>
-        <translation type="unfinished" />
-    </message>
-    <message>
-        <location filename="../ui/map_preset_panel.py" line="192" />
-        <location filename="../ui/map_preset_panel.py" line="115" />
-        <location filename="../ui/quick_query_panel.py" line="328" />
-        <source>No description</source>
-        <translation type="unfinished" />
-    </message>
-    <message>
-        <location filename="../ui/quick_query_panel.py" line="339" />
-        <source>Run the query</source>
-        <translation type="unfinished" />
-    </message>
-    <message>
-        <location filename="../ui/quick_query_panel.py" line="340" />
-        <source>Save this query in a new preset</source>
-        <translation type="unfinished" />
-    </message>
-    <message>
-        <location filename="../ui/map_preset_panel.py" line="203" />
-        <source>Edit the preset</source>
-        <translation type="unfinished" />
-    </message>
-    <message>
-        <location filename="../ui/map_preset_panel.py" line="204" />
-        <source>Delete the preset</source>
-        <translation type="unfinished" />
-    </message>
-    <message>
-        <location filename="../ui/map_preset_panel.py" line="247" />
-        <source>Confirm preset deletion</source>
-        <translation type="unfinished" />
-    </message>
-    <message>
-        <location filename="../ui/map_preset_panel.py" line="248" />
-        <source>Are you sure you want to delete the preset '{name}'?</source>
-        <translation type="unfinished" />
-    </message>
-    <message>
-        <location filename="../ui/base_overpass_panel.py" line="172" />
-        <source>Successful query, {} layer(s) has been loaded.</source>
-        <translation type="unfinished" />
-    </message>
-    <message>
-        <location filename="../ui/base_overpass_panel.py" line="176" />
-        <source>No result</source>
-        <translation type="unfinished" />
-    </message>
-    <message>
-        <location filename="../ui/base_overpass_panel.py" line="178" />
-        <source>Successful query, but no OSM data matched the Overpass query on this Overpass server.</source>
-        <translation type="unfinished" />
-    </message>
-    <message>
-        <location filename="../ui/dialog.py" line="244" />
-        <source>A critical error occurred, this is the traceback:</source>
-        <translation type="unfinished" />
-    </message>
-    <message>
-        <location filename="../ui/dialog.py" line="251" />
-        <source>Error in the QGIS log window, then the QuickOSM panel, copy/paste it and please report it, if you know how to copy/paste QGIS logs. Please check pinned tickets first.</source>
-        <translation type="unfinished" />
-    </message>
-    <message>
-        <location filename="../ui/dialog.py" line="298" />
-        <source>Open log panel</source>
-        <translation type="unfinished" />
-    </message>
-    <message>
-        <location filename="../ui/dialog.py" line="302" />
-        <source>More details</source>
         <translation type="unfinished" />
     </message>
 </context><context>
