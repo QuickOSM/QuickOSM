@@ -1,11 +1,10 @@
 """Exceptions definitions."""
-
 from typing import Optional
 
 from qgis.core import Qgis
 
 from QuickOSM.definitions.osm import OsmType
-from QuickOSM.tools.i18n import translate
+from QuickOSM.tools.i18n import tr
 
 
 class QuickOsmException(Exception):
@@ -29,12 +28,6 @@ class QuickOsmException(Exception):
         self.duration = 7
         super().__init__(message, more_details)
 
-    def __str__(self) -> str:
-        """Only the message if there isn't any details, instead of "('message', None)"."""
-        if self.more_details:
-            return super().__str__()
-        return str(self.message)
-
 
 # Overpass or network
 
@@ -43,7 +36,7 @@ class OverpassBadRequestException(QuickOsmException):
     """Bad request exception."""
 
     def __init__(self, error: Optional[str] = None):
-        message = translate('@default', 'Bad request OverpassAPI.')
+        message = tr('Bad request OverpassAPI.')
         if error:
             message += ' '
             message += error
@@ -55,8 +48,12 @@ class OverpassTimeoutException(QuickOsmException):
 
     def __init__(self, message: Optional[str] = None):
         if not message:
-            message = translate('@default', 'OverpassAPI timeout, try again later or a smaller query.')
+            message = tr('OverpassAPI timeout, try again later or a smaller query.')
         super().__init__(message)
+
+
+class OverpassQueryTimeoutException(OverpassTimeoutException):
+    """Query timed out on the Overpass server."""
 
 
 class OverpassManyRequestException(QuickOsmException):
@@ -64,8 +61,8 @@ class OverpassManyRequestException(QuickOsmException):
 
     def __init__(self, message: Optional[str] = None):
         if not message:
-            message = translate(
-                '@default', 'OverpassAPI has received too many requests, try again later or a smaller query.'
+            message = tr(
+                'OverpassAPI has received too many requests, try again later or a smaller query.'
             )
         super().__init__(message)
 
@@ -74,8 +71,10 @@ class OverpassMemoryException(QuickOsmException):
     """Out of memory exception."""
 
     def __init__(self, amount_memory: int, unit: str):
-        message = translate('@default', 'OverpassAPI is out of memory, try another query or a smaller area.')
-        details = translate('@default', 'The server would need more or less {number} {unit} of RAM.').format(
+        message = tr(
+            'OverpassAPI is out of memory, try another query or a smaller area.')
+        details = tr(
+            'The server would need more or less {number} {unit} of RAM.').format(
             number=amount_memory, unit=unit
         )
         super().__init__(message, details)
@@ -85,7 +84,7 @@ class OverpassRuntimeError(QuickOsmException):
     """Runtime exceeded exception."""
 
     def __init__(self, message: str):
-        message = translate('@default', 'Overpass error: {message}').format(message=message)
+        message = tr('Overpass error: {message}').format(message=message)
         super().__init__(message)
 
 
@@ -98,6 +97,13 @@ class NetWorkErrorException(QuickOsmException):
         super().__init__(service)
 
 
+class OverpassGatewayTimeoutException(NetWorkErrorException):
+    """Gateway timeout exception."""
+
+    def __init__(self):
+        super().__init__('Overpass API', tr('Gateway Timeout'))
+
+
 # QueryFactory
 
 
@@ -106,9 +112,9 @@ class QueryFactoryException(QuickOsmException):
 
     def __init__(self, message: Optional[str] = None, suffix: Optional[str] = None):
         if not message:
-            message = translate('@default', 'Error while building the query')
+            message = tr('Error while building the query')
         if suffix:
-            message = message + ' : ' + suffix
+            message = message + " : " + suffix
         super().__init__(message)
 
 
@@ -116,9 +122,8 @@ class QueryNotSupported(QuickOsmException):
     """Query not supported exception."""
 
     def __init__(self, key: str):
-        message = translate('@default', 'The query is not supported by the plugin because of : {key}').format(
-            key=key
-        )
+        message = tr(
+            'The query is not supported by the plugin because of : {key}').format(key=key)
         super().__init__(message)
 
 
@@ -134,7 +139,8 @@ class NominatimBadRequest(QuickOsmException):
         :param query: Name of the place.
         :type query: basestring
         """
-        message = translate('@default', 'Nominatim hasn\'t found any data for an area called "{place_name}".')
+        message = tr(
+            'Nominatim hasn\'t found any data for an area called "{place_name}".')
         message = message.format(place_name=query)
 
         super().__init__(message)
@@ -149,15 +155,14 @@ class NominatimAreaException(QuickOsmException):
         :param query: Name of the place.
         :type query: basestring
         """
-        message = translate('@default', 'No named area found for OSM {osm_type} called "{place_name}".')
+        message = tr(
+            'No named area found for OSM {osm_type} called "{place_name}".')
         message = message.format(osm_type=OsmType.Relation.name.lower(), place_name=query)
 
         # No polygon has been found, we propose the "around" query.
-        more_details = translate(
-            '@default',
+        more_details = tr(
             'No OSM polygon (relation) has been found, you should try the '
-            '"Around" query which will search for other OSM type.',
-        )
+            '"Around" query which will search for other OSM type.')
         super().__init__(message, more_details)
 
 
@@ -169,9 +174,9 @@ class FileDoesntExistException(QuickOsmException):
 
     def __init__(self, message: Optional[str] = None, suffix: Optional[str] = None):
         if not message:
-            message = translate('@default', 'The file does not exist.')
+            message = tr('The file does not exist.')
         if suffix:
-            message = message + ' ' + suffix
+            message = message + " " + suffix
         super().__init__(message)
 
 
@@ -180,7 +185,7 @@ class DirectoryOutPutException(QuickOsmException):
 
     def __init__(self, message: Optional[str] = None):
         if not message:
-            message = translate('@default', 'The output directory does not exist.')
+            message = tr('The output directory does not exist.')
         super().__init__(message)
 
 
@@ -189,9 +194,9 @@ class FileOutPutException(QuickOsmException):
 
     def __init__(self, message: Optional[str] = None, suffix: Optional[str] = None):
         if not message:
-            message = translate('@default', 'The output file already exist, set a prefix.')
+            message = tr('The output file already exist, set a prefix.')
         if suffix:
-            message = message + ' ' + suffix
+            message = message + " " + suffix
         super().__init__(message)
 
 
@@ -202,7 +207,7 @@ class MissingLayerUI(QuickOsmException):
     """No layer exception."""
 
     def __init__(self):
-        message = translate('@default', 'The layer combobox is empty.')
+        message = tr('The layer combobox is empty.')
         super().__init__(message)
 
 
@@ -211,9 +216,9 @@ class MissingParameterException(QuickOsmException):
 
     def __init__(self, message: Optional[str] = None, suffix: Optional[str] = None):
         if not message:
-            message = translate('@default', 'A parameter is missing :')
+            message = tr('A parameter is missing :')
         if suffix:
-            message = message + ' ' + suffix
+            message = message + " " + suffix
         super().__init__(message)
 
 
@@ -221,7 +226,8 @@ class NoSelectedPreset(QuickOsmException):
     """No selected preset exception."""
 
     def __init__(self):
-        message = translate('@default', "None of the preset is selected. You can't run nothing.")
+        message = tr(
+            'None of the preset is selected. You can\'t run nothing.')
         super().__init__(message)
 
 
@@ -229,11 +235,9 @@ class NoSelectedFeatures(QuickOsmException):
     """No selected features exception."""
 
     def __init__(self):
-        message = translate(
-            '@default',
-            'No selected features have been found in the layer. '
-            'Please select some features or uncheck the option.',
-        )
+        message = tr(
+            'No selected features have been found in the layer.'
+            ' Please select some features or uncheck the option.')
         super().__init__(message)
 
 
@@ -242,7 +246,7 @@ class OsmObjectsException(QuickOsmException):
 
     def __init__(self, message: Optional[str] = None):
         if not message:
-            message = translate('@default', 'No OSM objects selected. Please select one.')
+            message = tr('No osm objects selected. Please select one.')
         super().__init__(message)
 
 
@@ -251,5 +255,5 @@ class OutPutGeomTypesException(QuickOsmException):
 
     def __init__(self, message: Optional[str] = None):
         if not message:
-            message = translate('@default', 'No outputs selected. Please select one.')
+            message = tr('No outputs selected. Please select one.')
         super().__init__(message)
