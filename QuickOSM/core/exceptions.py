@@ -7,6 +7,7 @@ from qgis.core import Qgis
 from QuickOSM.definitions.osm import OsmType
 from QuickOSM.tools.i18n import translate
 
+
 class QuickOsmException(Exception):
     """These exceptions are created by QuickOSM during a process."""
 
