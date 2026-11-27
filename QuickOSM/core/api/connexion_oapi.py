@@ -12,8 +12,10 @@ from QuickOSM.core.api.downloader import Downloader
 from QuickOSM.core.exceptions import (
     NetWorkErrorException,
     OverpassBadRequestException,
+    OverpassGatewayTimeoutException,
     OverpassManyRequestException,
     OverpassMemoryException,
+    OverpassQueryTimeoutException,
     OverpassRuntimeError,
     OverpassTimeoutException,
 )
@@ -22,6 +24,7 @@ LOGGER = logging.getLogger('QuickOSM')
 
 
 class ConnexionOAPI(Downloader):
+
     """
     Manage connexion to the overpass API.
     """
@@ -35,9 +38,11 @@ class ConnexionOAPI(Downloader):
         super().__init__(url)
 
         if convert:
-            temporary = QTemporaryFile(os.path.join(QDir.tempPath(), 'request-XXXXXX.txt'))
+            temporary = QTemporaryFile(
+                os.path.join(QDir.tempPath(), 'request-XXXXXX.txt'))
         else:
-            temporary = QTemporaryFile(os.path.join(QDir.tempPath(), 'request-XXXXXX.osm'))
+            temporary = QTemporaryFile(
+                os.path.join(QDir.tempPath(), 'request-XXXXXX.osm'))
         temporary.open()
         self.result_path = temporary.fileName()
         temporary.close()
@@ -52,7 +57,7 @@ class ConnexionOAPI(Downloader):
 
         with open(self.result_path, encoding='utf8') as txt_file:
             text = txt_file.read()
-            query = re.findall('<pre>\\n(.*?)</pre>', text)[0]
+            query = re.findall("<pre>\\n(.*?)</pre>", text)[0]
 
         return query
 
@@ -71,6 +76,7 @@ class ConnexionOAPI(Downloader):
         for message in self.errors:
             self.is_query_timed_out(message)
             self.too_many_request(message)
+            self.is_gateway_timeout(message)
             self.is_bad_request(message)
             LOGGER.error(message)
 
@@ -122,21 +128,20 @@ class ConnexionOAPI(Downloader):
         # Check if we can use the static method below
         timeout = (
             '<remark> runtime error: Query timed out in "[a-z]+" at line '
-            r'[\d]+ after ([\d]+) seconds. </remark>'
-        )
+            r'[\d]+ after ([\d]+) seconds. </remark>')
         if re.search(timeout, ''.join(lines)):
-            raise OverpassTimeoutException
+            raise OverpassQueryTimeoutException
 
         memory = (
             '<remark> runtime error: Query ran out of memory in "query" at '
             r'line [\d]+. It would need at least ([\d]+) (.*) of RAM to '
-            'continue. </remark>'
-        )
+            'continue. </remark>')
         search = re.search(memory, ''.join(lines))
         if search:
             raise OverpassMemoryException(search.group(1), search.group(2))
 
-        generic = '<remark> runtime error: (.*)</remark>'
+        generic = (
+            '<remark> runtime error: (.*)</remark>')
         search = re.search(generic, ''.join(lines))
         if search:
             raise OverpassRuntimeError(search.group(1))
@@ -160,6 +165,13 @@ class ConnexionOAPI(Downloader):
         search = re.search(text, string)
         if search:
             raise OverpassManyRequestException
+
+    @staticmethod
+    def is_gateway_timeout(string: str):
+        """Check the gateway timeout exception."""
+        text = r'(.*)server replied:\s*Gateway[- ]Timeout'
+        if re.search(text, string, re.IGNORECASE):
+            raise OverpassGatewayTimeoutException
 
     @staticmethod
     def is_bad_request(string: str):
