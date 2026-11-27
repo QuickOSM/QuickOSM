@@ -1,4 +1,5 @@
 """Panel OSM map preset class."""
+
 import datetime
 import json
 import logging
@@ -40,7 +41,7 @@ from QuickOSM.core.utilities.query_saved import QueryManagement
 from QuickOSM.core.utilities.tools import query_preset
 from QuickOSM.definitions.gui import Panels
 from QuickOSM.definitions.osm import Osm_Layers, QueryType
-from QuickOSM.tools.i18n import tr
+from QuickOSM.tools.i18n import translate
 from QuickOSM.tools.resources import resources_path
 from QuickOSM.ui.base_overpass_panel import BaseOverpassPanel
 from QuickOSM.ui.edit_preset import EditPreset
@@ -65,14 +66,13 @@ class MapPresetPanel(BaseOverpassPanel):
         """Setup the UI for the QuickQuery."""
 
         # Query type
-        self.dialog.combo_query_type_mp.addItem(tr('In'), 'in')
-        self.dialog.combo_query_type_mp.addItem(tr('Around'), 'around')
-        self.dialog.combo_query_type_mp.addItem(tr('Canvas Extent'), 'canvas')
-        self.dialog.combo_query_type_mp.addItem(tr('Layer Extent'), 'layer')
-        self.dialog.combo_query_type_mp.addItem(tr('Not Spatial'), 'attributes')
+        self.dialog.combo_query_type_mp.addItem(translate('@default', 'In'), 'in')
+        self.dialog.combo_query_type_mp.addItem(translate('@default', 'Around'), 'around')
+        self.dialog.combo_query_type_mp.addItem(translate('@default', 'Canvas Extent'), 'canvas')
+        self.dialog.combo_query_type_mp.addItem(translate('@default', 'Layer Extent'), 'layer')
+        self.dialog.combo_query_type_mp.addItem(translate('@default', 'Not Spatial'), 'attributes')
 
-        self.dialog.combo_query_type_mp.currentIndexChanged.connect(
-            self.query_type_updated)
+        self.dialog.combo_query_type_mp.currentIndexChanged.connect(self.query_type_updated)
         self.dialog.combo_extent_layer_mp.layerChanged.connect(self.query_type_updated)
 
         self.setup_default_preset()
@@ -98,9 +98,7 @@ class MapPresetPanel(BaseOverpassPanel):
 
             item = QListWidgetItem(self.dialog.list_default_mp)
             item.setFlags(
-                Qt.ItemFlag.ItemIsSelectable
-                | Qt.ItemFlag.ItemIsUserCheckable
-                | Qt.ItemFlag.ItemIsEnabled
+                Qt.ItemFlag.ItemIsSelectable | Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled
             )
             self.dialog.list_default_mp.addItem(item)
 
@@ -125,7 +123,7 @@ class MapPresetPanel(BaseOverpassPanel):
             vbox.addWidget(title)
             for label in data['description']:
                 if not label:
-                    label = tr('No description')
+                    label = translate('@default', 'No description')
                 real_label = QLabel(label)
                 real_label.setWordWrap(True)
                 vbox.addWidget(real_label)
@@ -141,7 +139,8 @@ class MapPresetPanel(BaseOverpassPanel):
             self.dialog.combo_query_type_mp,
             self.dialog.stacked_query_type_mp,
             self.dialog.spin_place_mp,
-            self.dialog.checkbox_selection_mp)
+            self.dialog.checkbox_selection_mp,
+        )
 
     def select_default(self):
         """Update the panel knowing a default preset is selected."""
@@ -159,20 +158,21 @@ class MapPresetPanel(BaseOverpassPanel):
         """Enable only when it is a basic preset."""
         if self.listAdvanced[row]:
             self.dialog.list_personal_preset_mp.setStyleSheet(
-                'QListWidget::item:selected {background: ' + self.advanced_selected + ';}')
+                'QListWidget::item:selected {background: ' + self.advanced_selected + ';}'
+            )
             self.dialog.combo_query_type_mp.setEnabled(False)
             self.dialog.stacked_query_type_mp.setEnabled(False)
         else:
             self.dialog.list_personal_preset_mp.setStyleSheet(
-                'QListWidget::item:selected {background: ' + self.basic_selected + ';}')
+                'QListWidget::item:selected {background: ' + self.basic_selected + ';}'
+            )
             self.dialog.combo_query_type_mp.setEnabled(True)
             self.dialog.stacked_query_type_mp.setEnabled(True)
 
     def update_personal_preset_view(self):
         """Update the presets displayed."""
         preset_folder = query_preset()
-        files = filter(
-            lambda folder: os.path.isdir(join(preset_folder, folder)), os.listdir(preset_folder))
+        files = filter(lambda folder: os.path.isdir(join(preset_folder, folder)), os.listdir(preset_folder))
 
         self.dialog.list_personal_preset_mp.clear()
 
@@ -184,9 +184,7 @@ class MapPresetPanel(BaseOverpassPanel):
 
             item = QListWidgetItem(self.dialog.list_personal_preset_mp)
             item.setFlags(
-                Qt.ItemFlag.ItemIsSelectable
-                | Qt.ItemFlag.ItemIsUserCheckable
-                | Qt.ItemFlag.ItemIsEnabled
+                Qt.ItemFlag.ItemIsSelectable | Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled
             )
             self.dialog.list_personal_preset_mp.addItem(item)
 
@@ -202,19 +200,19 @@ class MapPresetPanel(BaseOverpassPanel):
             vbox.addWidget(label_name)
             for label in data['description']:
                 if not label:
-                    label = tr('No description')
+                    label = translate('@default', 'No description')
                 real_label = QLabel(label)
                 real_label.setWordWrap(True)
                 vbox.addWidget(real_label)
             hbox.addItem(vbox)
             button_edit = QPushButton()
             button_remove = QPushButton()
-            button_edit.setIcon(QIcon(QgsApplication.iconPath("mActionToggleEditing.svg")))
+            button_edit.setIcon(QIcon(QgsApplication.iconPath('mActionToggleEditing.svg')))
             button_remove.setIcon(QIcon(QgsApplication.iconPath('symbologyRemove.svg')))
             button_edit.setSizePolicy(QSizePolicy.Policy.Fixed, QSizePolicy.Policy.Fixed)
             button_remove.setSizePolicy(QSizePolicy.Policy.Fixed, QSizePolicy.Policy.Fixed)
-            button_edit.setToolTip(tr('Edit the preset'))
-            button_remove.setToolTip(tr('Delete the preset'))
+            button_edit.setToolTip(translate('@default', 'Edit the preset'))
+            button_remove.setToolTip(translate('@default', 'Delete the preset'))
             hbox.addWidget(button_edit)
             hbox.addWidget(button_remove)
             if data['advanced']:
@@ -222,13 +220,15 @@ class MapPresetPanel(BaseOverpassPanel):
                 preset.setStyleSheet(
                     '#FramePreset { margin: 3px;'
                     ' border: 3px solid ' + self.advanced_selected + ';'
-                    ' border-width: 1px 1px 1px 4px;}')
+                    ' border-width: 1px 1px 1px 4px;}'
+                )
             else:
                 self.listAdvanced.append(False)
                 preset.setStyleSheet(
                     '#FramePreset { margin: 3px;'
                     ' border: 3px solid ' + self.basic_selected + ';'
-                    ' border-width: 1px 1px 1px 4px;}')
+                    ' border-width: 1px 1px 1px 4px;}'
+                )
             preset.setLayout(hbox)
 
             # Actions on click
@@ -254,9 +254,11 @@ class MapPresetPanel(BaseOverpassPanel):
     def verification_remove_preset(self, item: QListWidgetItem, name: str):
         """Verification of the removal a preset."""
         validate_delete = QMessageBox(
-            QMessageBox.Icon.Warning, tr('Confirm preset deletion'),
-            tr(f'Are you sure you want to delete the preset \'{name}\'?'),
-            QMessageBox.StandardButton.Yes | QMessageBox.StandardButton.Cancel, self.dialog
+            QMessageBox.Icon.Warning,
+            translate('@default', 'Confirm preset deletion'),
+            translate('@default', "Are you sure you want to delete the preset '{name}'?").format(name=name),
+            QMessageBox.StandardButton.Yes | QMessageBox.StandardButton.Cancel,
+            self.dialog,
         )
         ok = validate_delete.exec()
 
@@ -275,7 +277,6 @@ class MapPresetPanel(BaseOverpassPanel):
         """Prepare the data before running the process."""
         selection = self.dialog.list_default_mp.selectedIndexes()
         try:
-
             if selection:
                 preset = self.dialog.list_default_mp.item(selection[0].row())
                 preset_widget = self.dialog.list_default_mp.itemWidget(preset)
@@ -330,14 +331,10 @@ class MapPresetPanel(BaseOverpassPanel):
             files_qml = self.filter_file_names(file_name, files_qml)
             if list(files_qml):
                 LOGGER.debug(f'files: {files_qml}')
-                file_name = join(
-                    data['folder'], data['file_name'] + '_' + data['query_name'][k] + '_{}.qml')
+                file_name = join(data['folder'], data['file_name'] + '_' + data['query_name'][k] + '_{}.qml')
                 config = {}
                 for osm_type in Osm_Layers:
-                    config[osm_type] = {
-                        'namelayer': name,
-                        'style': file_name.format(osm_type)
-                    }
+                    config[osm_type] = {'namelayer': name, 'style': file_name.format(osm_type)}
             else:
                 config = None
 
@@ -358,15 +355,14 @@ class MapPresetPanel(BaseOverpassPanel):
                             output_geometry_types=data['output_geom_type'][k],
                             output_format=data['output_format'][k],
                             output_dir=data['output_directory'][k],
-                            config_outputs=config
+                            config_outputs=config,
                         )
                     else:
                         if 'query_type' in data:
                             query_type = data['query_type']
                             dist = data['distance']
                         else:
-                            query_type = (
-                                QueryType.InArea if data['area'][k] else QueryType.BBox)
+                            query_type = QueryType.InArea if data['area'][k] else QueryType.BBox
                             dist = None
                         num_layers = process_quick_query(
                             dialog=self.dialog,
@@ -383,7 +379,7 @@ class MapPresetPanel(BaseOverpassPanel):
                             layer_name=name,
                             white_list_values=data['white_list_column'][k],
                             output_geometry_types=data['output_geom_type'][k],
-                            config_outputs=config
+                            config_outputs=config,
                         )
                     break
                 except (
@@ -403,23 +399,20 @@ class MapPresetPanel(BaseOverpassPanel):
                         ),
                     )
                     delay_seconds = retry_delay_seconds if delayed_error else 0
-                    if error.more_details:
-                        detailed_text = error.more_details
-                    else:
-                        detailed_text = ''
-                    if not self._ask_retry(error.message, detailed_text, delay_seconds):
+                    details = error.more_details or ''
+                    if not self._ask_retry(error.message, details, delay_seconds):
                         return
-                    retry_delay_seconds += 60
+                    if delayed_error:
+                        retry_delay_seconds += 60
             self.end_query(num_layers)
 
     def _ask_retry(self, message: str, details: str, delay_seconds: int) -> bool:
-        """Ask whether to retry after showing a countdown."""
+        """Ask whether to retry after an Overpass request fails."""
         retry_dialog = QMessageBox(
             QMessageBox.Icon.Critical,
-            tr('Overpass request failed'),
+            translate('@default', 'Overpass request failed'),
             message,
-            QMessageBox.StandardButton.Retry
-            | QMessageBox.StandardButton.Abort,
+            QMessageBox.StandardButton.Retry | QMessageBox.StandardButton.Abort,
             self.dialog,
         )
         retry_button = retry_dialog.button(QMessageBox.StandardButton.Retry)
@@ -438,15 +431,17 @@ class MapPresetPanel(BaseOverpassPanel):
                 if remaining_seconds <= 0:
                     countdown_timer.stop()
                     retry_button.setEnabled(True)
-                    retry_dialog.setInformativeText(tr('Retry is now available.'))
+                    retry_dialog.setInformativeText(translate('@default', 'Retry is now available.'))
                 else:
-                    countdown_text = tr('Retry available in {seconds} seconds.')
                     retry_dialog.setInformativeText(
-                        countdown_text.format(seconds=remaining_seconds))
+                        translate('@default', 'Retry available in {seconds} seconds.').format(
+                            seconds=remaining_seconds
+                        )
+                    )
 
-            countdown_text = tr('Retry available in {seconds} seconds.')
             retry_dialog.setInformativeText(
-                countdown_text.format(seconds=remaining_seconds))
+                translate('@default', 'Retry available in {seconds} seconds.').format(seconds=remaining_seconds)
+            )
             countdown_timer = QTimer(retry_dialog)
             countdown_timer.setInterval(1000)
             countdown_timer.timeout.connect(update_countdown)
