@@ -59,6 +59,10 @@ class OverpassTimeoutException(QuickOsmException):
         super().__init__(message)
 
 
+class OverpassQueryTimeoutException(OverpassTimeoutException):
+    """Query timed out on the Overpass server."""
+
+
 class OverpassManyRequestException(QuickOsmException):
     """Too many request exception."""
 
@@ -96,6 +100,13 @@ class NetWorkErrorException(QuickOsmException):
         if details:
             service = service + ' : ' + details
         super().__init__(service)
+
+
+class OverpassGatewayTimeoutException(NetWorkErrorException):
+    """Gateway timeout exception."""
+
+    def __init__(self):
+        super().__init__('Overpass API', translate('@default', 'Gateway Timeout'))
 
 
 # QueryFactory

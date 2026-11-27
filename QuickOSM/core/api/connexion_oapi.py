@@ -12,8 +12,10 @@ from QuickOSM.core.api.downloader import Downloader
 from QuickOSM.core.exceptions import (
     NetWorkErrorException,
     OverpassBadRequestException,
+    OverpassGatewayTimeoutException,
     OverpassManyRequestException,
     OverpassMemoryException,
+    OverpassQueryTimeoutException,
     OverpassRuntimeError,
     OverpassTimeoutException,
 )
@@ -71,6 +73,7 @@ class ConnexionOAPI(Downloader):
         for message in self.errors:
             self.is_query_timed_out(message)
             self.too_many_request(message)
+            self.is_gateway_timeout(message)
             self.is_bad_request(message)
             LOGGER.error(message)
 
@@ -125,7 +128,7 @@ class ConnexionOAPI(Downloader):
             r'[\d]+ after ([\d]+) seconds. </remark>'
         )
         if re.search(timeout, ''.join(lines)):
-            raise OverpassTimeoutException
+            raise OverpassQueryTimeoutException
 
         memory = (
             '<remark> runtime error: Query ran out of memory in "query" at '
@@ -160,6 +163,13 @@ class ConnexionOAPI(Downloader):
         search = re.search(text, string)
         if search:
             raise OverpassManyRequestException
+
+    @staticmethod
+    def is_gateway_timeout(string: str):
+        """Check the gateway timeout exception."""
+        text = r'(.*)server replied:\s*Gateway[- ](?:Timeout|Time[- ]out)'
+        if re.search(text, string, re.IGNORECASE):
+            raise OverpassGatewayTimeoutException
 
     @staticmethod
     def is_bad_request(string: str):

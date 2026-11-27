@@ -9,7 +9,7 @@ from functools import partial
 from os.path import join
 
 from qgis.core import QgsApplication
-from qgis.PyQt.QtCore import QSize, Qt
+from qgis.PyQt.QtCore import QSize, Qt, QTimer
 from qgis.PyQt.QtGui import QIcon, QPixmap
 from qgis.PyQt.QtWidgets import (
     QDialog,
@@ -23,7 +23,18 @@ from qgis.PyQt.QtWidgets import (
     QVBoxLayout,
 )
 
-from QuickOSM.core.exceptions import NoSelectedPreset, QuickOsmException
+from QuickOSM.core.exceptions import (
+    NetWorkErrorException,
+    NoSelectedPreset,
+    OverpassBadRequestException,
+    OverpassGatewayTimeoutException,
+    OverpassManyRequestException,
+    OverpassMemoryException,
+    OverpassQueryTimeoutException,
+    OverpassRuntimeError,
+    OverpassTimeoutException,
+    QuickOsmException,
+)
 from QuickOSM.core.process import process_query, process_quick_query
 from QuickOSM.core.utilities.json_encoder import as_enum
 from QuickOSM.core.utilities.query_saved import QueryManagement
@@ -308,6 +319,7 @@ class MapPresetPanel(BaseOverpassPanel):
     def _run_saved_query(self, data: dict):
         """Run a saved query(ies)."""
         for k, query in enumerate(data['query']):
+            retry_delay_seconds = 60
             if data['output_directory'][k]:
                 time_str = str(datetime.datetime.now()).replace(' ', '_').replace(':', '-').split('.')[0]
                 name = time_str + '_' + data['query_layer_name'][k]
@@ -326,45 +338,118 @@ class MapPresetPanel(BaseOverpassPanel):
             else:
                 config = None
 
-            if data['advanced']:
-                num_layers = process_query(
-                    dialog=self.dialog,
-                    query=query,
-                    description=data['description'],
-                    layer_name=name,
-                    white_list_values=data['white_list_column'][k],
-                    type_multi_request=data['type_multi_request'][k],
-                    key=data['keys'][k],
-                    value=data['values'][k],
-                    area=data['area'][k],
-                    bbox=data['bbox'][k],
-                    output_geometry_types=data['output_geom_type'][k],
-                    output_format=data['output_format'][k],
-                    output_dir=data['output_directory'][k],
-                    config_outputs=config,
-                )
-            else:
-                if 'query_type' in data:
-                    query_type = data['query_type']
-                    dist = data['distance']
-                else:
-                    query_type = QueryType.InArea if data['area'][k] else QueryType.BBox
-                    dist = None
-                num_layers = process_quick_query(
-                    dialog=self.dialog,
-                    description=data['description'],
-                    type_multi_request=data['type_multi_request'][k],
-                    query_type=query_type,
-                    key=data['keys'][k],
-                    value=data['values'][k],
-                    area=data['area'][k],
-                    bbox=data['bbox'][k],
-                    distance=dist,
-                    output_directory=data['output_directory'][k],
-                    output_format=data['output_format'][k],
-                    layer_name=name,
-                    white_list_values=data['white_list_column'][k],
-                    output_geometry_types=data['output_geom_type'][k],
-                    config_outputs=config,
-                )
+            while True:
+                try:
+                    if data['advanced']:
+                        num_layers = process_query(
+                            dialog=self.dialog,
+                            query=query,
+                            description=data['description'],
+                            layer_name=name,
+                            white_list_values=data['white_list_column'][k],
+                            type_multi_request=data['type_multi_request'][k],
+                            key=data['keys'][k],
+                            value=data['values'][k],
+                            area=data['area'][k],
+                            bbox=data['bbox'][k],
+                            output_geometry_types=data['output_geom_type'][k],
+                            output_format=data['output_format'][k],
+                            output_dir=data['output_directory'][k],
+                            config_outputs=config,
+                        )
+                    else:
+                        if 'query_type' in data:
+                            query_type = data['query_type']
+                            dist = data['distance']
+                        else:
+                            query_type = QueryType.InArea if data['area'][k] else QueryType.BBox
+                            dist = None
+                        num_layers = process_quick_query(
+                            dialog=self.dialog,
+                            description=data['description'],
+                            type_multi_request=data['type_multi_request'][k],
+                            query_type=query_type,
+                            key=data['keys'][k],
+                            value=data['values'][k],
+                            area=data['area'][k],
+                            bbox=data['bbox'][k],
+                            distance=dist,
+                            output_directory=data['output_directory'][k],
+                            output_format=data['output_format'][k],
+                            layer_name=name,
+                            white_list_values=data['white_list_column'][k],
+                            output_geometry_types=data['output_geom_type'][k],
+                            config_outputs=config,
+                        )
+                    break
+                except (
+                    NetWorkErrorException,
+                    OverpassBadRequestException,
+                    OverpassManyRequestException,
+                    OverpassMemoryException,
+                    OverpassRuntimeError,
+                    OverpassTimeoutException,
+                ) as error:
+                    delayed_error = isinstance(
+                        error,
+                        (
+                            OverpassManyRequestException,
+                            OverpassGatewayTimeoutException,
+                            OverpassQueryTimeoutException,
+                        ),
+                    )
+                    delay_seconds = retry_delay_seconds if delayed_error else 0
+                    details = error.more_details or ''
+                    if not self._ask_retry(error.message, details, delay_seconds):
+                        return
+                    if delayed_error:
+                        retry_delay_seconds += 60
             self.end_query(num_layers)
+
+    def _ask_retry(self, message: str, details: str, delay_seconds: int) -> bool:
+        """Ask whether to retry after an Overpass request fails."""
+        retry_dialog = QMessageBox(
+            QMessageBox.Icon.Critical,
+            translate('@default', 'Overpass request failed'),
+            message,
+            QMessageBox.StandardButton.Retry | QMessageBox.StandardButton.Abort,
+            self.dialog,
+        )
+        retry_button = retry_dialog.button(QMessageBox.StandardButton.Retry)
+        if details:
+            retry_dialog.setDetailedText(details)
+
+        countdown_timer = None
+        if delay_seconds:
+            retry_button.setEnabled(False)
+            retry_dialog.setDefaultButton(QMessageBox.StandardButton.Abort)
+            remaining_seconds = delay_seconds
+
+            def update_countdown():
+                nonlocal remaining_seconds
+                remaining_seconds -= 1
+                if remaining_seconds <= 0:
+                    countdown_timer.stop()
+                    retry_button.setEnabled(True)
+                    retry_dialog.setInformativeText(translate('@default', 'Retry is now available.'))
+                else:
+                    retry_dialog.setInformativeText(
+                        translate('@default', 'Retry available in {seconds} seconds.').format(
+                            seconds=remaining_seconds
+                        )
+                    )
+
+            retry_dialog.setInformativeText(
+                translate('@default', 'Retry available in {seconds} seconds.').format(seconds=remaining_seconds)
+            )
+            countdown_timer = QTimer(retry_dialog)
+            countdown_timer.setInterval(1000)
+            countdown_timer.timeout.connect(update_countdown)
+            countdown_timer.start()
+        else:
+            retry_dialog.setDefaultButton(QMessageBox.StandardButton.Retry)
+
+        result = retry_dialog.exec()
+        if countdown_timer:
+            countdown_timer.stop()
+        return result == QMessageBox.StandardButton.Retry

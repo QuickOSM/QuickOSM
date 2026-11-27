@@ -6,7 +6,10 @@ from qgis.testing import unittest
 from QuickOSM.core.api.connexion_oapi import ConnexionOAPI
 from QuickOSM.core.exceptions import (
     OverpassBadRequestException,
+    OverpassGatewayTimeoutException,
+    OverpassManyRequestException,
     OverpassMemoryException,
+    OverpassQueryTimeoutException,
     OverpassRuntimeError,
     OverpassTimeoutException,
 )
@@ -58,6 +61,18 @@ class TestOverpass(unittest.TestCase):
         with self.assertRaises(OverpassTimeoutException):
             ConnexionOAPI.is_query_timed_out(string)
 
+    def test_gateway_timeout_error(self):
+        """Recognize the Overpass gateway timeout response."""
+        for error in ('Gateway Timeout', 'Gateway Time-out'):
+            with self.subTest(error=error):
+                with self.assertRaises(OverpassGatewayTimeoutException):
+                    ConnexionOAPI.is_gateway_timeout(f'server replied: {error}')
+
+    def test_too_many_requests_error(self):
+        """Recognize the Overpass too-many-requests response."""
+        with self.assertRaises(OverpassManyRequestException):
+            ConnexionOAPI.too_many_request('server replied: Too Many Requests')
+
     def test_read_xml_encoding(self):
         """Test #240 related to encoding."""
         encoding_file = plugin_test_data_path('overpass', 'error_decode_utf8.xml')
@@ -67,7 +82,7 @@ class TestOverpass(unittest.TestCase):
         """Test we can parse Overpass error within a file."""
 
         timeout_file = plugin_test_data_path('overpass', 'query_timed_out.xml')
-        with self.assertRaises(OverpassTimeoutException) as error:
+        with self.assertRaises(OverpassQueryTimeoutException) as error:
             ConnexionOAPI.check_file(timeout_file)
 
         self.assertEqual(str(error.exception), 'OverpassAPI timeout, try again later or a smaller query.')
